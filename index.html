@@ -1078,7 +1078,7 @@ $('#blogGrid').innerHTML=ARTICLES.map(function(a){
 
 /* ---------- Katalog ---------- */
 var catState={cat:'all',q:'',sort:'relevan',shown:24};
-var CHIP_DEFS=[['all','Semua'],['aplikasi','Aplikasi'],['web','Website'],['ebook','eBook'],['game','Game'],['pod','Kaos POD'],['video','Video Promo']];
+var CHIP_DEFS=[['all','Semua'],['aplikasi','Aplikasi'],['web','Website'],['ebook','eBook'],['game','Game'],['pod','Kaos POD'],['video','Video']];
 $('#catChips').innerHTML=CHIP_DEFS.map(function(cd){
   var n=cd[0]==='all'?PRODUCTS.length:PRODUCTS.filter(function(p){return p.c===cd[0]}).length;
   return '<button type="button" data-cat="'+cd[0]+'"'+(cd[0]==='all'?' class="active"':'')+'>'+cd[1]+' ('+n+')</button>';
