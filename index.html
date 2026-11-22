@@ -297,6 +297,13 @@ footer ul a:hover{color:var(--navy)}
 .modal-price-row{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;background:var(--soft-bg);border-radius:14px;padding:16px 18px;margin-top:22px}
 .modal-note{font-size:13px;color:var(--muted);margin-top:16px;background:var(--cream);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
 .hidden{display:none!important}
+/* ---------- Beranda ringan: ruangan sebagai tampilan sendiri ---------- */
+.back-bar{display:none;margin:0 0 18px}
+body[data-view="room"] .back-bar,body[data-view="all"] .back-bar{display:block}
+body[data-view="room"] main>section.sec,body[data-view="room"] .hero{display:none}
+body[data-view="room"] main>section.sec.room-active{display:block}
+body[data-view="all"] main>section.sec,body[data-view="all"] .hero{display:none}
+body[data-view="all"] main>section#katalog{display:block}
 .empty-note{text-align:center;color:var(--muted);padding:34px 10px;font-size:15px;grid-column:1/-1}
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto}
@@ -436,7 +443,7 @@ footer ul a:hover{color:var(--navy)}
   <div class="wrap">
     <div class="sec-head">
       <h2>Temukan yang Kamu Butuhkan</h2>
-      <p>Sembilan ruangan beneran — semuanya ada di halaman ini. Tekan satu ruangan untuk langsung menuju isinya.</p>
+      <p>Sembilan ruangan — tekan satu ruangan untuk masuk ke ruangannya. Di beranda hanya ada wakil tiap produk; isi lengkapnya ada di dalam ruangan masing-masing.</p>
     </div>
     <div class="grid c3">
       <a class="card room-card" href="#ruang-aplikasi">
@@ -528,6 +535,7 @@ footer ul a:hover{color:var(--navy)}
 <!-- ================= 5c. KATALOG ================= -->
 <section class="sec" id="katalog">
   <div class="wrap">
+    <div class="back-bar"><button type="button" class="btn ghost small" data-back>&larr; Kembali ke Beranda</button></div>
     <div class="sec-head">
       <h2>Katalog 187 Produk</h2>
       <p>Digicat adalah <b style="color:var(--navy)">hub</b>: katalognya di sini, tetapi setiap produk dibeli di platform penjualannya masing-masing — tombol beli di tiap produk menyebut platform tujuannya, dan yang belum masuk platform dipesan via email. Tidak ada checkout di website ini.</p>
@@ -586,6 +594,7 @@ footer ul a:hover{color:var(--navy)}
 <!-- ================= 6a. RUANGAN APLIKASI ================= -->
 <section class="sec" id="ruang-aplikasi">
   <div class="wrap">
+    <div class="back-bar"><button type="button" class="btn ghost small" data-back>&larr; Kembali ke Beranda</button></div>
     <div class="sec-head">
       <h2>Ruangan Aplikasi</h2>
       <p>132 aplikasi siap pakai untuk usaha, sekolah, klinik, dan pekerjaan harian — dirender langsung dari data katalog Digicat. Hampir semuanya punya demo gratis; tekan &ldquo;Lihat Detail&rdquo; untuk penjelasan lengkap dan tombol belinya.</p>
@@ -598,6 +607,7 @@ footer ul a:hover{color:var(--navy)}
 <!-- ================= 6b. RUANGAN DEMO WEBSITE ================= -->
 <section class="sec alt" id="ruang-demo-website">
   <div class="wrap">
+    <div class="back-bar"><button type="button" class="btn ghost small" data-back>&larr; Kembali ke Beranda</button></div>
     <div class="sec-head">
       <h2>Ruangan Demo Website</h2>
       <p>19 produk website: 15 template demo yang bisa dibuka langsung di browser, dan 4 jasa website — dari paket demo sampai pembuatan website penuh.</p>
@@ -614,6 +624,7 @@ footer ul a:hover{color:var(--navy)}
 <!-- ================= 6c. RUANGAN FOTO STOK ================= -->
 <section class="sec" id="ruang-foto-stok">
   <div class="wrap">
+    <div class="back-bar"><button type="button" class="btn ghost small" data-back>&larr; Kembali ke Beranda</button></div>
     <div class="sec-head">
       <h2>Ruangan Foto Stok</h2>
       <p>Foto-foto ini dibuat dengan AI, lalu dijual di Dreamstime dan Adobe Stock. Halaman ini menampilkan contohnya — koleksi lengkap ada di portofolio masing-masing platform.</p>
@@ -630,6 +641,7 @@ footer ul a:hover{color:var(--navy)}
 <!-- ================= 6d. RUANGAN EPISODE ================= -->
 <section class="sec alt" id="ruang-episode">
   <div class="wrap">
+    <div class="back-bar"><button type="button" class="btn ghost small" data-back>&larr; Kembali ke Beranda</button></div>
     <div class="sec-head">
       <h2>Ruangan Episode</h2>
       <p>7 episode &amp; video terbaru Podcast Meong di YouTube — tonton langsung di kanal resminya.</p>
@@ -644,6 +656,7 @@ footer ul a:hover{color:var(--navy)}
 <!-- ================= 6e. RUANGAN EBOOK ================= -->
 <section class="sec" id="ruang-ebook">
   <div class="wrap">
+    <div class="back-bar"><button type="button" class="btn ghost small" data-back>&larr; Kembali ke Beranda</button></div>
     <div class="sec-head">
       <h2>Ruangan eBook</h2>
       <p>12 eBook: kisah nabi &amp; tokoh Islam bergambar untuk anak, cerita petualangan Oyen, dan kumpulan puisi &amp; cerpen &ldquo;Rindu di Ujung Senja&rdquo; — yang terakhir bisa dibeli di Payhip, Gumroad, dan KaryaKarsa sekaligus.</p>
@@ -655,6 +668,7 @@ footer ul a:hover{color:var(--navy)}
 <!-- ================= 6f. RUANGAN ARTIKEL ================= -->
 <section class="sec alt" id="ruang-artikel">
   <div class="wrap">
+    <div class="back-bar"><button type="button" class="btn ghost small" data-back>&larr; Kembali ke Beranda</button></div>
     <div class="sec-head">
       <h2>Ruangan Artikel</h2>
       <p>Kumpulan artikel edukasi Podcast Meong — kisah Nabi untuk anak dan panduan merawat kucing. Setiap artikel tersedia dalam Bahasa Indonesia dan English.</p>
@@ -666,6 +680,7 @@ footer ul a:hover{color:var(--navy)}
 <!-- ================= 6g. RUANGAN GAME ================= -->
 <section class="sec" id="ruang-game">
   <div class="wrap">
+    <div class="back-bar"><button type="button" class="btn ghost small" data-back>&larr; Kembali ke Beranda</button></div>
     <div class="sec-head">
       <h2>Ruangan Game</h2>
       <p>9 game Oyen &amp; Momo yang dimainkan langsung di browser — semuanya bisa dicoba gratis lewat demo — plus 1 jasa video promo untuk mempromosikan produk dan usahamu.</p>
@@ -677,6 +692,7 @@ footer ul a:hover{color:var(--navy)}
 <!-- ================= 6h. RUANGAN POD KAOS ================= -->
 <section class="sec alt" id="ruang-pod">
   <div class="wrap">
+    <div class="back-bar"><button type="button" class="btn ghost small" data-back>&larr; Kembali ke Beranda</button></div>
     <div class="sec-head">
       <h2>Ruangan POD Kaos</h2>
       <p>14 desain kaos Oyen, Momo, dan tema lainnya. POD = print on demand: kaos dicetak saat ada pesanan, lalu dicetak &amp; dikirim oleh Zazzle — tombol belinya menuju Zazzle.</p>
@@ -688,6 +704,7 @@ footer ul a:hover{color:var(--navy)}
 <!-- ================= 6i. RUANGAN CERBUNG ================= -->
 <section class="sec" id="ruang-cerbung">
   <div class="wrap">
+    <div class="back-bar"><button type="button" class="btn ghost small" data-back>&larr; Kembali ke Beranda</button></div>
     <div class="sec-head">
       <h2>Ruangan Cerbung</h2>
       <p>Cerita bersambung Podcast Meong di aplikasi KBM. Baca gratis dulu, lanjutkan bab penutupnya dengan koin.</p>
@@ -1142,6 +1159,8 @@ if(headSearch)headSearch.addEventListener('submit',function(e){
   e.preventDefault();
   var q=$('#headSearchInput').value.trim();
   setCatalog('all',q);
+  showView('all');
+  history.replaceState(null,'','#katalog');
   $('#katalog').scrollIntoView({behavior:'smooth',block:'start'});
 });
 
@@ -1279,6 +1298,38 @@ document.addEventListener('click',function(e){
   var b=e.target.closest('[data-detail]');
   if(b){e.preventDefault();openModal(b.getAttribute('data-detail'))}
 });
+
+/* ---------- Tampilan beranda vs ruangan ---------- */
+var ROOM_IDS=['ruang-aplikasi','ruang-demo-website','ruang-foto-stok','ruang-episode','ruang-ebook','ruang-artikel','ruang-game','ruang-pod','ruang-cerbung'];
+function showView(view,id){
+  document.body.dataset.view=view;
+  document.querySelectorAll('main>section.sec').forEach(function(sec){sec.classList.toggle('room-active',view==='room'&&sec.id===id)});
+  if(view==='home'){history.replaceState(null,'',location.pathname+location.search)}
+  window.scrollTo(0,0);
+}
+function openViewFromHash(hash){
+  var id=(hash||'').replace('#','');
+  if(id==='katalog'){showView('all');return true}
+  if(ROOM_IDS.indexOf(id)!==-1){showView('room',id);return true}
+  return false;
+}
+document.addEventListener('click',function(e){
+  var b=e.target.closest('[data-back]');
+  if(b){e.preventDefault();showView('home');return}
+  var a=e.target.closest('a[href^="#"]');
+  if(!a)return;
+  var id=a.getAttribute('href').slice(1);
+  if(id==='katalog'||ROOM_IDS.indexOf(id)!==-1){
+    e.preventDefault();
+    history.replaceState(null,'','#'+id);
+    openViewFromHash('#'+id);
+  } else if(document.body.dataset.view&&document.body.dataset.view!=='home'&&document.getElementById(id)){
+    e.preventDefault();
+    showView('home');
+    setTimeout(function(){var t=document.getElementById(id);if(t)t.scrollIntoView({behavior:'smooth'})},40);
+  }
+});
+if(!openViewFromHash(location.hash)){document.body.dataset.view='home'}
 
 /* ---------- Asisten Toko ---------- */
 var chatLog=$('#chatLog');
