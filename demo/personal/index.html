@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dian Pratama — Penulis &amp; Konsultan Konten Digital | Contoh Demo</title>
+<meta name="description" content="Contoh demo website personal Dian Pratama — penulis dan konsultan konten digital. Halaman contoh, bukan situs nyata.">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: #f7f9fc;
+    color: #14263d;
+    line-height: 1.6;
+  }
+  a { color: inherit; }
+  .demo-banner {
+    background: #14263d;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  .demo-banner span {
+    background: #8fb4d9;
+    color: #14263d;
+    padding: 2px 10px;
+    border-radius: 999px;
+    margin-left: 6px;
+    font-size: 12px;
+    letter-spacing: 0;
+  }
+  .demo-banner small {
+    display: block;
+    font-weight: 400;
+    font-size: 12px;
+    color: #c8d6e5;
+    letter-spacing: 0;
+    margin-top: 2px;
+  }
+  header {
+    max-width: 1020px;
+    margin: 0 auto;
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .brand { display: flex; align-items: center; gap: 12px; font-weight: 800; font-size: 22px; }
+  .brand-mark {
+    width: 44px; height: 44px; border-radius: 12px;
+    background: #8fb4d9; display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .brand small { display: block; font-size: 12px; font-weight: 600; color: #4a6178; letter-spacing: .4px; }
+  nav.main-nav { display: flex; gap: 20px; flex-wrap: wrap; }
+  nav.main-nav a {
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    color: #42586e;
+  }
+  nav.main-nav a:hover { color: #14263d; }
+  .btn {
+    display: inline-block;
+    background: #14263d;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 700;
+    padding: 13px 24px;
+    border-radius: 999px;
+    border: 2px solid #14263d;
+    cursor: pointer;
+    font-size: 15px;
+  }
+  .btn-accent {
+    background: #8fb4d9;
+    color: #14263d;
+    border-color: #8fb4d9;
+  }
+  .btn-outline {
+    background: transparent;
+    color: #14263d;
+  }
+  main { max-width: 1020px; margin: 0 auto; padding: 0 20px 40px; }
+  .hero {
+    background: #ffffff;
+    border: 1px solid #dbe6f2;
+    border-radius: 24px;
+    padding: 36px 32px;
+    display: grid;
+    grid-template-columns: 1.15fr .85fr;
+    gap: 28px;
+    align-items: center;
+    box-shadow: 0 10px 30px rgba(20, 38, 61, .07);
+  }
+  .hero h1 { font-size: 40px; line-height: 1.15; margin: 12px 0 14px; }
+  .hero h1 em { font-style: normal; color: #2f6da3; }
+  .eyebrow {
+    display: inline-block; font-size: 13px; font-weight: 700; letter-spacing: .6px;
+    background: #e8f0f8; color: #14263d; padding: 6px 12px; border-radius: 999px;
+  }
+  .hero p { color: #42586e; font-size: 17px; margin-bottom: 18px; }
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .hero-note { font-size: 13px; color: #6b7f94; margin-top: 14px; }
+  .hero-art {
+    background: #fdf6ec;
+    border-radius: 18px;
+    padding: 22px;
+    text-align: center;
+  }
+  .hero-art svg { width: 100%; max-width: 320px; height: auto; }
+  .hero-art p { font-size: 14px; color: #42586e; margin-top: 8px; }
+  .avatar-circle {
+    width: 150px; height: 150px; border-radius: 50%;
+    background: #14263d; color: #8fb4d9;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 58px; font-weight: 800;
+    margin: 0 auto 14px;
+    border: 5px solid #ffffff;
+    box-shadow: 0 8px 24px rgba(20, 38, 61, .18);
+  }
+  .avatar-caption { font-size: 14px; color: #42586e; }
+  .avatar-caption strong { color: #14263d; }
+  section { margin-top: 36px; }
+  .card {
+    background: #ffffff;
+    border: 1px solid #dbe6f2;
+    border-radius: 20px;
+    padding: 28px;
+    box-shadow: 0 6px 20px rgba(20, 38, 61, .05);
+  }
+  h2 { font-size: 26px; line-height: 1.3; margin-bottom: 10px; }
+  .section-sub { color: #42586e; margin-bottom: 20px; max-width: 680px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .reason {
+    background: #f7f9fc;
+    border: 1px solid #dbe6f2;
+    border-radius: 16px;
+    padding: 20px;
+  }
+  .reason-number {
+    width: 38px; height: 38px; border-radius: 50%;
+    background: #14263d; color: #8fb4d9;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; margin-bottom: 12px;
+  }
+  .reason h3 { font-size: 18px; margin-bottom: 6px; }
+  .reason p { color: #42586e; font-size: 15px; }
+  .reason .price { font-weight: 800; color: #14263d; margin-top: 10px; display: block; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .check-list { list-style: none; }
+  .check-list li { padding: 10px 0 10px 34px; position: relative; border-bottom: 1px solid #eef3f8; }
+  .check-list li:last-child { border-bottom: none; }
+  .check-list li::before {
+    content: "✓"; position: absolute; left: 0; top: 10px;
+    width: 24px; height: 24px; border-radius: 50%;
+    background: #8fb4d9; color: #14263d;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 14px;
+  }
+  .check-list small { display: block; color: #6b7f94; font-size: 13px; }
+  .article {
+    background: #f7f9fc;
+    border: 1px solid #dbe6f2;
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  .article .tag {
+    display: inline-block; align-self: flex-start;
+    font-size: 12px; font-weight: 700; letter-spacing: .5px;
+    background: #e8f0f8; color: #14263d;
+    padding: 4px 10px; border-radius: 999px; margin-bottom: 10px;
+  }
+  .article h3 { font-size: 18px; margin-bottom: 6px; line-height: 1.4; }
+  .article p { color: #42586e; font-size: 15px; flex-grow: 1; }
+  .article .meta { font-size: 13px; color: #6b7f94; margin-top: 12px; }
+  .article a.read-more {
+    font-weight: 700; color: #2f6da3; text-decoration: none;
+    margin-top: 10px; font-size: 14px;
+  }
+  .contact-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 20px; }
+  .contact-info p { color: #42586e; margin-bottom: 10px; }
+  .contact-info strong { color: #14263d; }
+  .demo-form label { display: block; font-weight: 700; font-size: 14px; margin: 12px 0 5px; }
+  .demo-form input, .demo-form textarea {
+    width: 100%; padding: 11px 13px;
+    border: 1.5px solid #dbe6f2; border-radius: 10px;
+    background: #f7f9fc; color: #14263d;
+    font: inherit; font-size: 15px;
+  }
+  .demo-form textarea { min-height: 110px; resize: vertical; }
+  .form-note {
+    display: none;
+    margin-top: 14px; padding: 12px 14px;
+    background: #e8f0f8; border: 1px solid #8fb4d9;
+    border-radius: 10px; color: #14263d; font-size: 14px; font-weight: 600;
+  }
+  .paket {
+    background: #14263d;
+    color: #ffffff;
+    border-radius: 20px;
+    padding: 28px;
+    text-align: center;
+  }
+  .paket h2 { color: #ffffff; }
+  .paket > p { color: #c8d6e5; max-width: 620px; margin: 0 auto 22px; }
+  .paket-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; text-align: left; }
+  .paket-tier {
+    background: #ffffff; color: #14263d;
+    border-radius: 16px; padding: 22px;
+  }
+  .paket-tier h3 { font-size: 18px; margin-bottom: 4px; }
+  .paket-tier .tier-price { font-size: 30px; font-weight: 800; margin: 8px 0 12px; }
+  .paket-tier ul { list-style: none; }
+  .paket-tier li { padding: 6px 0 6px 24px; position: relative; color: #42586e; font-size: 14px; }
+  .paket-tier li::before {
+    content: "✓"; position: absolute; left: 0; top: 6px;
+    color: #2f6da3; font-weight: 800;
+  }
+  .paket-note { font-size: 13px; color: #c8d6e5; margin-top: 18px; }
+  .cta-final { text-align: center; padding: 32px 20px; }
+  .cta-final h2 { font-size: 28px; }
+  .cta-final p { color: #42586e; margin: 8px auto 20px; max-width: 560px; }
+  .btn-big { font-size: 18px; padding: 16px 32px; }
+  footer {
+    background: #14263d; color: #c8d6e5;
+    text-align: center; padding: 26px 20px; font-size: 14px;
+  }
+  footer a { color: #8fb4d9; font-weight: 700; text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  footer .disclaimer { margin-top: 10px; font-size: 13px; color: #9db1c6; }
+  @media (max-width: 760px) {
+    .hero { grid-template-columns: 1fr; padding: 26px 22px; }
+    .hero h1 { font-size: 31px; }
+    .grid-3, .two-col, .contact-grid, .paket-grid { grid-template-columns: 1fr; }
+    header { justify-content: center; text-align: center; }
+    .brand { justify-content: center; }
+    nav.main-nav { justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="demo-banner">CONTOH DEMO — Website Personal <span>Ini hanya contoh demo</span><small>Halaman contoh, bukan situs nyata</small></div>
+
+<header>
+  <div class="brand">
+    <span class="brand-mark" aria-hidden="true">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 5h16v2.5H4zM4 11h16v2.5H4zM4 17h10v2.5H4z" fill="#14263d"/><circle cx="19" cy="18.5" r="2.6" fill="#14263d"/></svg>
+    </span>
+    <span>Dian Pratama<small>PENULIS &amp; KONSULTAN KONTEN</small></span>
+  </div>
+  <nav class="main-nav" aria-label="Navigasi utama">
+    <a href="#tentang">Tentang Saya</a>
+    <a href="#layanan">Layanan</a>
+    <a href="#tulisan">Tulisan</a>
+    <a href="#kontak">Kontak</a>
+  </nav>
+  <a class="btn btn-outline" href="#kontak">Hubungi Saya</a>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div>
+      <span class="eyebrow">PENULIS • KONSULTAN KONTEN DIGITAL</span>
+      <h1>Halo, saya Dian Pratama.<br>Saya membantu tulisan Anda <em>dibaca sampai habis.</em></h1>
+      <p>Saya menulis artikel, panduan, dan materi konten untuk usaha kecil dan komunitas. Fokus saya sederhana: tulisan yang jelas, jujur, dan mudah dipahami pembaca — tanpa jargon yang tidak perlu.</p>
+      <div class="hero-actions">
+        <a class="btn btn-accent btn-big" href="#layanan">Lihat Layanan</a>
+        <a class="btn btn-outline" href="#tulisan">Baca Tulisan</a>
+      </div>
+      <p class="hero-note">Contoh demo website personal — semua nama, harga, dan konten di halaman ini hanya ilustrasi.</p>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <div class="avatar-circle">DP</div>
+      <p class="avatar-caption"><strong>Dian Pratama</strong><br>Penulis &amp; Konsultan Konten Digital<br>Ilustrasi avatar — bukan foto asli.</p>
+    </div>
+  </div>
+
+  <!-- TENTANG SAYA -->
+  <section class="card" id="tentang">
+    <h2>Tentang Saya</h2>
+    <p class="section-sub">Sedikit latar belakang tentang saya dan cara saya bekerja.</p>
+    <div class="two-col">
+      <div>
+        <p style="color:#42586e; margin-bottom: 12px;">Saya mulai menulis pada tahun 2018, dari catatan harian dan artikel pendek untuk blog pribadi. Seiring waktu, saya mulai membantu usaha kecil menulis deskripsi produk, halaman profil, dan artikel blog mereka.</p>
+        <p style="color:#42586e; margin-bottom: 12px;">Bagi saya, tulisan yang baik bukan tulisan yang panjang. Tulisan yang baik adalah tulisan yang membuat pembaca mengerti dalam sekali baca — lalu tahu apa yang harus dilakukan setelahnya.</p>
+        <p style="color:#42586e;">Saya bekerja dari rumah, dengan jadwal yang saya atur bersama klien. Setiap proyek dimulai dari percakapan singkat: apa yang ingin disampaikan, siapa pembacanya, dan apa hasil yang diharapkan.</p>
+      </div>
+      <ul class="check-list">
+        <li><strong>Menulis sejak 2018.</strong><small>Artikel, panduan, dan materi konten untuk berbagai tema.</small></li>
+        <li><strong>Fokus pada usaha kecil.</strong><small>Tulisan untuk toko, jasa, dan komunitas lokal.</small></li>
+        <li><strong>Bahasa Indonesia yang jelas.</strong><small>Kalimat pendek, struktur rapi, tanpa jargon berlebihan.</small></li>
+        <li><strong>Proses kerja yang terbuka.</strong><small>Draf dibagikan sebelum final, revisi dibahas bersama.</small></li>
+        <li><strong>Riset sebelum menulis.</strong><small>Topik dipelajari dulu, bukan ditulis dari dugaan.</small></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- LAYANAN -->
+  <section class="card" id="layanan">
+    <h2>Layanan</h2>
+    <p class="section-sub">Tiga layanan utama yang saya tawarkan. Harga di bawah ini adalah harga contoh untuk keperluan demo.</p>
+    <div class="grid-3">
+      <div class="reason">
+        <div class="reason-number">1</div>
+        <h3>Penulisan Artikel</h3>
+        <p>Artikel blog, panduan, dan halaman profil usaha. Panjang artikel menyesuaikan kebutuhan — dari 500 sampai 2.000 kata — dengan struktur yang rapi dan mudah dibaca.</p>
+        <span class="price">Mulai Rp150.000 / artikel</span>
+      </div>
+      <div class="reason">
+        <div class="reason-number">2</div>
+        <h3>Konsultasi Konten</h3>
+        <p>Sesi konsultasi untuk merencanakan isi website, media sosial, atau katalog produk. Kita bahas bersama tema, susunan, dan jadwal penulisan yang realistis.</p>
+        <span class="price">Mulai Rp250.000 / sesi</span>
+      </div>
+      <div class="reason">
+        <div class="reason-number">3</div>
+        <h3>Pelatihan Menulis</h3>
+        <p>Pelatihan menulis dasar untuk tim kecil atau komunitas: menyusun kalimat, membuat judul, dan mengedit tulisan sendiri. Materi dan latihan disediakan.</p>
+        <span class="price">Mulai Rp500.000 / sesi</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CARA KERJA -->
+  <section class="card">
+    <h2>Cara kerja sama dengan saya</h2>
+    <p class="section-sub">Empat langkah sederhana sebelum tulisan dikerjakan.</p>
+    <div class="grid-3">
+      <div class="reason">
+        <div class="reason-number">1</div>
+        <h3>Perkenalan</h3>
+        <p>Ceritakan kebutuhan Anda lewat formulir kontak di bawah. Saya balas dalam 1–2 hari kerja dengan beberapa pertanyaan awal.</p>
+      </div>
+      <div class="reason">
+        <div class="reason-number">2</div>
+        <h3>Rencana tulisan</h3>
+        <p>Kita sepakati tema, panjang tulisan, dan jadwal. Saya kirim kerangka tulisan sebelum mulai menulis.</p>
+      </div>
+      <div class="reason">
+        <div class="reason-number">3</div>
+        <h3>Draf pertama</h3>
+        <p>Draf pertama dikirim sesuai jadwal. Anda boleh memberi catatan dan meminta perbaikan pada bagian tertentu.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TULISAN TERBARU -->
+  <section class="card" id="tulisan">
+    <h2>Tulisan Terbaru</h2>
+    <p class="section-sub">Tiga artikel contoh dari blog ini. Judul dan isi artikel di bawah ini hanya ilustrasi demo.</p>
+    <div class="grid-3">
+      <article class="article">
+        <span class="tag">MENULIS</span>
+        <h3>Cara Menulis Deskripsi Produk yang Jelas dan Jujur</h3>
+        <p>Deskripsi produk yang baik tidak perlu kata-kata berlebihan. Cukup jawab tiga pertanyaan pembeli: ini apa, untuk siapa, dan bagaimana cara memakainya.</p>
+        <p class="meta">20 November 2026 • 6 menit baca</p>
+        <a class="read-more" href="#tulisan">Baca artikel →</a>
+      </article>
+      <article class="article">
+        <span class="tag">KONTEN</span>
+        <h3>Menyusun Jadwal Konten Mingguan untuk Usaha Kecil</h3>
+        <p>Jadwal konten tidak harus padat. Tiga unggahan seminggu yang konsisten jauh lebih berguna daripada sepuluh unggahan yang berhenti di tengah jalan.</p>
+        <p class="meta">12 November 2026 • 5 menit baca</p>
+        <a class="read-more" href="#tulisan">Baca artikel →</a>
+      </article>
+      <article class="article">
+        <span class="tag">BAHASA</span>
+        <h3>Lima Kesalahan Umum dalam Penulisan Bahasa Indonesia</h3>
+        <p>Dari pemakaian kata depan sampai tanda baca, lima kesalahan ini paling sering muncul di tulisan usaha kecil — dan semuanya mudah diperbaiki.</p>
+        <p class="meta">4 November 2026 • 7 menit baca</p>
+        <a class="read-more" href="#tulisan">Baca artikel →</a>
+      </article>
+    </div>
+  </section>
+
+  <!-- KONTAK -->
+  <section class="card" id="kontak">
+    <h2>Kontak</h2>
+    <p class="section-sub">Silakan kirim pesan lewat formulir di bawah ini. Formulir ini hanya contoh demo — pesan tidak dikirim ke mana pun.</p>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <p><strong>Email:</strong><br><a href="mailto:halo@dianpratama.contoh">halo@dianpratama.contoh</a><br><small style="color:#6b7f94;">Alamat email contoh untuk keperluan demo.</small></p>
+        <p><strong>Jam kerja:</strong><br>Senin – Jumat, 09.00 – 17.00 WIB</p>
+        <p><strong>Lokasi:</strong><br>Bekerja dari rumah, melayani klien dari mana saja lewat email dan panggilan video.</p>
+        <p><strong>Balasan:</strong><br>Pesan dibalas dalam 1–2 hari kerja. Untuk kebutuhan mendesak, tuliskan di awal pesan Anda.</p>
+      </div>
+      <form class="demo-form" id="contactForm" action="#" method="post">
+        <label for="nama">Nama Anda</label>
+        <input type="text" id="nama" name="nama" placeholder="Nama lengkap" required>
+        <label for="email">Email Anda</label>
+        <input type="email" id="email" name="email" placeholder="nama@email.com" required>
+        <label for="keperluan">Keperluan</label>
+        <input type="text" id="keperluan" name="keperluan" placeholder="Contoh: penulisan artikel blog">
+        <label for="pesan">Pesan</label>
+        <textarea id="pesan" name="pesan" placeholder="Ceritakan kebutuhan Anda secara singkat..." required></textarea>
+        <div style="margin-top:16px;">
+          <button class="btn btn-accent" type="submit">Kirim Pesan</button>
+        </div>
+        <p class="form-note" id="formNote">Ini demo — data tidak dikirim ke mana pun.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- TOPIK YANG SAYA TULIS -->
+  <section class="card">
+    <h2>Topik yang saya tulis</h2>
+    <p class="section-sub">Enam topik yang paling sering saya kerjakan untuk klien. Daftar ini adalah contoh isi demo.</p>
+    <div class="grid-3">
+      <div class="reason">
+        <div class="reason-number">1</div>
+        <h3>Profil usaha</h3>
+        <p>Halaman "tentang kami" untuk toko dan jasa: siapa pemiliknya, apa yang dijual, dan kenapa pembeli bisa percaya.</p>
+      </div>
+      <div class="reason">
+        <div class="reason-number">2</div>
+        <h3>Deskripsi produk</h3>
+        <p>Deskripsi produk yang jelas: bahan, ukuran, cara pakai, dan cara perawatan — tanpa kata berlebihan.</p>
+      </div>
+      <div class="reason">
+        <div class="reason-number">3</div>
+        <h3>Artikel blog</h3>
+        <p>Artikel blog yang menjawab pertanyaan pembaca: panduan, penjelasan, dan cerita di balik usaha.</p>
+      </div>
+      <div class="reason">
+        <div class="reason-number">4</div>
+        <h3>Panduan dan tutorial</h3>
+        <p>Panduan langkah demi langkah untuk pelanggan: cara memakai produk, cara mendaftar, dan cara merawat.</p>
+      </div>
+      <div class="reason">
+        <div class="reason-number">5</div>
+        <h3>Naskah media sosial</h3>
+        <p>Teks singkat untuk unggahan media sosial: pengumuman, cerita produk, dan ajakan yang sopan.</p>
+      </div>
+      <div class="reason">
+        <div class="reason-number">6</div>
+        <h3>Buletin email</h3>
+        <p>Buletin email berkala untuk pelanggan: kabar terbaru, artikel pilihan, dan pengumuman usaha.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTOH PROYEK PENULISAN -->
+  <section class="card">
+    <h2>Contoh proyek penulisan</h2>
+    <p class="section-sub">Tiga contoh proyek yang pernah saya kerjakan. Nama usaha dan rincian di bawah ini adalah contoh ilustratif untuk keperluan demo.</p>
+    <div class="grid-3">
+      <article class="article">
+        <span class="tag">PROFIL USAHA</span>
+        <h3>Halaman profil untuk toko roti rumahan</h3>
+        <p>Menulis halaman "tentang kami" untuk toko roti rumahan: cerita pemilik, proses pembuatan roti, dan daftar produk harian. Tulisan disusun dalam satu halaman yang mudah dibaca di HP.</p>
+        <p class="meta">Proyek contoh • 1 halaman • Selesai dalam 4 hari kerja</p>
+        <a class="read-more" href="#tulisan">Lihat contoh →</a>
+      </article>
+      <article class="article">
+        <span class="tag">ARTIKEL BLOG</span>
+        <h3>Seri artikel untuk toko tanaman hias</h3>
+        <p>Empat artikel blog tentang merawat tanaman hias di dalam rumah: penyiraman, cahaya, dan penanganan daun menguning. Setiap artikel dilengkapi daftar langkah yang bisa diikuti pembaca.</p>
+        <p class="meta">Proyek contoh • 4 artikel • Selesai dalam 2 minggu</p>
+        <a class="read-more" href="#tulisan">Lihat contoh →</a>
+      </article>
+      <article class="article">
+        <span class="tag">PANDUAN</span>
+        <h3>Panduan pemakaian untuk jasa cuci sepatu</h3>
+        <p>Panduan singkat untuk pelanggan jasa cuci sepatu: cara mengantar sepatu, cara membaca label harga, dan cara merawat sepatu setelah dicuci. Ditulis dalam bahasa sehari-hari.</p>
+        <p class="meta">Proyek contoh • 1 panduan • Selesai dalam 3 hari kerja</p>
+        <a class="read-more" href="#tulisan">Lihat contoh →</a>
+      </article>
+    </div>
+  </section>
+
+  <!-- PRINSIP KERJA -->
+  <section class="card">
+    <h2>Prinsip kerja saya</h2>
+    <p class="section-sub">Tiga prinsip yang saya pegang dalam setiap proyek penulisan.</p>
+    <div class="grid-3">
+      <div class="reason">
+        <div class="reason-number">1</div>
+        <h3>Jelas dulu, bagus kemudian</h3>
+        <p>Tulisan harus dimengerti dulu sebelum dinilai bagus. Kalimat yang membingungkan saya tulis ulang, bukan saya hias.</p>
+      </div>
+      <div class="reason">
+        <div class="reason-number">2</div>
+        <h3>Jujur soal isi</h3>
+        <p>Saya tidak menulis klaim yang tidak bisa dibuktikan. Bila suatu hal belum pasti, saya tulis apa adanya.</p>
+      </div>
+      <div class="reason">
+        <div class="reason-number">3</div>
+        <h3>Tepat waktu</h3>
+        <p>Jadwal disepakati di awal dan saya tepati. Bila ada keterlambatan, saya kabari sebelum tanggal yang dijanjikan.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PERTANYAAN UMUM -->
+  <section class="card">
+    <h2>Pertanyaan yang sering diajukan</h2>
+    <p class="section-sub">Jawaban atas pertanyaan umum tentang kerja sama penulisan dengan saya.</p>
+    <div class="two-col">
+      <ul class="check-list">
+        <li><strong>Berapa lama pengerjaan satu artikel?</strong><small>Artikel 500–1.000 kata biasanya selesai dalam 3–5 hari kerja, tergantung riset yang dibutuhkan.</small></li>
+        <li><strong>Apakah saya boleh meminta revisi?</strong><small>Ya. Setiap tulisan mendapat satu kali revisi kecil tanpa biaya tambahan.</small></li>
+        <li><strong>Apakah tulisan bisa disesuaikan dengan gaya bahasa saya?</strong><small>Ya. Kirim contoh tulisan yang Anda sukai, dan saya akan menyesuaikan nadanya.</small></li>
+      </ul>
+      <ul class="check-list">
+        <li><strong>Apakah Anda menulis dalam bahasa Inggris?</strong><small>Tidak. Saya menulis dalam bahasa Indonesia. Untuk bahasa Inggris, saya sarankan penerjemah profesional.</small></li>
+        <li><strong>Bagaimana cara pembayarannya?</strong><small>Pembayaran dibahas di awal, setelah rencana tulisan disepakati. Rinciannya dicantumkan dalam kesepakatan tertulis.</small></li>
+        <li><strong>Apakah tulisan saya tetap milik saya?</strong><small>Ya. Setelah lunas, seluruh hak atas tulisan menjadi milik Anda.</small></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- PAKET DEMO WEBSITE -->
+  <section class="paket">
+    <h2>Paket Demo Website</h2>
+    <p>Contoh paket pembuatan website personal seperti halaman ini. Pilih paket yang sesuai dengan kebutuhan Anda.</p>
+    <div class="paket-grid">
+      <div class="paket-tier">
+        <h3>Demo</h3>
+        <div class="tier-price">$29</div>
+        <ul>
+          <li>1 halaman website personal</li>
+          <li>Desain responsif HP dan laptop</li>
+          <li>Bagian profil dan kontak</li>
+          <li>Pengerjaan 7 hari kalender</li>
+        </ul>
+      </div>
+      <div class="paket-tier">
+        <h3>Standar</h3>
+        <div class="tier-price">$49</div>
+        <ul>
+          <li>Semua isi paket Demo</li>
+          <li>Sampai 5 halaman</li>
+          <li>Bagian layanan dan tulisan</li>
+          <li>Formulir kontak</li>
+          <li>Pengerjaan 7 hari kalender</li>
+        </ul>
+      </div>
+      <div class="paket-tier">
+        <h3>Pro</h3>
+        <div class="tier-price">$79</div>
+        <ul>
+          <li>Semua isi paket Standar</li>
+          <li>Sampai 10 halaman</li>
+          <li>Blog dengan arsip artikel</li>
+          <li>Revisi 1x kecil</li>
+          <li>Pengerjaan 7 hari kalender</li>
+        </ul>
+      </div>
+    </div>
+    <p class="paket-note">Harga paket demo website — pesan via email.</p>
+  </section>
+
+  <!-- CTA AKHIR -->
+  <section class="cta-final">
+    <h2>Punya tulisan yang perlu dibantu?</h2>
+    <p>Kirim pesan lewat formulir kontak di atas, ceritakan kebutuhan Anda, dan kita bahas langkah selanjutnya.</p>
+    <a class="btn btn-accent btn-big" href="#kontak">Hubungi Saya</a>
+  </section>
+
+</main>
+
+<footer>
+  Dian Pratama — Penulis &amp; Konsultan Konten Digital. Email contoh: <a href="mailto:halo@dianpratama.contoh">halo@dianpratama.contoh</a>
+  <p class="disclaimer">Halaman ini adalah contoh demo website. Semua nama, harga, dan konten di dalamnya hanya ilustrasi.</p>
+</footer>
+
+<script>
+  (function () {
+    var form = document.getElementById('contactForm');
+    var note = document.getElementById('formNote');
+    if (form) {
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (note) { note.style.display = 'block'; }
+        form.reset();
+      });
+    }
+  })();
+</script>
+</body>
+</html>

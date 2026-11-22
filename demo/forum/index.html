@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forum Warga Digital — Forum Diskusi Warga | Contoh Demo</title>
+<meta name="description" content="Contoh demo website forum Forum Warga Digital. Kategori forum, thread terbaru, statistik contoh, dan form buat thread.">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: #f7f9fc;
+    color: #14263d;
+    line-height: 1.6;
+  }
+  a { color: inherit; }
+  .demo-banner {
+    background: #14263d;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  .demo-banner span {
+    background: #8fb4d9;
+    color: #14263d;
+    padding: 2px 10px;
+    border-radius: 999px;
+    margin-left: 6px;
+    font-size: 12px;
+    letter-spacing: 0;
+  }
+  header {
+    max-width: 1020px;
+    margin: 0 auto;
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .brand { display: flex; align-items: center; gap: 12px; font-weight: 800; font-size: 22px; }
+  .brand-mark {
+    width: 44px; height: 44px; border-radius: 12px;
+    background: #8fb4d9; display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .brand small { display: block; font-size: 12px; font-weight: 600; color: #4a6178; letter-spacing: .4px; }
+  nav.main-nav { display: flex; gap: 18px; flex-wrap: wrap; }
+  nav.main-nav a {
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 15px;
+    color: #14263d;
+  }
+  nav.main-nav a:hover { color: #2f6da3; text-decoration: underline; }
+  .btn {
+    display: inline-block;
+    background: #14263d;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 700;
+    padding: 13px 24px;
+    border-radius: 999px;
+    border: 2px solid #14263d;
+  }
+  .btn-soft {
+    background: #8fb4d9;
+    color: #14263d;
+    border-color: #8fb4d9;
+  }
+  .btn-outline {
+    background: transparent;
+    color: #14263d;
+  }
+  main { max-width: 1020px; margin: 0 auto; padding: 0 20px 40px; }
+  .hero {
+    background: #ffffff;
+    border: 1px solid #dbe6f2;
+    border-radius: 24px;
+    padding: 36px 32px;
+    display: grid;
+    grid-template-columns: 1.15fr .85fr;
+    gap: 28px;
+    align-items: center;
+    box-shadow: 0 10px 30px rgba(20, 38, 61, .07);
+  }
+  .hero h1 { font-size: 40px; line-height: 1.15; margin: 12px 0 14px; }
+  .hero h1 em { font-style: normal; color: #2f6da3; }
+  .eyebrow {
+    display: inline-block; font-size: 13px; font-weight: 700; letter-spacing: .6px;
+    background: #e8f0f8; color: #14263d; padding: 6px 12px; border-radius: 999px;
+  }
+  .hero p { color: #42586e; font-size: 17px; margin-bottom: 18px; }
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .hero-note { font-size: 13px; color: #6b7f94; margin-top: 14px; }
+  .hero-art {
+    background: #e8f0f8;
+    border-radius: 18px;
+    padding: 22px;
+    text-align: center;
+  }
+  .hero-art svg { width: 100%; max-width: 320px; height: auto; }
+  .hero-art p { font-size: 14px; color: #42586e; margin-top: 8px; }
+  section { margin-top: 36px; }
+  .card {
+    background: #ffffff;
+    border: 1px solid #dbe6f2;
+    border-radius: 20px;
+    padding: 28px;
+    box-shadow: 0 6px 20px rgba(20, 38, 61, .05);
+  }
+  h2 { font-size: 26px; line-height: 1.3; margin-bottom: 10px; }
+  .section-sub { color: #42586e; margin-bottom: 20px; max-width: 680px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .kategori {
+    background: #f7f9fc;
+    border: 1px solid #dbe6f2;
+    border-radius: 16px;
+    padding: 20px;
+  }
+  .kategori-icon {
+    width: 44px; height: 44px; border-radius: 12px;
+    background: #8fb4d9; color: #14263d;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 20px; margin-bottom: 12px;
+  }
+  .kategori h3 { font-size: 18px; margin-bottom: 6px; }
+  .kategori p { color: #42586e; font-size: 15px; }
+  .kategori .meta { font-size: 13px; color: #6b7f94; margin-top: 10px; font-weight: 700; }
+  .thread-list { list-style: none; }
+  .thread-list li {
+    display: flex; gap: 16px; align-items: flex-start;
+    padding: 16px 4px; border-bottom: 1px solid #e3ebf3;
+  }
+  .thread-list li:last-child { border-bottom: none; }
+  .thread-avatar {
+    width: 42px; height: 42px; border-radius: 50%;
+    background: #e8f0f8; color: #14263d;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; flex-shrink: 0;
+  }
+  .thread-body { flex: 1; }
+  .thread-body h3 { font-size: 17px; line-height: 1.4; margin-bottom: 4px; }
+  .thread-body h3 a { text-decoration: none; }
+  .thread-body h3 a:hover { color: #2f6da3; text-decoration: underline; }
+  .thread-body p { color: #42586e; font-size: 14px; }
+  .thread-meta { font-size: 13px; color: #6b7f94; margin-top: 6px; }
+  .thread-count {
+    background: #e8f0f8; color: #14263d;
+    font-size: 13px; font-weight: 800;
+    padding: 6px 12px; border-radius: 999px;
+    white-space: nowrap;
+  }
+  .tag {
+    display: inline-block; font-size: 12px; font-weight: 700;
+    background: #e8f0f8; color: #2f6da3;
+    padding: 3px 10px; border-radius: 999px; margin-right: 6px;
+  }
+  .stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .stat {
+    background: #f7f9fc;
+    border: 1px solid #dbe6f2;
+    border-radius: 16px;
+    padding: 20px;
+    text-align: center;
+  }
+  .stat b { display: block; font-size: 30px; color: #14263d; }
+  .stat span { color: #42586e; font-size: 14px; }
+  .stat .contoh-label { display: block; font-size: 12px; color: #6b7f94; margin-top: 4px; }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form-field { margin-bottom: 16px; }
+  .form-field label { display: block; font-weight: 700; font-size: 14px; margin-bottom: 6px; }
+  .form-field input,
+  .form-field select,
+  .form-field textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1.5px solid #dbe6f2;
+    border-radius: 12px;
+    background: #f7f9fc;
+    color: #14263d;
+    font: inherit;
+    font-size: 15px;
+  }
+  .form-field textarea { min-height: 120px; resize: vertical; }
+  .form-field.full { grid-column: 1 / -1; }
+  .form-note { font-size: 13px; color: #6b7f94; margin-top: 12px; }
+  .form-msg {
+    display: none;
+    background: #e8f0f8;
+    border: 1px solid #8fb4d9;
+    color: #14263d;
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-top: 16px;
+    font-weight: 700;
+  }
+  .form-msg.show { display: block; }
+  .highlight-box {
+    background: #fdf6ec;
+    border: 1px solid #dbe6f2;
+    border-radius: 16px;
+    padding: 20px;
+  }
+  .highlight-box h3 { font-size: 18px; margin-bottom: 6px; }
+  .highlight-box p { color: #42586e; font-size: 15px; }
+  .rules { list-style: none; }
+  .rules li { padding: 10px 0 10px 34px; position: relative; border-bottom: 1px solid #eef3f8; }
+  .rules li:last-child { border-bottom: none; }
+  .rules li::before {
+    content: "✓"; position: absolute; left: 0; top: 10px;
+    width: 24px; height: 24px; border-radius: 50%;
+    background: #8fb4d9; color: #14263d;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 14px;
+  }
+  .rules small { display: block; color: #6b7f94; font-size: 13px; }
+  .website-price {
+    background: #14263d;
+    color: #ffffff;
+    border-radius: 20px;
+    padding: 28px;
+    text-align: center;
+  }
+  .website-price h2 { color: #ffffff; }
+  .website-price p { color: #c8d6e5; max-width: 620px; margin: 0 auto 18px; }
+  .price-tiers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 0 auto 20px; max-width: 760px; }
+  .price-tier {
+    background: #ffffff; color: #14263d;
+    border-radius: 16px; padding: 22px 18px;
+    text-align: center;
+  }
+  .price-tier h3 { font-size: 18px; margin-bottom: 4px; }
+  .price-tier .tier-price { font-size: 30px; font-weight: 800; margin: 8px 0; }
+  .price-tier p { color: #42586e; font-size: 14px; margin: 0; }
+  .price-tier.featured { outline: 3px solid #8fb4d9; }
+  .price-note { font-size: 13px; color: #c8d6e5; margin-top: 14px; }
+  .cta-final { text-align: center; padding: 32px 20px; }
+  .cta-final h2 { font-size: 28px; }
+  .cta-final p { color: #42586e; margin: 8px auto 20px; max-width: 560px; }
+  .btn-big { font-size: 18px; padding: 16px 32px; }
+  footer {
+    background: #14263d; color: #c8d6e5;
+    text-align: center; padding: 26px 20px; font-size: 14px;
+  }
+  footer a { color: #8fb4d9; font-weight: 700; text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  footer .disclaimer { margin-top: 10px; font-size: 13px; color: #a9bdd2; }
+  @media (max-width: 760px) {
+    .hero { grid-template-columns: 1fr; padding: 26px 22px; }
+    .hero h1 { font-size: 31px; }
+    .grid-3, .grid-2, .price-tiers { grid-template-columns: 1fr; }
+    .stat-grid { grid-template-columns: 1fr 1fr; }
+    .form-grid { grid-template-columns: 1fr; }
+    header { justify-content: center; text-align: center; }
+    .brand { justify-content: center; }
+    nav.main-nav { justify-content: center; }
+    .thread-list li { flex-wrap: wrap; }
+  }
+</style>
+</head>
+<body>
+
+<div class="demo-banner">CONTOH DEMO — Forum <span>Halaman contoh, bukan situs nyata</span></div>
+
+<header>
+  <div class="brand">
+    <span class="brand-mark" aria-hidden="true">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 5h16a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H9l-4 3.5V16H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z" fill="#14263d"/><circle cx="8" cy="10.5" r="1.4" fill="#ffffff"/><circle cx="12" cy="10.5" r="1.4" fill="#ffffff"/><circle cx="16" cy="10.5" r="1.4" fill="#ffffff"/></svg>
+    </span>
+    <span>Forum Warga Digital<small>FORUM DISKUSI WARGA</small></span>
+  </div>
+  <nav class="main-nav" aria-label="Navigasi utama">
+    <a href="#kategori">Kategori</a>
+    <a href="#thread">Thread Terbaru</a>
+    <a href="#statistik">Statistik</a>
+    <a href="#buat-thread">Buat Thread</a>
+  </nav>
+  <a class="btn btn-outline" href="#buat-thread">Gabung Forum</a>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div>
+      <span class="eyebrow">FORUM WARGA • DISKUSI TERBUKA</span>
+      <h1>Ruang diskusi warga, <em>semua topik dalam satu tempat.</em></h1>
+      <p>Forum Warga Digital adalah tempat warga bertukar kabar, bertanya, dan berdiskusi tentang kehidupan sehari-hari — dari pengumuman lingkungan sampai tips mengatur keuangan keluarga.</p>
+      <div class="hero-actions">
+        <a class="btn btn-soft btn-big" href="#buat-thread">Buat Thread Baru</a>
+        <a class="btn btn-outline" href="#kategori">Lihat Kategori</a>
+      </div>
+      <p class="hero-note">Contoh demo website forum — semua nama anggota, thread, dan angka di halaman ini hanya ilustrasi.</p>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <svg viewBox="0 0 320 190" xmlns="http://www.w3.org/2000/svg">
+        <rect x="10" y="10" width="300" height="170" rx="16" fill="#ffffff"/>
+        <rect x="30" y="32" width="260" height="34" rx="10" fill="#e8f0f8"/>
+        <rect x="30" y="78" width="260" height="34" rx="10" fill="#f7f9fc" stroke="#dbe6f2"/>
+        <rect x="30" y="124" width="180" height="34" rx="10" fill="#f7f9fc" stroke="#dbe6f2"/>
+        <circle cx="48" cy="49" r="8" fill="#8fb4d9"/>
+        <circle cx="48" cy="95" r="8" fill="#14263d"/>
+        <circle cx="48" cy="141" r="8" fill="#8fb4d9"/>
+        <rect x="64" y="44" width="120" height="8" rx="4" fill="#14263d"/>
+        <rect x="64" y="90" width="150" height="8" rx="4" fill="#42586e"/>
+        <rect x="64" y="136" width="100" height="8" rx="4" fill="#42586e"/>
+        <circle cx="268" cy="49" r="12" fill="#8fb4d9"/>
+        <path d="M263 49l4 4 8-8" stroke="#14263d" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <p>Ilustrasi tampilan forum — gambar contoh, bukan tangkapan layar asli.</p>
+    </div>
+  </div>
+
+  <!-- KATEGORI FORUM -->
+  <section class="card" id="kategori">
+    <h2>Kategori Forum</h2>
+    <p class="section-sub">Enam ruang diskusi utama di Forum Warga Digital. Pilih kategori yang sesuai sebelum membuat thread baru.</p>
+    <div class="grid-3">
+      <div class="kategori">
+        <div class="kategori-icon" aria-hidden="true">P</div>
+        <h3>Pengumuman Warga</h3>
+        <p>Info resmi lingkungan, jadwal kerja bakti, dan pengumuman dari pengurus.</p>
+        <p class="meta">128 thread • contoh</p>
+      </div>
+      <div class="kategori">
+        <div class="kategori-icon" aria-hidden="true">T</div>
+        <h3>Tanya Jawab Umum</h3>
+        <p>Bertanya apa saja seputar layanan warga, administrasi, dan urusan sehari-hari.</p>
+        <p class="meta">342 thread • contoh</p>
+      </div>
+      <div class="kategori">
+        <div class="kategori-icon" aria-hidden="true">K</div>
+        <h3>Keuangan Keluarga</h3>
+        <p>Diskusi mengatur anggaran rumah tangga, menabung, dan perencanaan dana.</p>
+        <p class="meta">96 thread • contoh</p>
+      </div>
+      <div class="kategori">
+        <div class="kategori-icon" aria-hidden="true">U</div>
+        <h3>Usaha &amp; Dagang</h3>
+        <p>Berbagi pengalaman membuka usaha kecil, berjualan, dan mengelola pelanggan.</p>
+        <p class="meta">154 thread • contoh</p>
+      </div>
+      <div class="kategori">
+        <div class="kategori-icon" aria-hidden="true">K</div>
+        <h3>Kesehatan &amp; Keluarga</h3>
+        <p>Topik kesehatan, pola makan, olahraga ringan, dan pengasuhan anak.</p>
+        <p class="meta">87 thread • contoh</p>
+      </div>
+      <div class="kategori">
+        <div class="kategori-icon" aria-hidden="true">H</div>
+        <h3>Hobi &amp; Rekreasi</h3>
+        <p>Berkebun, memasak, olahraga, membaca, dan kegiatan santai lainnya.</p>
+        <p class="meta">203 thread • contoh</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- THREAD TERBARU -->
+  <section class="card" id="thread">
+    <h2>Thread Terbaru</h2>
+    <p class="section-sub">Delapan diskusi terbaru dari anggota forum. Jumlah balasan di bawah ini adalah angka contoh untuk keperluan demo.</p>
+    <ul class="thread-list">
+      <li>
+        <span class="thread-avatar" aria-hidden="true">AR</span>
+        <div class="thread-body">
+          <h3><a href="#buat-thread">Jadwal kerja bakti bulan ini — siapa yang bisa hadir hari Sabtu?</a></h3>
+          <p>Pengurus mengusulkan kerja bakti membersihkan selokan hari Sabtu pagi. Silakan isi kehadiran di balasan.</p>
+          <p class="thread-meta"><span class="tag">Pengumuman Warga</span> oleh Andi R. • 2 jam lalu</p>
+        </div>
+        <span class="thread-count">24 balasan</span>
+      </li>
+      <li>
+        <span class="thread-avatar" aria-hidden="true">SR</span>
+        <div class="thread-body">
+          <h3><a href="#buat-thread">Cara mengurus surat domisili — dokumen apa saja yang perlu disiapkan?</a></h3>
+          <p>Saya baru pindah dan perlu mengurus surat domisili. Ada yang bisa berbagi langkah-langkahnya?</p>
+          <p class="thread-meta"><span class="tag">Tanya Jawab Umum</span> oleh Sari R. • 4 jam lalu</p>
+        </div>
+        <span class="thread-count">18 balasan</span>
+      </li>
+      <li>
+        <span class="thread-avatar" aria-hidden="true">BP</span>
+        <div class="thread-body">
+          <h3><a href="#buat-thread">Tips menabung untuk dana darurat keluarga — mulai dari mana?</a></h3>
+          <p>Saya ingin mulai menyisihkan dana darurat tapi penghasilan pas-pasan. Bagaimana cara memulainya?</p>
+          <p class="thread-meta"><span class="tag">Keuangan Keluarga</span> oleh Budi P. • 6 jam lalu</p>
+        </div>
+        <span class="thread-count">31 balasan</span>
+      </li>
+      <li>
+        <span class="thread-avatar" aria-hidden="true">DM</span>
+        <div class="thread-body">
+          <h3><a href="#buat-thread">Jualan kue dari rumah — bagaimana cara menentukan harga jual?</a></h3>
+          <p>Saya baru mulai jualan kue. Bagaimana cara menghitung harga supaya tetap untung tapi terjangkau?</p>
+          <p class="thread-meta"><span class="tag">Usaha &amp; Dagang</span> oleh Dewi M. • 8 jam lalu</p>
+        </div>
+        <span class="thread-count">27 balasan</span>
+      </li>
+      <li>
+        <span class="thread-avatar" aria-hidden="true">FT</span>
+        <div class="thread-body">
+          <h3><a href="#buat-thread">Olahraga ringan yang aman untuk orang tua di rumah</a></h3>
+          <p>Ayah saya ingin tetap aktif tapi lututnya sering sakit. Olahraga ringan apa yang aman dilakukan di rumah?</p>
+          <p class="thread-meta"><span class="tag">Kesehatan &amp; Keluarga</span> oleh Fajar T. • 11 jam lalu</p>
+        </div>
+        <span class="thread-count">15 balasan</span>
+      </li>
+      <li>
+        <span class="thread-avatar" aria-hidden="true">LN</span>
+        <div class="thread-body">
+          <h3><a href="#buat-thread">Berkebun di lahan sempit — tanaman apa yang paling mudah dirawat?</a></h3>
+          <p>Halaman rumah saya kecil. Tanaman sayur apa yang cocok ditanam di pot dan mudah dirawat pemula?</p>
+          <p class="thread-meta"><span class="tag">Hobi &amp; Rekreasi</span> oleh Lina N. • 14 jam lalu</p>
+        </div>
+        <span class="thread-count">22 balasan</span>
+      </li>
+      <li>
+        <span class="thread-avatar" aria-hidden="true">HS</span>
+        <div class="thread-body">
+          <h3><a href="#buat-thread">Lampu jalan di ujung gang mati — ke mana harus melapor?</a></h3>
+          <p>Sudah tiga malam lampu jalan di ujung gang mati. Apakah ada yang tahu jalur laporannya?</p>
+          <p class="thread-meta"><span class="tag">Pengumuman Warga</span> oleh Hendra S. • 1 hari lalu</p>
+        </div>
+        <span class="thread-count">12 balasan</span>
+      </li>
+      <li>
+        <span class="thread-avatar" aria-hidden="true">MA</span>
+        <div class="thread-body">
+          <h3><a href="#buat-thread">Resep masakan rumahan yang hemat tapi tetap enak untuk keluarga</a></h3>
+          <p>Berbagi resep andalan keluarga yang bahannya mudah dicari dan ramah di kantong.</p>
+          <p class="thread-meta"><span class="tag">Hobi &amp; Rekreasi</span> oleh Maya A. • 1 hari lalu</p>
+        </div>
+        <span class="thread-count">36 balasan</span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- STATISTIK -->
+  <section class="card" id="statistik">
+    <h2>Statistik Forum</h2>
+    <p class="section-sub">Angka-angka di bawah ini adalah contoh untuk keperluan demo, bukan data forum yang sebenarnya.</p>
+    <div class="stat-grid">
+      <div class="stat">
+        <b>1.240</b>
+        <span>Anggota Terdaftar</span>
+        <span class="contoh-label">angka contoh</span>
+      </div>
+      <div class="stat">
+        <b>1.010</b>
+        <span>Total Thread</span>
+        <span class="contoh-label">angka contoh</span>
+      </div>
+      <div class="stat">
+        <b>8.460</b>
+        <span>Total Balasan</span>
+        <span class="contoh-label">angka contoh</span>
+      </div>
+      <div class="stat">
+        <b>6</b>
+        <span>Kategori Aktif</span>
+        <span class="contoh-label">angka contoh</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOROTAN DISKUSI -->
+  <section class="card">
+    <h2>Sorotan Diskusi Minggu Ini</h2>
+    <p class="section-sub">Tiga topik yang paling banyak dibalas minggu ini. Angka balasan di bawah ini adalah angka contoh untuk keperluan demo.</p>
+    <div class="grid-3">
+      <div class="highlight-box">
+        <h3>Tips menabung untuk dana darurat keluarga</h3>
+        <p>Anggota berbagi cara menyisihkan uang belanja dan mengatur anggaran mingguan.</p>
+        <p class="meta" style="font-size:13px;color:#6b7f94;margin-top:10px;font-weight:700;">31 balasan • contoh</p>
+      </div>
+      <div class="highlight-box">
+        <h3>Jualan kue dari rumah — cara menentukan harga jual</h3>
+        <p>Diskusi menghitung biaya bahan, waktu membuat, dan harga jual yang wajar.</p>
+        <p class="meta" style="font-size:13px;color:#6b7f94;margin-top:10px;font-weight:700;">27 balasan • contoh</p>
+      </div>
+      <div class="highlight-box">
+        <h3>Jadwal kerja bakti bulan ini</h3>
+        <p>Pengurus mengajak anggota mengisi kehadiran untuk kerja bakti hari Sabtu pagi.</p>
+        <p class="meta" style="font-size:13px;color:#6b7f94;margin-top:10px;font-weight:700;">24 balasan • contoh</p>
+      </div>
+    </div>
+    <p class="price-note" style="font-size:13px;color:#6b7f94;margin-top:16px;">Sorotan di atas diperbarui setiap minggu oleh pengurus forum. Semua isi di dalamnya hanya contoh.</p>
+  </section>
+
+  <!-- ATURAN FORUM -->
+  <section class="card">
+    <h2>Aturan Forum</h2>
+    <p class="section-sub">Empat aturan dasar supaya diskusi tetap nyaman untuk semua anggota.</p>
+    <ul class="rules">
+      <li><strong>Gunakan bahasa yang sopan.</strong><small>Hindari kata kasar dan serangan terhadap anggota lain.</small></li>
+      <li><strong>Buat thread di kategori yang tepat.</strong><small>Supaya diskusi mudah ditemukan oleh anggota yang membutuhkan.</small></li>
+      <li><strong>Jangan membagikan data pribadi.</strong><small>Nomor telepon, alamat rumah, dan data pribadi lain tidak boleh dibagikan di forum.</small></li>
+      <li><strong>Periksa dulu sebelum bertanya.</strong><small>Gunakan pencarian forum — mungkin pertanyaan Anda sudah pernah dijawab.</small></li>
+    </ul>
+  </section>
+
+  <!-- BUAT THREAD -->
+  <section class="card" id="buat-thread">
+    <h2>Buat Thread Baru</h2>
+    <p class="section-sub">Isi form di bawah ini untuk memulai diskusi baru. Form ini hanya contoh tampilan — data tidak dikirim ke mana pun.</p>
+    <form id="thread-form">
+      <div class="form-grid">
+        <div class="form-field">
+          <label for="nama-anggota">Nama Anggota</label>
+          <input type="text" id="nama-anggota" name="nama" placeholder="Nama Anda" required>
+        </div>
+        <div class="form-field">
+          <label for="kategori-thread">Kategori</label>
+          <select id="kategori-thread" name="kategori" required>
+            <option value="">Pilih kategori</option>
+            <option>Pengumuman Warga</option>
+            <option>Tanya Jawab Umum</option>
+            <option>Keuangan Keluarga</option>
+            <option>Usaha &amp; Dagang</option>
+            <option>Kesehatan &amp; Keluarga</option>
+            <option>Hobi &amp; Rekreasi</option>
+          </select>
+        </div>
+        <div class="form-field full">
+          <label for="judul-thread">Judul Thread</label>
+          <input type="text" id="judul-thread" name="judul" placeholder="Tulis judul diskusi Anda" required>
+        </div>
+        <div class="form-field full">
+          <label for="isi-thread">Isi Thread</label>
+          <textarea id="isi-thread" name="isi" placeholder="Tulis isi diskusi Anda di sini" required></textarea>
+        </div>
+      </div>
+      <button class="btn btn-soft" type="submit">Kirim Thread</button>
+      <p class="form-note">Form contoh — tombol kirim hanya menampilkan pesan demo, tidak mengirim data.</p>
+      <p class="form-msg" id="thread-msg" role="status">Ini demo — data tidak dikirim ke mana pun.</p>
+    </form>
+  </section>
+
+  <!-- PAKET DEMO WEBSITE -->
+  <section class="website-price" id="paket-demo">
+    <h2>Paket Demo Website</h2>
+    <p>Pilih paket pembuatan website forum seperti contoh di halaman ini.</p>
+    <div class="price-tiers">
+      <div class="price-tier">
+        <h3>Demo</h3>
+        <p class="tier-price">$29</p>
+        <p>1 halaman forum contoh, 6 kategori, tampilan responsif HP dan laptop.</p>
+      </div>
+      <div class="price-tier featured">
+        <h3>Standar</h3>
+        <p class="tier-price">$49</p>
+        <p>Forum contoh lengkap dengan daftar thread, statistik, dan form buat thread.</p>
+      </div>
+      <div class="price-tier">
+        <h3>Pro</h3>
+        <p class="tier-price">$79</p>
+        <p>Semua isi paket Standar ditambah penyesuaian warna, nama, dan isi konten.</p>
+      </div>
+    </div>
+    <div>
+      <a class="btn btn-soft" href="mailto:masduki1189@gmail.com?subject=Pesan%20Website%20Forum%20Demo&amp;body=Halo%2C%20saya%20mau%20pesan%20website%20forum%20demo.">Pesan via Email</a>
+    </div>
+    <p class="price-note">Harga paket demo website — pesan via email.</p>
+  </section>
+
+  <!-- CTA AKHIR -->
+  <section class="cta-final">
+    <h2>Siap bergabung dengan diskusi warga?</h2>
+    <p>Buat thread pertama Anda dan mulai berdiskusi dengan warga lainnya.</p>
+    <a class="btn btn-soft btn-big" href="#buat-thread">Buat Thread Sekarang</a>
+  </section>
+
+</main>
+
+<footer>
+  Forum Warga Digital — contoh demo website forum.
+  <p class="disclaimer">Halaman ini adalah contoh demo website. Semua nama, harga, dan konten di dalamnya hanya ilustrasi.</p>
+  <p class="disclaimer">Pesan website via email: <a href="mailto:masduki1189@gmail.com">masduki1189@gmail.com</a></p>
+</footer>
+
+<script>
+  (function () {
+    var form = document.getElementById('thread-form');
+    var msg = document.getElementById('thread-msg');
+    if (!form) return;
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      msg.classList.add('show');
+      msg.textContent = 'Ini demo — data tidak dikirim ke mana pun.';
+      form.reset();
+    });
+  })();
+</script>
+</body>
+</html>

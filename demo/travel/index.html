@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jelajah Nusantara — Agen Travel | Contoh Demo</title>
+<meta name="description" content="Contoh demo website agen travel Jelajah Nusantara. Destinasi, paket wisata contoh, itinerary, dan formulir booking contoh. Halaman contoh, bukan situs nyata.">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: #f7f9fc;
+    color: #14263d;
+    line-height: 1.6;
+  }
+  a { color: inherit; }
+  .demo-banner {
+    background: #14263d;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  .demo-banner span {
+    background: #8fb4d9;
+    color: #14263d;
+    padding: 2px 10px;
+    border-radius: 999px;
+    margin-left: 6px;
+    font-size: 12px;
+    letter-spacing: 0;
+  }
+  header {
+    max-width: 1020px;
+    margin: 0 auto;
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .brand { display: flex; align-items: center; gap: 12px; font-weight: 800; font-size: 22px; }
+  .brand-mark {
+    width: 44px; height: 44px; border-radius: 12px;
+    background: #8fb4d9; display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .brand small { display: block; font-size: 12px; font-weight: 600; color: #4a6178; letter-spacing: .4px; }
+  .nav { display: flex; gap: 18px; flex-wrap: wrap; font-size: 15px; font-weight: 600; }
+  .nav a { text-decoration: none; color: #42586e; }
+  .nav a:hover { color: #14263d; }
+  .btn {
+    display: inline-block;
+    background: #14263d;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 700;
+    padding: 13px 24px;
+    border-radius: 999px;
+    border: 2px solid #14263d;
+    cursor: pointer;
+    font-size: 15px;
+  }
+  .btn-accent {
+    background: #8fb4d9;
+    color: #14263d;
+    border-color: #8fb4d9;
+  }
+  .btn-outline { background: transparent; color: #14263d; }
+  .btn-big { font-size: 18px; padding: 16px 32px; }
+  main { max-width: 1020px; margin: 0 auto; padding: 0 20px 40px; }
+  .hero {
+    background: #ffffff;
+    border: 1px solid #dbe6f2;
+    border-radius: 24px;
+    padding: 36px 32px;
+    display: grid;
+    grid-template-columns: 1.15fr .85fr;
+    gap: 28px;
+    align-items: center;
+    box-shadow: 0 10px 30px rgba(20, 38, 61, .07);
+  }
+  .hero h1 { font-size: 40px; line-height: 1.15; margin: 12px 0 14px; }
+  .hero h1 em { font-style: normal; color: #2f6da3; }
+  .eyebrow {
+    display: inline-block; font-size: 13px; font-weight: 700; letter-spacing: .6px;
+    background: #e8f0f8; color: #14263d; padding: 6px 12px; border-radius: 999px;
+  }
+  .hero p { color: #42586e; font-size: 17px; margin-bottom: 18px; }
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .hero-note { font-size: 13px; color: #6b7f94; margin-top: 14px; }
+  .hero-art {
+    background: #e8f0f8;
+    border-radius: 18px;
+    padding: 22px;
+    text-align: center;
+  }
+  .hero-art svg { width: 100%; max-width: 320px; height: auto; }
+  .hero-art p { font-size: 14px; color: #42586e; margin-top: 8px; }
+  section { margin-top: 36px; }
+  .card {
+    background: #ffffff;
+    border: 1px solid #dbe6f2;
+    border-radius: 20px;
+    padding: 28px;
+    box-shadow: 0 6px 20px rgba(20, 38, 61, .05);
+  }
+  h2 { font-size: 26px; line-height: 1.3; margin-bottom: 10px; }
+  .section-sub { color: #42586e; margin-bottom: 20px; max-width: 680px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .dest {
+    background: #f7f9fc;
+    border: 1px solid #dbe6f2;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .dest-art {
+    background: #e8f0f8;
+    padding: 22px 16px 14px;
+    text-align: center;
+  }
+  .dest-art svg { width: 100%; max-width: 200px; height: auto; }
+  .dest-body { padding: 18px 20px 20px; }
+  .dest-body h3 { font-size: 18px; margin-bottom: 6px; }
+  .dest-body p { color: #42586e; font-size: 15px; }
+  .dest-body .meta { font-size: 13px; color: #6b7f94; margin-top: 10px; }
+  .tag-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+  .tag {
+    display: inline-block; font-size: 13px; font-weight: 700;
+    background: #e8f0f8; color: #14263d; padding: 4px 10px; border-radius: 999px;
+  }
+  .tag-soft { background: #fdf6ec; color: #42586e; }
+  .price-list { list-style: none; }
+  .price-list li {
+    display: flex; justify-content: space-between; gap: 16px;
+    padding: 14px 4px; border-bottom: 1px solid #e3ebf3;
+  }
+  .price-list li:last-child { border-bottom: none; }
+  .price-list strong { font-size: 16px; }
+  .price-list span { color: #42586e; font-size: 14px; display: block; }
+  .price { font-weight: 800; white-space: nowrap; }
+  .price-note { font-size: 13px; color: #6b7f94; margin-top: 14px; }
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .step {
+    background: #f7f9fc; border: 1px solid #dbe6f2;
+    border-radius: 16px; padding: 20px;
+  }
+  .step b { display: block; font-size: 18px; margin-bottom: 6px; }
+  .step p { color: #42586e; font-size: 15px; }
+  .step .day {
+    display: inline-block; font-size: 13px; font-weight: 700;
+    background: #14263d; color: #8fb4d9; padding: 4px 10px; border-radius: 999px;
+    margin-bottom: 10px;
+  }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .check-list { list-style: none; }
+  .check-list li { padding: 10px 0 10px 34px; position: relative; border-bottom: 1px solid #eef3f8; }
+  .check-list li:last-child { border-bottom: none; }
+  .check-list li::before {
+    content: "✓"; position: absolute; left: 0; top: 10px;
+    width: 24px; height: 24px; border-radius: 50%;
+    background: #8fb4d9; color: #14263d;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 14px;
+  }
+  .check-list small { display: block; color: #6b7f94; font-size: 13px; }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .form-field { display: flex; flex-direction: column; gap: 6px; }
+  .form-field.full { grid-column: 1 / -1; }
+  .form-field label { font-size: 14px; font-weight: 700; }
+  .form-field input, .form-field select, .form-field textarea {
+    padding: 12px 14px;
+    border: 1.5px solid #dbe6f2;
+    border-radius: 10px;
+    background: #f7f9fc;
+    color: #14263d;
+    font: inherit;
+    font-size: 15px;
+    width: 100%;
+  }
+  .form-field textarea { min-height: 90px; resize: vertical; }
+  .form-msg {
+    display: none;
+    margin-top: 16px;
+    background: #e8f0f8;
+    border: 1px solid #8fb4d9;
+    border-radius: 12px;
+    padding: 14px 16px;
+    font-size: 15px;
+    color: #14263d;
+  }
+  .faq-item {
+    background: #f7f9fc;
+    border: 1px solid #dbe6f2;
+    border-radius: 14px;
+    padding: 16px 18px;
+    margin-bottom: 12px;
+  }
+  .faq-item summary {
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    list-style: none;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::before {
+    content: "+";
+    display: inline-block;
+    width: 24px; height: 24px; border-radius: 50%;
+    background: #8fb4d9; color: #14263d;
+    text-align: center; line-height: 24px; font-weight: 800;
+    margin-right: 10px;
+  }
+  .faq-item[open ] summary::before { content: "–"; }
+  .faq-item p { color: #42586e; font-size: 15px; margin-top: 10px; padding-left: 34px; }
+  .paket-demo {
+    background: #14263d;
+    color: #ffffff;
+    border-radius: 20px;
+    padding: 28px;
+  }
+  .paket-demo h2 { color: #ffffff; text-align: center; }
+  .paket-demo > p { color: #c8d6e5; max-width: 620px; margin: 0 auto 20px; text-align: center; }
+  .tier-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .tier {
+    background: #ffffff; color: #14263d;
+    border-radius: 16px; padding: 22px; text-align: center;
+  }
+  .tier.featured { border: 3px solid #8fb4d9; }
+  .tier h3 { font-size: 19px; margin-bottom: 4px; }
+  .tier .tier-price { font-size: 30px; font-weight: 800; margin: 8px 0; }
+  .tier p { color: #42586e; font-size: 14px; margin-bottom: 12px; }
+  .tier ul { list-style: none; text-align: left; font-size: 14px; color: #42586e; }
+  .tier ul li { padding: 6px 0; border-bottom: 1px solid #eef3f8; }
+  .tier ul li:last-child { border-bottom: none; }
+  .tier .btn { margin-top: 14px; }
+  .paket-note { font-size: 13px; color: #c8d6e5; text-align: center; margin-top: 18px; }
+  .cta-final { text-align: center; padding: 32px 20px; }
+  .cta-final h2 { font-size: 28px; }
+  .cta-final p { color: #42586e; margin: 8px auto 20px; max-width: 560px; }
+  footer {
+    background: #14263d; color: #c8d6e5;
+    text-align: center; padding: 26px 20px; font-size: 14px;
+  }
+  footer a { color: #8fb4d9; font-weight: 700; text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  footer p { max-width: 720px; margin: 0 auto 8px; }
+  @media (max-width: 760px) {
+    .hero { grid-template-columns: 1fr; padding: 26px 22px; }
+    .hero h1 { font-size: 31px; }
+    .grid-3, .grid-2, .steps, .two-col, .tier-grid, .form-grid { grid-template-columns: 1fr; }
+    header { justify-content: center; text-align: center; }
+    .brand { justify-content: center; }
+    .nav { justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="demo-banner">CONTOH DEMO — Website Agen Travel <span>Halaman contoh, bukan situs nyata</span></div>
+
+<header>
+  <div class="brand">
+    <span class="brand-mark" aria-hidden="true">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" stroke="#14263d" stroke-width="2"/><path d="M3 12h18M12 3c3 3.5 3 14 0 18M12 3c-3 3.5-3 14 0 18" stroke="#14263d" stroke-width="1.6"/><path d="M15.5 8.5l1.8 3.8-3.8 1.8-1.8-3.8z" fill="#8fb4d9"/></svg>
+    </span>
+    <span>Jelajah Nusantara<small>AGEN TRAVEL</small></span>
+  </div>
+  <nav class="nav" aria-label="Navigasi utama">
+    <a href="#destinasi">Destinasi</a>
+    <a href="#paket-wisata">Paket Wisata</a>
+    <a href="#itinerary">Itinerary</a>
+    <a href="#booking">Booking</a>
+  </nav>
+  <a class="btn btn-outline" href="#booking">Booking Sekarang</a>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div>
+      <span class="eyebrow">AGEN TRAVEL • CONTOH DEMO</span>
+      <h1>Liburan ke penjuru nusantara, <em>tanpa ribet.</em></h1>
+      <p>Jelajah Nusantara adalah contoh website agen travel. Lihat destinasi, pilih paket wisata, baca contoh itinerary, lalu isi formulir booking contoh untuk melihat cara kerjanya.</p>
+      <div class="hero-actions">
+        <a class="btn btn-accent btn-big" href="#destinasi">Lihat Destinasi</a>
+        <a class="btn btn-outline" href="#paket-wisata">Paket Wisata</a>
+      </div>
+      <p class="hero-note">Halaman contoh, bukan situs nyata. Semua harga dan jadwal di bawah ini hanya ilustrasi.</p>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <svg viewBox="0 0 320 190" xmlns="http://www.w3.org/2000/svg">
+        <rect x="10" y="10" width="300" height="170" rx="16" fill="#ffffff"/>
+        <circle cx="235" cy="52" r="22" fill="#8fb4d9"/>
+        <path d="M20 150 L90 70 L140 120 L190 60 L260 150 Z" fill="#e8f0f8"/>
+        <path d="M90 70 L110 95 L70 95 Z" fill="#8fb4d9"/>
+        <path d="M190 60 L212 88 L168 88 Z" fill="#14263d"/>
+        <path d="M20 150h280v10a10 10 0 0 1-10 10H30a10 10 0 0 1-10-10v-10z" fill="#14263d"/>
+        <path d="M60 168c20-8 40 8 60 0s40 8 60 0 40 8 60 0" stroke="#8fb4d9" stroke-width="3" fill="none"/>
+      </svg>
+      <p>Ilustrasi pegunungan dan matahari — gambar contoh, bukan foto asli.</p>
+    </div>
+  </div>
+
+  <!-- DESTINASI -->
+  <section class="card" id="destinasi">
+    <h2>Destinasi Populer</h2>
+    <p class="section-sub">Enam destinasi contoh di Indonesia. Nama tempat di bawah ini adalah nama tempat nyata yang dipakai sebagai contoh isi demo — bukan penawaran perjalanan yang sebenarnya.</p>
+    <div class="grid-3">
+      <article class="dest">
+        <div class="dest-art" aria-hidden="true">
+          <svg viewBox="0 0 200 90" xmlns="http://www.w3.org/2000/svg"><rect width="200" height="90" rx="10" fill="#ffffff"/><path d="M20 70 L70 25 L120 70 Z" fill="#8fb4d9"/><path d="M90 70 L140 20 L190 70 Z" fill="#14263d"/><rect x="20" y="70" width="160" height="8" rx="4" fill="#e8f0f8"/></svg>
+        </div>
+        <div class="dest-body">
+          <h3>Yogyakarta</h3>
+          <p>Kota budaya dengan candi, keraton, dan kuliner khas. Cocok untuk perjalanan santai bersama keluarga.</p>
+          <div class="tag-row"><span class="tag">Budaya</span><span class="tag tag-soft">3 hari 2 malam</span></div>
+          <p class="meta">Contoh destinasi — harga lihat di paket wisata.</p>
+        </div>
+      </article>
+      <article class="dest">
+        <div class="dest-art" aria-hidden="true">
+          <svg viewBox="0 0 200 90" xmlns="http://www.w3.org/2000/svg"><rect width="200" height="90" rx="10" fill="#ffffff"/><circle cx="150" cy="26" r="14" fill="#8fb4d9"/><path d="M0 62 Q30 48 60 62 T120 62 T200 62 V90 H0 Z" fill="#14263d"/><path d="M0 72 Q30 60 60 72 T120 72 T200 72 V90 H0 Z" fill="#8fb4d9"/></svg>
+        </div>
+        <div class="dest-body">
+          <h3>Bali</h3>
+          <p>Pantai, sawah berundak, dan pura yang tenang. Pilihan contoh untuk liburan santai maupun bulan madu.</p>
+          <div class="tag-row"><span class="tag">Pantai</span><span class="tag tag-soft">4 hari 3 malam</span></div>
+          <p class="meta">Contoh destinasi — harga lihat di paket wisata.</p>
+        </div>
+      </article>
+      <article class="dest">
+        <div class="dest-art" aria-hidden="true">
+          <svg viewBox="0 0 200 90" xmlns="http://www.w3.org/2000/svg"><rect width="200" height="90" rx="10" fill="#ffffff"/><path d="M0 70 Q50 30 100 55 T200 45 V90 H0 Z" fill="#8fb4d9"/><circle cx="60" cy="24" r="10" fill="#14263d"/><path d="M120 70 L160 70 L140 40 Z" fill="#14263d"/></svg>
+        </div>
+        <div class="dest-body">
+          <h3>Lombok</h3>
+          <p>Pantai berpasir putih, perbukitan hijau, dan pulau kecil di sekitarnya. Cocok untuk yang suka suasana tenang.</p>
+          <div class="tag-row"><span class="tag">Pantai</span><span class="tag tag-soft">4 hari 3 malam</span></div>
+          <p class="meta">Contoh destinasi — harga lihat di paket wisata.</p>
+        </div>
+      </article>
+      <article class="dest">
+        <div class="dest-art" aria-hidden="true">
+          <svg viewBox="0 0 200 90" xmlns="http://www.w3.org/2000/svg"><rect width="200" height="90" rx="10" fill="#ffffff"/><path d="M20 70 L60 30 L100 70 Z" fill="#14263d"/><path d="M80 70 L120 25 L160 70 Z" fill="#8fb4d9"/><rect x="20" y="70" width="160" height="8" rx="4" fill="#e8f0f8"/><circle cx="165" cy="22" r="10" fill="#8fb4d9"/></svg>
+        </div>
+        <div class="dest-body">
+          <h3>Bandung</h3>
+          <p>Udara sejuk, kebun teh, dan wisata kuliner. Pilihan contoh untuk liburan singkat di akhir pekan.</p>
+          <div class="tag-row"><span class="tag">Pegunungan</span><span class="tag tag-soft">2 hari 1 malam</span></div>
+          <p class="meta">Contoh destinasi — harga lihat di paket wisata.</p>
+        </div>
+      </article>
+      <article class="dest">
+        <div class="dest-art" aria-hidden="true">
+          <svg viewBox="0 0 200 90" xmlns="http://www.w3.org/2000/svg"><rect width="200" height="90" rx="10" fill="#ffffff"/><path d="M0 70 Q40 40 80 60 T200 55 V90 H0 Z" fill="#14263d"/><path d="M30 70 Q70 50 110 68" stroke="#8fb4d9" stroke-width="4" fill="none"/><circle cx="160" cy="28" r="12" fill="#8fb4d9"/></svg>
+        </div>
+        <div class="dest-body">
+          <h3>Malang</h3>
+          <p>Air terjun, desa wisata, dan udara pegunungan yang segar. Cocok untuk perjalanan keluarga dan rombongan.</p>
+          <div class="tag-row"><span class="tag">Alam</span><span class="tag tag-soft">3 hari 2 malam</span></div>
+          <p class="meta">Contoh destinasi — harga lihat di paket wisata.</p>
+        </div>
+      </article>
+      <article class="dest">
+        <div class="dest-art" aria-hidden="true">
+          <svg viewBox="0 0 200 90" xmlns="http://www.w3.org/2000/svg"><rect width="200" height="90" rx="10" fill="#ffffff"/><path d="M0 64 Q30 50 60 64 T120 64 T200 64 V90 H0 Z" fill="#8fb4d9"/><path d="M70 64 L110 30 L150 64 Z" fill="#14263d"/><circle cx="100" cy="24" r="8" fill="#14263d"/></svg>
+        </div>
+        <div class="dest-body">
+          <h3>Labuan Bajo</h3>
+          <p>Gerbang menuju pulau-pulau dan laut biru di Nusa Tenggara Timur. Contoh destinasi untuk pencinta laut.</p>
+          <div class="tag-row"><span class="tag">Laut</span><span class="tag tag-soft">4 hari 3 malam</span></div>
+          <p class="meta">Contoh destinasi — harga lihat di paket wisata.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- PAKET WISATA -->
+  <section class="card" id="paket-wisata">
+    <h2>Paket Wisata</h2>
+    <p class="section-sub">Empat paket wisata contoh beserta harga contoh per orang. Harga di bawah ini hanya ilustrasi untuk demo, bukan harga perjalanan yang sebenarnya.</p>
+    <ul class="price-list">
+      <li><div><strong>Yogyakarta 3 Hari 2 Malam</strong><span>Candi, keraton, dan kuliner — termasuk penginapan contoh, transportasi lokal, dan pemandu contoh</span></div><span class="price">Rp2.500.000 / orang</span></li>
+      <li><div><strong>Bali 4 Hari 3 Malam</strong><span>Pantai, sawah berundak, dan pura — termasuk penginapan contoh, transportasi lokal, dan pemandu contoh</span></div><span class="price">Rp3.750.000 / orang</span></li>
+      <li><div><strong>Bandung 2 Hari 1 Malam</strong><span>Kebun teh dan wisata kuliner — termasuk penginapan contoh dan transportasi lokal</span></div><span class="price">Rp1.250.000 / orang</span></li>
+      <li><div><strong>Labuan Bajo 4 Hari 3 Malam</strong><span>Perjalanan laut dan pulau — termasuk penginapan contoh, kapal contoh, dan pemandu contoh</span></div><span class="price">Rp5.500.000 / orang</span></li>
+    </ul>
+    <p class="price-note">Semua harga di atas adalah harga contoh untuk keperluan demo. Harga sudah termasuk contoh layanan yang disebutkan, dan tidak termasuk tiket pesawat dari kota asal.</p>
+  </section>
+
+  <!-- ITINERARY -->
+  <section class="card" id="itinerary">
+    <h2>Contoh Itinerary — Yogyakarta 3 Hari 2 Malam</h2>
+    <p class="section-sub">Gambaran jadwal perjalanan contoh untuk paket Yogyakarta. Jadwal ini hanya ilustrasi dan bisa berubah menyesuaikan kondisi di lapangan.</p>
+    <div class="steps">
+      <div class="step">
+        <span class="day">HARI 1</span>
+        <b>Tiba dan keliling kota</b>
+        <p>Pagi: tiba di Yogyakarta dan check-in penginapan contoh. Siang: makan siang dan berkunjung ke keraton. Sore: jalan-jalan di kawasan Malioboro. Malam: makan malam dan istirahat.</p>
+      </div>
+      <div class="step">
+        <span class="day">HARI 2</span>
+        <b>Candi dan desa wisata</b>
+        <p>Pagi: berangkat ke candi dan menikmati suasana pagi. Siang: makan siang di desa wisata contoh. Sore: mencoba kegiatan kerajinan lokal. Malam: kembali ke penginapan dan istirahat.</p>
+      </div>
+      <div class="step">
+        <span class="day">HARI 3</span>
+        <b>Oleh-oleh dan pulang</b>
+        <p>Pagi: sarapan dan check-out penginapan. Siang: berbelanja oleh-oleh di pusat oleh-oleh contoh. Sore: perjalanan pulang ke kota asal.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- YANG DIDAPAT -->
+  <section class="card">
+    <h2>Yang termasuk dalam paket contoh</h2>
+    <p class="section-sub">Layanan contoh yang tercantum dalam paket wisata di atas.</p>
+    <div class="two-col">
+      <ul class="check-list">
+        <li><strong>Penginapan contoh.</strong><small>Penginapan selama perjalanan sesuai jumlah malam pada paket.</small></li>
+        <li><strong>Transportasi lokal.</strong><small>Kendaraan selama perjalanan wisata di destinasi.</small></li>
+        <li><strong>Pemandu contoh.</strong><small>Pemandu yang mendampingi rombongan selama perjalanan.</small></li>
+      </ul>
+      <ul class="check-list">
+        <li><strong>Tiket pesawat TIDAK termasuk.</strong><small>Tiket pesawat dari kota asal diurus terpisah oleh peserta.</small></li>
+        <li><strong>Pengeluaran pribadi TIDAK termasuk.</strong><small>Belanja oleh-oleh dan kebutuhan pribadi di luar paket.</small></li>
+        <li><strong>Jadwal bisa berubah.</strong><small>Urutan kunjungan menyesuaikan kondisi cuaca dan situasi di lapangan.</small></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- TIPS PERJALANAN -->
+  <section class="card" id="tips">
+    <h2>Tips Perjalanan</h2>
+    <p class="section-sub">Tiga tips contoh sebelum berangkat liburan. Tips di bawah ini hanya bacaan contoh untuk melengkapi halaman demo.</p>
+    <div class="grid-3">
+      <div class="step">
+        <b>Siapkan dokumen perjalanan</b>
+        <p>Pastikan kartu identitas dan dokumen lain yang dibutuhkan sudah disiapkan sebelum hari keberangkatan. Simpan salinannya di tempat yang mudah dijangkau selama perjalanan.</p>
+      </div>
+      <div class="step">
+        <b>Kemas barang secukupnya</b>
+        <p>Bawa pakaian sesuai cuaca destinasi dan perlengkapan pribadi yang memang dibutuhkan. Koper yang ringan membuat perjalanan antar tempat jadi lebih mudah.</p>
+      </div>
+      <div class="step">
+        <b>Datang lebih awal</b>
+        <p>Usahakan tiba di titik kumpul atau bandara lebih awal dari jadwal yang ditentukan, supaya tidak terburu-buru dan rombongan bisa berangkat tepat waktu.</p>
+      </div>
+    </div>
+    <div class="grid-3" style="margin-top: 16px;">
+      <div class="step">
+        <b>Cek cuaca destinasi</b>
+        <p>Lihat perkiraan cuaca beberapa hari sebelum berangkat. Bawa payung atau jas hujan contoh bila musim hujan sedang berlangsung di destinasi.</p>
+      </div>
+      <div class="step">
+        <b>Siapkan uang tunai secukupnya</b>
+        <p>Tidak semua tempat menerima pembayaran nontunai. Siapkan uang tunai secukupnya untuk jajan, oleh-oleh, dan kebutuhan kecil lainnya.</p>
+      </div>
+      <div class="step">
+        <b>Jaga kesehatan selama perjalanan</b>
+        <p>Istirahat yang cukup sebelum berangkat, minum air yang cukup, dan bawa obat pribadi bila ada kebutuhan khusus.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKING -->
+  <section class="card" id="booking">
+    <h2>Formulir Booking Contoh</h2>
+    <p class="section-sub">Isi formulir contoh di bawah ini untuk melihat cara kerja formulir booking. Formulir ini hanya mockup — data tidak dikirim ke mana pun.</p>
+    <form id="bookingForm">
+      <div class="form-grid">
+        <div class="form-field">
+          <label for="nama">Nama lengkap</label>
+          <input type="text" id="nama" name="nama" placeholder="Contoh: Budi Santoso" required>
+        </div>
+        <div class="form-field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="contoh@email.com" required>
+        </div>
+        <div class="form-field">
+          <label for="paket">Pilih paket wisata contoh</label>
+          <select id="paket" name="paket">
+            <option>Yogyakarta 3 Hari 2 Malam — Rp2.500.000 / orang</option>
+            <option>Bali 4 Hari 3 Malam — Rp3.750.000 / orang</option>
+            <option>Bandung 2 Hari 1 Malam — Rp1.250.000 / orang</option>
+            <option>Labuan Bajo 4 Hari 3 Malam — Rp5.500.000 / orang</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="tanggal">Tanggal berangkat (contoh)</label>
+          <input type="date" id="tanggal" name="tanggal">
+        </div>
+        <div class="form-field">
+          <label for="jumlah">Jumlah peserta</label>
+          <input type="number" id="jumlah" name="jumlah" min="1" max="20" value="2">
+        </div>
+        <div class="form-field">
+          <label for="telepon">Nomor telepon (contoh)</label>
+          <input type="tel" id="telepon" name="telepon" placeholder="Contoh: 0812-3456-7890">
+        </div>
+        <div class="form-field full">
+          <label for="catatan">Catatan tambahan</label>
+          <textarea id="catatan" name="catatan" placeholder="Contoh: ada peserta anak-anak, butuh kursi tambahan di kendaraan."></textarea>
+        </div>
+      </div>
+      <div style="margin-top: 18px;">
+        <button class="btn btn-accent" type="submit">Kirim Booking Contoh</button>
+      </div>
+      <p class="form-msg" id="bookingMsg">Ini demo — data tidak dikirim ke mana pun. Terima kasih, formulir contohmu sudah "terkirim" di halaman ini saja.</p>
+    </form>
+  </section>
+
+  <!-- FAQ -->
+  <section class="card" id="faq">
+    <h2>Pertanyaan yang Sering Diajukan</h2>
+    <p class="section-sub">Jawaban contoh atas pertanyaan umum seputar agen travel contoh ini. Klik pertanyaan untuk membuka jawabannya.</p>
+    <details class="faq-item">
+      <summary>Apakah paket wisata di halaman ini bisa dipesan?</summary>
+      <p>Tidak. Semua paket, harga, dan jadwal di halaman ini hanya ilustrasi untuk demo. Tidak ada perjalanan nyata yang dijual dari halaman ini.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Apakah harga contoh sudah termasuk tiket pesawat?</summary>
+      <p>Tidak. Dalam ilustrasi demo ini, harga contoh tidak termasuk tiket pesawat dari kota asal. Tiket pesawat digambarkan diurus terpisah oleh peserta.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Apakah data saya dikirim saat mengisi formulir booking?</summary>
+      <p>Tidak. Formulir booking di halaman ini hanya mockup. Data yang diisi tidak dikirim ke mana pun dan tidak tersimpan di server.</p>
+    </details>
+  </section>
+
+  <!-- PAKET DEMO WEBSITE -->
+  <section class="paket-demo" id="paket">
+    <h2>Paket Demo Website</h2>
+    <p>Contoh paket pembuatan website agen travel seperti halaman ini. Pilih paket sesuai kebutuhan contohmu.</p>
+    <div class="tier-grid">
+      <div class="tier">
+        <h3>Demo</h3>
+        <div class="tier-price">$29</div>
+        <p>Paket contoh paling sederhana.</p>
+        <ul>
+          <li>1 halaman utama</li>
+          <li>Daftar destinasi contoh</li>
+          <li>Tampilan responsif</li>
+          <li>File HTML mandiri</li>
+        </ul>
+        <a class="btn btn-outline" href="mailto:masduki1189@gmail.com?subject=Pesan%20Website%20Demo%20Paket%20Demo%20%2429">Pesan via Email</a>
+      </div>
+      <div class="tier featured">
+        <h3>Standar</h3>
+        <div class="tier-price">$49</div>
+        <p>Paket contoh dengan fitur lebih lengkap.</p>
+        <ul>
+          <li>Semua isi paket Demo</li>
+          <li>Paket wisata dan itinerary contoh</li>
+          <li>Formulir booking contoh</li>
+          <li>1 kali revisi kecil</li>
+        </ul>
+        <a class="btn" href="mailto:masduki1189@gmail.com?subject=Pesan%20Website%20Demo%20Paket%20Standar%20%2449">Pesan via Email</a>
+      </div>
+      <div class="tier">
+        <h3>Pro</h3>
+        <div class="tier-price">$79</div>
+        <p>Paket contoh paling lengkap.</p>
+        <ul>
+          <li>Semua isi paket Standar</li>
+          <li>Halaman detail destinasi contoh</li>
+          <li>Galeri foto contoh</li>
+          <li>Bantuan pasang online</li>
+        </ul>
+        <a class="btn btn-outline" href="mailto:masduki1189@gmail.com?subject=Pesan%20Website%20Demo%20Paket%20Pro%20%2479">Pesan via Email</a>
+      </div>
+    </div>
+    <p class="paket-note">Harga paket demo website — pesan via email.</p>
+  </section>
+
+  <!-- CTA AKHIR -->
+  <section class="cta-final">
+    <h2>Mau website travel seperti ini?</h2>
+    <p>Halaman ini adalah contoh demo. Kalau kamu mau website agen travel dengan tampilan seperti ini, pesan paket demo website lewat email.</p>
+    <a class="btn btn-accent btn-big" href="mailto:masduki1189@gmail.com?subject=Pesan%20Website%20Agen%20Travel">Pesan via Email</a>
+  </section>
+
+</main>
+
+<footer>
+  <p>Halaman ini adalah contoh demo website. Semua nama, harga, dan konten di dalamnya hanya ilustrasi.</p>
+  <p>Demo contoh oleh KikiWorks — Podcast Meong. Pesan website via email — <a href="mailto:masduki1189@gmail.com">masduki1189@gmail.com</a></p>
+</footer>
+
+<script>
+(function () {
+  /* Formulir booking mockup: tidak mengirim data ke mana pun */
+  var form = document.getElementById('bookingForm');
+  var msg = document.getElementById('bookingMsg');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    msg.style.display = 'block';
+    msg.textContent = 'Ini demo — data tidak dikirim ke mana pun. Terima kasih, formulir contohmu sudah "terkirim" di halaman ini saja.';
+    msg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+
+  /* Isi tanggal contoh: 30 hari dari hari ini, hanya untuk tampilan */
+  var dateInput = document.getElementById('tanggal');
+  var d = new Date();
+  d.setDate(d.getDate() + 30);
+  var y = d.getFullYear();
+  var m = String(d.getMonth() + 1).padStart(2, '0');
+  var day = String(d.getDate()).padStart(2, '0');
+  dateInput.value = y + '-' + m + '-' + day;
+})();
+</script>
+</body>
+</html>

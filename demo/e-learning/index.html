@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KelasKita — Belajar Online dari Mana Saja | Contoh Demo</title>
+<meta name="description" content="Contoh demo platform belajar online KelasKita. Halaman contoh, bukan situs nyata.">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: #f7f9fc;
+    color: #14263d;
+    line-height: 1.6;
+  }
+  a { color: inherit; }
+  .demo-banner {
+    background: #14263d;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  .demo-banner span {
+    background: #8fb4d9;
+    color: #14263d;
+    padding: 2px 10px;
+    border-radius: 999px;
+    margin-left: 6px;
+    font-size: 12px;
+    letter-spacing: 0;
+  }
+  .demo-banner small {
+    display: block;
+    font-weight: 400;
+    font-size: 12px;
+    color: #c8d6e5;
+    letter-spacing: 0;
+    margin-top: 2px;
+  }
+  header {
+    max-width: 1020px;
+    margin: 0 auto;
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .brand { display: flex; align-items: center; gap: 12px; font-weight: 800; font-size: 22px; }
+  .brand-mark {
+    width: 44px; height: 44px; border-radius: 12px;
+    background: #8fb4d9; display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .brand small { display: block; font-size: 12px; font-weight: 600; color: #4a6178; letter-spacing: .4px; }
+  nav.main-nav { display: flex; gap: 20px; flex-wrap: wrap; }
+  nav.main-nav a {
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    color: #42586e;
+  }
+  nav.main-nav a:hover { color: #14263d; }
+  .btn {
+    display: inline-block;
+    background: #14263d;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 700;
+    padding: 13px 24px;
+    border-radius: 999px;
+    border: 2px solid #14263d;
+    cursor: pointer;
+    font-size: 15px;
+  }
+  .btn-accent {
+    background: #8fb4d9;
+    color: #14263d;
+    border-color: #8fb4d9;
+  }
+  .btn-outline {
+    background: transparent;
+    color: #14263d;
+  }
+  main { max-width: 1020px; margin: 0 auto; padding: 0 20px 40px; }
+  .hero {
+    background: #ffffff;
+    border: 1px solid #dbe6f2;
+    border-radius: 24px;
+    padding: 36px 32px;
+    display: grid;
+    grid-template-columns: 1.15fr .85fr;
+    gap: 28px;
+    align-items: center;
+    box-shadow: 0 10px 30px rgba(20, 38, 61, .07);
+  }
+  .hero h1 { font-size: 40px; line-height: 1.15; margin: 12px 0 14px; }
+  .hero h1 em { font-style: normal; color: #2f6da3; }
+  .eyebrow {
+    display: inline-block; font-size: 13px; font-weight: 700; letter-spacing: .6px;
+    background: #e8f0f8; color: #14263d; padding: 6px 12px; border-radius: 999px;
+  }
+  .hero p { color: #42586e; font-size: 17px; margin-bottom: 18px; }
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .hero-note { font-size: 13px; color: #6b7f94; margin-top: 14px; }
+  .hero-art {
+    background: #fdf6ec;
+    border-radius: 18px;
+    padding: 22px;
+    text-align: center;
+  }
+  .hero-art svg { width: 100%; max-width: 320px; height: auto; }
+  .hero-art p { font-size: 14px; color: #42586e; margin-top: 8px; }
+  section { margin-top: 36px; }
+  .card {
+    background: #ffffff;
+    border: 1px solid #dbe6f2;
+    border-radius: 20px;
+    padding: 28px;
+    box-shadow: 0 6px 20px rgba(20, 38, 61, .05);
+  }
+  h2 { font-size: 26px; line-height: 1.3; margin-bottom: 10px; }
+  .section-sub { color: #42586e; margin-bottom: 20px; max-width: 680px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .reason {
+    background: #f7f9fc;
+    border: 1px solid #dbe6f2;
+    border-radius: 16px;
+    padding: 20px;
+  }
+  .reason-number {
+    width: 38px; height: 38px; border-radius: 50%;
+    background: #14263d; color: #8fb4d9;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; margin-bottom: 12px;
+  }
+  .reason h3 { font-size: 18px; margin-bottom: 6px; }
+  .reason p { color: #42586e; font-size: 15px; }
+  .category {
+    background: #f7f9fc;
+    border: 1px solid #dbe6f2;
+    border-radius: 16px;
+    padding: 20px;
+    text-align: center;
+  }
+  .category .cat-icon {
+    width: 52px; height: 52px; border-radius: 14px;
+    background: #8fb4d9; color: #14263d;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 10px; font-weight: 800; font-size: 22px;
+  }
+  .category h3 { font-size: 17px; margin-bottom: 4px; }
+  .category p { color: #42586e; font-size: 14px; }
+  .filter-bar { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+  .filter-btn {
+    padding: 9px 18px; border-radius: 999px;
+    border: 2px solid #dbe6f2; background: #ffffff;
+    color: #42586e; font-weight: 700; font-size: 14px; cursor: pointer;
+    font-family: inherit;
+  }
+  .filter-btn.active, .filter-btn:hover {
+    background: #14263d; border-color: #14263d; color: #ffffff;
+  }
+  .course {
+    background: #f7f9fc;
+    border: 1px solid #dbe6f2;
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  .course.hidden { display: none; }
+  .course .tag {
+    display: inline-block; align-self: flex-start;
+    font-size: 12px; font-weight: 700; letter-spacing: .5px;
+    background: #e8f0f8; color: #14263d;
+    padding: 4px 10px; border-radius: 999px; margin-bottom: 10px;
+  }
+  .course h3 { font-size: 18px; margin-bottom: 6px; line-height: 1.4; }
+  .course p { color: #42586e; font-size: 15px; flex-grow: 1; }
+  .course .meta { font-size: 13px; color: #6b7f94; margin-top: 12px; line-height: 1.7; }
+  .course .meta strong { color: #14263d; }
+  .course .price { font-weight: 800; font-size: 18px; color: #14263d; margin-top: 8px; }
+  .course .btn { margin-top: 12px; text-align: center; padding: 10px 18px; font-size: 14px; }
+  .filter-empty {
+    display: none;
+    background: #f7f9fc; border: 1px solid #dbe6f2;
+    border-radius: 16px; padding: 20px; text-align: center;
+    color: #42586e;
+  }
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .step {
+    background: #f7f9fc; border: 1px solid #dbe6f2;
+    border-radius: 16px; padding: 20px;
+  }
+  .step b { display: block; font-size: 18px; margin-bottom: 6px; }
+  .step p { color: #42586e; font-size: 15px; }
+  .mentor {
+    background: #f7f9fc;
+    border: 1px solid #dbe6f2;
+    border-radius: 16px;
+    padding: 20px;
+    text-align: center;
+  }
+  .mentor-avatar {
+    width: 84px; height: 84px; border-radius: 50%;
+    background: #14263d; color: #8fb4d9;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 28px; margin: 0 auto 12px;
+    border: 4px solid #ffffff;
+    box-shadow: 0 6px 18px rgba(20, 38, 61, .15);
+  }
+  .mentor h3 { font-size: 18px; margin-bottom: 4px; }
+  .mentor .role { font-size: 13px; font-weight: 700; color: #2f6da3; margin-bottom: 8px; }
+  .mentor p { color: #42586e; font-size: 14px; }
+  .faq-item {
+    background: #f7f9fc;
+    border: 1px solid #dbe6f2;
+    border-radius: 14px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+  .faq-item summary {
+    font-weight: 700; font-size: 16px; cursor: pointer;
+    list-style: none;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after {
+    content: "+"; float: right; color: #2f6da3; font-size: 20px; line-height: 1;
+  }
+  .faq-item[open ] summary::after { content: "–"; }
+  .faq-item p { color: #42586e; font-size: 15px; margin-top: 10px; }
+  .check-list { list-style: none; }
+  .check-list li { padding: 10px 0 10px 34px; position: relative; border-bottom: 1px solid #eef3f8; }
+  .check-list li:last-child { border-bottom: none; }
+  .check-list li::before {
+    content: "✓"; position: absolute; left: 0; top: 10px;
+    width: 24px; height: 24px; border-radius: 50%;
+    background: #8fb4d9; color: #14263d;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 14px;
+  }
+  .check-list small { display: block; color: #6b7f94; font-size: 13px; }
+  .demo-form label { display: block; font-weight: 700; font-size: 14px; margin: 12px 0 5px; }
+  .demo-form input, .demo-form select {
+    width: 100%; padding: 11px 13px;
+    border: 1.5px solid #dbe6f2; border-radius: 10px;
+    background: #f7f9fc; color: #14263d;
+    font: inherit; font-size: 15px;
+  }
+  .form-note {
+    display: none;
+    margin-top: 14px; padding: 12px 14px;
+    background: #e8f0f8; border: 1px solid #8fb4d9;
+    border-radius: 10px; color: #14263d; font-size: 14px; font-weight: 600;
+  }
+  .search-row { display: flex; gap: 10px; flex-wrap: wrap; }
+  .search-row input { flex: 1; min-width: 200px; }
+  .paket {
+    background: #14263d;
+    color: #ffffff;
+    border-radius: 20px;
+    padding: 28px;
+    text-align: center;
+  }
+  .paket h2 { color: #ffffff; }
+  .paket > p { color: #c8d6e5; max-width: 620px; margin: 0 auto 22px; }
+  .paket-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; text-align: left; }
+  .paket-tier {
+    background: #ffffff; color: #14263d;
+    border-radius: 16px; padding: 22px;
+  }
+  .paket-tier h3 { font-size: 18px; margin-bottom: 4px; }
+  .paket-tier .tier-price { font-size: 30px; font-weight: 800; margin: 8px 0 12px; }
+  .paket-tier ul { list-style: none; }
+  .paket-tier li { padding: 6px 0 6px 24px; position: relative; color: #42586e; font-size: 14px; }
+  .paket-tier li::before {
+    content: "✓"; position: absolute; left: 0; top: 6px;
+    color: #2f6da3; font-weight: 800;
+  }
+  .paket-note { font-size: 13px; color: #c8d6e5; margin-top: 18px; }
+  .cta-final { text-align: center; padding: 32px 20px; }
+  .cta-final h2 { font-size: 28px; }
+  .cta-final p { color: #42586e; margin: 8px auto 20px; max-width: 560px; }
+  .btn-big { font-size: 18px; padding: 16px 32px; }
+  footer {
+    background: #14263d; color: #c8d6e5;
+    text-align: center; padding: 26px 20px; font-size: 14px;
+  }
+  footer a { color: #8fb4d9; font-weight: 700; text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  footer .disclaimer { margin-top: 10px; font-size: 13px; color: #9db1c6; }
+  @media (max-width: 760px) {
+    .hero { grid-template-columns: 1fr; padding: 26px 22px; }
+    .hero h1 { font-size: 31px; }
+    .grid-3, .grid-2, .steps, .paket-grid { grid-template-columns: 1fr; }
+    header { justify-content: center; text-align: center; }
+    .brand { justify-content: center; }
+    nav.main-nav { justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="demo-banner">CONTOH DEMO — E-Learning <span>Ini hanya contoh demo</span><small>Halaman contoh, bukan situs nyata</small></div>
+
+<header>
+  <div class="brand">
+    <span class="brand-mark" aria-hidden="true">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 3 2.5 8 12 13l9.5-5L12 3Z" fill="#14263d"/><path d="M6 10.8V16c0 1.7 2.7 3 6 3s6-1.3 6-3v-5.2l-6 3.2-6-3.2Z" fill="#14263d"/><path d="M20 8.5V15" stroke="#14263d" stroke-width="1.8" stroke-linecap="round"/></svg>
+    </span>
+    <span>KelasKita<small>BELAJAR ONLINE DARI MANA SAJA</small></span>
+  </div>
+  <nav class="main-nav" aria-label="Navigasi utama">
+    <a href="#kategori">Kategori</a>
+    <a href="#kursus">Kursus</a>
+    <a href="#mentor">Mentor</a>
+    <a href="#faq">FAQ</a>
+  </nav>
+  <a class="btn btn-outline" href="#daftar">Daftar</a>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div>
+      <span class="eyebrow">BELAJAR ONLINE • VIDEO &amp; LATIHAN</span>
+      <h1>Belajar hal baru, <em>dari mana saja, kapan saja.</em></h1>
+      <p>KelasKita menyediakan kursus online berbahasa Indonesia: video pelajaran, latihan soal, dan pendampingan mentor. Belajar bisa dimulai dari HP, tanpa harus datang ke kelas.</p>
+      <div class="hero-actions">
+        <a class="btn btn-accent btn-big" href="#kursus">Lihat Kursus</a>
+        <a class="btn btn-outline" href="#cara">Cara Belajar</a>
+      </div>
+      <p class="hero-note">Contoh demo platform belajar online — semua nama kursus, mentor, dan harga di halaman ini hanya ilustrasi.</p>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <svg viewBox="0 0 320 190" xmlns="http://www.w3.org/2000/svg">
+        <rect x="10" y="10" width="300" height="170" rx="16" fill="#ffffff"/>
+        <rect x="30" y="30" width="260" height="120" rx="10" fill="#14263d"/>
+        <polygon points="150,70 150,110 185,90" fill="#8fb4d9"/>
+        <rect x="30" y="160" width="180" height="8" rx="4" fill="#dbe6f2"/>
+        <rect x="30" y="172" width="120" height="8" rx="4" fill="#dbe6f2"/>
+        <circle cx="268" cy="166" r="14" fill="#8fb4d9"/>
+        <path d="M262 166l4 4 8-9" stroke="#14263d" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <p>Ilustrasi video pelajaran — gambar contoh, bukan foto asli.</p>
+    </div>
+  </div>
+
+  <!-- KATEGORI KURSUS -->
+  <section class="card" id="kategori">
+    <h2>Kategori Kursus</h2>
+    <p class="section-sub">Kursus dikelompokkan ke dalam lima kategori. Pilih kategori yang sesuai dengan yang ingin Anda pelajari.</p>
+    <div class="grid-3">
+      <div class="category">
+        <div class="cat-icon">💻</div>
+        <h3>Teknologi</h3>
+        <p>Dasar komputer, pembuatan website, dan pengolahan data.</p>
+      </div>
+      <div class="category">
+        <div class="cat-icon">📊</div>
+        <h3>Bisnis</h3>
+        <p>Usaha kecil, pemasaran, dan pengelolaan keuangan sederhana.</p>
+      </div>
+      <div class="category">
+        <div class="cat-icon">🎨</div>
+        <h3>Desain</h3>
+        <p>Desain grafis dasar, tata letak, dan pembuatan konten visual.</p>
+      </div>
+      <div class="category">
+        <div class="cat-icon">🗣️</div>
+        <h3>Bahasa</h3>
+        <p>Bahasa Inggris dan bahasa Indonesia untuk keperluan sehari-hari.</p>
+      </div>
+      <div class="category">
+        <div class="cat-icon">📸</div>
+        <h3>Fotografi</h3>
+        <p>Dasar fotografi dengan HP dan pengolahan foto sederhana.</p>
+      </div>
+      <div class="category">
+        <div class="cat-icon">✍️</div>
+        <h3>Menulis</h3>
+        <p>Menulis artikel, cerita pendek, dan naskah untuk media sosial.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- KURSUS PILIHAN + FILTER -->
+  <section class="card" id="kursus">
+    <h2>Kursus Pilihan</h2>
+    <p class="section-sub">Enam kursus contoh. Gunakan tombol di bawah ini untuk menyaring kursus berdasarkan kategori. Semua harga adalah harga contoh untuk keperluan demo.</p>
+    <div class="filter-bar" role="group" aria-label="Saring kursus berdasarkan kategori">
+      <button class="filter-btn active" type="button" data-filter="semua">Semua</button>
+      <button class="filter-btn" type="button" data-filter="teknologi">Teknologi</button>
+      <button class="filter-btn" type="button" data-filter="bisnis">Bisnis</button>
+      <button class="filter-btn" type="button" data-filter="desain">Desain</button>
+      <button class="filter-btn" type="button" data-filter="bahasa">Bahasa</button>
+    </div>
+    <div class="grid-3" id="courseGrid">
+      <article class="course" data-category="teknologi">
+        <span class="tag">TEKNOLOGI</span>
+        <h3>Dasar Pembuatan Website dengan HTML dan CSS</h3>
+        <p>Belajar membuat halaman website dari nol: struktur halaman, pewarnaan, dan tata letak yang rapi di HP dan laptop.</p>
+        <p class="meta"><strong>Mentor:</strong> Rina Wijaya<br><strong>Level:</strong> Pemula<br><strong>Durasi:</strong> 6 jam • 24 video</p>
+        <span class="price">Rp149.000</span>
+        <a class="btn btn-accent" href="#daftar">Lihat Kursus</a>
+      </article>
+      <article class="course" data-category="bisnis">
+        <span class="tag">BISNIS</span>
+        <h3>Memulai Usaha Kecil dari Rumah</h3>
+        <p>Langkah awal membuka usaha kecil: menentukan produk, menghitung modal, dan mencatat pemasukan dengan sederhana.</p>
+        <p class="meta"><strong>Mentor:</strong> Andi Saputra<br><strong>Level:</strong> Pemula<br><strong>Durasi:</strong> 4 jam • 18 video</p>
+        <span class="price">Rp99.000</span>
+        <a class="btn btn-accent" href="#daftar">Lihat Kursus</a>
+      </article>
+      <article class="course" data-category="desain">
+        <span class="tag">DESAIN</span>
+        <h3>Desain Grafis Dasar untuk Media Sosial</h3>
+        <p>Membuat gambar untuk media sosial: memilih warna, huruf, dan susunan gambar yang enak dilihat.</p>
+        <p class="meta"><strong>Mentor:</strong> Sinta Maharani<br><strong>Level:</strong> Pemula<br><strong>Durasi:</strong> 5 jam • 20 video</p>
+        <span class="price">Rp129.000</span>
+        <a class="btn btn-accent" href="#daftar">Lihat Kursus</a>
+      </article>
+      <article class="course" data-category="bahasa">
+        <span class="tag">BAHASA</span>
+        <h3>Bahasa Inggris Sehari-hari untuk Pemula</h3>
+        <p>Percakapan bahasa Inggris untuk keperluan sehari-hari: perkenalan, berbelanja, dan bertanya arah.</p>
+        <p class="meta"><strong>Mentor:</strong> Rina Wijaya<br><strong>Level:</strong> Pemula<br><strong>Durasi:</strong> 8 jam • 32 video</p>
+        <span class="price">Rp119.000</span>
+        <a class="btn btn-accent" href="#daftar">Lihat Kursus</a>
+      </article>
+      <article class="course" data-category="teknologi">
+        <span class="tag">TEKNOLOGI</span>
+        <h3>Pengolahan Data dengan Spreadsheet</h3>
+        <p>Mengolah data penjualan dan keuangan dengan spreadsheet: rumus dasar, tabel, dan grafik sederhana.</p>
+        <p class="meta"><strong>Mentor:</strong> Andi Saputra<br><strong>Level:</strong> Menengah<br><strong>Durasi:</strong> 5 jam • 22 video</p>
+        <span class="price">Rp139.000</span>
+        <a class="btn btn-accent" href="#daftar">Lihat Kursus</a>
+      </article>
+      <article class="course" data-category="bisnis">
+        <span class="tag">BISNIS</span>
+        <h3>Pemasaran Digital untuk Usaha Kecil</h3>
+        <p>Cara memperkenalkan usaha lewat media sosial: membuat konten, membalas pesan pembeli, dan mengatur jadwal unggahan.</p>
+        <p class="meta"><strong>Mentor:</strong> Sinta Maharani<br><strong>Level:</strong> Menengah<br><strong>Durasi:</strong> 7 jam • 26 video</p>
+        <span class="price">Rp159.000</span>
+        <a class="btn btn-accent" href="#daftar">Lihat Kursus</a>
+      </article>
+    </div>
+    <p class="filter-empty" id="filterEmpty">Tidak ada kursus dalam kategori ini pada contoh demo ini.</p>
+  </section>
+
+  <!-- CARA BELAJAR -->
+  <section class="card" id="cara">
+    <h2>Cara Belajar di KelasKita</h2>
+    <p class="section-sub">Empat langkah sederhana untuk mulai belajar.</p>
+    <div class="grid-3">
+      <div class="reason">
+        <div class="reason-number">1</div>
+        <h3>Pilih kursus</h3>
+        <p>Telusuri kategori atau gunakan saringan di atas. Setiap kursus mencantumkan level, durasi, dan nama mentornya.</p>
+      </div>
+      <div class="reason">
+        <div class="reason-number">2</div>
+        <h3>Daftar dan mulai</h3>
+        <p>Setelah mendaftar, video pelajaran bisa langsung ditonton dari HP atau laptop, kapan saja.</p>
+      </div>
+      <div class="reason">
+        <div class="reason-number">3</div>
+        <h3>Kerjakan latihan</h3>
+        <p>Setiap bab dilengkapi latihan soal dan tugas kecil supaya materi tidak hanya ditonton, tapi juga dipraktikkan.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENTOR -->
+  <section class="card" id="mentor">
+    <h2>Mentor</h2>
+    <p class="section-sub">Tiga mentor contoh yang mengajar di KelasKita. Semua nama dan profil mentor di bawah ini hanya ilustrasi demo.</p>
+    <div class="grid-3">
+      <div class="mentor">
+        <div class="mentor-avatar">RW</div>
+        <h3>Rina Wijaya</h3>
+        <p class="role">MENTOR TEKNOLOGI &amp; BAHASA</p>
+        <p>Mengajar pembuatan website dan bahasa Inggris. Sebelumnya bekerja sebagai pengajar komputer di lembaga kursus.</p>
+      </div>
+      <div class="mentor">
+        <div class="mentor-avatar">AS</div>
+        <h3>Andi Saputra</h3>
+        <p class="role">MENTOR BISNIS &amp; TEKNOLOGI</p>
+        <p>Mengajar usaha kecil dan pengolahan data. Berpengalaman mendampingi pelaku usaha rumahan di daerahnya.</p>
+      </div>
+      <div class="mentor">
+        <div class="mentor-avatar">SM</div>
+        <h3>Sinta Maharani</h3>
+        <p class="role">MENTOR DESAIN &amp; BISNIS</p>
+        <p>Mengajar desain grafis dasar dan pemasaran digital. Membuat konten visual untuk usaha kecil dan komunitas.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="card" id="faq">
+    <h2>Pertanyaan yang Sering Diajukan</h2>
+    <p class="section-sub">Jawaban atas pertanyaan umum tentang belajar di KelasKita.</p>
+    <details class="faq-item">
+      <summary>Apakah saya bisa belajar dari HP?</summary>
+      <p>Ya. Semua video pelajaran dan latihan bisa dibuka dari HP, tablet, maupun laptop melalui peramban.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Apakah ada batas waktu belajar?</summary>
+      <p>Dalam contoh demo ini, akses kursus berlaku selama 6 bulan sejak tanggal pendaftaran. Setelah itu, akses dapat diperpanjang.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Apakah saya mendapat sertifikat setelah selesai?</summary>
+      <p>Ya, setelah menyelesaikan semua video dan latihan, peserta menerima sertifikat penyelesaian dalam bentuk digital.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Bagaimana cara bertanya kepada mentor?</summary>
+      <p>Setiap kursus memiliki forum diskusi. Pertanyaan ditulis di sana dan dijawab mentor pada hari kerja.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Apakah ada pengembalian dana?</summary>
+      <p>Dalam contoh demo ini, pengembalian dana dapat diajukan dalam 7 hari pertama bila kursus belum ditonton lebih dari dua bab.</p>
+    </details>
+  </section>
+
+  <!-- DAFTAR -->
+  <section class="card" id="daftar">
+    <h2>Daftar Akun</h2>
+    <p class="section-sub">Buat akun contoh untuk mulai belajar. Formulir ini hanya contoh demo — data tidak dikirim ke mana pun.</p>
+    <form class="demo-form" id="registerForm" action="#" method="post">
+      <label for="namaLengkap">Nama lengkap</label>
+      <input type="text" id="namaLengkap" name="namaLengkap" placeholder="Nama lengkap Anda" required>
+      <label for="emailDaftar">Email</label>
+      <input type="email" id="emailDaftar" name="emailDaftar" placeholder="nama@email.com" required>
+      <label for="minat">Kategori yang diminati</label>
+      <select id="minat" name="minat">
+        <option>Teknologi</option>
+        <option>Bisnis</option>
+        <option>Desain</option>
+        <option>Bahasa</option>
+        <option>Fotografi</option>
+        <option>Menulis</option>
+      </select>
+      <div style="margin-top:16px;">
+        <button class="btn btn-accent" type="submit">Buat Akun</button>
+      </div>
+      <p class="form-note" id="registerNote">Ini demo — data tidak dikirim ke mana pun.</p>
+    </form>
+  </section>
+
+  <!-- PAKET DEMO WEBSITE -->
+  <section class="paket">
+    <h2>Paket Demo Website</h2>
+    <p>Contoh paket pembuatan website e-learning seperti halaman ini. Pilih paket yang sesuai dengan kebutuhan Anda.</p>
+    <div class="paket-grid">
+      <div class="paket-tier">
+        <h3>Demo</h3>
+        <div class="tier-price">$29</div>
+        <ul>
+          <li>1 halaman e-learning</li>
+          <li>Desain responsif HP dan laptop</li>
+          <li>Daftar kursus contoh</li>
+          <li>Pengerjaan 7 hari kalender</li>
+        </ul>
+      </div>
+      <div class="paket-tier">
+        <h3>Standar</h3>
+        <div class="tier-price">$49</div>
+        <ul>
+          <li>Semua isi paket Demo</li>
+          <li>Sampai 5 halaman</li>
+          <li>Saringan kursus per kategori</li>
+          <li>Formulir pendaftaran</li>
+          <li>Pengerjaan 7 hari kalender</li>
+        </ul>
+      </div>
+      <div class="paket-tier">
+        <h3>Pro</h3>
+        <div class="tier-price">$79</div>
+        <ul>
+          <li>Semua isi paket Standar</li>
+          <li>Sampai 10 halaman</li>
+          <li>Halaman mentor dan FAQ</li>
+          <li>Revisi 1x kecil</li>
+          <li>Pengerjaan 7 hari kalender</li>
+        </ul>
+      </div>
+    </div>
+    <p class="paket-note">Harga paket demo website — pesan via email.</p>
+  </section>
+
+  <!-- CTA AKHIR -->
+  <section class="cta-final">
+    <h2>Siap mulai belajar?</h2>
+    <p>Pilih kursus di atas, buat akun lewat formulir pendaftaran, dan mulai belajar dari pelajaran pertama hari ini.</p>
+    <a class="btn btn-accent btn-big" href="#kursus">Mulai Belajar</a>
+  </section>
+
+</main>
+
+<footer>
+  KelasKita — Belajar Online dari Mana Saja. Email contoh: <a href="mailto:halo@kelaskita.contoh">halo@kelaskita.contoh</a>
+  <p class="disclaimer">Halaman ini adalah contoh demo website. Semua nama, harga, dan konten di dalamnya hanya ilustrasi.</p>
+</footer>
+
+<script>
+  (function () {
+    // Saringan kursus berdasarkan kategori
+    var buttons = document.querySelectorAll('.filter-btn');
+    var courses = document.querySelectorAll('.course');
+    var emptyMsg = document.getElementById('filterEmpty');
+
+    function applyFilter(category) {
+      var visible = 0;
+      courses.forEach(function (card) {
+        var show = category === 'semua' || card.getAttribute('data-category') === category;
+        card.classList.toggle('hidden', !show);
+        if (show) visible++;
+      });
+      if (emptyMsg) { emptyMsg.style.display = visible === 0 ? 'block' : 'none'; }
+    }
+
+    buttons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        buttons.forEach(function (b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        applyFilter(btn.getAttribute('data-filter'));
+      });
+    });
+
+    // Formulir pendaftaran (mockup)
+    var form = document.getElementById('registerForm');
+    var note = document.getElementById('registerNote');
+    if (form) {
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (note) { note.style.display = 'block'; }
+        form.reset();
+      });
+    }
+  })();
+</script>
+</body>
+</html>

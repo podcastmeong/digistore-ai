@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PasarKita — Marketplace Produk Lokal | Contoh Demo</title>
+<meta name="description" content="Contoh demo marketplace produk lokal PasarKita. Halaman contoh, bukan situs nyata.">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: #f7f9fc;
+    color: #14263d;
+    line-height: 1.6;
+  }
+  a { color: inherit; }
+  .demo-banner {
+    background: #14263d;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  .demo-banner span {
+    background: #8fb4d9;
+    color: #14263d;
+    padding: 2px 10px;
+    border-radius: 999px;
+    margin-left: 6px;
+    font-size: 12px;
+    letter-spacing: 0;
+  }
+  .demo-banner small {
+    display: block;
+    font-weight: 400;
+    font-size: 12px;
+    color: #c8d6e5;
+    letter-spacing: 0;
+    margin-top: 2px;
+  }
+  header {
+    max-width: 1020px;
+    margin: 0 auto;
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .brand { display: flex; align-items: center; gap: 12px; font-weight: 800; font-size: 22px; }
+  .brand-mark {
+    width: 44px; height: 44px; border-radius: 12px;
+    background: #8fb4d9; display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .brand small { display: block; font-size: 12px; font-weight: 600; color: #4a6178; letter-spacing: .4px; }
+  nav.main-nav { display: flex; gap: 20px; flex-wrap: wrap; }
+  nav.main-nav a {
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    color: #42586e;
+  }
+  nav.main-nav a:hover { color: #14263d; }
+  .btn {
+    display: inline-block;
+    background: #14263d;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 700;
+    padding: 13px 24px;
+    border-radius: 999px;
+    border: 2px solid #14263d;
+    cursor: pointer;
+    font-size: 15px;
+  }
+  .btn-accent {
+    background: #8fb4d9;
+    color: #14263d;
+    border-color: #8fb4d9;
+  }
+  .btn-outline {
+    background: transparent;
+    color: #14263d;
+  }
+  main { max-width: 1020px; margin: 0 auto; padding: 0 20px 40px; }
+  .hero {
+    background: #ffffff;
+    border: 1px solid #dbe6f2;
+    border-radius: 24px;
+    padding: 36px 32px;
+    display: grid;
+    grid-template-columns: 1.15fr .85fr;
+    gap: 28px;
+    align-items: center;
+    box-shadow: 0 10px 30px rgba(20, 38, 61, .07);
+  }
+  .hero h1 { font-size: 40px; line-height: 1.15; margin: 12px 0 14px; }
+  .hero h1 em { font-style: normal; color: #2f6da3; }
+  .eyebrow {
+    display: inline-block; font-size: 13px; font-weight: 700; letter-spacing: .6px;
+    background: #e8f0f8; color: #14263d; padding: 6px 12px; border-radius: 999px;
+  }
+  .hero p { color: #42586e; font-size: 17px; margin-bottom: 18px; }
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .hero-note { font-size: 13px; color: #6b7f94; margin-top: 14px; }
+  .hero-art {
+    background: #fdf6ec;
+    border-radius: 18px;
+    padding: 22px;
+    text-align: center;
+  }
+  .hero-art svg { width: 100%; max-width: 320px; height: auto; }
+  .hero-art p { font-size: 14px; color: #42586e; margin-top: 8px; }
+  section { margin-top: 36px; }
+  .card {
+    background: #ffffff;
+    border: 1px solid #dbe6f2;
+    border-radius: 20px;
+    padding: 28px;
+    box-shadow: 0 6px 20px rgba(20, 38, 61, .05);
+  }
+  h2 { font-size: 26px; line-height: 1.3; margin-bottom: 10px; }
+  .section-sub { color: #42586e; margin-bottom: 20px; max-width: 680px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .reason {
+    background: #f7f9fc;
+    border: 1px solid #dbe6f2;
+    border-radius: 16px;
+    padding: 20px;
+  }
+  .reason-number {
+    width: 38px; height: 38px; border-radius: 50%;
+    background: #14263d; color: #8fb4d9;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; margin-bottom: 12px;
+  }
+  .reason h3 { font-size: 18px; margin-bottom: 6px; }
+  .reason p { color: #42586e; font-size: 15px; }
+  .category {
+    background: #f7f9fc;
+    border: 1px solid #dbe6f2;
+    border-radius: 16px;
+    padding: 20px;
+    text-align: center;
+  }
+  .category .cat-icon {
+    width: 52px; height: 52px; border-radius: 14px;
+    background: #8fb4d9; color: #14263d;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 10px; font-weight: 800; font-size: 22px;
+  }
+  .category h3 { font-size: 17px; margin-bottom: 4px; }
+  .category p { color: #42586e; font-size: 14px; }
+  .shop-card {
+    background: #f7f9fc;
+    border: 1px solid #dbe6f2;
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  .shop-logo {
+    width: 56px; height: 56px; border-radius: 50%;
+    background: #14263d; color: #8fb4d9;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 20px; margin-bottom: 12px;
+  }
+  .shop-card h3 { font-size: 18px; margin-bottom: 4px; }
+  .shop-card p { color: #42586e; font-size: 14px; flex-grow: 1; }
+  .shop-card .meta { font-size: 13px; color: #6b7f94; margin-top: 10px; }
+  .shop-card a.visit {
+    font-weight: 700; color: #2f6da3; text-decoration: none;
+    margin-top: 10px; font-size: 14px;
+  }
+  .product {
+    background: #f7f9fc;
+    border: 1px solid #dbe6f2;
+    border-radius: 16px;
+    padding: 0 0 18px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .product-thumb {
+    background: #e8f0f8;
+    height: 130px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 44px; color: #2f6da3; font-weight: 800;
+  }
+  .product-body { padding: 16px 18px 0; display: flex; flex-direction: column; flex-grow: 1; }
+  .product .tag {
+    display: inline-block; align-self: flex-start;
+    font-size: 12px; font-weight: 700; letter-spacing: .5px;
+    background: #e8f0f8; color: #14263d;
+    padding: 4px 10px; border-radius: 999px; margin-bottom: 8px;
+  }
+  .product h3 { font-size: 17px; margin-bottom: 4px; line-height: 1.4; }
+  .product .shop { font-size: 13px; color: #6b7f94; margin-bottom: 8px; }
+  .product .price { font-weight: 800; font-size: 18px; color: #14263d; }
+  .product .stock { font-size: 13px; color: #42586e; margin-top: 2px; }
+  .product .btn { margin-top: 12px; text-align: center; padding: 10px 18px; font-size: 14px; }
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .step {
+    background: #f7f9fc; border: 1px solid #dbe6f2;
+    border-radius: 16px; padding: 20px;
+  }
+  .step b { display: block; font-size: 18px; margin-bottom: 6px; }
+  .step p { color: #42586e; font-size: 15px; }
+  .check-list { list-style: none; }
+  .check-list li { padding: 10px 0 10px 34px; position: relative; border-bottom: 1px solid #eef3f8; }
+  .check-list li:last-child { border-bottom: none; }
+  .check-list li::before {
+    content: "✓"; position: absolute; left: 0; top: 10px;
+    width: 24px; height: 24px; border-radius: 50%;
+    background: #8fb4d9; color: #14263d;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 14px;
+  }
+  .check-list small { display: block; color: #6b7f94; font-size: 13px; }
+  .demo-form label { display: block; font-weight: 700; font-size: 14px; margin: 12px 0 5px; }
+  .demo-form input, .demo-form textarea, .demo-form select {
+    width: 100%; padding: 11px 13px;
+    border: 1.5px solid #dbe6f2; border-radius: 10px;
+    background: #f7f9fc; color: #14263d;
+    font: inherit; font-size: 15px;
+  }
+  .demo-form textarea { min-height: 100px; resize: vertical; }
+  .form-note {
+    display: none;
+    margin-top: 14px; padding: 12px 14px;
+    background: #e8f0f8; border: 1px solid #8fb4d9;
+    border-radius: 10px; color: #14263d; font-size: 14px; font-weight: 600;
+  }
+  .search-row { display: flex; gap: 10px; flex-wrap: wrap; }
+  .search-row input { flex: 1; min-width: 200px; }
+  .paket {
+    background: #14263d;
+    color: #ffffff;
+    border-radius: 20px;
+    padding: 28px;
+    text-align: center;
+  }
+  .paket h2 { color: #ffffff; }
+  .paket > p { color: #c8d6e5; max-width: 620px; margin: 0 auto 22px; }
+  .paket-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; text-align: left; }
+  .paket-tier {
+    background: #ffffff; color: #14263d;
+    border-radius: 16px; padding: 22px;
+  }
+  .paket-tier h3 { font-size: 18px; margin-bottom: 4px; }
+  .paket-tier .tier-price { font-size: 30px; font-weight: 800; margin: 8px 0 12px; }
+  .paket-tier ul { list-style: none; }
+  .paket-tier li { padding: 6px 0 6px 24px; position: relative; color: #42586e; font-size: 14px; }
+  .paket-tier li::before {
+    content: "✓"; position: absolute; left: 0; top: 6px;
+    color: #2f6da3; font-weight: 800;
+  }
+  .paket-note { font-size: 13px; color: #c8d6e5; margin-top: 18px; }
+  .cta-final { text-align: center; padding: 32px 20px; }
+  .cta-final h2 { font-size: 28px; }
+  .cta-final p { color: #42586e; margin: 8px auto 20px; max-width: 560px; }
+  .btn-big { font-size: 18px; padding: 16px 32px; }
+  footer {
+    background: #14263d; color: #c8d6e5;
+    text-align: center; padding: 26px 20px; font-size: 14px;
+  }
+  footer a { color: #8fb4d9; font-weight: 700; text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  footer .disclaimer { margin-top: 10px; font-size: 13px; color: #9db1c6; }
+  @media (max-width: 760px) {
+    .hero { grid-template-columns: 1fr; padding: 26px 22px; }
+    .hero h1 { font-size: 31px; }
+    .grid-3, .grid-4, .steps, .paket-grid { grid-template-columns: 1fr; }
+    header { justify-content: center; text-align: center; }
+    .brand { justify-content: center; }
+    nav.main-nav { justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="demo-banner">CONTOH DEMO — Marketplace <span>Ini hanya contoh demo</span><small>Halaman contoh, bukan situs nyata</small></div>
+
+<header>
+  <div class="brand">
+    <span class="brand-mark" aria-hidden="true">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 8.5 5.5 4h13L20 8.5V20a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 20V8.5Z" fill="#14263d"/><path d="M8.5 10V6.5a3.5 3.5 0 0 1 7 0V10" stroke="#8fb4d9" stroke-width="1.8" fill="none" stroke-linecap="round"/></svg>
+    </span>
+    <span>PasarKita<small>MARKETPLACE PRODUK LOKAL</small></span>
+  </div>
+  <nav class="main-nav" aria-label="Navigasi utama">
+    <a href="#kategori">Kategori</a>
+    <a href="#toko">Toko</a>
+    <a href="#produk">Produk</a>
+    <a href="#jual">Cara Berjualan</a>
+  </nav>
+  <a class="btn btn-outline" href="#jual">Buka Toko</a>
+</header>
+
+<main>
+
+  <!-- HERO + PENCARIAN -->
+  <div class="hero">
+    <div>
+      <span class="eyebrow">MARKETPLACE • PRODUK LOKAL</span>
+      <h1>Belanja produk lokal, <em>langsung dari pembuatnya.</em></h1>
+      <p>PasarKita mempertemukan pembeli dengan penjual produk lokal: makanan, kerajinan, dan kebutuhan rumah tangga. Setiap toko dikelola sendiri oleh pemiliknya.</p>
+      <form class="demo-form" id="searchForm" action="#" method="get">
+        <div class="search-row">
+          <input type="search" id="cari" name="cari" placeholder="Cari produk, contoh: kopi, batik, madu..." aria-label="Cari produk">
+          <button class="btn btn-accent" type="submit">Cari</button>
+        </div>
+        <p class="form-note" id="searchNote">Ini demo — data tidak dikirim ke mana pun.</p>
+      </form>
+      <p class="hero-note">Contoh demo marketplace — semua nama toko, produk, dan harga di halaman ini hanya ilustrasi.</p>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <svg viewBox="0 0 320 190" xmlns="http://www.w3.org/2000/svg">
+        <rect x="10" y="10" width="300" height="170" rx="16" fill="#ffffff"/>
+        <path d="M40 120h240l-14-46H54l-14 46Z" fill="#8fb4d9"/>
+        <path d="M54 74h212l-8-24H62l-8 24Z" fill="#14263d"/>
+        <rect x="60" y="132" width="34" height="34" rx="8" fill="#e8f0f8"/>
+        <rect x="104" y="132" width="34" height="34" rx="8" fill="#e8f0f8"/>
+        <rect x="148" y="132" width="34" height="34" rx="8" fill="#e8f0f8"/>
+        <rect x="192" y="132" width="34" height="34" rx="8" fill="#e8f0f8"/>
+        <rect x="236" y="132" width="34" height="34" rx="8" fill="#e8f0f8"/>
+      </svg>
+      <p>Ilustrasi toko — gambar contoh, bukan foto asli.</p>
+    </div>
+  </div>
+
+  <!-- KATEGORI -->
+  <section class="card" id="kategori">
+    <h2>Kategori Produk</h2>
+    <p class="section-sub">Jelajahi produk berdasarkan kategori. Kategori di bawah ini adalah contoh untuk keperluan demo.</p>
+    <div class="grid-4">
+      <div class="category">
+        <div class="cat-icon">☕</div>
+        <h3>Makanan &amp; Minuman</h3>
+        <p>Kopi, teh, madu, dan camilan dari produsen lokal.</p>
+      </div>
+      <div class="category">
+        <div class="cat-icon">🧵</div>
+        <h3>Kerajinan &amp; Batik</h3>
+        <p>Batik, tenun, dan kerajinan tangan dari perajin daerah.</p>
+      </div>
+      <div class="category">
+        <div class="cat-icon">🏠</div>
+        <h3>Rumah Tangga</h3>
+        <p>Peralatan dapur, anyaman bambu, dan perlengkapan rumah.</p>
+      </div>
+      <div class="category">
+        <div class="cat-icon">🌿</div>
+        <h3>Herbal &amp; Perawatan</h3>
+        <p>Minyak herbal, sabun alami, dan produk perawatan rumahan.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOKO PILIHAN -->
+  <section class="card" id="toko">
+    <h2>Toko Pilihan</h2>
+    <p class="section-sub">Empat toko contoh yang menjual produk lokal. Semua nama toko di bawah ini fiktif dan hanya untuk keperluan demo.</p>
+    <div class="grid-4">
+      <div class="shop-card">
+        <div class="shop-logo">KS</div>
+        <h3>Kopi Senja</h3>
+        <p>Kopi bubuk dan biji kopi dari petani di dataran tinggi. Disangrai dalam jumlah kecil setiap minggu.</p>
+        <p class="meta">Makanan &amp; Minuman • Sejak 2021</p>
+        <a class="visit" href="#produk">Lihat produk →</a>
+      </div>
+      <div class="shop-card">
+        <div class="shop-logo">BL</div>
+        <h3>Batik Larasati</h3>
+        <p>Kain batik tulis dan batik cap dengan motif daerah. Dikerjakan oleh perajin batik setempat.</p>
+        <p class="meta">Kerajinan &amp; Batik • Sejak 2019</p>
+        <a class="visit" href="#produk">Lihat produk →</a>
+      </div>
+      <div class="shop-card">
+        <div class="shop-logo">KA</div>
+        <h3>Kerajinan Bambu Asri</h3>
+        <p>Anyaman bambu untuk kebutuhan rumah: keranjang, tempat tisu, dan wadah penyimpanan.</p>
+        <p class="meta">Rumah Tangga • Sejak 2020</p>
+        <a class="visit" href="#produk">Lihat produk →</a>
+      </div>
+      <div class="shop-card">
+        <div class="shop-logo">MH</div>
+        <h3>Madu Hutan Lestari</h3>
+        <p>Madu hutan dan produk turunan lebah yang dipanen dari hutan sekitar desa.</p>
+        <p class="meta">Herbal &amp; Perawatan • Sejak 2022</p>
+        <a class="visit" href="#produk">Lihat produk →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUK -->
+  <section class="card" id="produk">
+    <h2>Produk Contoh</h2>
+    <p class="section-sub">Delapan produk contoh dengan harga ilustratif. Harga di bawah ini hanya contoh untuk keperluan demo, bukan harga jual nyata.</p>
+    <div class="grid-4">
+      <div class="product">
+        <div class="product-thumb">☕</div>
+        <div class="product-body">
+          <span class="tag">MAKANAN &amp; MINUMAN</span>
+          <h3>Kopi Robusta Bubuk 250 gram</h3>
+          <p class="shop">Kopi Senja</p>
+          <span class="price">Rp35.000</span>
+          <span class="stock">Stok contoh: 20 kemasan</span>
+          <a class="btn btn-accent" href="#produk">Lihat Detail</a>
+        </div>
+      </div>
+      <div class="product">
+        <div class="product-thumb">🍯</div>
+        <div class="product-body">
+          <span class="tag">HERBAL &amp; PERAWATAN</span>
+          <h3>Madu Hutan Murni 500 ml</h3>
+          <p class="shop">Madu Hutan Lestari</p>
+          <span class="price">Rp120.000</span>
+          <span class="stock">Stok contoh: 12 botol</span>
+          <a class="btn btn-accent" href="#produk">Lihat Detail</a>
+        </div>
+      </div>
+      <div class="product">
+        <div class="product-thumb">🧵</div>
+        <div class="product-body">
+          <span class="tag">KERAJINAN &amp; BATIK</span>
+          <h3>Kain Batik Cap Motif Daun</h3>
+          <p class="shop">Batik Larasati</p>
+          <span class="price">Rp180.000</span>
+          <span class="stock">Stok contoh: 8 lembar</span>
+          <a class="btn btn-accent" href="#produk">Lihat Detail</a>
+        </div>
+      </div>
+      <div class="product">
+        <div class="product-thumb">🧺</div>
+        <div class="product-body">
+          <span class="tag">RUMAH TANGGA</span>
+          <h3>Keranjang Anyaman Bambu</h3>
+          <p class="shop">Kerajinan Bambu Asri</p>
+          <span class="price">Rp45.000</span>
+          <span class="stock">Stok contoh: 15 buah</span>
+          <a class="btn btn-accent" href="#produk">Lihat Detail</a>
+        </div>
+      </div>
+      <div class="product">
+        <div class="product-thumb">🍵</div>
+        <div class="product-body">
+          <span class="tag">MAKANAN &amp; MINUMAN</span>
+          <h3>Teh Daun Kelor 100 gram</h3>
+          <p class="shop">Madu Hutan Lestari</p>
+          <span class="price">Rp28.000</span>
+          <span class="stock">Stok contoh: 25 kemasan</span>
+          <a class="btn btn-accent" href="#produk">Lihat Detail</a>
+        </div>
+      </div>
+      <div class="product">
+        <div class="product-thumb">👕</div>
+        <div class="product-body">
+          <span class="tag">KERAJINAN &amp; BATIK</span>
+          <h3>Kemeja Batik Lengan Panjang</h3>
+          <p class="shop">Batik Larasati</p>
+          <span class="price">Rp220.000</span>
+          <span class="stock">Stok contoh: 6 buah</span>
+          <a class="btn btn-accent" href="#produk">Lihat Detail</a>
+        </div>
+      </div>
+      <div class="product">
+        <div class="product-thumb">🧴</div>
+        <div class="product-body">
+          <span class="tag">HERBAL &amp; PERAWATAN</span>
+          <h3>Minyak Herbal Pijat 100 ml</h3>
+          <p class="shop">Madu Hutan Lestari</p>
+          <span class="price">Rp55.000</span>
+          <span class="stock">Stok contoh: 18 botol</span>
+          <a class="btn btn-accent" href="#produk">Lihat Detail</a>
+        </div>
+      </div>
+      <div class="product">
+        <div class="product-thumb">🪑</div>
+        <div class="product-body">
+          <span class="tag">RUMAH TANGGA</span>
+          <h3>Tempat Tisu Anyaman Bambu</h3>
+          <p class="shop">Kerajinan Bambu Asri</p>
+          <span class="price">Rp30.000</span>
+          <span class="stock">Stok contoh: 22 buah</span>
+          <a class="btn btn-accent" href="#produk">Lihat Detail</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CARA BERJUALAN -->
+  <section class="card" id="jual">
+    <h2>Cara Berjualan di PasarKita</h2>
+    <p class="section-sub">Tiga langkah untuk mulai berjualan. Langkah-langkah ini adalah contoh isi demo.</p>
+    <div class="steps">
+      <div class="step"><b>1. Daftarkan toko Anda</b><p>Isi nama toko, alamat, dan nomor kontak. Pendaftaran toko dalam contoh demo ini tidak dipungut biaya.</p></div>
+      <div class="step"><b>2. Unggah produk</b><p>Foto produk, tulis deskripsi yang jelas, dan cantumkan harga serta stok. Produk tampil setelah diperiksa oleh pengelola.</p></div>
+      <div class="step"><b>3. Layani pembeli</b><p>Balas pesan pembeli, kemas pesanan dengan rapi, dan kirim sesuai jadwal yang disepakati.</p></div>
+    </div>
+  </section>
+
+  <!-- KETENTUAN PENJUAL -->
+  <section class="card">
+    <h2>Ketentuan untuk penjual</h2>
+    <p class="section-sub">Hal-hal yang perlu diperhatikan sebelum membuka toko di PasarKita.</p>
+    <ul class="check-list">
+      <li><strong>Deskripsi produk harus jujur.</strong><small>Tulis kondisi, ukuran, dan bahan produk apa adanya.</small></li>
+      <li><strong>Foto produk harus foto sendiri.</strong><small>Jangan memakai foto milik toko lain.</small></li>
+      <li><strong>Harga dicantumkan dengan jelas.</strong><small>Harga sudah termasuk kemasan, belum termasuk ongkos kirim.</small></li>
+      <li><strong>Pesanan dikirim sesuai janji.</strong><small>Bila ada keterlambatan, beri tahu pembeli secepatnya.</small></li>
+    </ul>
+  </section>
+
+  <!-- FORMULIR BUKA TOKO -->
+  <section class="card">
+    <h2>Formulir Buka Toko</h2>
+    <p class="section-sub">Tertarik membuka toko? Isi formulir contoh di bawah ini. Formulir ini hanya contoh demo — data tidak dikirim ke mana pun.</p>
+    <form class="demo-form" id="sellerForm" action="#" method="post">
+      <label for="namaToko">Nama toko</label>
+      <input type="text" id="namaToko" name="namaToko" placeholder="Contoh: Toko Kopi Senja" required>
+      <label for="emailToko">Email</label>
+      <input type="email" id="emailToko" name="emailToko" placeholder="nama@email.com" required>
+      <label for="kategoriToko">Kategori utama</label>
+      <select id="kategoriToko" name="kategoriToko">
+        <option>Makanan &amp; Minuman</option>
+        <option>Kerajinan &amp; Batik</option>
+        <option>Rumah Tangga</option>
+        <option>Herbal &amp; Perawatan</option>
+      </select>
+      <label for="ceritaToko">Ceritakan produk Anda</label>
+      <textarea id="ceritaToko" name="ceritaToko" placeholder="Produk apa yang Anda jual? Dari mana bahan bakunya?"></textarea>
+      <div style="margin-top:16px;">
+        <button class="btn btn-accent" type="submit">Kirim Pendaftaran</button>
+      </div>
+      <p class="form-note" id="sellerNote">Ini demo — data tidak dikirim ke mana pun.</p>
+    </form>
+  </section>
+
+  <!-- PAKET DEMO WEBSITE -->
+  <section class="paket">
+    <h2>Paket Demo Website</h2>
+    <p>Contoh paket pembuatan website marketplace seperti halaman ini. Pilih paket yang sesuai dengan kebutuhan Anda.</p>
+    <div class="paket-grid">
+      <div class="paket-tier">
+        <h3>Demo</h3>
+        <div class="tier-price">$29</div>
+        <ul>
+          <li>1 halaman marketplace</li>
+          <li>Desain responsif HP dan laptop</li>
+          <li>Katalog produk contoh</li>
+          <li>Pengerjaan 7 hari kalender</li>
+        </ul>
+      </div>
+      <div class="paket-tier">
+        <h3>Standar</h3>
+        <div class="tier-price">$49</div>
+        <ul>
+          <li>Semua isi paket Demo</li>
+          <li>Sampai 5 halaman</li>
+          <li>Halaman kategori dan toko</li>
+          <li>Formulir buka toko</li>
+          <li>Pengerjaan 7 hari kalender</li>
+        </ul>
+      </div>
+      <div class="paket-tier">
+        <h3>Pro</h3>
+        <div class="tier-price">$79</div>
+        <ul>
+          <li>Semua isi paket Standar</li>
+          <li>Sampai 10 halaman</li>
+          <li>Halaman detail produk</li>
+          <li>Revisi 1x kecil</li>
+          <li>Pengerjaan 7 hari kalender</li>
+        </ul>
+      </div>
+    </div>
+    <p class="paket-note">Harga paket demo website — pesan via email.</p>
+  </section>
+
+  <!-- CTA AKHIR -->
+  <section class="cta-final">
+    <h2>Punya produk lokal untuk dijual?</h2>
+    <p>Daftarkan toko Anda lewat formulir di atas dan mulai perkenalkan produk Anda kepada pembeli.</p>
+    <a class="btn btn-accent btn-big" href="#jual">Buka Toko Sekarang</a>
+  </section>
+
+</main>
+
+<footer>
+  PasarKita — Marketplace Produk Lokal. Email contoh: <a href="mailto:halo@pasarkita.contoh">halo@pasarkita.contoh</a>
+  <p class="disclaimer">Halaman ini adalah contoh demo website. Semua nama, harga, dan konten di dalamnya hanya ilustrasi.</p>
+</footer>
+
+<script>
+  (function () {
+    function mockForm(formId, noteId) {
+      var form = document.getElementById(formId);
+      var note = document.getElementById(noteId);
+      if (!form) return;
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (note) { note.style.display = 'block'; }
+        form.reset();
+      });
+    }
+    mockForm('searchForm', 'searchNote');
+    mockForm('sellerForm', 'sellerNote');
+  })();
+</script>
+</body>
+</html>

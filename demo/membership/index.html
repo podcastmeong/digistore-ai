@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Klub Baca Pelita — Komunitas Membaca | Contoh Demo</title>
+<meta name="description" content="Contoh demo website membership Klub Baca Pelita. Keuntungan member, paket membership contoh, kegiatan, dan form daftar.">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: #f7f9fc;
+    color: #14263d;
+    line-height: 1.6;
+  }
+  a { color: inherit; }
+  .demo-banner {
+    background: #14263d;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  .demo-banner span {
+    background: #8fb4d9;
+    color: #14263d;
+    padding: 2px 10px;
+    border-radius: 999px;
+    margin-left: 6px;
+    font-size: 12px;
+    letter-spacing: 0;
+  }
+  header {
+    max-width: 1020px;
+    margin: 0 auto;
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .brand { display: flex; align-items: center; gap: 12px; font-weight: 800; font-size: 22px; }
+  .brand-mark {
+    width: 44px; height: 44px; border-radius: 12px;
+    background: #8fb4d9; display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .brand small { display: block; font-size: 12px; font-weight: 600; color: #4a6178; letter-spacing: .4px; }
+  nav.main-nav { display: flex; gap: 18px; flex-wrap: wrap; }
+  nav.main-nav a {
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 15px;
+    color: #14263d;
+  }
+  nav.main-nav a:hover { color: #2f6da3; text-decoration: underline; }
+  .btn {
+    display: inline-block;
+    background: #14263d;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 700;
+    padding: 13px 24px;
+    border-radius: 999px;
+    border: 2px solid #14263d;
+  }
+  .btn-soft {
+    background: #8fb4d9;
+    color: #14263d;
+    border-color: #8fb4d9;
+  }
+  .btn-outline {
+    background: transparent;
+    color: #14263d;
+  }
+  main { max-width: 1020px; margin: 0 auto; padding: 0 20px 40px; }
+  .hero {
+    background: #ffffff;
+    border: 1px solid #dbe6f2;
+    border-radius: 24px;
+    padding: 36px 32px;
+    display: grid;
+    grid-template-columns: 1.15fr .85fr;
+    gap: 28px;
+    align-items: center;
+    box-shadow: 0 10px 30px rgba(20, 38, 61, .07);
+  }
+  .hero h1 { font-size: 40px; line-height: 1.15; margin: 12px 0 14px; }
+  .hero h1 em { font-style: normal; color: #2f6da3; }
+  .eyebrow {
+    display: inline-block; font-size: 13px; font-weight: 700; letter-spacing: .6px;
+    background: #e8f0f8; color: #14263d; padding: 6px 12px; border-radius: 999px;
+  }
+  .hero p { color: #42586e; font-size: 17px; margin-bottom: 18px; }
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .hero-note { font-size: 13px; color: #6b7f94; margin-top: 14px; }
+  .hero-art {
+    background: #e8f0f8;
+    border-radius: 18px;
+    padding: 22px;
+    text-align: center;
+  }
+  .hero-art svg { width: 100%; max-width: 320px; height: auto; }
+  .hero-art p { font-size: 14px; color: #42586e; margin-top: 8px; }
+  section { margin-top: 36px; }
+  .card {
+    background: #ffffff;
+    border: 1px solid #dbe6f2;
+    border-radius: 20px;
+    padding: 28px;
+    box-shadow: 0 6px 20px rgba(20, 38, 61, .05);
+  }
+  h2 { font-size: 26px; line-height: 1.3; margin-bottom: 10px; }
+  .section-sub { color: #42586e; margin-bottom: 20px; max-width: 680px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .benefit {
+    background: #f7f9fc;
+    border: 1px solid #dbe6f2;
+    border-radius: 16px;
+    padding: 20px;
+  }
+  .benefit-number {
+    width: 38px; height: 38px; border-radius: 50%;
+    background: #14263d; color: #8fb4d9;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; margin-bottom: 12px;
+  }
+  .benefit h3 { font-size: 18px; margin-bottom: 6px; }
+  .benefit p { color: #42586e; font-size: 15px; }
+  .plan {
+    background: #f7f9fc;
+    border: 1px solid #dbe6f2;
+    border-radius: 16px;
+    padding: 22px 20px;
+    text-align: center;
+  }
+  .plan.featured { border: 2px solid #8fb4d9; background: #ffffff; }
+  .plan h3 { font-size: 19px; margin-bottom: 4px; }
+  .plan .plan-price { font-size: 32px; font-weight: 800; margin: 8px 0 2px; }
+  .plan .plan-period { font-size: 13px; color: #6b7f94; }
+  .plan ul { list-style: none; margin-top: 14px; text-align: left; }
+  .plan ul li { padding: 8px 0 8px 30px; position: relative; color: #42586e; font-size: 15px; border-bottom: 1px solid #eef3f8; }
+  .plan ul li:last-child { border-bottom: none; }
+  .plan ul li::before {
+    content: "✓"; position: absolute; left: 0; top: 8px;
+    width: 22px; height: 22px; border-radius: 50%;
+    background: #8fb4d9; color: #14263d;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 13px;
+  }
+  .plan .contoh-label { display: block; font-size: 12px; color: #6b7f94; margin-top: 10px; }
+  .plan .btn { margin-top: 16px; }
+  .activity {
+    background: #f7f9fc;
+    border: 1px solid #dbe6f2;
+    border-radius: 16px;
+    padding: 20px;
+  }
+  .activity-date {
+    display: inline-block; font-size: 13px; font-weight: 800;
+    background: #e8f0f8; color: #14263d;
+    padding: 5px 12px; border-radius: 999px; margin-bottom: 10px;
+  }
+  .activity h3 { font-size: 18px; margin-bottom: 6px; }
+  .activity p { color: #42586e; font-size: 15px; }
+  .activity .meta { font-size: 13px; color: #6b7f94; margin-top: 10px; font-weight: 700; }
+  .book-row { display: flex; gap: 14px; align-items: flex-start; }
+  .book-cover {
+    width: 64px; height: 88px; border-radius: 8px;
+    background: #8fb4d9; color: #14263d;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 12px; text-align: center;
+    flex-shrink: 0; padding: 6px;
+  }
+  .book-cover.alt { background: #e8f0f8; }
+  .book-info h3 { font-size: 17px; margin-bottom: 4px; }
+  .book-info p { color: #42586e; font-size: 14px; }
+  .book-list { list-style: none; }
+  .book-list li { padding: 14px 2px; border-bottom: 1px solid #e3ebf3; }
+  .book-list li:last-child { border-bottom: none; }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form-field { margin-bottom: 16px; }
+  .form-field label { display: block; font-weight: 700; font-size: 14px; margin-bottom: 6px; }
+  .form-field input,
+  .form-field select,
+  .form-field textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1.5px solid #dbe6f2;
+    border-radius: 12px;
+    background: #f7f9fc;
+    color: #14263d;
+    font: inherit;
+    font-size: 15px;
+  }
+  .form-field.full { grid-column: 1 / -1; }
+  .form-note { font-size: 13px; color: #6b7f94; margin-top: 12px; }
+  .form-msg {
+    display: none;
+    background: #e8f0f8;
+    border: 1px solid #8fb4d9;
+    color: #14263d;
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-top: 16px;
+    font-weight: 700;
+  }
+  .form-msg.show { display: block; }
+  .highlight-box {
+    background: #fdf6ec;
+    border: 1px solid #dbe6f2;
+    border-radius: 16px;
+    padding: 20px;
+  }
+  .highlight-box h3 { font-size: 18px; margin-bottom: 6px; }
+  .highlight-box p { color: #42586e; font-size: 15px; }
+  .check-list { list-style: none; }
+  .check-list li { padding: 10px 0 10px 34px; position: relative; border-bottom: 1px solid #eef3f8; }
+  .check-list li:last-child { border-bottom: none; }
+  .check-list li::before {
+    content: "✓"; position: absolute; left: 0; top: 10px;
+    width: 24px; height: 24px; border-radius: 50%;
+    background: #8fb4d9; color: #14263d;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 14px;
+  }
+  .check-list small { display: block; color: #6b7f94; font-size: 13px; }
+  .website-price {
+    background: #14263d;
+    color: #ffffff;
+    border-radius: 20px;
+    padding: 28px;
+    text-align: center;
+  }
+  .website-price h2 { color: #ffffff; }
+  .website-price p { color: #c8d6e5; max-width: 620px; margin: 0 auto 18px; }
+  .price-tiers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 0 auto 20px; max-width: 760px; }
+  .price-tier {
+    background: #ffffff; color: #14263d;
+    border-radius: 16px; padding: 22px 18px;
+    text-align: center;
+  }
+  .price-tier h3 { font-size: 18px; margin-bottom: 4px; }
+  .price-tier .tier-price { font-size: 30px; font-weight: 800; margin: 8px 0; }
+  .price-tier p { color: #42586e; font-size: 14px; margin: 0; }
+  .price-tier.featured { outline: 3px solid #8fb4d9; }
+  .price-note { font-size: 13px; color: #c8d6e5; margin-top: 14px; }
+  .cta-final { text-align: center; padding: 32px 20px; }
+  .cta-final h2 { font-size: 28px; }
+  .cta-final p { color: #42586e; margin: 8px auto 20px; max-width: 560px; }
+  .btn-big { font-size: 18px; padding: 16px 32px; }
+  footer {
+    background: #14263d; color: #c8d6e5;
+    text-align: center; padding: 26px 20px; font-size: 14px;
+  }
+  footer a { color: #8fb4d9; font-weight: 700; text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  footer .disclaimer { margin-top: 10px; font-size: 13px; color: #a9bdd2; }
+  @media (max-width: 760px) {
+    .hero { grid-template-columns: 1fr; padding: 26px 22px; }
+    .hero h1 { font-size: 31px; }
+    .grid-3, .grid-2, .price-tiers { grid-template-columns: 1fr; }
+    .form-grid { grid-template-columns: 1fr; }
+    header { justify-content: center; text-align: center; }
+    .brand { justify-content: center; }
+    nav.main-nav { justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="demo-banner">CONTOH DEMO — Membership <span>Halaman contoh, bukan situs nyata</span></div>
+
+<header>
+  <div class="brand">
+    <span class="brand-mark" aria-hidden="true">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v17.5H6.5A2.5 2.5 0 0 0 4 22V4.5Z" fill="#14263d"/><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20v2.5H6.5A2.5 2.5 0 0 0 4 22v-2.5Z" fill="#14263d"/><path d="M8 7h8M8 10.5h8M8 14h5" stroke="#8fb4d9" stroke-width="1.8" stroke-linecap="round"/></svg>
+    </span>
+    <span>Klub Baca Pelita<small>KOMUNITAS MEMBACA</small></span>
+  </div>
+  <nav class="main-nav" aria-label="Navigasi utama">
+    <a href="#keuntungan">Keuntungan</a>
+    <a href="#paket">Paket</a>
+    <a href="#kegiatan">Kegiatan</a>
+    <a href="#daftar">Daftar</a>
+  </nav>
+  <a class="btn btn-outline" href="#daftar">Jadi Member</a>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div>
+      <span class="eyebrow">KOMUNITAS MEMBACA • SEJAK 2019</span>
+      <h1>Membaca lebih seru <em>bareng teman satu klub.</em></h1>
+      <p>Klub Baca Pelita adalah komunitas membaca untuk siapa saja yang suka buku — dari novel, sejarah, sampai buku pengembangan diri. Kami bertemu rutin, membahas buku bersama, dan saling berbagi rekomendasi bacaan.</p>
+      <div class="hero-actions">
+        <a class="btn btn-soft btn-big" href="#daftar">Daftar Jadi Member</a>
+        <a class="btn btn-outline" href="#paket">Lihat Paket Member</a>
+      </div>
+      <p class="hero-note">Contoh demo website membership — semua nama anggota, harga, dan kegiatan di halaman ini hanya ilustrasi.</p>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <svg viewBox="0 0 320 190" xmlns="http://www.w3.org/2000/svg">
+        <rect x="10" y="10" width="300" height="170" rx="16" fill="#ffffff"/>
+        <rect x="52" y="48" width="58" height="86" rx="6" fill="#8fb4d9"/>
+        <rect x="120" y="48" width="58" height="86" rx="6" fill="#14263d"/>
+        <rect x="188" y="48" width="58" height="86" rx="6" fill="#e8f0f8" stroke="#dbe6f2"/>
+        <rect x="60" y="60" width="42" height="6" rx="3" fill="#14263d"/>
+        <rect x="60" y="74" width="42" height="6" rx="3" fill="#14263d"/>
+        <rect x="128" y="60" width="42" height="6" rx="3" fill="#8fb4d9"/>
+        <rect x="128" y="74" width="42" height="6" rx="3" fill="#8fb4d9"/>
+        <rect x="196" y="60" width="42" height="6" rx="3" fill="#42586e"/>
+        <rect x="196" y="74" width="42" height="6" rx="3" fill="#42586e"/>
+        <circle cx="160" cy="160" r="10" fill="#8fb4d9"/>
+        <path d="M156 160l3 3 5-6" stroke="#14263d" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <p>Ilustrasi rak buku — gambar contoh, bukan foto asli.</p>
+    </div>
+  </div>
+
+  <!-- KEUNTUNGAN MEMBER -->
+  <section class="card" id="keuntungan">
+    <h2>Keuntungan Member</h2>
+    <p class="section-sub">Enam hal yang didapat setiap anggota Klub Baca Pelita.</p>
+    <div class="grid-3">
+      <div class="benefit">
+        <div class="benefit-number">1</div>
+        <h3>Diskusi buku rutin</h3>
+        <p>Pertemuan membahas satu buku pilihan setiap bulan, dipandu anggota yang bergiliran.</p>
+      </div>
+      <div class="benefit">
+        <div class="benefit-number">2</div>
+        <h3>Pinjam buku koleksi klub</h3>
+        <p>Anggota boleh meminjam buku dari rak koleksi klub selama dua minggu.</p>
+      </div>
+      <div class="benefit">
+        <div class="benefit-number">3</div>
+        <h3>Rekomendasi bacaan</h3>
+        <p>Daftar bacaan pilihan yang disusun anggota setiap bulan sesuai tema.</p>
+      </div>
+      <div class="benefit">
+        <div class="benefit-number">4</div>
+        <h3>Grup diskusi anggota</h3>
+        <p>Grup chat khusus anggota untuk berbagi kutipan, ulasan, dan kabar buku baru.</p>
+      </div>
+      <div class="benefit">
+        <div class="benefit-number">5</div>
+        <h3>Kelas menulis singkat</h3>
+        <p>Sesi menulis ulasan dan cerita pendek bersama anggota yang sudah berpengalaman.</p>
+      </div>
+      <div class="benefit">
+        <div class="benefit-number">6</div>
+        <h3>Acara temu penulis</h3>
+        <p>Kesempatan bertemu dan berbincang dengan penulis tamu pada acara khusus klub.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAKET MEMBERSHIP -->
+  <section class="card" id="paket">
+    <h2>Paket Membership</h2>
+    <p class="section-sub">Tiga pilihan keanggotaan Klub Baca Pelita. Harga di bawah ini adalah harga contoh untuk keperluan demo.</p>
+    <div class="grid-3">
+      <div class="plan">
+        <h3>Pembaca</h3>
+        <p class="plan-price">Rp50.000</p>
+        <p class="plan-period">per bulan • contoh</p>
+        <ul>
+          <li>Ikut diskusi buku bulanan</li>
+          <li>Pinjam 1 buku per bulan</li>
+          <li>Akses grup diskusi anggota</li>
+          <li>Buletin rekomendasi bacaan</li>
+        </ul>
+        <span class="contoh-label">Harga contoh — bukan harga sebenarnya</span>
+        <a class="btn btn-outline" href="#daftar">Pilih Pembaca</a>
+      </div>
+      <div class="plan featured">
+        <h3>Pembaca Aktif</h3>
+        <p class="plan-price">Rp100.000</p>
+        <p class="plan-period">per bulan • contoh</p>
+        <ul>
+          <li>Semua isi paket Pembaca</li>
+          <li>Pinjam 3 buku per bulan</li>
+          <li>Ikut kelas menulis singkat</li>
+          <li>Prioritas kursi acara temu penulis</li>
+        </ul>
+        <span class="contoh-label">Harga contoh — bukan harga sebenarnya</span>
+        <a class="btn btn-soft" href="#daftar">Pilih Pembaca Aktif</a>
+      </div>
+      <div class="plan">
+        <h3>Keluarga</h3>
+        <p class="plan-price">Rp150.000</p>
+        <p class="plan-period">per bulan • contoh</p>
+        <ul>
+          <li>Semua isi paket Pembaca Aktif</li>
+          <li>Berlaku untuk 3 anggota keluarga</li>
+          <li>Pinjam 5 buku per bulan</li>
+          <li>Sesi baca bersama anak tiap bulan</li>
+        </ul>
+        <span class="contoh-label">Harga contoh — bukan harga sebenarnya</span>
+        <a class="btn btn-outline" href="#daftar">Pilih Keluarga</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- KEGIATAN -->
+  <section class="card" id="kegiatan">
+    <h2>Kegiatan Klub</h2>
+    <p class="section-sub">Empat kegiatan rutin yang diadakan Klub Baca Pelita. Jadwal di bawah ini adalah jadwal contoh.</p>
+    <div class="grid-2">
+      <div class="activity">
+        <span class="activity-date">Setiap Sabtu pertama • 09.00</span>
+        <h3>Diskusi Buku Bulanan</h3>
+        <p>Membahas satu buku pilihan anggota. Setiap anggota boleh menyampaikan pendapat dan pertanyaan tentang isi buku.</p>
+        <p class="meta">Taman Baca Pelita • contoh</p>
+      </div>
+      <div class="activity">
+        <span class="activity-date">Setiap Rabu • 19.00</span>
+        <h3>Baca Bersama Malam Hari</h3>
+        <p>Sesi membaca santai selama satu jam, lalu berbagi kesan singkat tentang bacaan masing-masing.</p>
+        <p class="meta">Ruang Baca Pelita • contoh</p>
+      </div>
+      <div class="activity">
+        <span class="activity-date">Setiap bulan • Minggu kedua</span>
+        <h3>Kelas Menulis Ulasan</h3>
+        <p>Belajar menulis ulasan buku yang jelas dan menarik, dari catatan bacaan sampai ulasan utuh.</p>
+        <p class="meta">Ruang Baca Pelita • contoh</p>
+      </div>
+      <div class="activity">
+        <span class="activity-date">Tiga bulan sekali</span>
+        <h3>Temu Penulis Tamu</h3>
+        <p>Penulis tamu berbagi cerita tentang proses menulis dan menjawab pertanyaan anggota.</p>
+        <p class="meta">Aula Komunitas • contoh</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BUKU BULAN INI -->
+  <section class="card">
+    <h2>Buku Bulan Ini</h2>
+    <p class="section-sub">Tiga judul yang sedang dibaca anggota bulan ini. Judul-judul di bawah ini adalah judul fiktif untuk keperluan demo.</p>
+    <ul class="book-list">
+      <li>
+        <div class="book-row">
+          <span class="book-cover" aria-hidden="true">SENJA DI TEPI DANAU</span>
+          <div class="book-info">
+            <h3>Senja di Tepi Danau</h3>
+            <p>Novel tentang seorang penjaga danau yang menemukan surat-surat lama di rumah kayu peninggalan ayahnya.</p>
+            <p class="thread-meta">Fiksi • 248 halaman • contoh</p>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="book-row">
+          <span class="book-cover alt" aria-hidden="true">JEJAK KOTA TUA</span>
+          <div class="book-info">
+            <h3>Jejak Kota Tua</h3>
+            <p>Kumpulan cerita tentang kota-kota lama dan orang-orang yang menjaga kenangannya.</p>
+            <p class="thread-meta">Kumpulan cerita • 196 halaman • contoh</p>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="book-row">
+          <span class="book-cover" aria-hidden="true">RUMAH DENGAN SERIBU JENDELA</span>
+          <div class="book-info">
+            <h3>Rumah dengan Seribu Jendela</h3>
+            <p>Kisah keluarga yang tinggal di rumah besar dan belajar memahami satu sama lain lewat surat.</p>
+            <p class="thread-meta">Fiksi • 312 halaman • contoh</p>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- CARA BERGABUNG -->
+  <section class="card">
+    <h2>Cara Bergabung</h2>
+    <p class="section-sub">Tiga langkah sederhana untuk menjadi anggota Klub Baca Pelita.</p>
+    <ul class="check-list">
+      <li><strong>Isi form pendaftaran di bawah.</strong><small>Pilih paket membership yang Anda inginkan dan isi data diri.</small></li>
+      <li><strong>Pengurus menghubungi Anda.</strong><small>Pengurus klub akan menghubungi untuk menjelaskan jadwal dan tata cara anggota.</small></li>
+      <li><strong>Datang ke pertemuan pertama.</strong><small>Ikut diskusi buku bulanan dan berkenalan dengan anggota lainnya.</small></li>
+    </ul>
+  </section>
+
+  <!-- CATATAN DARI PENGURUS -->
+  <section class="card">
+    <h2>Catatan dari Pengurus</h2>
+    <p class="section-sub">Pesan singkat dari pengurus Klub Baca Pelita untuk anggota baru.</p>
+    <div class="highlight-box">
+      <h3>Selamat datang di Klub Baca Pelita</h3>
+      <p>Klub ini terbuka untuk semua kalangan — pelajar, pekerja, ibu rumah tangga, sampai pensiunan. Tidak ada syarat khusus selain suka membaca dan mau berbagi cerita tentang buku. Datang saja ke pertemuan pertama, perkenalkan diri, dan ikut diskusinya. Buku pertama yang kami bahas bulan ini adalah "Senja di Tepi Danau", dan salinannya tersedia di rak koleksi klub untuk dipinjam anggota.</p>
+      <p style="margin-top:10px;font-size:13px;color:#6b7f94;font-weight:700;">— Pengurus Klub Baca Pelita • contoh</p>
+    </div>
+    <ul class="check-list" style="margin-top:20px;">
+      <li><strong>Pertemuan pertama gratis untuk calon anggota.</strong><small>Datang dan rasakan dulu suasana diskusinya sebelum memutuskan bergabung.</small></li>
+      <li><strong>Buku boleh dibawa dari rumah.</strong><small>Anggota boleh membawa buku sendiri untuk dibahas atau dipinjamkan ke anggota lain.</small></li>
+      <li><strong>Anak-anak boleh ikut sesi baca bersama.</strong><small>Sesi baca bersama anak diadakan setiap bulan untuk paket Keluarga.</small></li>
+    </ul>
+  </section>
+
+  <!-- DAFTAR -->
+  <section class="card" id="daftar">
+    <h2>Daftar Jadi Member</h2>
+    <p class="section-sub">Isi form di bawah ini untuk mendaftar sebagai anggota. Form ini hanya contoh tampilan — data tidak dikirim ke mana pun.</p>
+    <form id="daftar-form">
+      <div class="form-grid">
+        <div class="form-field">
+          <label for="nama-lengkap">Nama Lengkap</label>
+          <input type="text" id="nama-lengkap" name="nama" placeholder="Nama Anda" required>
+        </div>
+        <div class="form-field">
+          <label for="email-anggota">Email</label>
+          <input type="email" id="email-anggota" name="email" placeholder="nama@email.com" required>
+        </div>
+        <div class="form-field">
+          <label for="paket-dipilih">Paket Membership</label>
+          <select id="paket-dipilih" name="paket" required>
+            <option value="">Pilih paket</option>
+            <option>Pembaca — Rp50.000 / bulan (contoh)</option>
+            <option>Pembaca Aktif — Rp100.000 / bulan (contoh)</option>
+            <option>Keluarga — Rp150.000 / bulan (contoh)</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="genre-favorit">Genre Favorit</label>
+          <select id="genre-favorit" name="genre">
+            <option value="">Pilih genre</option>
+            <option>Novel / Fiksi</option>
+            <option>Sejarah</option>
+            <option>Pengembangan diri</option>
+            <option>Biografi</option>
+            <option>Kumpulan cerita</option>
+          </select>
+        </div>
+        <div class="form-field full">
+          <label for="alasan-gabung">Alasan Bergabung (opsional)</label>
+          <textarea id="alasan-gabung" name="alasan" placeholder="Ceritakan singkat kenapa Anda ingin bergabung" rows="3" style="width:100%;padding:12px 14px;border:1.5px solid #dbe6f2;border-radius:12px;background:#f7f9fc;color:#14263d;font:inherit;font-size:15px;"></textarea>
+        </div>
+      </div>
+      <button class="btn btn-soft" type="submit">Kirim Pendaftaran</button>
+      <p class="form-note">Form contoh — tombol kirim hanya menampilkan pesan demo, tidak mengirim data.</p>
+      <p class="form-msg" id="daftar-msg" role="status">Ini demo — data tidak dikirim ke mana pun.</p>
+    </form>
+  </section>
+
+  <!-- PAKET DEMO WEBSITE -->
+  <section class="website-price" id="paket-demo">
+    <h2>Paket Demo Website</h2>
+    <p>Pilih paket pembuatan website membership seperti contoh di halaman ini.</p>
+    <div class="price-tiers">
+      <div class="price-tier">
+        <h3>Demo</h3>
+        <p class="tier-price">$29</p>
+        <p>1 halaman membership contoh, paket member, tampilan responsif HP dan laptop.</p>
+      </div>
+      <div class="price-tier featured">
+        <h3>Standar</h3>
+        <p class="tier-price">$49</p>
+        <p>Website membership contoh lengkap dengan kegiatan, buku bulan ini, dan form daftar.</p>
+      </div>
+      <div class="price-tier">
+        <h3>Pro</h3>
+        <p class="tier-price">$79</p>
+        <p>Semua isi paket Standar ditambah penyesuaian warna, nama, dan isi konten.</p>
+      </div>
+    </div>
+    <div>
+      <a class="btn btn-soft" href="mailto:masduki1189@gmail.com?subject=Pesan%20Website%20Membership%20Demo&amp;body=Halo%2C%20saya%20mau%20pesan%20website%20membership%20demo.">Pesan via Email</a>
+    </div>
+    <p class="price-note">Harga paket demo website — pesan via email.</p>
+  </section>
+
+  <!-- CTA AKHIR -->
+  <section class="cta-final">
+    <h2>Siap membaca bersama kami?</h2>
+    <p>Daftar sekarang dan ikut diskusi buku bulan ini bersama anggota Klub Baca Pelita.</p>
+    <a class="btn btn-soft btn-big" href="#daftar">Daftar Sekarang</a>
+  </section>
+
+</main>
+
+<footer>
+  Klub Baca Pelita — contoh demo website membership.
+  <p class="disclaimer">Halaman ini adalah contoh demo website. Semua nama, harga, dan konten di dalamnya hanya ilustrasi.</p>
+  <p class="disclaimer">Pesan website via email: <a href="mailto:masduki1189@gmail.com">masduki1189@gmail.com</a></p>
+</footer>
+
+<script>
+  (function () {
+    var form = document.getElementById('daftar-form');
+    var msg = document.getElementById('daftar-msg');
+    if (!form) return;
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      msg.classList.add('show');
+      msg.textContent = 'Ini demo — data tidak dikirim ke mana pun.';
+      form.reset();
+    });
+    var planButtons = document.querySelectorAll('.plan .btn');
+    var select = document.getElementById('paket-dipilih');
+    planButtons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var label = btn.textContent.trim();
+        if (!select) return;
+        for (var i = 0; i < select.options.length; i++) {
+          if (select.options[i].text.indexOf(label) === 0) {
+            select.selectedIndex = i;
+            break;
+          }
+        }
+      });
+    });
+  })();
+</script>
+</body>
+</html>

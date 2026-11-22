@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bank Sejahtera Bersama (BPR) — Tabungan, Deposito, dan Kredit | Contoh Demo</title>
+<meta name="description" content="Contoh demo website Bank Sejahtera Bersama (BPR): produk tabungan, deposito, kredit, simulasi kredit, layanan, dan pertanyaan umum.">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: #f7f9fc;
+    color: #14263d;
+    line-height: 1.6;
+  }
+  a { color: inherit; }
+  .demo-banner {
+    background: #14263d;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  .demo-banner span {
+    background: #8fb4d9;
+    color: #14263d;
+    padding: 2px 10px;
+    border-radius: 999px;
+    margin-left: 6px;
+    font-size: 12px;
+    letter-spacing: 0;
+  }
+  header {
+    max-width: 1020px;
+    margin: 0 auto;
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .brand { display: flex; align-items: center; gap: 12px; font-weight: 800; font-size: 22px; }
+  .brand-mark {
+    width: 44px; height: 44px; border-radius: 12px;
+    background: #8fb4d9; display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .brand small { display: block; font-size: 12px; font-weight: 600; color: #4a6178; letter-spacing: .4px; }
+  nav.main-nav { display: flex; gap: 4px; flex-wrap: wrap; }
+  nav.main-nav a {
+    text-decoration: none; font-weight: 700; font-size: 14px;
+    padding: 8px 14px; border-radius: 999px; color: #14263d;
+  }
+  nav.main-nav a:hover { background: #e8f0f8; }
+  .btn {
+    display: inline-block;
+    background: #14263d;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 700;
+    padding: 13px 24px;
+    border-radius: 999px;
+    border: 2px solid #14263d;
+    cursor: pointer;
+    font-size: 15px;
+  }
+  .btn-accent {
+    background: #8fb4d9;
+    color: #14263d;
+    border-color: #8fb4d9;
+  }
+  .btn-outline {
+    background: transparent;
+    color: #14263d;
+  }
+  main { max-width: 1020px; margin: 0 auto; padding: 0 20px 40px; }
+  .hero {
+    background: #ffffff;
+    border: 1px solid #dbe6f2;
+    border-radius: 24px;
+    padding: 36px 32px;
+    display: grid;
+    grid-template-columns: 1.15fr .85fr;
+    gap: 28px;
+    align-items: center;
+    box-shadow: 0 10px 30px rgba(20, 38, 61, .07);
+  }
+  .hero h1 { font-size: 40px; line-height: 1.15; margin: 12px 0 14px; }
+  .hero h1 em { font-style: normal; color: #2f6da3; }
+  .eyebrow {
+    display: inline-block; font-size: 13px; font-weight: 700; letter-spacing: .6px;
+    background: #e8f0f8; color: #14263d; padding: 6px 12px; border-radius: 999px;
+  }
+  .hero p { color: #42586e; font-size: 17px; margin-bottom: 18px; }
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .hero-note { font-size: 13px; color: #6b7f94; margin-top: 14px; }
+  .hero-art {
+    background: #fdf6ec;
+    border: 1px solid #dbe6f2;
+    border-radius: 18px;
+    padding: 22px;
+    text-align: center;
+  }
+  .hero-art svg { width: 100%; max-width: 320px; height: auto; }
+  .hero-art p { font-size: 14px; color: #42586e; margin-top: 8px; }
+  section { margin-top: 36px; }
+  .card {
+    background: #ffffff;
+    border: 1px solid #dbe6f2;
+    border-radius: 20px;
+    padding: 28px;
+    box-shadow: 0 6px 20px rgba(20, 38, 61, .05);
+  }
+  h2 { font-size: 26px; line-height: 1.3; margin-bottom: 10px; }
+  .section-sub { color: #42586e; margin-bottom: 20px; max-width: 680px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .reason {
+    background: #f7f9fc;
+    border: 1px solid #dbe6f2;
+    border-radius: 16px;
+    padding: 20px;
+  }
+  .reason-icon {
+    width: 44px; height: 44px; border-radius: 12px;
+    background: #8fb4d9; display: flex; align-items: center; justify-content: center;
+    margin-bottom: 12px;
+  }
+  .reason h3 { font-size: 18px; margin-bottom: 6px; }
+  .reason p { color: #42586e; font-size: 15px; }
+  .reason .tag {
+    display: inline-block; font-size: 12px; font-weight: 700;
+    background: #e8f0f8; color: #14263d;
+    padding: 3px 10px; border-radius: 999px; margin-top: 10px;
+  }
+  .rate-box {
+    background: #e8f0f8; border: 1px solid #dbe6f2; border-radius: 12px;
+    padding: 12px 16px; margin-top: 14px; text-align: center;
+  }
+  .rate-box b { font-size: 22px; display: block; }
+  .rate-box span { font-size: 13px; color: #42586e; }
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .step {
+    background: #f7f9fc; border: 1px solid #dbe6f2;
+    border-radius: 16px; padding: 20px;
+  }
+  .step b { display: block; font-size: 18px; margin-bottom: 6px; }
+  .step p { color: #42586e; font-size: 15px; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .check-list { list-style: none; }
+  .check-list li { padding: 10px 0 10px 34px; position: relative; border-bottom: 1px solid #eef3f8; }
+  .check-list li:last-child { border-bottom: none; }
+  .check-list li::before {
+    content: "✓"; position: absolute; left: 0; top: 10px;
+    width: 24px; height: 24px; border-radius: 50%;
+    background: #8fb4d9; color: #14263d;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 14px;
+  }
+  .check-list small { display: block; color: #6b7f94; font-size: 13px; }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .form-grid .full { grid-column: 1 / -1; }
+  label { display: block; font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+  input[type=text], input[type=number], input[type=tel], select, textarea {
+    width: 100%; padding: 12px 14px;
+    border: 1.5px solid #dbe6f2; border-radius: 12px;
+    background: #f7f9fc; color: #14263d; font: inherit; font-size: 15px;
+  }
+  input:focus, select:focus, textarea:focus {
+    outline: none; border-color: #8fb4d9;
+    box-shadow: 0 0 0 3px rgba(143, 180, 217, .35);
+  }
+  input[type=range] { width: 100%; accent-color: #14263d; }
+  .range-val { font-weight: 800; font-size: 15px; }
+  .form-note { font-size: 13px; color: #6b7f94; margin-top: 12px; }
+  .demo-msg {
+    display: none; margin-top: 16px; padding: 14px 18px;
+    background: #e8f0f8; border: 1px solid #8fb4d9; border-radius: 12px;
+    font-weight: 700; font-size: 15px;
+  }
+  .demo-msg.show { display: block; }
+  .sim-result {
+    background: #fdf6ec; border: 1px solid #dbe6f2; border-radius: 16px;
+    padding: 22px; text-align: center;
+  }
+  .sim-result .big { font-size: 32px; font-weight: 800; margin: 6px 0; }
+  .sim-result p { color: #42586e; font-size: 14px; }
+  .sim-result .row {
+    display: flex; justify-content: space-between; gap: 12px;
+    padding: 8px 0; border-bottom: 1px solid #e3ebf3; font-size: 15px;
+  }
+  .sim-result .row:last-child { border-bottom: none; }
+  .faq-item { padding: 16px 4px; border-bottom: 1px solid #e3ebf3; }
+  .faq-item:last-child { border-bottom: none; }
+  .faq-item h3 { font-size: 17px; margin-bottom: 6px; }
+  .faq-item p { color: #42586e; font-size: 15px; }
+  .paket {
+    background: #14263d;
+    color: #ffffff;
+    border-radius: 20px;
+    padding: 28px;
+  }
+  .paket h2 { color: #ffffff; }
+  .paket > p { color: #c8d6e5; max-width: 620px; margin-bottom: 20px; }
+  .paket-tiers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .tier {
+    background: #ffffff; color: #14263d;
+    border-radius: 16px; padding: 22px; text-align: center;
+  }
+  .tier h3 { font-size: 18px; }
+  .tier .tier-price { font-size: 34px; font-weight: 800; margin: 8px 0 4px; }
+  .tier .tier-price small { font-size: 15px; font-weight: 600; color: #42586e; }
+  .tier p { color: #42586e; font-size: 14px; margin-bottom: 14px; }
+  .tier ul { list-style: none; text-align: left; font-size: 14px; color: #42586e; }
+  .tier ul li { padding: 6px 0; border-bottom: 1px solid #eef3f8; }
+  .tier ul li:last-child { border-bottom: none; }
+  .paket-note { font-size: 13px; color: #c8d6e5; margin-top: 18px; text-align: center; }
+  .cta-final { text-align: center; padding: 32px 20px; }
+  .cta-final h2 { font-size: 28px; }
+  .cta-final p { color: #42586e; margin: 8px auto 20px; max-width: 560px; }
+  .btn-big { font-size: 18px; padding: 16px 32px; }
+  footer {
+    background: #14263d; color: #c8d6e5;
+    text-align: center; padding: 26px 20px; font-size: 14px;
+  }
+  footer a { color: #8fb4d9; font-weight: 700; text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  footer .disclaimer { margin-top: 10px; font-size: 13px; color: #9db1c6; }
+  @media (max-width: 760px) {
+    .hero { grid-template-columns: 1fr; padding: 26px 22px; }
+    .hero h1 { font-size: 31px; }
+    .grid-3, .grid-2, .steps, .two-col, .form-grid, .paket-tiers { grid-template-columns: 1fr; }
+    header { justify-content: center; text-align: center; }
+    .brand { justify-content: center; }
+    nav.main-nav { justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="demo-banner">CONTOH DEMO — Website Perbankan <span>Halaman contoh, bukan situs nyata</span></div>
+
+<header>
+  <div class="brand">
+    <span class="brand-mark" aria-hidden="true">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 9h18M5 9V5h14v4M5 9v11h14V9M9 13h2m2 0h2m-6 4h2m2 0h2" stroke="#14263d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="7" r="1.4" fill="#14263d"/></svg>
+    </span>
+    <span>Bank Sejahtera Bersama<small>BANK PERKREDITAN RAKYAT — CONTOH</small></span>
+  </div>
+  <nav class="main-nav" aria-label="Navigasi utama">
+    <a href="#produk">Produk</a>
+    <a href="#simulasi">Simulasi Kredit</a>
+    <a href="#layanan">Layanan</a>
+    <a href="#faq">FAQ</a>
+  </nav>
+  <a class="btn btn-outline" href="#simulasi">Simulasi Kredit</a>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div>
+      <span class="eyebrow">BANK PERKREDITAN RAKYAT • CONTOH DEMO</span>
+      <h1>Menabung dan meminjam jadi <em>lebih dekat dan sederhana.</em></h1>
+      <p>Bank Sejahtera Bersama (BPR) adalah contoh website bank: tabungan untuk keluarga, deposito berjangka, dan kredit usaha — dengan simulasi angsuran yang bisa dicoba langsung di halaman ini.</p>
+      <div class="hero-actions">
+        <a class="btn btn-accent btn-big" href="#produk">Lihat Produk</a>
+        <a class="btn btn-outline" href="#simulasi">Coba Simulasi Kredit</a>
+      </div>
+      <p class="hero-note">Halaman ini hanya contoh tampilan website bank. Semua angka bunga di halaman ini berlabel "contoh simulasi", bukan penawaran resmi.</p>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <svg viewBox="0 0 320 190" xmlns="http://www.w3.org/2000/svg">
+        <rect x="10" y="10" width="300" height="170" rx="16" fill="#ffffff"/>
+        <rect x="52" y="118" width="216" height="16" rx="6" fill="#14263d"/>
+        <rect x="66" y="74" width="22" height="44" rx="4" fill="#8fb4d9"/>
+        <rect x="102" y="60" width="22" height="58" rx="4" fill="#8fb4d9"/>
+        <rect x="138" y="82" width="22" height="36" rx="4" fill="#8fb4d9"/>
+        <rect x="174" y="52" width="22" height="66" rx="4" fill="#14263d"/>
+        <rect x="210" y="70" width="22" height="48" rx="4" fill="#8fb4d9"/>
+        <path d="M56 52h208" stroke="#dbe6f2" stroke-width="2" stroke-dasharray="5 5"/>
+        <circle cx="256" cy="42" r="16" fill="#fdf6ec" stroke="#8fb4d9" stroke-width="3"/>
+        <path d="M249 42l5 5 9-10" stroke="#14263d" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <p>Ilustrasi pertumbuhan simpanan — gambar contoh, bukan data nyata.</p>
+    </div>
+  </div>
+
+  <!-- PRODUK -->
+  <section class="card" id="produk">
+    <h2>Produk kami</h2>
+    <p class="section-sub">Tiga produk contoh Bank Sejahtera Bersama. Semua angka bunga di bawah ini adalah contoh simulasi untuk keperluan tampilan demo.</p>
+    <div class="grid-3">
+      <div class="reason">
+        <div class="reason-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="6" width="18" height="13" rx="3" stroke="#14263d" stroke-width="2"/><path d="M3 10h18" stroke="#14263d" stroke-width="2"/><path d="M7 15h4" stroke="#14263d" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Tabungan Sejahtera</h3>
+        <p>Tabungan harian untuk keluarga: setoran awal ringan, penarikan mudah di kantor cabang contoh, dan buku tabungan sebagai catatan.</p>
+        <div class="rate-box"><b>3% per tahun</b><span>contoh simulasi — bukan penawaran resmi</span></div>
+        <span class="tag">Setoran awal contoh: Rp100.000</span>
+      </div>
+      <div class="reason">
+        <div class="reason-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" stroke="#14263d" stroke-width="2" fill="none"/><path d="M12 7v5l3 3" stroke="#14263d" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Deposito Berjangka</h3>
+        <p>Simpanan berjangka dengan pilihan 3, 6, atau 12 bulan. Dana disimpan sampai jatuh tempo sesuai pilihan jangka waktu.</p>
+        <div class="rate-box"><b>5% per tahun</b><span>contoh simulasi — bukan penawaran resmi</span></div>
+        <span class="tag">Jangka waktu contoh: 3 / 6 / 12 bulan</span>
+      </div>
+      <div class="reason">
+        <div class="reason-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 3v18M5 7l7-4 7 4M7 21h10" stroke="#14263d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 11c2 1.5 4 1.5 6 0s4-1.5 6 0" stroke="#14263d" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Kredit Usaha</h3>
+        <p>Kredit untuk modal usaha kecil: warung, bengkel, atau usaha rumahan. Angsuran dihitung dengan simulasi di bawah.</p>
+        <div class="rate-box"><b>12% per tahun</b><span>contoh simulasi — bukan penawaran resmi</span></div>
+        <span class="tag">Plafon contoh: Rp5.000.000 – Rp50.000.000</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SIMULASI KREDIT -->
+  <section class="card" id="simulasi">
+    <h2>Simulasi kredit</h2>
+    <p class="section-sub">Kalkulator contoh: geser jumlah pinjaman dan tenor, lalu lihat perkiraan angsuran per bulan. Perhitungan ini hanya simulasi tampilan — bunga yang dipakai adalah bunga contoh, dan hasilnya bukan penawaran atau persetujuan kredit.</p>
+    <div class="two-col">
+      <div>
+        <div style="margin-bottom: 18px;">
+          <label for="jumlah">Jumlah pinjaman: <span class="range-val" id="jumlahVal">Rp10.000.000</span></label>
+          <input type="range" id="jumlah" min="5000000" max="50000000" step="1000000" value="10000000">
+        </div>
+        <div style="margin-bottom: 18px;">
+          <label for="tenor">Tenor: <span class="range-val" id="tenorVal">12 bulan</span></label>
+          <input type="range" id="tenor" min="6" max="36" step="6" value="12">
+        </div>
+        <div style="margin-bottom: 18px;">
+          <label for="bunga">Bunga per tahun (contoh simulasi): <span class="range-val" id="bungaVal">12%</span></label>
+          <input type="range" id="bunga" min="6" max="18" step="1" value="12">
+        </div>
+        <p class="form-note">Rumus contoh: angsuran = (pokok + pokok × bunga × tenor/12) ÷ tenor. Bunga di sini hanya angka contoh untuk simulasi.</p>
+      </div>
+      <div class="sim-result">
+        <span class="eyebrow">PERKIRAAN ANGSURAN — CONTOH SIMULASI</span>
+        <div class="big" id="angsuran">Rp933.333 / bulan</div>
+        <div class="row"><span>Jumlah pinjaman</span><b id="rJumlah">Rp10.000.000</b></div>
+        <div class="row"><span>Tenor</span><b id="rTenor">12 bulan</b></div>
+        <div class="row"><span>Bunga (contoh simulasi)</span><b id="rBunga">12% per tahun</b></div>
+        <div class="row"><span>Total bunga contoh</span><b id="rTotalBunga">Rp1.200.000</b></div>
+        <div class="row"><span>Total yang dibayar (contoh)</span><b id="rTotal">Rp11.200.000</b></div>
+        <p style="margin-top: 12px;">Hasil di atas hanya contoh simulasi dan bukan penawaran, janji, atau persetujuan kredit.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- LAYANAN -->
+  <section class="card" id="layanan">
+    <h2>Layanan</h2>
+    <p class="section-sub">Layanan contoh yang tersedia di kantor Bank Sejahtera Bersama.</p>
+    <div class="grid-3">
+      <div class="reason">
+        <div class="reason-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 7h16v10H4z" stroke="#14263d" stroke-width="2" fill="none"/><path d="M8 11h8M8 14h5" stroke="#14263d" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Buka Rekening</h3>
+        <p>Pembukaan rekening tabungan di kantor cabang contoh dengan membawa KTP dan setoran awal contoh.</p>
+        <span class="tag">Syarat contoh: KTP asli</span>
+      </div>
+      <div class="reason">
+        <div class="reason-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 3v18M7 21h10" stroke="#14263d" stroke-width="2" stroke-linecap="round"/><path d="M5 7l7-4 7 4" stroke="#14263d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Pengajuan Kredit</h3>
+        <p>Pengajuan kredit usaha contoh: isi formulir di bawah, lalu petugas contoh akan menjelaskan tahap berikutnya.</p>
+        <span class="tag">Proses contoh: survei usaha</span>
+      </div>
+      <div class="reason">
+        <div class="reason-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" stroke="#14263d" stroke-width="2" fill="none"/><path d="M12 8v4l3 2" stroke="#14263d" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Layanan Nasabah</h3>
+        <p>Pertanyaan seputar saldo, mutasi, dan produk — dilayani pada jam layanan contoh di kantor cabang.</p>
+        <span class="tag">Jam layanan contoh: 08.00–15.00</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMULIR MOCKUP -->
+  <section class="card" id="pengajuan">
+    <h2>Formulir pengajuan kredit</h2>
+    <p class="section-sub">Formulir contoh untuk mengajukan kredit usaha. Isi dengan data contoh — formulir ini hanya mockup dan tidak mengirim data ke mana pun.</p>
+    <form id="formKredit">
+      <div class="form-grid">
+        <div>
+          <label for="nama">Nama lengkap</label>
+          <input type="text" id="nama" name="nama" placeholder="Contoh: Budi Santoso" required>
+        </div>
+        <div>
+          <label for="telp">Nomor telepon (contoh)</label>
+          <input type="tel" id="telp" name="telp" placeholder="Contoh: 0812-0000-0000" required>
+        </div>
+        <div>
+          <label for="jenis">Jenis kredit</label>
+          <select id="jenis" name="jenis" required>
+            <option value="">— Pilih jenis kredit —</option>
+            <option value="Kredit Usaha">Kredit Usaha</option>
+            <option value="Kredit Konsumtif">Kredit Konsumtif</option>
+            <option value="Kredit Multiguna">Kredit Multiguna</option>
+          </select>
+        </div>
+        <div>
+          <label for="plafon">Jumlah yang diajukan (Rp)</label>
+          <input type="number" id="plafon" name="plafon" min="5000000" max="50000000" step="1000000" placeholder="Contoh: 10000000" required>
+        </div>
+        <div class="full">
+          <label for="usaha">Jenis usaha (contoh)</label>
+          <textarea id="usaha" name="usaha" placeholder="Contoh: warung kelontong di pasar desa"></textarea>
+        </div>
+      </div>
+      <div style="margin-top: 18px;">
+        <button class="btn btn-accent" type="submit">Kirim Pengajuan (Contoh)</button>
+      </div>
+      <p class="form-note">Formulir ini adalah mockup. Jangan isi dengan data pribadi atau data keuangan asli.</p>
+      <div class="demo-msg" id="msgKredit" role="status">Ini demo — data tidak dikirim ke mana pun.</div>
+    </form>
+  </section>
+
+  <!-- FAQ -->
+  <section class="card" id="faq">
+    <h2>Pertanyaan umum</h2>
+    <p class="section-sub">Jawaban contoh atas pertanyaan yang sering diajukan nasabah. Jawaban di sini hanya ilustrasi tampilan.</p>
+    <div class="faq-item">
+      <h3>Apa syarat membuka rekening tabungan?</h3>
+      <p>Contoh jawaban: membawa KTP dan setoran awal contoh sebesar Rp100.000 ke kantor cabang contoh pada jam layanan.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Berapa lama proses pengajuan kredit?</h3>
+      <p>Contoh jawaban: proses contoh memakan waktu 3–7 hari kerja, termasuk survei usaha dan pengecekan dokumen contoh.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Apakah deposito bisa dicairkan sebelum jatuh tempo?</h3>
+      <p>Contoh jawaban: pencairan sebelum jatuh tempo mengikuti ketentuan contoh yang berlaku dan dapat dikenakan biaya administrasi contoh.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Bagaimana cara mengecek saldo tabungan?</h3>
+      <p>Contoh jawaban: saldo dapat dicek di kantor cabang contoh dengan membawa buku tabungan dan KTP.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Di mana alamat kantor Bank Sejahtera Bersama?</h3>
+      <p>Contoh jawaban: Jl. Merdeka No. 25 (alamat contoh), buka Senin–Jumat pukul 08.00–15.00.</p>
+    </div>
+  </section>
+
+  <!-- CARA MEMBUKA REKENING -->
+  <section class="card">
+    <h2>Cara membuka rekening</h2>
+    <p class="section-sub">Tiga langkah contoh untuk membuka rekening tabungan di Bank Sejahtera Bersama.</p>
+    <div class="steps">
+      <div class="step"><b>1. Datang ke kantor cabang</b><p>Datang ke kantor cabang contoh pada jam layanan dengan membawa KTP asli.</p></div>
+      <div class="step"><b>2. Isi formulir</b><p>Isi formulir pembukaan rekening contoh dan serahkan setoran awal contoh sebesar Rp100.000.</p></div>
+      <div class="step"><b>3. Terima buku tabungan</b><p>Setelah data dicek, nasabah menerima buku tabungan contoh dan rekening siap digunakan.</p></div>
+    </div>
+  </section>
+
+  <!-- KANTOR CABANG -->
+  <section class="card">
+    <h2>Kantor cabang contoh</h2>
+    <p class="section-sub">Lokasi dan jam layanan contoh Bank Sejahtera Bersama. Semua alamat di bawah ini hanya ilustrasi.</p>
+    <div class="two-col">
+      <ul class="check-list">
+        <li><strong>Kantor Pusat (contoh).</strong><small>Jl. Merdeka No. 25 — Senin–Jumat, 08.00–15.00.</small></li>
+        <li><strong>Cabang Pasar (contoh).</strong><small>Jl. Pasar Baru No. 8 — Senin–Sabtu, 08.00–14.00.</small></li>
+        <li><strong>Cabang Terminal (contoh).</strong><small>Jl. Terminal No. 3 — Senin–Jumat, 08.00–15.00.</small></li>
+      </ul>
+      <ul class="check-list">
+        <li><strong>Telepon contoh.</strong><small>(021) 555-0200 — jam layanan contoh.</small></li>
+        <li><strong>Email contoh.</strong><small>layanan@sejahterabersama-contoh.id — hanya ilustrasi.</small></li>
+        <li><strong>Layanan nasabah.</strong><small>Pertanyaan seputar saldo dan produk dilayani di meja layanan contoh.</small></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- PAKET DEMO WEBSITE -->
+  <section class="paket">
+    <h2>Paket Demo Website</h2>
+    <p>Ingin website seperti contoh ini untuk bank atau lembaga keuanganmu? Pilih paket demo website di bawah ini.</p>
+    <div class="paket-tiers">
+      <div class="tier">
+        <h3>Demo</h3>
+        <div class="tier-price">$29</div>
+        <p>Paket demo website — satu halaman contoh.</p>
+        <ul>
+          <li>1 halaman website</li>
+          <li>Desain responsif HP dan laptop</li>
+          <li>1 kali revisi kecil</li>
+        </ul>
+      </div>
+      <div class="tier">
+        <h3>Standar</h3>
+        <div class="tier-price">$49</div>
+        <p>Paket demo website — beberapa halaman contoh.</p>
+        <ul>
+          <li>Sampai 3 halaman website</li>
+          <li>Desain responsif HP dan laptop</li>
+          <li>Formulir mockup</li>
+          <li>2 kali revisi kecil</li>
+        </ul>
+      </div>
+      <div class="tier">
+        <h3>Pro</h3>
+        <div class="tier-price">$79</div>
+        <p>Paket demo website — halaman lengkap dengan fitur contoh.</p>
+        <ul>
+          <li>Sampai 5 halaman website</li>
+          <li>Desain responsif HP dan laptop</li>
+          <li>Formulir mockup + kalkulator contoh</li>
+          <li>3 kali revisi kecil</li>
+        </ul>
+      </div>
+    </div>
+    <p class="paket-note">Harga paket demo website — pesan via email.</p>
+  </section>
+
+  <!-- CTA AKHIR -->
+  <section class="cta-final">
+    <h2>Butuh website bank seperti contoh ini?</h2>
+    <p>Pesan paket demo website lewat email. Ceritakan produk dan layanan bankmu, dan kami balas dengan contoh halaman yang sesuai.</p>
+    <a class="btn btn-accent btn-big" href="mailto:masduki1189@gmail.com?subject=Pesan%20Website%20Perbankan%20Paket%20Demo&body=Halo%2C%20saya%20mau%20pesan%20website%20perbankan%20Paket%20Demo%20%2429.">Pesan via Email</a>
+  </section>
+
+</main>
+
+<footer>
+  Bank Sejahtera Bersama (BPR) — contoh demo website oleh KikiWorks. Pesan website via email: <a href="mailto:masduki1189@gmail.com">masduki1189@gmail.com</a>
+  <p class="disclaimer">Halaman ini adalah contoh demo website. Semua nama, harga, dan konten di dalamnya hanya ilustrasi.</p>
+</footer>
+
+<script>
+  function formatRp(n) {
+    return 'Rp' + Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+  }
+  function hitungSimulasi() {
+    var jumlah = +document.getElementById('jumlah').value;
+    var tenor = +document.getElementById('tenor').value;
+    var bunga = +document.getElementById('bunga').value;
+    document.getElementById('jumlahVal').textContent = formatRp(jumlah);
+    document.getElementById('tenorVal').textContent = tenor + ' bulan';
+    document.getElementById('bungaVal').textContent = bunga + '%';
+    var totalBunga = jumlah * (bunga / 100) * (tenor / 12);
+    var total = jumlah + totalBunga;
+    var angsuran = total / tenor;
+    document.getElementById('angsuran').textContent = formatRp(angsuran) + ' / bulan';
+    document.getElementById('rJumlah').textContent = formatRp(jumlah);
+    document.getElementById('rTenor').textContent = tenor + ' bulan';
+    document.getElementById('rBunga').textContent = bunga + '% per tahun';
+    document.getElementById('rTotalBunga').textContent = formatRp(totalBunga);
+    document.getElementById('rTotal').textContent = formatRp(total);
+  }
+  ['jumlah', 'tenor', 'bunga'].forEach(function (id) {
+    document.getElementById(id).addEventListener('input', hitungSimulasi);
+  });
+  hitungSimulasi();
+  document.getElementById('formKredit').addEventListener('submit', function (e) {
+    e.preventDefault();
+    document.getElementById('msgKredit').classList.add('show');
+  });
+</script>
+</body>
+</html>

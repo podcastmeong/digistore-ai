@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TemanKita — Jejaring Sosial | Contoh Demo</title>
+<meta name="description" content="Contoh demo website jejaring sosial TemanKita: buat postingan, feed, tren, dan saran teman — semua pengguna adalah pengguna demo fiktif.">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: #f7f9fc;
+    color: #14263d;
+    line-height: 1.6;
+  }
+  a { color: inherit; }
+  .demo-banner {
+    background: #14263d;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  .demo-banner span {
+    background: #8fb4d9;
+    color: #14263d;
+    padding: 2px 10px;
+    border-radius: 999px;
+    margin-left: 6px;
+    font-size: 12px;
+    letter-spacing: 0;
+  }
+  header {
+    max-width: 1020px;
+    margin: 0 auto;
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .brand { display: flex; align-items: center; gap: 12px; font-weight: 800; font-size: 22px; }
+  .brand-mark {
+    width: 44px; height: 44px; border-radius: 12px;
+    background: #8fb4d9; display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .brand small { display: block; font-size: 12px; font-weight: 600; color: #4a6178; letter-spacing: .4px; }
+  nav.main-nav { display: flex; gap: 4px; flex-wrap: wrap; }
+  nav.main-nav a {
+    text-decoration: none; font-weight: 700; font-size: 14px;
+    padding: 8px 14px; border-radius: 999px; color: #14263d;
+  }
+  nav.main-nav a:hover, nav.main-nav a.active { background: #e8f0f8; }
+  .btn {
+    display: inline-block;
+    background: #14263d;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 700;
+    padding: 13px 24px;
+    border-radius: 999px;
+    border: 2px solid #14263d;
+    cursor: pointer;
+    font-size: 15px;
+  }
+  .btn-accent {
+    background: #8fb4d9;
+    color: #14263d;
+    border-color: #8fb4d9;
+  }
+  .btn-outline {
+    background: transparent;
+    color: #14263d;
+  }
+  .btn-small { padding: 8px 16px; font-size: 14px; }
+  main { max-width: 1020px; margin: 0 auto; padding: 0 20px 40px; }
+  .hero {
+    background: #ffffff;
+    border: 1px solid #dbe6f2;
+    border-radius: 24px;
+    padding: 36px 32px;
+    display: grid;
+    grid-template-columns: 1.15fr .85fr;
+    gap: 28px;
+    align-items: center;
+    box-shadow: 0 10px 30px rgba(20, 38, 61, .07);
+  }
+  .hero h1 { font-size: 40px; line-height: 1.15; margin: 12px 0 14px; }
+  .hero h1 em { font-style: normal; color: #2f6da3; }
+  .eyebrow {
+    display: inline-block; font-size: 13px; font-weight: 700; letter-spacing: .6px;
+    background: #e8f0f8; color: #14263d; padding: 6px 12px; border-radius: 999px;
+  }
+  .hero p { color: #42586e; font-size: 17px; margin-bottom: 18px; }
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .hero-note { font-size: 13px; color: #6b7f94; margin-top: 14px; }
+  .hero-art {
+    background: #fdf6ec;
+    border: 1px solid #dbe6f2;
+    border-radius: 18px;
+    padding: 22px;
+    text-align: center;
+  }
+  .hero-art svg { width: 100%; max-width: 320px; height: auto; }
+  .hero-art p { font-size: 14px; color: #42586e; margin-top: 8px; }
+  section { margin-top: 36px; }
+  .card {
+    background: #ffffff;
+    border: 1px solid #dbe6f2;
+    border-radius: 20px;
+    padding: 28px;
+    box-shadow: 0 6px 20px rgba(20, 38, 61, .05);
+  }
+  h2 { font-size: 26px; line-height: 1.3; margin-bottom: 10px; }
+  .section-sub { color: #42586e; margin-bottom: 20px; max-width: 680px; }
+  .layout { display: grid; grid-template-columns: 1.6fr 1fr; gap: 20px; align-items: start; }
+  .layout > div { display: flex; flex-direction: column; gap: 20px; }
+  .layout section { margin-top: 0; }
+  .composer textarea {
+    width: 100%; min-height: 80px; resize: vertical;
+    padding: 12px 14px; border: 1.5px solid #dbe6f2; border-radius: 12px;
+    background: #f7f9fc; color: #14263d; font: inherit; font-size: 15px;
+  }
+  .composer textarea:focus {
+    outline: none; border-color: #8fb4d9;
+    box-shadow: 0 0 0 3px rgba(143, 180, 217, .35);
+  }
+  .composer-row { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 12px; }
+  .composer-row small { color: #6b7f94; font-size: 13px; }
+  .form-note { font-size: 13px; color: #6b7f94; margin-top: 12px; }
+  .demo-msg {
+    display: none; margin-top: 16px; padding: 14px 18px;
+    background: #e8f0f8; border: 1px solid #8fb4d9; border-radius: 12px;
+    font-weight: 700; font-size: 15px;
+  }
+  .demo-msg.show { display: block; }
+  .post {
+    background: #ffffff; border: 1px solid #dbe6f2; border-radius: 20px;
+    padding: 22px; box-shadow: 0 6px 20px rgba(20, 38, 61, .05);
+  }
+  .post-head { display: flex; gap: 12px; align-items: center; margin-bottom: 10px; }
+  .avatar {
+    width: 48px; height: 48px; border-radius: 50%; flex-shrink: 0;
+    background: #8fb4d9; color: #14263d; font-weight: 800; font-size: 17px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .avatar.alt { background: #e8f0f8; }
+  .post-head b { display: block; font-size: 16px; }
+  .post-head span { color: #6b7f94; font-size: 13px; }
+  .post p.post-text { font-size: 15px; margin-bottom: 12px; }
+  .post-media {
+    background: #fdf6ec; border: 1px solid #dbe6f2; border-radius: 14px;
+    padding: 26px 16px; text-align: center; color: #42586e; font-size: 14px;
+    margin-bottom: 12px;
+  }
+  .post-actions { display: flex; gap: 8px; flex-wrap: wrap; border-top: 1px solid #eef3f8; padding-top: 12px; }
+  .action-btn {
+    background: #f7f9fc; border: 1px solid #dbe6f2; border-radius: 999px;
+    padding: 7px 14px; font: inherit; font-size: 14px; font-weight: 700;
+    color: #14263d; cursor: pointer;
+  }
+  .action-btn:hover { background: #e8f0f8; }
+  .action-btn.on { background: #8fb4d9; border-color: #8fb4d9; }
+  .trend-item { padding: 12px 4px; border-bottom: 1px solid #eef3f8; }
+  .trend-item:last-child { border-bottom: none; }
+  .trend-item b { display: block; font-size: 16px; }
+  .trend-item span { color: #6b7f94; font-size: 13px; }
+  .suggest {
+    display: flex; gap: 12px; align-items: center;
+    padding: 12px 4px; border-bottom: 1px solid #eef3f8;
+  }
+  .suggest:last-child { border-bottom: none; }
+  .suggest .info { flex: 1; min-width: 0; }
+  .suggest b { display: block; font-size: 15px; }
+  .suggest span { color: #6b7f94; font-size: 13px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .reason {
+    background: #f7f9fc;
+    border: 1px solid #dbe6f2;
+    border-radius: 16px;
+    padding: 20px;
+  }
+  .reason h3 { font-size: 18px; margin-bottom: 6px; }
+  .reason p { color: #42586e; font-size: 15px; }
+  .paket {
+    background: #14263d;
+    color: #ffffff;
+    border-radius: 20px;
+    padding: 28px;
+  }
+  .paket h2 { color: #ffffff; }
+  .paket > p { color: #c8d6e5; max-width: 620px; margin-bottom: 20px; }
+  .paket-tiers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .tier {
+    background: #ffffff; color: #14263d;
+    border-radius: 16px; padding: 22px; text-align: center;
+  }
+  .tier h3 { font-size: 18px; }
+  .tier .tier-price { font-size: 34px; font-weight: 800; margin: 8px 0 4px; }
+  .tier .tier-price small { font-size: 15px; font-weight: 600; color: #42586e; }
+  .tier p { color: #42586e; font-size: 14px; margin-bottom: 14px; }
+  .tier ul { list-style: none; text-align: left; font-size: 14px; color: #42586e; }
+  .tier ul li { padding: 6px 0; border-bottom: 1px solid #eef3f8; }
+  .tier ul li:last-child { border-bottom: none; }
+  .paket-note { font-size: 13px; color: #c8d6e5; margin-top: 18px; text-align: center; }
+  .cta-final { text-align: center; padding: 32px 20px; }
+  .cta-final h2 { font-size: 28px; }
+  .cta-final p { color: #42586e; margin: 8px auto 20px; max-width: 560px; }
+  .btn-big { font-size: 18px; padding: 16px 32px; }
+  footer {
+    background: #14263d; color: #c8d6e5;
+    text-align: center; padding: 26px 20px; font-size: 14px;
+  }
+  footer a { color: #8fb4d9; font-weight: 700; text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  footer .disclaimer { margin-top: 10px; font-size: 13px; color: #9db1c6; }
+  @media (max-width: 760px) {
+    .hero { grid-template-columns: 1fr; padding: 26px 22px; }
+    .hero h1 { font-size: 31px; }
+    .layout, .grid-3, .paket-tiers { grid-template-columns: 1fr; }
+    header { justify-content: center; text-align: center; }
+    .brand { justify-content: center; }
+    nav.main-nav { justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="demo-banner">CONTOH DEMO — Website Media Sosial <span>Halaman contoh, bukan situs nyata</span></div>
+
+<header>
+  <div class="brand">
+    <span class="brand-mark" aria-hidden="true">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="3.5" stroke="#14263d" stroke-width="2" fill="none"/><circle cx="17" cy="10" r="2.8" stroke="#14263d" stroke-width="2" fill="none"/><path d="M2.5 19c.8-3 3-4.5 5.5-4.5S12.7 16 13.5 19M14.5 19c.6-2.2 1.8-3.3 3.5-3.3 1.5 0 2.7 1 3.2 3" stroke="#14263d" stroke-width="2" stroke-linecap="round"/></svg>
+    </span>
+    <span>TemanKita<small>JEJARING SOSIAL — CONTOH</small></span>
+  </div>
+  <nav class="main-nav" aria-label="Navigasi utama">
+    <a class="active" href="#beranda">Beranda</a>
+    <a href="#feed">Jelajahi</a>
+    <a href="#tren">Tren</a>
+    <a href="#saran">Saran Teman</a>
+  </nav>
+  <a class="btn btn-outline" href="#buat">Buat Postingan</a>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <div class="hero" id="beranda">
+    <div>
+      <span class="eyebrow">JEJARING SOSIAL • CONTOH DEMO</span>
+      <h1>Teman baru, cerita baru, <em>satu tempat untuk berbagi.</em></h1>
+      <p>TemanKita adalah contoh website jejaring sosial: tulis postingan, lihat kabar teman, ikuti tren, dan temukan teman baru — semuanya dalam satu halaman contoh.</p>
+      <div class="hero-actions">
+        <a class="btn btn-accent btn-big" href="#buat">Buat Postingan</a>
+        <a class="btn btn-outline" href="#feed">Lihat Feed</a>
+      </div>
+      <p class="hero-note">Semua pengguna di halaman ini adalah pengguna demo fiktif. Bukan orang nyata, dan halaman ini bukan situs nyata.</p>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <svg viewBox="0 0 320 190" xmlns="http://www.w3.org/2000/svg">
+        <rect x="10" y="10" width="300" height="170" rx="16" fill="#ffffff"/>
+        <circle cx="80" cy="72" r="20" fill="#8fb4d9"/>
+        <circle cx="160" cy="60" r="20" fill="#14263d"/>
+        <circle cx="240" cy="72" r="20" fill="#8fb4d9"/>
+        <path d="M56 148c4-20 14-28 24-28s20 8 24 28M136 140c4-18 14-26 24-26s20 8 24 26M216 148c4-20 14-28 24-28s20 8 24 28" stroke="#14263d" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <circle cx="160" cy="60" r="8" fill="#ffffff"/>
+        <path d="M120 30l10 6-10 6z" fill="#8fb4d9"/>
+        <path d="M200 30l-10 6 10 6z" fill="#8fb4d9"/>
+      </svg>
+      <p>Ilustrasi komunitas — gambar contoh, bukan foto asli.</p>
+    </div>
+  </div>
+
+  <!-- LAYOUT: FEED + SIDEBAR -->
+  <section class="layout" style="margin-top: 36px;">
+
+    <div>
+      <!-- BUAT POSTINGAN -->
+      <div class="card composer" id="buat">
+        <h2>Buat postingan</h2>
+        <p class="section-sub">Tulis sesuatu untuk dibagikan ke feed contoh di bawah. Ini hanya mockup — postingan tidak dikirim ke mana pun.</p>
+        <form id="formPost">
+          <textarea id="teksPost" placeholder="Contoh: Hari ini saya mencoba resep baru di rumah..." required></textarea>
+          <div class="composer-row">
+            <small>Postingan contoh hanya tampil di perangkat ini.</small>
+            <button class="btn btn-accent btn-small" type="submit">Posting (Contoh)</button>
+          </div>
+          <p class="form-note">Formulir ini adalah mockup. Jangan tulis data pribadi asli.</p>
+          <div class="demo-msg" id="msgPost" role="status">Ini demo — data tidak dikirim ke mana pun.</div>
+        </form>
+      </div>
+
+      <!-- FEED -->
+      <div id="feed" style="display: flex; flex-direction: column; gap: 20px;">
+        <h2 style="margin-bottom: 0;">Feed</h2>
+        <p class="section-sub" style="margin-bottom: 0;">Lima postingan contoh dari pengguna demo fiktif.</p>
+
+        <article class="post">
+          <div class="post-head">
+            <span class="avatar">RP</span>
+            <div><b>Raka Pratama (pengguna demo)</b><span>@raka_pratama • 2 jam lalu</span></div>
+          </div>
+          <p class="post-text">Pagi ini jalan santai di taman dekat rumah. Udaranya sejuk, banyak yang olahraga juga. Ada yang punya rute jalan favorit di kotanya?</p>
+          <div class="post-media">Foto contoh: taman di pagi hari — gambar ilustrasi, bukan foto asli.</div>
+          <div class="post-actions">
+            <button class="action-btn like-btn" type="button">Suka (<span class="like-count">24</span>)</button>
+            <button class="action-btn" type="button">Komentar (5)</button>
+            <button class="action-btn" type="button">Bagikan</button>
+          </div>
+        </article>
+
+        <article class="post">
+          <div class="post-head">
+            <span class="avatar alt">DL</span>
+            <div><b>Dewi Lestari (pengguna demo)</b><span>@dewi_lestari • 4 jam lalu</span></div>
+          </div>
+          <p class="post-text">Akhirnya selesai juga merapikan rak buku di rumah. Buku resep masakan sekarang gampang dicari. Ada rekomendasi buku masakan yang gampang diikuti untuk pemula?</p>
+          <div class="post-actions">
+            <button class="action-btn like-btn" type="button">Suka (<span class="like-count">18</span>)</button>
+            <button class="action-btn" type="button">Komentar (3)</button>
+            <button class="action-btn" type="button">Bagikan</button>
+          </div>
+        </article>
+
+        <article class="post">
+          <div class="post-head">
+            <span class="avatar">BS</span>
+            <div><b>Budi Santoso (pengguna demo)</b><span>@budi_santoso • 6 jam lalu</span></div>
+          </div>
+          <p class="post-text">Hari ini belajar membuat kopi tubruk sendiri di rumah. Hasilnya lumayan, masih perlu latihan takaran. Teman-teman di sini ada yang suka ngopi juga?</p>
+          <div class="post-media">Foto contoh: secangkir kopi di meja — gambar ilustrasi, bukan foto asli.</div>
+          <div class="post-actions">
+            <button class="action-btn like-btn" type="button">Suka (<span class="like-count">31</span>)</button>
+            <button class="action-btn" type="button">Komentar (8)</button>
+            <button class="action-btn" type="button">Bagikan</button>
+          </div>
+        </article>
+
+        <article class="post">
+          <div class="post-head">
+            <span class="avatar alt">SW</span>
+            <div><b>Sari Wulandari (pengguna demo)</b><span>@sari_wulandari • 9 jam lalu</span></div>
+          </div>
+          <p class="post-text">Menanam cabai di pot kecil di balkon, ternyata sudah mulai berbunga. Senang sekali melihatnya tumbuh. Ada tips merawat tanaman cabai di pot?</p>
+          <div class="post-actions">
+            <button class="action-btn like-btn" type="button">Suka (<span class="like-count">42</span>)</button>
+            <button class="action-btn" type="button">Komentar (11)</button>
+            <button class="action-btn" type="button">Bagikan</button>
+          </div>
+        </article>
+
+        <article class="post">
+          <div class="post-head">
+            <span class="avatar">AN</span>
+            <div><b>Andi Nugroho (pengguna demo)</b><span>@andi_nugroho • 12 jam lalu</span></div>
+          </div>
+          <p class="post-text">Baru selesai membaca buku tentang berkebun di lahan sempit. Banyak ide yang bisa dicoba di halaman rumah. Siapa di sini yang juga berkebun?</p>
+          <div class="post-media">Foto contoh: kebun kecil di halaman rumah — gambar ilustrasi, bukan foto asli.</div>
+          <div class="post-actions">
+            <button class="action-btn like-btn" type="button">Suka (<span class="like-count">15</span>)</button>
+            <button class="action-btn" type="button">Komentar (2)</button>
+            <button class="action-btn" type="button">Bagikan</button>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <div>
+      <!-- TREN -->
+      <section class="card" id="tren">
+        <h2>Tren</h2>
+        <p class="section-sub">Topik contoh yang sedang ramai dibicarakan.</p>
+        <div class="trend-item"><b>#JalanPagi</b><span>Topik contoh • 120 postingan contoh</span></div>
+        <div class="trend-item"><b>#ResepRumahan</b><span>Topik contoh • 98 postingan contoh</span></div>
+        <div class="trend-item"><b>#BerkebunDiRumah</b><span>Topik contoh • 85 postingan contoh</span></div>
+        <div class="trend-item"><b>#NgopiPagi</b><span>Topik contoh • 64 postingan contoh</span></div>
+        <div class="trend-item"><b>#BacaBuku</b><span>Topik contoh • 51 postingan contoh</span></div>
+      </section>
+
+      <!-- SARAN TEMAN -->
+      <section class="card" id="saran">
+        <h2>Saran teman</h2>
+        <p class="section-sub">Pengguna demo yang mungkin ingin kamu ikuti.</p>
+        <div class="suggest">
+          <span class="avatar">NA</span>
+          <div class="info"><b>Nina Anggraini (pengguna demo)</b><span>@nina_anggraini • Suka berkebun</span></div>
+          <button class="btn btn-accent btn-small follow-btn" type="button">Ikuti</button>
+        </div>
+        <div class="suggest">
+          <span class="avatar alt">FH</span>
+          <div class="info"><b>Fajar Hidayat (pengguna demo)</b><span>@fajar_hidayat • Suka fotografi</span></div>
+          <button class="btn btn-accent btn-small follow-btn" type="button">Ikuti</button>
+        </div>
+        <div class="suggest">
+          <span class="avatar">LS</span>
+          <div class="info"><b>Lina Sari (pengguna demo)</b><span>@lina_sari • Suka memasak</span></div>
+          <button class="btn btn-accent btn-small follow-btn" type="button">Ikuti</button>
+        </div>
+        <p class="form-note">Tombol "Ikuti" hanya mengubah tampilan di perangkat ini — tidak mengirim data ke mana pun.</p>
+      </section>
+
+      <!-- TENTANG -->
+      <section class="card">
+        <h2>Tentang TemanKita</h2>
+        <p class="section-sub">Contoh jejaring sosial sederhana: berbagi kabar, mengikuti teman, dan menemukan topik yang disukai.</p>
+        <div class="grid-3" style="grid-template-columns: 1fr;">
+          <div class="reason">
+            <h3>Berbagi kabar</h3>
+            <p>Tulis postingan singkat dan bagikan ke teman-teman di feed contoh.</p>
+          </div>
+          <div class="reason">
+            <h3>Ikuti teman</h3>
+            <p>Temukan pengguna demo lain dan ikuti kabar mereka di feed contoh.</p>
+          </div>
+          <div class="reason">
+            <h3>Jelajahi tren</h3>
+            <p>Lihat topik contoh yang sedang ramai dibicarakan pengguna demo.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  </section>
+
+  <!-- FITUR -->
+  <section class="card">
+    <h2>Fitur TemanKita</h2>
+    <p class="section-sub">Enam fitur contoh yang ada di jejaring sosial TemanKita.</p>
+    <div class="grid-3">
+      <div class="reason">
+        <h3>Feed beranda</h3>
+        <p>Kabar terbaru dari teman yang diikuti, tampil berurutan di feed contoh.</p>
+      </div>
+      <div class="reason">
+        <h3>Buat postingan</h3>
+        <p>Tulis kabar singkat dan bagikan ke feed contoh dalam satu langkah.</p>
+      </div>
+      <div class="reason">
+        <h3>Suka dan komentar</h3>
+        <p>Tanggapi postingan teman dengan tombol suka dan kolom komentar contoh.</p>
+      </div>
+      <div class="reason">
+        <h3>Tren</h3>
+        <p>Lihat topik contoh yang sedang ramai dibicarakan pengguna demo.</p>
+      </div>
+      <div class="reason">
+        <h3>Saran teman</h3>
+        <p>Temukan pengguna demo baru untuk diikuti berdasarkan minat contoh.</p>
+      </div>
+      <div class="reason">
+        <h3>Profil</h3>
+        <p>Halaman profil contoh berisi postingan dan info singkat pengguna demo.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CARA BERGABUNG -->
+  <section class="card">
+    <h2>Cara bergabung</h2>
+    <p class="section-sub">Tiga langkah contoh untuk mulai memakai TemanKita.</p>
+    <div class="grid-3">
+      <div class="reason">
+        <h3>1. Buat akun contoh</h3>
+        <p>Daftar dengan nama dan email contoh, lalu lengkapi profil singkatmu.</p>
+      </div>
+      <div class="reason">
+        <h3>2. Ikuti teman</h3>
+        <p>Cari pengguna demo di daftar saran teman dan ikuti kabar mereka.</p>
+      </div>
+      <div class="reason">
+        <h3>3. Buat postingan pertama</h3>
+        <p>Tulis postingan pertamamu di kolom "Buat postingan" contoh di atas.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAKET DEMO WEBSITE -->
+  <section class="paket">
+    <h2>Paket Demo Website</h2>
+    <p>Ingin website seperti contoh ini untuk komunitas atau platform sosialmu? Pilih paket demo website di bawah ini.</p>
+    <div class="paket-tiers">
+      <div class="tier">
+        <h3>Demo</h3>
+        <div class="tier-price">$29</div>
+        <p>Paket demo website — satu halaman contoh.</p>
+        <ul>
+          <li>1 halaman website</li>
+          <li>Desain responsif HP dan laptop</li>
+          <li>1 kali revisi kecil</li>
+        </ul>
+      </div>
+      <div class="tier">
+        <h3>Standar</h3>
+        <div class="tier-price">$49</div>
+        <p>Paket demo website — beberapa halaman contoh.</p>
+        <ul>
+          <li>Sampai 3 halaman website</li>
+          <li>Desain responsif HP dan laptop</li>
+          <li>Formulir mockup</li>
+          <li>2 kali revisi kecil</li>
+        </ul>
+      </div>
+      <div class="tier">
+        <h3>Pro</h3>
+        <div class="tier-price">$79</div>
+        <p>Paket demo website — halaman lengkap dengan fitur contoh.</p>
+        <ul>
+          <li>Sampai 5 halaman website</li>
+          <li>Desain responsif HP dan laptop</li>
+          <li>Formulir mockup + feed contoh</li>
+          <li>3 kali revisi kecil</li>
+        </ul>
+      </div>
+    </div>
+    <p class="paket-note">Harga paket demo website — pesan via email.</p>
+  </section>
+
+  <!-- CTA AKHIR -->
+  <section class="cta-final">
+    <h2>Butuh website sosial seperti contoh ini?</h2>
+    <p>Pesan paket demo website lewat email. Ceritakan komunitas atau platform yang kamu bayangkan, dan kami balas dengan contoh halaman yang sesuai.</p>
+    <a class="btn btn-accent btn-big" href="mailto:masduki1189@gmail.com?subject=Pesan%20Website%20Media%20Sosial%20Paket%20Demo&body=Halo%2C%20saya%20mau%20pesan%20website%20media%20sosial%20Paket%20Demo%20%2429.">Pesan via Email</a>
+  </section>
+
+</main>
+
+<footer>
+  TemanKita — contoh demo website oleh KikiWorks. Pesan website via email: <a href="mailto:masduki1189@gmail.com">masduki1189@gmail.com</a>
+  <p class="disclaimer">Halaman ini adalah contoh demo website. Semua nama, harga, dan konten di dalamnya hanya ilustrasi.</p>
+</footer>
+
+<script>
+  // Form postingan: mockup — tampilkan pesan demo dan tambahkan postingan contoh di feed (hanya di perangkat ini).
+  document.getElementById('formPost').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var teks = document.getElementById('teksPost').value.trim();
+    if (!teks) return;
+    document.getElementById('msgPost').classList.add('show');
+    var feed = document.getElementById('feed');
+    var post = document.createElement('article');
+    post.className = 'post';
+    var safe = teks.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    post.innerHTML =
+      '<div class="post-head"><span class="avatar">KM</span>' +
+      '<div><b>Kamu (pengguna demo)</b><span>@kamu • baru saja</span></div></div>' +
+      '<p class="post-text">' + safe + '</p>' +
+      '<div class="post-actions">' +
+      '<button class="action-btn like-btn" type="button">Suka (<span class="like-count">0</span>)</button>' +
+      '<button class="action-btn" type="button">Komentar (0)</button>' +
+      '<button class="action-btn" type="button">Bagikan</button></div>';
+    var heading = feed.querySelector('h2');
+    var sub = feed.querySelector('.section-sub');
+    feed.insertBefore(post, sub.nextSibling);
+    document.getElementById('teksPost').value = '';
+  });
+  // Tombol Suka: tambah/kurangi hitungan di perangkat ini saja.
+  document.addEventListener('click', function (e) {
+    var like = e.target.closest ? e.target.closest('.like-btn') : null;
+    if (like) {
+      var count = like.querySelector('.like-count');
+      var n = parseInt(count.textContent, 10) || 0;
+      if (like.classList.contains('on')) {
+        like.classList.remove('on');
+        count.textContent = n - 1;
+      } else {
+        like.classList.add('on');
+        count.textContent = n + 1;
+      }
+      return;
+    }
+    var follow = e.target.closest ? e.target.closest('.follow-btn') : null;
+    if (follow) {
+      if (follow.textContent.trim() === 'Ikuti') {
+        follow.textContent = 'Mengikuti';
+        follow.classList.remove('btn-accent');
+        follow.classList.add('btn-outline');
+      } else {
+        follow.textContent = 'Ikuti';
+        follow.classList.add('btn-accent');
+        follow.classList.remove('btn-outline');
+      }
+    }
+  });
+</script>
+</body>
+</html>

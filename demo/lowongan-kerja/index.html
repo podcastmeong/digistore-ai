@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KarirKita — Portal Lowongan Kerja | Contoh Demo</title>
+<meta name="description" content="Contoh demo portal lowongan kerja KarirKita. Cari lowongan, filter kategori, dan baca tips karir. Halaman contoh, bukan situs nyata.">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: #f7f9fc;
+    color: #14263d;
+    line-height: 1.6;
+  }
+  a { color: inherit; }
+  .demo-banner {
+    background: #14263d;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  .demo-banner span {
+    background: #8fb4d9;
+    color: #14263d;
+    padding: 2px 10px;
+    border-radius: 999px;
+    margin-left: 6px;
+    font-size: 12px;
+    letter-spacing: 0;
+  }
+  header {
+    max-width: 1020px;
+    margin: 0 auto;
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .brand { display: flex; align-items: center; gap: 12px; font-weight: 800; font-size: 22px; }
+  .brand-mark {
+    width: 44px; height: 44px; border-radius: 12px;
+    background: #8fb4d9; display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .brand small { display: block; font-size: 12px; font-weight: 600; color: #4a6178; letter-spacing: .4px; }
+  .nav { display: flex; gap: 18px; flex-wrap: wrap; font-size: 15px; font-weight: 600; }
+  .nav a { text-decoration: none; color: #42586e; }
+  .nav a:hover { color: #14263d; }
+  .btn {
+    display: inline-block;
+    background: #14263d;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 700;
+    padding: 13px 24px;
+    border-radius: 999px;
+    border: 2px solid #14263d;
+    cursor: pointer;
+    font-size: 15px;
+  }
+  .btn-accent {
+    background: #8fb4d9;
+    color: #14263d;
+    border-color: #8fb4d9;
+  }
+  .btn-outline { background: transparent; color: #14263d; }
+  .btn-big { font-size: 18px; padding: 16px 32px; }
+  main { max-width: 1020px; margin: 0 auto; padding: 0 20px 40px; }
+  .hero {
+    background: #ffffff;
+    border: 1px solid #dbe6f2;
+    border-radius: 24px;
+    padding: 36px 32px;
+    display: grid;
+    grid-template-columns: 1.15fr .85fr;
+    gap: 28px;
+    align-items: center;
+    box-shadow: 0 10px 30px rgba(20, 38, 61, .07);
+  }
+  .hero h1 { font-size: 40px; line-height: 1.15; margin: 12px 0 14px; }
+  .hero h1 em { font-style: normal; color: #2f6da3; }
+  .eyebrow {
+    display: inline-block; font-size: 13px; font-weight: 700; letter-spacing: .6px;
+    background: #e8f0f8; color: #14263d; padding: 6px 12px; border-radius: 999px;
+  }
+  .hero p { color: #42586e; font-size: 17px; margin-bottom: 18px; }
+  .hero-note { font-size: 13px; color: #6b7f94; margin-top: 14px; }
+  .hero-art {
+    background: #e8f0f8;
+    border-radius: 18px;
+    padding: 22px;
+    text-align: center;
+  }
+  .hero-art svg { width: 100%; max-width: 320px; height: auto; }
+  .hero-art p { font-size: 14px; color: #42586e; margin-top: 8px; }
+  .search-box {
+    background: #fdf6ec;
+    border: 1px solid #dbe6f2;
+    border-radius: 16px;
+    padding: 16px;
+    margin-top: 6px;
+  }
+  .search-box form { display: grid; grid-template-columns: 1fr 1fr auto; gap: 10px; }
+  .search-box input, .search-box select {
+    padding: 12px 14px;
+    border: 1.5px solid #dbe6f2;
+    border-radius: 10px;
+    background: #ffffff;
+    color: #14263d;
+    font: inherit;
+    font-size: 15px;
+    width: 100%;
+  }
+  .search-result { font-size: 14px; color: #42586e; margin-top: 10px; min-height: 20px; }
+  section { margin-top: 36px; }
+  .card {
+    background: #ffffff;
+    border: 1px solid #dbe6f2;
+    border-radius: 20px;
+    padding: 28px;
+    box-shadow: 0 6px 20px rgba(20, 38, 61, .05);
+  }
+  h2 { font-size: 26px; line-height: 1.3; margin-bottom: 10px; }
+  .section-sub { color: #42586e; margin-bottom: 20px; max-width: 680px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .job-card {
+    background: #f7f9fc;
+    border: 1px solid #dbe6f2;
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .job-card h3 { font-size: 18px; line-height: 1.35; }
+  .job-card .company { font-weight: 700; color: #2f6da3; font-size: 15px; }
+  .job-card p { color: #42586e; font-size: 15px; }
+  .tag-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 4px; }
+  .tag {
+    display: inline-block; font-size: 13px; font-weight: 700;
+    background: #e8f0f8; color: #14263d; padding: 4px 10px; border-radius: 999px;
+  }
+  .tag-soft { background: #fdf6ec; color: #42586e; }
+  .job-card .btn { margin-top: auto; align-self: flex-start; padding: 10px 20px; font-size: 14px; }
+  .filter-row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px; }
+  .filter-btn {
+    padding: 9px 18px;
+    border-radius: 999px;
+    border: 2px solid #dbe6f2;
+    background: #ffffff;
+    color: #14263d;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .filter-btn.active { background: #14263d; color: #ffffff; border-color: #14263d; }
+  .filter-btn:hover { border-color: #8fb4d9; }
+  .job-empty { display: none; color: #42586e; padding: 18px 4px; }
+  .reason {
+    background: #f7f9fc;
+    border: 1px solid #dbe6f2;
+    border-radius: 16px;
+    padding: 20px;
+  }
+  .reason-number {
+    width: 38px; height: 38px; border-radius: 50%;
+    background: #14263d; color: #8fb4d9;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; margin-bottom: 12px;
+  }
+  .reason h3 { font-size: 18px; margin-bottom: 6px; }
+  .reason p { color: #42586e; font-size: 15px; }
+  .reason .meta { font-size: 13px; color: #6b7f94; margin-top: 10px; }
+  .reason a { color: #2f6da3; font-weight: 700; text-decoration: none; }
+  .reason a:hover { text-decoration: underline; }
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .step {
+    background: #f7f9fc; border: 1px solid #dbe6f2;
+    border-radius: 16px; padding: 20px;
+  }
+  .step b { display: block; font-size: 18px; margin-bottom: 6px; }
+  .step p { color: #42586e; font-size: 15px; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .check-list { list-style: none; }
+  .check-list li { padding: 10px 0 10px 34px; position: relative; border-bottom: 1px solid #eef3f8; }
+  .check-list li:last-child { border-bottom: none; }
+  .check-list li::before {
+    content: "✓"; position: absolute; left: 0; top: 10px;
+    width: 24px; height: 24px; border-radius: 50%;
+    background: #8fb4d9; color: #14263d;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 14px;
+  }
+  .check-list small { display: block; color: #6b7f94; font-size: 13px; }
+  .stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 20px; }
+  .stat {
+    background: #fdf6ec; border: 1px solid #dbe6f2; border-radius: 16px;
+    padding: 18px; text-align: center;
+  }
+  .stat b { display: block; font-size: 26px; color: #14263d; }
+  .stat span { font-size: 14px; color: #42586e; }
+  .price-list { list-style: none; }
+  .price-list li {
+    display: flex; justify-content: space-between; gap: 16px;
+    padding: 14px 4px; border-bottom: 1px solid #e3ebf3;
+  }
+  .price-list li:last-child { border-bottom: none; }
+  .price-list strong { font-size: 16px; }
+  .price-list span { color: #42586e; font-size: 14px; display: block; }
+  .price { font-weight: 800; white-space: nowrap; }
+  .price-note { font-size: 13px; color: #6b7f94; margin-top: 14px; }
+  .faq-item {
+    background: #f7f9fc;
+    border: 1px solid #dbe6f2;
+    border-radius: 14px;
+    padding: 16px 18px;
+    margin-bottom: 12px;
+  }
+  .faq-item summary {
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    list-style: none;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::before {
+    content: "+";
+    display: inline-block;
+    width: 24px; height: 24px; border-radius: 50%;
+    background: #8fb4d9; color: #14263d;
+    text-align: center; line-height: 24px; font-weight: 800;
+    margin-right: 10px;
+  }
+  .faq-item[open ] summary::before { content: "–"; }
+  .faq-item p { color: #42586e; font-size: 15px; margin-top: 10px; padding-left: 34px; }
+  .paket-demo {
+    background: #14263d;
+    color: #ffffff;
+    border-radius: 20px;
+    padding: 28px;
+  }
+  .paket-demo h2 { color: #ffffff; }
+  .paket-demo > p { color: #c8d6e5; max-width: 620px; margin: 0 auto 20px; text-align: center; }
+  .paket-demo h2 { text-align: center; }
+  .tier-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .tier {
+    background: #ffffff; color: #14263d;
+    border-radius: 16px; padding: 22px; text-align: center;
+  }
+  .tier.featured { border: 3px solid #8fb4d9; }
+  .tier h3 { font-size: 19px; margin-bottom: 4px; }
+  .tier .tier-price { font-size: 30px; font-weight: 800; margin: 8px 0; }
+  .tier p { color: #42586e; font-size: 14px; margin-bottom: 12px; }
+  .tier ul { list-style: none; text-align: left; font-size: 14px; color: #42586e; }
+  .tier ul li { padding: 6px 0; border-bottom: 1px solid #eef3f8; }
+  .tier ul li:last-child { border-bottom: none; }
+  .tier .btn { margin-top: 14px; }
+  .paket-note { font-size: 13px; color: #c8d6e5; text-align: center; margin-top: 18px; }
+  .cta-final { text-align: center; padding: 32px 20px; }
+  .cta-final h2 { font-size: 28px; }
+  .cta-final p { color: #42586e; margin: 8px auto 20px; max-width: 560px; }
+  footer {
+    background: #14263d; color: #c8d6e5;
+    text-align: center; padding: 26px 20px; font-size: 14px;
+  }
+  footer a { color: #8fb4d9; font-weight: 700; text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  footer p { max-width: 720px; margin: 0 auto 8px; }
+  @media (max-width: 760px) {
+    .hero { grid-template-columns: 1fr; padding: 26px 22px; }
+    .hero h1 { font-size: 31px; }
+    .grid-3, .grid-2, .steps, .two-col, .tier-grid, .stat-row { grid-template-columns: 1fr; }
+    .search-box form { grid-template-columns: 1fr; }
+    header { justify-content: center; text-align: center; }
+    .brand { justify-content: center; }
+    .nav { justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="demo-banner">CONTOH DEMO — Portal Lowongan Kerja <span>Halaman contoh, bukan situs nyata</span></div>
+
+<header>
+  <div class="brand">
+    <span class="brand-mark" aria-hidden="true">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="7" width="18" height="13" rx="2" fill="#14263d"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2" stroke="#14263d" stroke-width="2" fill="none"/><path d="M3 12h18" stroke="#8fb4d9" stroke-width="2"/><circle cx="12" cy="16" r="2" fill="#8fb4d9"/></svg>
+    </span>
+    <span>KarirKita<small>PORTAL LOWONGAN KERJA</small></span>
+  </div>
+  <nav class="nav" aria-label="Navigasi utama">
+    <a href="#lowongan">Lowongan</a>
+    <a href="#tentang">Tentang</a>
+    <a href="#tips">Tips Karir</a>
+    <a href="#paket">Paket Demo</a>
+  </nav>
+  <a class="btn btn-outline" href="#lowongan">Cari Lowongan</a>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div>
+      <span class="eyebrow">LOWONGAN KERJA • CONTOH DEMO</span>
+      <h1>Temukan pekerjaan yang <em>pas untukmu.</em></h1>
+      <p>KarirKita adalah contoh portal lowongan kerja. Jelajahi lowongan dari berbagai bidang, saring berdasarkan kategori, dan baca tips karir untuk mempersiapkan lamaranmu.</p>
+      <div class="search-box">
+        <form id="searchForm">
+          <input type="text" id="searchKeyword" placeholder="Posisi atau kata kunci, contoh: Desainer" aria-label="Kata kunci lowongan">
+          <select id="searchLocation" aria-label="Lokasi">
+            <option value="">Semua Lokasi</option>
+            <option>Jakarta</option>
+            <option>Bandung</option>
+            <option>Surabaya</option>
+            <option>Yogyakarta</option>
+            <option>Remote</option>
+          </select>
+          <button class="btn btn-accent" type="submit">Cari</button>
+        </form>
+        <p class="search-result" id="searchResult" aria-live="polite">Pencarian di halaman ini hanya contoh tampilan — hasil tidak dikirim ke mana pun.</p>
+      </div>
+      <p class="hero-note">Halaman contoh, bukan situs nyata. Semua perusahaan dan lowongan di bawah ini adalah ilustrasi.</p>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <svg viewBox="0 0 320 190" xmlns="http://www.w3.org/2000/svg">
+        <rect x="10" y="10" width="300" height="170" rx="16" fill="#ffffff"/>
+        <rect x="30" y="30" width="260" height="34" rx="8" fill="#e8f0f8"/>
+        <circle cx="52" cy="47" r="10" fill="#8fb4d9"/>
+        <rect x="70" y="40" width="110" height="8" rx="4" fill="#14263d"/>
+        <rect x="70" y="52" width="70" height="6" rx="3" fill="#8fb4d9"/>
+        <rect x="30" y="78" width="260" height="34" rx="8" fill="#fdf6ec"/>
+        <circle cx="52" cy="95" r="10" fill="#14263d"/>
+        <rect x="70" y="88" width="130" height="8" rx="4" fill="#14263d"/>
+        <rect x="70" y="100" width="80" height="6" rx="3" fill="#8fb4d9"/>
+        <rect x="30" y="126" width="260" height="34" rx="8" fill="#e8f0f8"/>
+        <circle cx="52" cy="143" r="10" fill="#8fb4d9"/>
+        <rect x="70" y="136" width="100" height="8" rx="4" fill="#14263d"/>
+        <rect x="70" y="148" width="60" height="6" rx="3" fill="#8fb4d9"/>
+      </svg>
+      <p>Ilustrasi daftar lowongan — gambar contoh, bukan tangkapan layar asli.</p>
+    </div>
+  </div>
+
+  <!-- LOWONGAN -->
+  <section class="card" id="lowongan">
+    <h2>Lowongan kerja</h2>
+    <p class="section-sub">Delapan lowongan contoh dari perusahaan fiktif. Gunakan tombol kategori di bawah untuk menyaring daftar. Semua nama perusahaan, posisi, dan lokasi hanya ilustrasi.</p>
+    <div class="filter-row" role="group" aria-label="Filter kategori lowongan">
+      <button class="filter-btn active" type="button" data-filter="semua">Semua</button>
+      <button class="filter-btn" type="button" data-filter="teknologi">Teknologi</button>
+      <button class="filter-btn" type="button" data-filter="desain">Desain</button>
+      <button class="filter-btn" type="button" data-filter="pemasaran">Pemasaran</button>
+      <button class="filter-btn" type="button" data-filter="keuangan">Keuangan</button>
+      <button class="filter-btn" type="button" data-filter="operasional">Operasional</button>
+    </div>
+    <div class="grid-2" id="jobGrid">
+      <article class="job-card" data-cat="teknologi">
+        <span class="company">PT Cahaya Digital Nusantara</span>
+        <h3>Pengembang Frontend</h3>
+        <p>Membangun tampilan website dan aplikasi web yang cepat, rapi, dan mudah digunakan di berbagai perangkat.</p>
+        <div class="tag-row"><span class="tag">Jakarta</span><span class="tag">Full-time</span><span class="tag tag-soft">Teknologi</span></div>
+        <a class="btn" href="#lowongan" data-apply="Pengembang Frontend di PT Cahaya Digital Nusantara">Lihat Detail</a>
+      </article>
+      <article class="job-card" data-cat="desain">
+        <span class="company">Studio Warna Pagi</span>
+        <h3>Desainer UI/UX</h3>
+        <p>Merancang alur dan tampilan aplikasi, membuat prototipe, dan bekerja sama dengan tim pengembang.</p>
+        <div class="tag-row"><span class="tag">Bandung</span><span class="tag">Full-time</span><span class="tag tag-soft">Desain</span></div>
+        <a class="btn" href="#lowongan" data-apply="Desainer UI/UX di Studio Warna Pagi">Lihat Detail</a>
+      </article>
+      <article class="job-card" data-cat="pemasaran">
+        <span class="company">PT Sinar Media Kreatif</span>
+        <h3>Spesialis Media Sosial</h3>
+        <p>Menyusun rencana konten, mengelola akun media sosial, dan memantau hasil setiap kampanye konten.</p>
+        <div class="tag-row"><span class="tag">Remote</span><span class="tag">Full-time</span><span class="tag tag-soft">Pemasaran</span></div>
+        <a class="btn" href="#lowongan" data-apply="Spesialis Media Sosial di PT Sinar Media Kreatif">Lihat Detail</a>
+      </article>
+      <article class="job-card" data-cat="keuangan">
+        <span class="company">PT Dana Maju Bersama</span>
+        <h3>Staf Akuntansi</h3>
+        <p>Mencatat transaksi harian, menyusun laporan keuangan bulanan, dan membantu proses rekonsiliasi bank.</p>
+        <div class="tag-row"><span class="tag">Surabaya</span><span class="tag">Full-time</span><span class="tag tag-soft">Keuangan</span></div>
+        <a class="btn" href="#lowongan" data-apply="Staf Akuntansi di PT Dana Maju Bersama">Lihat Detail</a>
+      </article>
+      <article class="job-card" data-cat="teknologi">
+        <span class="company">PT Langit Biru Teknologi</span>
+        <h3>Pengembang Backend</h3>
+        <p>Membangun dan merawat layanan server, basis data, dan antarmuka pemrograman aplikasi (API).</p>
+        <div class="tag-row"><span class="tag">Jakarta</span><span class="tag">Hybrid</span><span class="tag tag-soft">Teknologi</span></div>
+        <a class="btn" href="#lowongan" data-apply="Pengembang Backend di PT Langit Biru Teknologi">Lihat Detail</a>
+      </article>
+      <article class="job-card" data-cat="operasional">
+        <span class="company">PT Rantai Sejahtera Logistik</span>
+        <h3>Koordinator Gudang</h3>
+        <p>Mengatur penerimaan, penyimpanan, dan pengiriman barang serta memastikan catatan stok selalu rapi.</p>
+        <div class="tag-row"><span class="tag">Yogyakarta</span><span class="tag">Full-time</span><span class="tag tag-soft">Operasional</span></div>
+        <a class="btn" href="#lowongan" data-apply="Koordinator Gudang di PT Rantai Sejahtera Logistik">Lihat Detail</a>
+      </article>
+      <article class="job-card" data-cat="pemasaran">
+        <span class="company">CV Tulis Cerita Digital</span>
+        <h3>Penulis Konten</h3>
+        <p>Menulis artikel, deskripsi produk, dan naskah konten yang jelas, informatif, dan mudah dibaca.</p>
+        <div class="tag-row"><span class="tag">Remote</span><span class="tag">Part-time</span><span class="tag tag-soft">Pemasaran</span></div>
+        <a class="btn" href="#lowongan" data-apply="Penulis Konten di CV Tulis Cerita Digital">Lihat Detail</a>
+      </article>
+      <article class="job-card" data-cat="desain">
+        <span class="company">Studio Garis dan Warna</span>
+        <h3>Ilustrator</h3>
+        <p>Membuat ilustrasi untuk artikel, materi presentasi, dan kebutuhan visual lainnya sesuai arahan tim.</p>
+        <div class="tag-row"><span class="tag">Bandung</span><span class="tag">Freelance</span><span class="tag tag-soft">Desain</span></div>
+        <a class="btn" href="#lowongan" data-apply="Ilustrator di Studio Garis dan Warna">Lihat Detail</a>
+      </article>
+    </div>
+    <p class="job-empty" id="jobEmpty">Tidak ada lowongan contoh pada kategori ini.</p>
+    <p class="price-note">Catatan: tombol "Lihat Detail" di atas hanya contoh tampilan. Lowongan dan perusahaan di halaman ini fiktif dan tidak menerima lamaran nyata.</p>
+  </section>
+
+  <!-- TENTANG PERUSAHAAN -->
+  <section class="card" id="tentang">
+    <h2>Tentang KarirKita</h2>
+    <p class="section-sub">KarirKita adalah contoh portal lowongan kerja yang dibuat sebagai demo tampilan website. Halaman ini menunjukkan bagaimana sebuah portal lowongan bisa disusun: pencarian, filter kategori, daftar lowongan, dan artikel tips karir.</p>
+    <div class="two-col">
+      <ul class="check-list">
+        <li><strong>Pencarian dan filter yang jelas.</strong><small>Pencari kerja bisa menyaring lowongan berdasarkan kata kunci, lokasi, dan kategori bidang.</small></li>
+        <li><strong>Informasi lowongan yang rapi.</strong><small>Setiap kartu lowongan menampilkan perusahaan, posisi, lokasi, dan tipe kerja dalam satu tampilan.</small></li>
+        <li><strong>Artikel tips karir.</strong><small>Selain lowongan, portal ini menyediakan bacaan singkat seputar persiapan lamaran dan wawancara.</small></li>
+      </ul>
+      <ul class="check-list">
+        <li><strong>Contoh tampilan, bukan layanan nyata.</strong><small>Semua perusahaan, posisi, dan gaji yang disebut di halaman ini hanya ilustrasi untuk demo.</small></li>
+        <li><strong>Tampilan responsif.</strong><small>Halaman menyesuaikan ukuran layar HP, tablet, dan laptop.</small></li>
+        <li><strong>Satu file, mudah disesuaikan.</strong><small>Seluruh halaman ini berada dalam satu file HTML mandiri tanpa file eksternal.</small></li>
+      </ul>
+    </div>
+    <div class="stat-row">
+      <div class="stat"><b>8</b><span>Lowongan contoh di halaman ini</span></div>
+      <div class="stat"><b>5</b><span>Kategori bidang contoh</span></div>
+      <div class="stat"><b>3</b><span>Artikel tips karir contoh</span></div>
+    </div>
+  </section>
+
+  <!-- CARA MELAMAR -->
+  <section class="card" id="cara-melamar">
+    <h2>Cara melamar (contoh)</h2>
+    <p class="section-sub">Tiga langkah contoh untuk melamar lowongan di portal ini. Langkah-langkah di bawah hanya ilustrasi — tidak ada lamaran nyata yang dikirim dari halaman ini.</p>
+    <div class="steps">
+      <div class="step"><b>1. Pilih lowongan</b><p>Buka kartu lowongan dan baca deskripsi posisinya: tugas utama, lokasi, dan tipe kerja yang ditawarkan.</p></div>
+      <div class="step"><b>2. Siapkan berkas contoh</b><p>Siapkan CV dan surat lamaran contoh. Pastikan data diri dan pengalaman kerja yang ditulis sudah benar.</p></div>
+      <div class="step"><b>3. Kirim lamaran contoh</b><p>Dalam demo ini, tombol kirim hanya menampilkan pesan contoh. Tidak ada berkas yang benar-benar dikirim ke perusahaan mana pun.</p></div>
+    </div>
+    <p class="price-note">Catatan: semua perusahaan di halaman ini fiktif. Jangan mengirim data pribadi asli melalui formulir contoh di halaman demo mana pun.</p>
+  </section>
+
+  <!-- TIPS KARIR -->
+  <section class="card" id="tips">
+    <h2>Tips karir</h2>
+    <p class="section-sub">Tiga artikel contoh seputar dunia kerja. Judul dan isi artikel hanya ilustrasi untuk menunjukkan tata letak bagian artikel.</p>
+    <div class="grid-3">
+      <article class="reason">
+        <div class="reason-number">1</div>
+        <h3>Menyusun CV yang rapi dan jelas</h3>
+        <p>CV yang baik memuat pengalaman yang relevan, ditulis singkat, dan mudah dibaca dalam waktu kurang dari satu menit. Cantumkan hasil kerja yang bisa dijelaskan dengan contoh, bukan hanya daftar tugas.</p>
+        <p class="meta">Artikel contoh • 5 menit baca • <a href="#tips">Baca selengkapnya</a></p>
+      </article>
+      <article class="reason">
+        <div class="reason-number">2</div>
+        <h3>Mempersiapkan diri untuk wawancara</h3>
+        <p>Sebelum wawancara, pelajari gambaran umum perusahaan dan posisi yang dilamar. Siapkan jawaban untuk pertanyaan umum, dan siapkan juga pertanyaan yang ingin kamu ajukan kepada pewawancara.</p>
+        <p class="meta">Artikel contoh • 4 menit baca • <a href="#tips">Baca selengkapnya</a></p>
+      </article>
+      <article class="reason">
+        <div class="reason-number">3</div>
+        <h3>Memilih antara kerja remote dan kerja di kantor</h3>
+        <p>Kerja remote memberi fleksibilitas waktu dan tempat, sedangkan kerja di kantor memudahkan kolaborasi langsung. Pertimbangkan gaya kerjamu, kebutuhan tim, dan fasilitas yang tersedia sebelum memutuskan.</p>
+        <p class="meta">Artikel contoh • 6 menit baca • <a href="#tips">Baca selengkapnya</a></p>
+      </article>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="card" id="faq">
+    <h2>Pertanyaan yang Sering Diajukan</h2>
+    <p class="section-sub">Jawaban contoh atas pertanyaan umum seputar portal contoh ini. Klik pertanyaan untuk membuka jawabannya.</p>
+    <details class="faq-item">
+      <summary>Apakah lowongan di halaman ini benar-benar dibuka?</summary>
+      <p>Tidak. Semua perusahaan dan lowongan di halaman ini fiktif dan hanya ilustrasi untuk demo. Tidak ada lamaran nyata yang diterima dari halaman ini.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Apakah saya perlu membuat akun untuk melihat lowongan?</summary>
+      <p>Dalam ilustrasi demo ini, semua lowongan bisa dilihat tanpa akun. Halaman ini hanya contoh tampilan, jadi tidak ada akun nyata yang dibuat di sini.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Apakah data saya dikirim saat memakai pencarian?</summary>
+      <p>Tidak. Pencarian di halaman ini hanya menyaring kartu lowongan yang tampil di layar. Tidak ada data yang dikirim ke mana pun.</p>
+    </details>
+  </section>
+
+  <!-- PAKET DEMO WEBSITE -->
+  <section class="paket-demo" id="paket">
+    <h2>Paket Demo Website</h2>
+    <p>Contoh paket pembuatan website portal lowongan kerja seperti halaman ini. Pilih paket sesuai kebutuhan contohmu.</p>
+    <div class="tier-grid">
+      <div class="tier">
+        <h3>Demo</h3>
+        <div class="tier-price">$29</div>
+        <p>Paket contoh paling sederhana.</p>
+        <ul>
+          <li>1 halaman utama</li>
+          <li>Daftar lowongan contoh</li>
+          <li>Tampilan responsif</li>
+          <li>File HTML mandiri</li>
+        </ul>
+        <a class="btn btn-outline" href="mailto:masduki1189@gmail.com?subject=Pesan%20Website%20Demo%20Paket%20Demo%20%2429">Pesan via Email</a>
+      </div>
+      <div class="tier featured">
+        <h3>Standar</h3>
+        <div class="tier-price">$49</div>
+        <p>Paket contoh dengan fitur lebih lengkap.</p>
+        <ul>
+          <li>Semua isi paket Demo</li>
+          <li>Filter kategori dan pencarian</li>
+          <li>Bagian artikel tips karir</li>
+          <li>1 kali revisi kecil</li>
+        </ul>
+        <a class="btn" href="mailto:masduki1189@gmail.com?subject=Pesan%20Website%20Demo%20Paket%20Standar%20%2449">Pesan via Email</a>
+      </div>
+      <div class="tier">
+        <h3>Pro</h3>
+        <div class="tier-price">$79</div>
+        <p>Paket contoh paling lengkap.</p>
+        <ul>
+          <li>Semua isi paket Standar</li>
+          <li>Halaman detail lowongan contoh</li>
+          <li>Formulir lamaran contoh</li>
+          <li>Bantuan pasang online</li>
+        </ul>
+        <a class="btn btn-outline" href="mailto:masduki1189@gmail.com?subject=Pesan%20Website%20Demo%20Paket%20Pro%20%2479">Pesan via Email</a>
+      </div>
+    </div>
+    <p class="paket-note">Harga paket demo website — pesan via email.</p>
+  </section>
+
+  <!-- CTA AKHIR -->
+  <section class="cta-final">
+    <h2>Mau portal lowongan seperti ini?</h2>
+    <p>Halaman ini adalah contoh demo. Kalau kamu mau website portal lowongan dengan tampilan seperti ini, pesan paket demo website lewat email.</p>
+    <a class="btn btn-accent btn-big" href="mailto:masduki1189@gmail.com?subject=Pesan%20Website%20Portal%20Lowongan%20Kerja">Pesan via Email</a>
+  </section>
+
+</main>
+
+<footer>
+  <p>Halaman ini adalah contoh demo website. Semua nama, harga, dan konten di dalamnya hanya ilustrasi.</p>
+  <p>Demo contoh oleh KikiWorks — Podcast Meong. Pesan website via email — <a href="mailto:masduki1189@gmail.com">masduki1189@gmail.com</a></p>
+</footer>
+
+<script>
+(function () {
+  /* Filter kategori lowongan */
+  var buttons = document.querySelectorAll('.filter-btn');
+  var cards = document.querySelectorAll('.job-card');
+  var emptyMsg = document.getElementById('jobEmpty');
+  buttons.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      buttons.forEach(function (b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      var filter = btn.getAttribute('data-filter');
+      var shown = 0;
+      cards.forEach(function (card) {
+        var match = filter === 'semua' || card.getAttribute('data-cat') === filter;
+        card.style.display = match ? '' : 'none';
+        if (match) shown++;
+      });
+      emptyMsg.style.display = shown === 0 ? 'block' : 'none';
+    });
+  });
+
+  /* Pencarian mockup: hanya menyaring kartu di halaman, tanpa mengirim data */
+  var form = document.getElementById('searchForm');
+  var keywordInput = document.getElementById('searchKeyword');
+  var locationSelect = document.getElementById('searchLocation');
+  var result = document.getElementById('searchResult');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var keyword = keywordInput.value.trim().toLowerCase();
+    var location = locationSelect.value;
+    var shown = 0;
+    cards.forEach(function (card) {
+      var text = card.textContent.toLowerCase();
+      var matchKeyword = !keyword || text.indexOf(keyword) !== -1;
+      var matchLocation = !location || text.indexOf(location.toLowerCase()) !== -1;
+      var match = matchKeyword && matchLocation;
+      card.style.display = match ? '' : 'none';
+      if (match) shown++;
+    });
+    buttons.forEach(function (b) { b.classList.remove('active'); });
+    document.querySelector('[data-filter="semua"]').classList.add('active');
+    emptyMsg.style.display = shown === 0 ? 'block' : 'none';
+    result.textContent = 'Ini demo — data tidak dikirim ke mana pun. Ditemukan ' + shown + ' lowongan contoh yang cocok.';
+    document.getElementById('lowongan').scrollIntoView({ behavior: 'smooth' });
+  });
+
+  /* Tombol detail lowongan: hanya contoh tampilan */
+  document.querySelectorAll('[data-apply]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      result.textContent = 'Ini demo — data tidak dikirim ke mana pun. Detail lowongan "' + link.getAttribute('data-apply') + '" hanya contoh tampilan.';
+      result.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portal Layanan Desa Sukamaju — Layanan Administrasi Desa | Contoh Demo</title>
+<meta name="description" content="Contoh demo website portal layanan Desa Sukamaju: layanan administrasi, pengumuman, profil desa, dan kontak perangkat desa.">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: #f7f9fc;
+    color: #14263d;
+    line-height: 1.6;
+  }
+  a { color: inherit; }
+  .demo-banner {
+    background: #14263d;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  .demo-banner span {
+    background: #8fb4d9;
+    color: #14263d;
+    padding: 2px 10px;
+    border-radius: 999px;
+    margin-left: 6px;
+    font-size: 12px;
+    letter-spacing: 0;
+  }
+  header {
+    max-width: 1020px;
+    margin: 0 auto;
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .brand { display: flex; align-items: center; gap: 12px; font-weight: 800; font-size: 22px; }
+  .brand-mark {
+    width: 44px; height: 44px; border-radius: 12px;
+    background: #8fb4d9; display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .brand small { display: block; font-size: 12px; font-weight: 600; color: #4a6178; letter-spacing: .4px; }
+  nav.main-nav { display: flex; gap: 4px; flex-wrap: wrap; }
+  nav.main-nav a {
+    text-decoration: none; font-weight: 700; font-size: 14px;
+    padding: 8px 14px; border-radius: 999px; color: #14263d;
+  }
+  nav.main-nav a:hover { background: #e8f0f8; }
+  .btn {
+    display: inline-block;
+    background: #14263d;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 700;
+    padding: 13px 24px;
+    border-radius: 999px;
+    border: 2px solid #14263d;
+    cursor: pointer;
+    font-size: 15px;
+  }
+  .btn-accent {
+    background: #8fb4d9;
+    color: #14263d;
+    border-color: #8fb4d9;
+  }
+  .btn-outline {
+    background: transparent;
+    color: #14263d;
+  }
+  main { max-width: 1020px; margin: 0 auto; padding: 0 20px 40px; }
+  .hero {
+    background: #ffffff;
+    border: 1px solid #dbe6f2;
+    border-radius: 24px;
+    padding: 36px 32px;
+    display: grid;
+    grid-template-columns: 1.15fr .85fr;
+    gap: 28px;
+    align-items: center;
+    box-shadow: 0 10px 30px rgba(20, 38, 61, .07);
+  }
+  .hero h1 { font-size: 40px; line-height: 1.15; margin: 12px 0 14px; }
+  .hero h1 em { font-style: normal; color: #2f6da3; }
+  .eyebrow {
+    display: inline-block; font-size: 13px; font-weight: 700; letter-spacing: .6px;
+    background: #e8f0f8; color: #14263d; padding: 6px 12px; border-radius: 999px;
+  }
+  .hero p { color: #42586e; font-size: 17px; margin-bottom: 18px; }
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .hero-note { font-size: 13px; color: #6b7f94; margin-top: 14px; }
+  .hero-art {
+    background: #fdf6ec;
+    border: 1px solid #dbe6f2;
+    border-radius: 18px;
+    padding: 22px;
+    text-align: center;
+  }
+  .hero-art svg { width: 100%; max-width: 320px; height: auto; }
+  .hero-art p { font-size: 14px; color: #42586e; margin-top: 8px; }
+  section { margin-top: 36px; }
+  .card {
+    background: #ffffff;
+    border: 1px solid #dbe6f2;
+    border-radius: 20px;
+    padding: 28px;
+    box-shadow: 0 6px 20px rgba(20, 38, 61, .05);
+  }
+  h2 { font-size: 26px; line-height: 1.3; margin-bottom: 10px; }
+  .section-sub { color: #42586e; margin-bottom: 20px; max-width: 680px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .reason {
+    background: #f7f9fc;
+    border: 1px solid #dbe6f2;
+    border-radius: 16px;
+    padding: 20px;
+  }
+  .reason-icon {
+    width: 44px; height: 44px; border-radius: 12px;
+    background: #8fb4d9; display: flex; align-items: center; justify-content: center;
+    margin-bottom: 12px;
+  }
+  .reason h3 { font-size: 18px; margin-bottom: 6px; }
+  .reason p { color: #42586e; font-size: 15px; }
+  .reason .tag {
+    display: inline-block; font-size: 12px; font-weight: 700;
+    background: #e8f0f8; color: #14263d;
+    padding: 3px 10px; border-radius: 999px; margin-top: 10px;
+  }
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .step {
+    background: #f7f9fc; border: 1px solid #dbe6f2;
+    border-radius: 16px; padding: 20px;
+  }
+  .step b { display: block; font-size: 18px; margin-bottom: 6px; }
+  .step p { color: #42586e; font-size: 15px; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .check-list { list-style: none; }
+  .check-list li { padding: 10px 0 10px 34px; position: relative; border-bottom: 1px solid #eef3f8; }
+  .check-list li:last-child { border-bottom: none; }
+  .check-list li::before {
+    content: "✓"; position: absolute; left: 0; top: 10px;
+    width: 24px; height: 24px; border-radius: 50%;
+    background: #8fb4d9; color: #14263d;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 14px;
+  }
+  .check-list small { display: block; color: #6b7f94; font-size: 13px; }
+  .news-item {
+    padding: 18px 4px; border-bottom: 1px solid #e3ebf3;
+    display: flex; gap: 16px; align-items: flex-start;
+  }
+  .news-item:last-child { border-bottom: none; }
+  .news-date {
+    flex-shrink: 0; width: 64px; text-align: center;
+    background: #e8f0f8; border: 1px solid #dbe6f2; border-radius: 12px;
+    padding: 8px 4px;
+  }
+  .news-date b { display: block; font-size: 20px; line-height: 1.1; }
+  .news-date span { font-size: 12px; color: #42586e; font-weight: 700; }
+  .news-item h3 { font-size: 17px; margin-bottom: 4px; }
+  .news-item p { color: #42586e; font-size: 15px; }
+  .news-item .label {
+    display: inline-block; font-size: 12px; font-weight: 700;
+    background: #fdf6ec; border: 1px solid #dbe6f2; color: #42586e;
+    padding: 2px 10px; border-radius: 999px; margin-top: 8px;
+  }
+  table.data {
+    width: 100%; border-collapse: collapse; font-size: 15px;
+  }
+  table.data th, table.data td {
+    text-align: left; padding: 12px 10px; border-bottom: 1px solid #e3ebf3;
+  }
+  table.data th { background: #f7f9fc; font-size: 14px; }
+  table.data td:last-child, table.data th:last-child { text-align: right; }
+  .table-note { font-size: 13px; color: #6b7f94; margin-top: 12px; }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .form-grid .full { grid-column: 1 / -1; }
+  label { display: block; font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+  input[type=text], input[type=tel], input[type=date], select, textarea {
+    width: 100%; padding: 12px 14px;
+    border: 1.5px solid #dbe6f2; border-radius: 12px;
+    background: #f7f9fc; color: #14263d; font: inherit; font-size: 15px;
+  }
+  input:focus, select:focus, textarea:focus {
+    outline: none; border-color: #8fb4d9;
+    box-shadow: 0 0 0 3px rgba(143, 180, 217, .35);
+  }
+  textarea { min-height: 90px; resize: vertical; }
+  .form-note { font-size: 13px; color: #6b7f94; margin-top: 12px; }
+  .demo-msg {
+    display: none; margin-top: 16px; padding: 14px 18px;
+    background: #e8f0f8; border: 1px solid #8fb4d9; border-radius: 12px;
+    font-weight: 700; font-size: 15px;
+  }
+  .demo-msg.show { display: block; }
+  .officer {
+    display: flex; gap: 14px; align-items: center;
+    padding: 14px 4px; border-bottom: 1px solid #eef3f8;
+  }
+  .officer:last-child { border-bottom: none; }
+  .officer-avatar {
+    width: 52px; height: 52px; border-radius: 50%; flex-shrink: 0;
+    background: #8fb4d9; color: #14263d; font-weight: 800; font-size: 18px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .officer b { display: block; font-size: 16px; }
+  .officer span { color: #42586e; font-size: 14px; }
+  .officer small { display: block; color: #6b7f94; font-size: 12px; }
+  .paket {
+    background: #14263d;
+    color: #ffffff;
+    border-radius: 20px;
+    padding: 28px;
+  }
+  .paket h2 { color: #ffffff; }
+  .paket > p { color: #c8d6e5; max-width: 620px; margin-bottom: 20px; }
+  .paket-tiers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .tier {
+    background: #ffffff; color: #14263d;
+    border-radius: 16px; padding: 22px; text-align: center;
+  }
+  .tier h3 { font-size: 18px; }
+  .tier .tier-price { font-size: 34px; font-weight: 800; margin: 8px 0 4px; }
+  .tier .tier-price small { font-size: 15px; font-weight: 600; color: #42586e; }
+  .tier p { color: #42586e; font-size: 14px; margin-bottom: 14px; }
+  .tier ul { list-style: none; text-align: left; font-size: 14px; color: #42586e; }
+  .tier ul li { padding: 6px 0; border-bottom: 1px solid #eef3f8; }
+  .tier ul li:last-child { border-bottom: none; }
+  .paket-note { font-size: 13px; color: #c8d6e5; margin-top: 18px; text-align: center; }
+  .cta-final { text-align: center; padding: 32px 20px; }
+  .cta-final h2 { font-size: 28px; }
+  .cta-final p { color: #42586e; margin: 8px auto 20px; max-width: 560px; }
+  .btn-big { font-size: 18px; padding: 16px 32px; }
+  footer {
+    background: #14263d; color: #c8d6e5;
+    text-align: center; padding: 26px 20px; font-size: 14px;
+  }
+  footer a { color: #8fb4d9; font-weight: 700; text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  footer .disclaimer { margin-top: 10px; font-size: 13px; color: #9db1c6; }
+  @media (max-width: 760px) {
+    .hero { grid-template-columns: 1fr; padding: 26px 22px; }
+    .hero h1 { font-size: 31px; }
+    .grid-3, .grid-2, .steps, .two-col, .form-grid, .paket-tiers { grid-template-columns: 1fr; }
+    header { justify-content: center; text-align: center; }
+    .brand { justify-content: center; }
+    nav.main-nav { justify-content: center; }
+    .news-item { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<div class="demo-banner">CONTOH DEMO — Website Pemerintahan <span>Halaman contoh, bukan situs nyata</span></div>
+
+<header>
+  <div class="brand">
+    <span class="brand-mark" aria-hidden="true">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2 3 6v2h18V6L12 2Z" fill="#14263d"/><path d="M5 10v8H3v2h18v-2h-2v-8h-3v8h-3v-8h-2v8H8v-8H5Z" fill="#14263d"/><path d="M12 2 3 6v2h18V6L12 2Z" fill="#14263d" opacity=".45"/></svg>
+    </span>
+    <span>Desa Sukamaju<small>PORTAL LAYANAN DESA</small></span>
+  </div>
+  <nav class="main-nav" aria-label="Navigasi utama">
+    <a href="#layanan">Layanan</a>
+    <a href="#pengumuman">Pengumuman</a>
+    <a href="#profil">Profil Desa</a>
+    <a href="#kontak">Kontak</a>
+  </nav>
+  <a class="btn btn-outline" href="#formulir">Ajukan Surat</a>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div>
+      <span class="eyebrow">PORTAL LAYANAN • DESA SUKAMAJU</span>
+      <h1>Selamat datang di <em>Portal Layanan Desa Sukamaju.</em></h1>
+      <p>Portal contoh untuk layanan administrasi desa: pengajuan surat, pengumuman desa, dan informasi perangkat desa — semua dalam satu halaman yang mudah dibaca warga.</p>
+      <div class="hero-actions">
+        <a class="btn btn-accent btn-big" href="#layanan">Lihat Layanan</a>
+        <a class="btn btn-outline" href="#pengumuman">Pengumuman Desa</a>
+      </div>
+      <p class="hero-note">Jam layanan contoh: Senin–Jumat, 08.00–15.00. Halaman ini hanya contoh tampilan, bukan situs resmi desa mana pun.</p>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <svg viewBox="0 0 320 190" xmlns="http://www.w3.org/2000/svg">
+        <rect x="10" y="10" width="300" height="170" rx="16" fill="#ffffff"/>
+        <path d="M160 42 70 92v58h180V92L160 42Z" fill="#8fb4d9"/>
+        <path d="M160 58 92 96v54h136V96L160 58Z" fill="#ffffff"/>
+        <rect x="146" y="112" width="28" height="38" rx="4" fill="#14263d"/>
+        <rect x="104" y="104" width="24" height="20" rx="3" fill="#14263d"/>
+        <rect x="192" y="104" width="24" height="20" rx="3" fill="#14263d"/>
+        <circle cx="160" cy="86" r="8" fill="#14263d"/>
+        <path d="M60 168h200" stroke="#14263d" stroke-width="4" stroke-linecap="round"/>
+        <circle cx="52" cy="52" r="14" fill="#fdf6ec" stroke="#8fb4d9" stroke-width="3"/>
+        <circle cx="268" cy="52" r="14" fill="#fdf6ec" stroke="#8fb4d9" stroke-width="3"/>
+      </svg>
+      <p>Ilustrasi balai desa — gambar contoh, bukan foto asli.</p>
+    </div>
+  </div>
+
+  <!-- LAYANAN -->
+  <section class="card" id="layanan">
+    <h2>Layanan administrasi</h2>
+    <p class="section-sub">Empat layanan yang paling sering diajukan warga. Klik salah satu layanan untuk mengisi formulir contoh di bawah.</p>
+    <div class="grid-3">
+      <div class="reason">
+        <div class="reason-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="5" width="18" height="14" rx="3" stroke="#14263d" stroke-width="2"/><circle cx="8.5" cy="11" r="2.5" fill="#14263d"/><path d="M5 16c.7-1.6 2-2.4 3.5-2.4S11.3 14.4 12 16" stroke="#14263d" stroke-width="2" stroke-linecap="round"/><path d="M14 9h5M14 13h5" stroke="#14263d" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <h3>KTP</h3>
+        <p>Pengajuan dan perpanjangan Kartu Tanda Penduduk untuk warga yang sudah memenuhi syarat usia.</p>
+        <span class="tag">Syarat: fotokopi KK</span>
+      </div>
+      <div class="reason">
+        <div class="reason-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 5h16v14H4z" stroke="#14263d" stroke-width="2" fill="none"/><path d="M8 9h8M8 12h8M8 15h5" stroke="#14263d" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Kartu Keluarga (KK)</h3>
+        <p>Pembaruan data Kartu Keluarga: anggota baru, perubahan alamat, atau perbaikan data keluarga.</p>
+        <span class="tag">Syarat: KK lama</span>
+      </div>
+      <div class="reason">
+        <div class="reason-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 3h9l4 4v14H6V3Z" stroke="#14263d" stroke-width="2" fill="none" stroke-linejoin="round"/><path d="M9 9h6M9 13h6M9 17h4" stroke="#14263d" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Surat Keterangan</h3>
+        <p>Surat keterangan usaha, surat keterangan tidak mampu, dan surat keterangan lainnya sesuai keperluan.</p>
+        <span class="tag">Syarat: surat pengantar RT/RW</span>
+      </div>
+      <div class="reason">
+        <div class="reason-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 21s-7-5.5-7-11a7 7 0 1 1 14 0c0 5.5-7 11-7 11Z" stroke="#14263d" stroke-width="2" fill="none"/><circle cx="12" cy="10" r="2.5" fill="#14263d"/></svg>
+        </div>
+        <h3>Surat Domisili</h3>
+        <p>Surat keterangan domisili untuk warga yang tinggal di wilayah Desa Sukamaju.</p>
+        <span class="tag">Syarat: KTP dan KK</span>
+      </div>
+      <div class="reason">
+        <div class="reason-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" stroke="#14263d" stroke-width="2" fill="none"/><path d="M12 7v5l3 3" stroke="#14263d" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Waktu Proses</h3>
+        <p>Contoh alur: pengajuan dicek petugas, surat dicetak, lalu diambil di balai desa pada jam layanan.</p>
+        <span class="tag">Contoh: 1–3 hari kerja</span>
+      </div>
+      <div class="reason">
+        <div class="reason-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12l4 4L19 6" stroke="#14263d" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Biaya Layanan</h3>
+        <p>Contoh tampilan: layanan administrasi dasar di halaman contoh ini tidak dipungut biaya.</p>
+        <span class="tag">Contoh tampilan</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMULIR MOCKUP -->
+  <section class="card" id="formulir">
+    <h2>Formulir pengajuan surat</h2>
+    <p class="section-sub">Formulir contoh untuk mengajukan layanan di atas. Isi dengan data contoh — formulir ini hanya mockup dan tidak mengirim data ke mana pun.</p>
+    <form id="formLayanan">
+      <div class="form-grid">
+        <div>
+          <label for="nama">Nama lengkap</label>
+          <input type="text" id="nama" name="nama" placeholder="Contoh: Budi Santoso" required>
+        </div>
+        <div>
+          <label for="nik">NIK (contoh)</label>
+          <input type="text" id="nik" name="nik" placeholder="Contoh: 3201xxxxxxxxxxxx" required>
+        </div>
+        <div>
+          <label for="layanan">Jenis layanan</label>
+          <select id="layanan" name="layanan" required>
+            <option value="">— Pilih layanan —</option>
+            <option value="KTP">KTP</option>
+            <option value="KK">Kartu Keluarga (KK)</option>
+            <option value="Surat Keterangan">Surat Keterangan</option>
+            <option value="Domisili">Surat Domisili</option>
+          </select>
+        </div>
+        <div>
+          <label for="tanggal">Tanggal pengajuan (contoh)</label>
+          <input type="date" id="tanggal" name="tanggal">
+        </div>
+        <div class="full">
+          <label for="keperluan">Keperluan</label>
+          <textarea id="keperluan" name="keperluan" placeholder="Contoh: untuk keperluan melamar pekerjaan"></textarea>
+        </div>
+      </div>
+      <div style="margin-top: 18px;">
+        <button class="btn btn-accent" type="submit">Kirim Pengajuan (Contoh)</button>
+      </div>
+      <p class="form-note">Formulir ini adalah mockup. Jangan isi dengan data pribadi asli.</p>
+      <div class="demo-msg" id="msgLayanan" role="status">Ini demo — data tidak dikirim ke mana pun.</div>
+    </form>
+  </section>
+
+  <!-- PENGUMUMAN -->
+  <section class="card" id="pengumuman">
+    <h2>Pengumuman desa</h2>
+    <p class="section-sub">Tiga pengumuman contoh dari Desa Sukamaju. Tanggal dan isi di bawah ini hanya ilustrasi.</p>
+    <div class="news-item">
+      <div class="news-date"><b>28</b><span>Nov 2026</span></div>
+      <div>
+        <h3>Musyawarah desa pembahasan rencana kerja tahun depan</h3>
+        <p>Contoh pengumuman: musyawarah desa akan membahas rencana kerja dan usulan kegiatan warga untuk tahun anggaran berikutnya.</p>
+        <span class="label">Pengumuman contoh</span>
+      </div>
+    </div>
+    <div class="news-item">
+      <div class="news-date"><b>20</b><span>Nov 2026</span></div>
+      <div>
+        <h3>Kerja bakti membersihkan saluran air di Dusun 2</h3>
+        <p>Contoh pengumuman: warga Dusun 2 diajak kerja bakti membersihkan saluran air menjelang musim hujan.</p>
+        <span class="label">Pengumuman contoh</span>
+      </div>
+    </div>
+    <div class="news-item">
+      <div class="news-date"><b>12</b><span>Nov 2026</span></div>
+      <div>
+        <h3>Pendaftaran posyandu balita bulan November</h3>
+        <p>Contoh pengumuman: pendaftaran posyandu balita dibuka di balai desa setiap hari kerja pada jam layanan.</p>
+        <span class="label">Pengumuman contoh</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROFIL DESA -->
+  <section class="card" id="profil">
+    <h2>Profil Desa Sukamaju</h2>
+    <p class="section-sub">Gambaran umum desa dalam halaman contoh ini. Semua angka di bawah adalah ilustrasi tampilan, bukan data resmi.</p>
+    <div class="two-col">
+      <ul class="check-list">
+        <li><strong>Letak wilayah.</strong><small>Contoh: desa di wilayah kecamatan contoh, dengan 4 dusun dan akses jalan utama beraspal.</small></li>
+        <li><strong>Mata pencaharian warga.</strong><small>Contoh: pertanian, perdagangan kecil, dan jasa — sebagai ilustrasi profil desa.</small></li>
+        <li><strong>Fasilitas desa.</strong><small>Contoh: balai desa, posyandu, lapangan olahraga, dan perpustakaan desa.</small></li>
+        <li><strong>Jumlah dusun.</strong><small>Contoh tampilan: 4 dusun, 8 RW, 24 RT — angka ilustrasi, bukan data resmi.</small></li>
+      </ul>
+      <div>
+        <h3 style="font-size: 18px; margin-bottom: 10px;">Anggaran desa (contoh tampilan)</h3>
+        <table class="data">
+          <thead>
+            <tr><th>Bidang</th><th>Anggaran</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Penyelenggaraan pemerintahan</td><td>Rp350.000.000</td></tr>
+            <tr><td>Pembangunan desa</td><td>Rp500.000.000</td></tr>
+            <tr><td>Pemberdayaan masyarakat</td><td>Rp150.000.000</td></tr>
+            <tr><td>Pembinaan kemasyarakatan</td><td>Rp100.000.000</td></tr>
+          </tbody>
+        </table>
+        <p class="table-note">Tabel di atas berlabel "contoh tampilan" — angka-angkanya hanya ilustrasi desain, bukan anggaran resmi desa mana pun.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- KONTAK PERANGKAT DESA -->
+  <section class="card" id="kontak">
+    <h2>Kontak perangkat desa</h2>
+    <p class="section-sub">Perangkat desa contoh untuk halaman demo ini. Nama-nama di bawah adalah nama contoh, bukan perangkat desa yang sebenarnya.</p>
+    <div class="two-col">
+      <div>
+        <div class="officer">
+          <span class="officer-avatar">AW</span>
+          <div><b>Andi Wijaya (nama contoh)</b><span>Kepala Desa</span><small>Jam layanan: Senin–Jumat, 08.00–15.00</small></div>
+        </div>
+        <div class="officer">
+          <span class="officer-avatar">SR</span>
+          <div><b>Sari Rahmawati (nama contoh)</b><span>Sekretaris Desa</span><small>Urusan surat dan administrasi desa</small></div>
+        </div>
+        <div class="officer">
+          <span class="officer-avatar">BS</span>
+          <div><b>Budi Santoso (nama contoh)</b><span>Kaur Keuangan</span><small>Urusan keuangan dan laporan desa</small></div>
+        </div>
+      </div>
+      <div>
+        <div class="officer">
+          <span class="officer-avatar">DL</span>
+          <div><b>Dewi Lestari (nama contoh)</b><span>Kaur Umum</span><small>Urusan umum dan pelayanan warga</small></div>
+        </div>
+        <div class="officer">
+          <span class="officer-avatar">AN</span>
+          <div><b>Agus Nugroho (nama contoh)</b><span>Kasi Pelayanan</span><small>Urusan pelayanan dan pengaduan warga</small></div>
+        </div>
+        <div class="officer">
+          <span class="officer-avatar">RP</span>
+          <div><b>Rina Puspita (nama contoh)</b><span>Kasi Kesejahteraan</span><small>Urusan kesejahteraan dan pemberdayaan</small></div>
+        </div>
+      </div>
+    </div>
+    <p class="form-note" style="margin-top: 16px;">Alamat contoh: Jl. Raya Sukamaju No. 10, Desa Sukamaju. Telepon contoh: (021) 555-0100. Email contoh: layanan@sukamaju-contoh.id — semua hanya ilustrasi.</p>
+  </section>
+
+  <!-- ALUR PENGAJUAN -->
+  <section class="card">
+    <h2>Alur pengajuan surat</h2>
+    <p class="section-sub">Contoh alur pengajuan surat di Desa Sukamaju, dari pengajuan sampai surat bisa diambil.</p>
+    <div class="steps">
+      <div class="step"><b>1. Siapkan dokumen</b><p>Siapkan dokumen yang diminta sesuai jenis layanan, misalnya fotokopi KK dan surat pengantar RT/RW contoh.</p></div>
+      <div class="step"><b>2. Isi formulir</b><p>Isi formulir pengajuan contoh di atas atau datang langsung ke balai desa pada jam layanan contoh.</p></div>
+      <div class="step"><b>3. Ambil surat</b><p>Setelah surat selesai diproses, warga mengambilnya di balai desa dengan membawa tanda pengenal contoh.</p></div>
+    </div>
+  </section>
+
+  <!-- DOKUMEN -->
+  <section class="card">
+    <h2>Dokumen yang perlu disiapkan</h2>
+    <p class="section-sub">Daftar contoh dokumen untuk setiap layanan. Dokumen asli tetap dibawa saat pengambilan surat.</p>
+    <div class="two-col">
+      <ul class="check-list">
+        <li><strong>KTP — fotokopi KK.</strong><small>Dokumen contoh untuk pengajuan KTP baru atau perpanjangan.</small></li>
+        <li><strong>KK — KK lama.</strong><small>Dokumen contoh untuk pembaruan data Kartu Keluarga.</small></li>
+        <li><strong>Surat Keterangan — surat pengantar RT/RW.</strong><small>Dokumen contoh untuk surat keterangan usaha dan sejenisnya.</small></li>
+      </ul>
+      <ul class="check-list">
+        <li><strong>Domisili — KTP dan KK.</strong><small>Dokumen contoh untuk surat keterangan domisili.</small></li>
+        <li><strong>Semua layanan — surat pengantar RT/RW.</strong><small>Contoh: surat pengantar dari RT/RW setempat.</small></li>
+        <li><strong>Pengambilan — tanda pengenal.</strong><small>Contoh: KTP asli untuk mengambil surat yang sudah selesai.</small></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- PAKET DEMO WEBSITE -->
+  <section class="paket">
+    <h2>Paket Demo Website</h2>
+    <p>Ingin website seperti contoh ini untuk desa atau organisasimu? Pilih paket demo website di bawah ini.</p>
+    <div class="paket-tiers">
+      <div class="tier">
+        <h3>Demo</h3>
+        <div class="tier-price">$29</div>
+        <p>Paket demo website — satu halaman contoh.</p>
+        <ul>
+          <li>1 halaman website</li>
+          <li>Desain responsif HP dan laptop</li>
+          <li>1 kali revisi kecil</li>
+        </ul>
+      </div>
+      <div class="tier">
+        <h3>Standar</h3>
+        <div class="tier-price">$49</div>
+        <p>Paket demo website — beberapa halaman contoh.</p>
+        <ul>
+          <li>Sampai 3 halaman website</li>
+          <li>Desain responsif HP dan laptop</li>
+          <li>Formulir mockup</li>
+          <li>2 kali revisi kecil</li>
+        </ul>
+      </div>
+      <div class="tier">
+        <h3>Pro</h3>
+        <div class="tier-price">$79</div>
+        <p>Paket demo website — halaman lengkap dengan fitur contoh.</p>
+        <ul>
+          <li>Sampai 5 halaman website</li>
+          <li>Desain responsif HP dan laptop</li>
+          <li>Formulir mockup + kalkulator contoh</li>
+          <li>3 kali revisi kecil</li>
+        </ul>
+      </div>
+    </div>
+    <p class="paket-note">Harga paket demo website — pesan via email.</p>
+  </section>
+
+  <!-- CTA AKHIR -->
+  <section class="cta-final">
+    <h2>Butuh website desa seperti contoh ini?</h2>
+    <p>Pesan paket demo website lewat email. Ceritakan kebutuhan desamu, dan kami balas dengan contoh halaman yang sesuai.</p>
+    <a class="btn btn-accent btn-big" href="mailto:masduki1189@gmail.com?subject=Pesan%20Website%20Pemerintahan%20Paket%20Demo&body=Halo%2C%20saya%20mau%20pesan%20website%20pemerintahan%20Paket%20Demo%20%2429.">Pesan via Email</a>
+  </section>
+
+</main>
+
+<footer>
+  Portal Layanan Desa Sukamaju — contoh demo website oleh KikiWorks. Pesan website via email: <a href="mailto:masduki1189@gmail.com">masduki1189@gmail.com</a>
+  <p class="disclaimer">Halaman ini adalah contoh demo website. Semua nama, harga, dan konten di dalamnya hanya ilustrasi.</p>
+</footer>
+
+<script>
+  document.getElementById('formLayanan').addEventListener('submit', function (e) {
+    e.preventDefault();
+    document.getElementById('msgLayanan').classList.add('show');
+  });
+</script>
+</body>
+</html>

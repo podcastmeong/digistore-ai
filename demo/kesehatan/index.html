@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Klinik Sehat Keluarga — Layanan Kesehatan Keluarga | Contoh Demo</title>
+<meta name="description" content="Contoh demo website Klinik Sehat Keluarga: layanan poli, jadwal dokter, formulir booking, dan artikel kesehatan.">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: #f7f9fc;
+    color: #14263d;
+    line-height: 1.6;
+  }
+  a { color: inherit; }
+  .demo-banner {
+    background: #14263d;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  .demo-banner span {
+    background: #8fb4d9;
+    color: #14263d;
+    padding: 2px 10px;
+    border-radius: 999px;
+    margin-left: 6px;
+    font-size: 12px;
+    letter-spacing: 0;
+  }
+  header {
+    max-width: 1020px;
+    margin: 0 auto;
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .brand { display: flex; align-items: center; gap: 12px; font-weight: 800; font-size: 22px; }
+  .brand-mark {
+    width: 44px; height: 44px; border-radius: 12px;
+    background: #8fb4d9; display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .brand small { display: block; font-size: 12px; font-weight: 600; color: #4a6178; letter-spacing: .4px; }
+  nav.main-nav { display: flex; gap: 4px; flex-wrap: wrap; }
+  nav.main-nav a {
+    text-decoration: none; font-weight: 700; font-size: 14px;
+    padding: 8px 14px; border-radius: 999px; color: #14263d;
+  }
+  nav.main-nav a:hover { background: #e8f0f8; }
+  .btn {
+    display: inline-block;
+    background: #14263d;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 700;
+    padding: 13px 24px;
+    border-radius: 999px;
+    border: 2px solid #14263d;
+    cursor: pointer;
+    font-size: 15px;
+  }
+  .btn-accent {
+    background: #8fb4d9;
+    color: #14263d;
+    border-color: #8fb4d9;
+  }
+  .btn-outline {
+    background: transparent;
+    color: #14263d;
+  }
+  main { max-width: 1020px; margin: 0 auto; padding: 0 20px 40px; }
+  .hero {
+    background: #ffffff;
+    border: 1px solid #dbe6f2;
+    border-radius: 24px;
+    padding: 36px 32px;
+    display: grid;
+    grid-template-columns: 1.15fr .85fr;
+    gap: 28px;
+    align-items: center;
+    box-shadow: 0 10px 30px rgba(20, 38, 61, .07);
+  }
+  .hero h1 { font-size: 40px; line-height: 1.15; margin: 12px 0 14px; }
+  .hero h1 em { font-style: normal; color: #2f6da3; }
+  .eyebrow {
+    display: inline-block; font-size: 13px; font-weight: 700; letter-spacing: .6px;
+    background: #e8f0f8; color: #14263d; padding: 6px 12px; border-radius: 999px;
+  }
+  .hero p { color: #42586e; font-size: 17px; margin-bottom: 18px; }
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .hero-note { font-size: 13px; color: #6b7f94; margin-top: 14px; }
+  .hero-art {
+    background: #fdf6ec;
+    border: 1px solid #dbe6f2;
+    border-radius: 18px;
+    padding: 22px;
+    text-align: center;
+  }
+  .hero-art svg { width: 100%; max-width: 320px; height: auto; }
+  .hero-art p { font-size: 14px; color: #42586e; margin-top: 8px; }
+  section { margin-top: 36px; }
+  .card {
+    background: #ffffff;
+    border: 1px solid #dbe6f2;
+    border-radius: 20px;
+    padding: 28px;
+    box-shadow: 0 6px 20px rgba(20, 38, 61, .05);
+  }
+  h2 { font-size: 26px; line-height: 1.3; margin-bottom: 10px; }
+  .section-sub { color: #42586e; margin-bottom: 20px; max-width: 680px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .reason {
+    background: #f7f9fc;
+    border: 1px solid #dbe6f2;
+    border-radius: 16px;
+    padding: 20px;
+  }
+  .reason-icon {
+    width: 44px; height: 44px; border-radius: 12px;
+    background: #8fb4d9; display: flex; align-items: center; justify-content: center;
+    margin-bottom: 12px;
+  }
+  .reason h3 { font-size: 18px; margin-bottom: 6px; }
+  .reason p { color: #42586e; font-size: 15px; }
+  .reason .tag {
+    display: inline-block; font-size: 12px; font-weight: 700;
+    background: #e8f0f8; color: #14263d;
+    padding: 3px 10px; border-radius: 999px; margin-top: 10px;
+  }
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .step {
+    background: #f7f9fc; border: 1px solid #dbe6f2;
+    border-radius: 16px; padding: 20px;
+  }
+  .step b { display: block; font-size: 18px; margin-bottom: 6px; }
+  .step p { color: #42586e; font-size: 15px; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .check-list { list-style: none; }
+  .check-list li { padding: 10px 0 10px 34px; position: relative; border-bottom: 1px solid #eef3f8; }
+  .check-list li:last-child { border-bottom: none; }
+  .check-list li::before {
+    content: "✓"; position: absolute; left: 0; top: 10px;
+    width: 24px; height: 24px; border-radius: 50%;
+    background: #8fb4d9; color: #14263d;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 14px;
+  }
+  .check-list small { display: block; color: #6b7f94; font-size: 13px; }
+  table.data {
+    width: 100%; border-collapse: collapse; font-size: 15px;
+  }
+  table.data th, table.data td {
+    text-align: left; padding: 12px 10px; border-bottom: 1px solid #e3ebf3;
+  }
+  table.data th { background: #f7f9fc; font-size: 14px; }
+  .table-note { font-size: 13px; color: #6b7f94; margin-top: 12px; }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .form-grid .full { grid-column: 1 / -1; }
+  label { display: block; font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+  input[type=text], input[type=tel], input[type=date], select, textarea {
+    width: 100%; padding: 12px 14px;
+    border: 1.5px solid #dbe6f2; border-radius: 12px;
+    background: #f7f9fc; color: #14263d; font: inherit; font-size: 15px;
+  }
+  input:focus, select:focus, textarea:focus {
+    outline: none; border-color: #8fb4d9;
+    box-shadow: 0 0 0 3px rgba(143, 180, 217, .35);
+  }
+  textarea { min-height: 90px; resize: vertical; }
+  .form-note { font-size: 13px; color: #6b7f94; margin-top: 12px; }
+  .demo-msg {
+    display: none; margin-top: 16px; padding: 14px 18px;
+    background: #e8f0f8; border: 1px solid #8fb4d9; border-radius: 12px;
+    font-weight: 700; font-size: 15px;
+  }
+  .demo-msg.show { display: block; }
+  .article {
+    padding: 18px 4px; border-bottom: 1px solid #e3ebf3;
+  }
+  .article:last-child { border-bottom: none; }
+  .article h3 { font-size: 18px; margin-bottom: 6px; }
+  .article p { color: #42586e; font-size: 15px; }
+  .article .meta { font-size: 13px; color: #6b7f94; margin-bottom: 6px; }
+  .article .label {
+    display: inline-block; font-size: 12px; font-weight: 700;
+    background: #fdf6ec; border: 1px solid #dbe6f2; color: #42586e;
+    padding: 2px 10px; border-radius: 999px; margin-top: 8px;
+  }
+  .faq-item { padding: 16px 4px; border-bottom: 1px solid #e3ebf3; }
+  .faq-item:last-child { border-bottom: none; }
+  .faq-item h3 { font-size: 17px; margin-bottom: 6px; }
+  .faq-item p { color: #42586e; font-size: 15px; }
+  .paket {
+    background: #14263d;
+    color: #ffffff;
+    border-radius: 20px;
+    padding: 28px;
+  }
+  .paket h2 { color: #ffffff; }
+  .paket > p { color: #c8d6e5; max-width: 620px; margin-bottom: 20px; }
+  .paket-tiers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .tier {
+    background: #ffffff; color: #14263d;
+    border-radius: 16px; padding: 22px; text-align: center;
+  }
+  .tier h3 { font-size: 18px; }
+  .tier .tier-price { font-size: 34px; font-weight: 800; margin: 8px 0 4px; }
+  .tier .tier-price small { font-size: 15px; font-weight: 600; color: #42586e; }
+  .tier p { color: #42586e; font-size: 14px; margin-bottom: 14px; }
+  .tier ul { list-style: none; text-align: left; font-size: 14px; color: #42586e; }
+  .tier ul li { padding: 6px 0; border-bottom: 1px solid #eef3f8; }
+  .tier ul li:last-child { border-bottom: none; }
+  .paket-note { font-size: 13px; color: #c8d6e5; margin-top: 18px; text-align: center; }
+  .cta-final { text-align: center; padding: 32px 20px; }
+  .cta-final h2 { font-size: 28px; }
+  .cta-final p { color: #42586e; margin: 8px auto 20px; max-width: 560px; }
+  .btn-big { font-size: 18px; padding: 16px 32px; }
+  footer {
+    background: #14263d; color: #c8d6e5;
+    text-align: center; padding: 26px 20px; font-size: 14px;
+  }
+  footer a { color: #8fb4d9; font-weight: 700; text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  footer .disclaimer { margin-top: 10px; font-size: 13px; color: #9db1c6; }
+  @media (max-width: 760px) {
+    .hero { grid-template-columns: 1fr; padding: 26px 22px; }
+    .hero h1 { font-size: 31px; }
+    .grid-3, .grid-2, .steps, .two-col, .form-grid, .paket-tiers { grid-template-columns: 1fr; }
+    header { justify-content: center; text-align: center; }
+    .brand { justify-content: center; }
+    nav.main-nav { justify-content: center; }
+    table.data { font-size: 14px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="demo-banner">CONTOH DEMO — Website Kesehatan <span>Halaman contoh, bukan situs nyata</span></div>
+
+<header>
+  <div class="brand">
+    <span class="brand-mark" aria-hidden="true">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 21s-7-4.5-7-10a7 7 0 1 1 14 0c0 5.5-7 10-7 10Z" stroke="#14263d" stroke-width="2" fill="none"/><path d="M12 7v6M9 10h6" stroke="#14263d" stroke-width="2" stroke-linecap="round"/></svg>
+    </span>
+    <span>Klinik Sehat Keluarga<small>LAYANAN KESEHATAN KELUARGA</small></span>
+  </div>
+  <nav class="main-nav" aria-label="Navigasi utama">
+    <a href="#layanan">Layanan</a>
+    <a href="#jadwal">Jadwal Dokter</a>
+    <a href="#booking">Booking</a>
+    <a href="#artikel">Artikel</a>
+  </nav>
+  <a class="btn btn-outline" href="#booking">Booking Kunjungan</a>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div>
+      <span class="eyebrow">KLINIK PRATAMA • CONTOH DEMO</span>
+      <h1>Kesehatan keluarga, <em>dirawat dengan hangat dan teliti.</em></h1>
+      <p>Klinik Sehat Keluarga adalah contoh website klinik: pemeriksaan umum, perawatan gigi, layanan ibu dan anak, serta laboratorium sederhana — dengan jadwal dokter dan formulir booking yang bisa dicoba di halaman ini.</p>
+      <div class="hero-actions">
+        <a class="btn btn-accent btn-big" href="#booking">Booking Kunjungan</a>
+        <a class="btn btn-outline" href="#layanan">Lihat Layanan</a>
+      </div>
+      <p class="hero-note">Jam layanan contoh: Senin–Sabtu, 08.00–20.00. Halaman ini hanya contoh tampilan, bukan situs klinik yang sebenarnya.</p>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <svg viewBox="0 0 320 190" xmlns="http://www.w3.org/2000/svg">
+        <rect x="10" y="10" width="300" height="170" rx="16" fill="#ffffff"/>
+        <rect x="70" y="70" width="180" height="70" rx="12" fill="#8fb4d9"/>
+        <rect x="86" y="56" width="148" height="20" rx="8" fill="#14263d"/>
+        <path d="M160 84v34M143 101h34" stroke="#ffffff" stroke-width="7" stroke-linecap="round"/>
+        <circle cx="160" cy="52" r="6" fill="#14263d"/>
+        <path d="M70 152h180" stroke="#14263d" stroke-width="4" stroke-linecap="round"/>
+        <circle cx="52" cy="52" r="14" fill="#fdf6ec" stroke="#8fb4d9" stroke-width="3"/>
+        <circle cx="268" cy="52" r="14" fill="#fdf6ec" stroke="#8fb4d9" stroke-width="3"/>
+      </svg>
+      <p>Ilustrasi klinik — gambar contoh, bukan foto asli.</p>
+    </div>
+  </div>
+
+  <!-- LAYANAN -->
+  <section class="card" id="layanan">
+    <h2>Layanan kami</h2>
+    <p class="section-sub">Empat layanan contoh Klinik Sehat Keluarga. Biaya di bawah ini adalah biaya contoh untuk tampilan demo.</p>
+    <div class="grid-3">
+      <div class="reason">
+        <div class="reason-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 21s-7-4.5-7-10a7 7 0 1 1 14 0c0 5.5-7 10-7 10Z" stroke="#14263d" stroke-width="2" fill="none"/><path d="M12 7v6M9 10h6" stroke="#14263d" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Poli Umum</h3>
+        <p>Pemeriksaan kesehatan umum: keluhan ringan, pemeriksaan tekanan darah, dan konsultasi kesehatan dasar.</p>
+        <span class="tag">Biaya contoh: Rp75.000 / kunjungan</span>
+      </div>
+      <div class="reason">
+        <div class="reason-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 4c-1.5 5 1 13 2.5 15 .8 1 2.2 1 2.5-.5.3-1.5 1-1.5 2-1.5s1.7 0 2 1.5c.3 1.5 1.7 1.5 2.5.5C20 17 22.5 9 21 4c-1.5-1-3.5 0-4.5 1.5C15.5 7 13 7 12 5.5 11 7 8.5 7 7.5 5.5 6.5 4 5.5 3 7 4Z" stroke="#14263d" stroke-width="2" fill="none" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Poli Gigi</h3>
+        <p>Perawatan gigi dasar: pemeriksaan gigi, pembersihan karang gigi, dan tambal gigi sederhana.</p>
+        <span class="tag">Biaya contoh: Rp150.000 / kunjungan</span>
+      </div>
+      <div class="reason">
+        <div class="reason-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="9" cy="8" r="3.5" stroke="#14263d" stroke-width="2" fill="none"/><circle cx="17" cy="9" r="2.5" stroke="#14263d" stroke-width="2" fill="none"/><path d="M3.5 20c.8-3.5 3-5 5.5-5s4.7 1.5 5.5 5M14.5 20c.6-2.5 2-3.8 3.5-3.8" stroke="#14263d" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <h3>KIA (Ibu &amp; Anak)</h3>
+        <p>Layanan kesehatan ibu dan anak: pemeriksaan kehamilan, imunisasi dasar, dan pemantauan tumbuh kembang anak.</p>
+        <span class="tag">Biaya contoh: Rp100.000 / kunjungan</span>
+      </div>
+      <div class="reason">
+        <div class="reason-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 3h6M10 3v6l-5.5 9.5A2.5 2.5 0 0 0 6.6 22h10.8a2.5 2.5 0 0 0 2.1-3.5L14 9V3" stroke="#14263d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.5 15h9" stroke="#14263d" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Laboratorium</h3>
+        <p>Pemeriksaan laboratorium sederhana: cek gula darah, kolesterol, dan pemeriksaan darah rutin.</p>
+        <span class="tag">Biaya contoh: mulai Rp50.000 / pemeriksaan</span>
+      </div>
+      <div class="reason">
+        <div class="reason-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 12h4l2-5 4 10 2-5h6" stroke="#14263d" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Pemeriksaan Rutin</h3>
+        <p>Paket pemeriksaan berkala contoh: tekanan darah, berat badan, dan konsultasi hasil pemeriksaan.</p>
+        <span class="tag">Biaya contoh: Rp200.000 / paket</span>
+      </div>
+      <div class="reason">
+        <div class="reason-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" stroke="#14263d" stroke-width="2" fill="none"/><path d="M12 7v5l3 3" stroke="#14263d" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Kunjungan Rumah</h3>
+        <p>Layanan kunjungan rumah contoh untuk pasien yang sulit datang ke klinik, sesuai jadwal yang disepakati.</p>
+        <span class="tag">Biaya contoh: Rp250.000 / kunjungan</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- JADWAL DOKTER -->
+  <section class="card" id="jadwal">
+    <h2>Jadwal dokter</h2>
+    <p class="section-sub">Jadwal praktik contoh. Nama-nama dokter di bawah ini adalah nama demo, bukan dokter yang sebenarnya.</p>
+    <table class="data">
+      <thead>
+        <tr><th>Dokter (nama demo)</th><th>Poli</th><th>Hari Praktik</th><th>Jam</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>dr. Sinta Maharani (nama demo)</td><td>Poli Umum</td><td>Senin – Jumat</td><td>08.00 – 14.00</td></tr>
+        <tr><td>dr. Budi Hartono (nama demo)</td><td>Poli Umum</td><td>Senin, Rabu, Jumat</td><td>16.00 – 20.00</td></tr>
+        <tr><td>drg. Ratna Dewi (nama demo)</td><td>Poli Gigi</td><td>Selasa, Kamis, Sabtu</td><td>09.00 – 15.00</td></tr>
+        <tr><td>dr. Maya Kusuma (nama demo)</td><td>KIA (Ibu &amp; Anak)</td><td>Senin – Sabtu</td><td>08.00 – 12.00</td></tr>
+        <tr><td>dr. Agus Prasetyo (nama demo)</td><td>Poli Umum</td><td>Sabtu</td><td>08.00 – 14.00</td></tr>
+      </tbody>
+    </table>
+    <p class="table-note">Jadwal di atas hanya contoh tampilan. Jadwal dapat berubah — hubungi klinik contoh untuk konfirmasi.</p>
+  </section>
+
+  <!-- BOOKING FORM MOCKUP -->
+  <section class="card" id="booking">
+    <h2>Booking kunjungan</h2>
+    <p class="section-sub">Formulir contoh untuk memesan jadwal kunjungan. Isi dengan data contoh — formulir ini hanya mockup dan tidak mengirim data ke mana pun.</p>
+    <form id="formBooking">
+      <div class="form-grid">
+        <div>
+          <label for="nama">Nama pasien</label>
+          <input type="text" id="nama" name="nama" placeholder="Contoh: Budi Santoso" required>
+        </div>
+        <div>
+          <label for="telp">Nomor telepon (contoh)</label>
+          <input type="tel" id="telp" name="telp" placeholder="Contoh: 0812-0000-0000" required>
+        </div>
+        <div>
+          <label for="poli">Pilih poli</label>
+          <select id="poli" name="poli" required>
+            <option value="">— Pilih poli —</option>
+            <option value="Poli Umum">Poli Umum</option>
+            <option value="Poli Gigi">Poli Gigi</option>
+            <option value="KIA">KIA (Ibu &amp; Anak)</option>
+            <option value="Laboratorium">Laboratorium</option>
+          </select>
+        </div>
+        <div>
+          <label for="tanggal">Tanggal kunjungan (contoh)</label>
+          <input type="date" id="tanggal" name="tanggal" required>
+        </div>
+        <div class="full">
+          <label for="keluhan">Keluhan singkat (contoh)</label>
+          <textarea id="keluhan" name="keluhan" placeholder="Contoh: demam ringan sejak kemarin"></textarea>
+        </div>
+      </div>
+      <div style="margin-top: 18px;">
+        <button class="btn btn-accent" type="submit">Kirim Booking (Contoh)</button>
+      </div>
+      <p class="form-note">Formulir ini adalah mockup. Jangan isi dengan data kesehatan atau data pribadi asli. Untuk keluhan yang membutuhkan penanganan segera, datang langsung ke fasilitas kesehatan terdekat.</p>
+      <div class="demo-msg" id="msgBooking" role="status">Ini demo — data tidak dikirim ke mana pun.</div>
+    </form>
+  </section>
+
+  <!-- CARA BERKUNJUNG -->
+  <section class="card">
+    <h2>Cara berkunjung</h2>
+    <p class="section-sub">Tiga langkah contoh saat datang ke Klinik Sehat Keluarga.</p>
+    <div class="steps">
+      <div class="step"><b>1. Booking atau datang langsung</b><p>Isi formulir booking contoh di atas, atau datang langsung ke klinik pada jam layanan contoh.</p></div>
+      <div class="step"><b>2. Pendaftaran</b><p>Datang 15 menit lebih awal dan lakukan pendaftaran di meja resepsionis contoh dengan membawa KTP.</p></div>
+      <div class="step"><b>3. Pemeriksaan</b><p>Tunggu panggilan sesuai nomor antrean contoh, lalu masuk ke ruang pemeriksaan.</p></div>
+    </div>
+  </section>
+
+  <!-- ARTIKEL KESEHATAN -->
+  <section class="card" id="artikel">
+    <h2>Artikel kesehatan</h2>
+    <p class="section-sub">Tiga artikel contoh seputar kebiasaan hidup sehat. Artikel di sini berisi informasi umum dan bukan pengganti saran tenaga medis.</p>
+    <div class="article">
+      <p class="meta">Artikel contoh • 20 November 2026 • 3 menit baca</p>
+      <h3>Menjaga cairan tubuh saat cuaca panas</h3>
+      <p>Saat cuaca panas, tubuh lebih banyak mengeluarkan cairan. Artikel contoh ini membahas kebiasaan sederhana: membawa botol minum, minum secara berkala, dan memperhatikan warna urine sebagai tanda kecukupan cairan. Bila merasa sangat lemas atau pusing, segera periksakan diri ke fasilitas kesehatan.</p>
+      <span class="label">Artikel contoh</span>
+    </div>
+    <div class="article">
+      <p class="meta">Artikel contoh • 12 November 2026 • 4 menit baca</p>
+      <h3>Tidur cukup, bagian dari rutinitas sehat</h3>
+      <p>Tidur yang cukup membantu tubuh pulih setelah beraktivitas. Artikel contoh ini membahas kebiasaan yang mendukung tidur lebih baik: jadwal tidur yang teratur, mengurangi layar sebelum tidur, dan menjaga kamar tetap nyaman. Gangguan tidur yang berlangsung lama sebaiknya dikonsultasikan ke tenaga medis.</p>
+      <span class="label">Artikel contoh</span>
+    </div>
+    <div class="article">
+      <p class="meta">Artikel contoh • 5 November 2026 • 2 menit baca</p>
+      <h3>Cuci tangan yang benar, langkah kecil yang berarti</h3>
+      <p>Mencuci tangan dengan sabun dan air mengalir adalah kebiasaan sederhana untuk menjaga kebersihan. Artikel contoh ini menjelaskan langkah-langkah mencuci tangan dan waktu-waktu penting untuk melakukannya, seperti sebelum makan dan setelah dari kamar mandi.</p>
+      <span class="label">Artikel contoh</span>
+    </div>
+  </section>
+
+  <!-- FASILITAS -->
+  <section class="card">
+    <h2>Fasilitas klinik</h2>
+    <p class="section-sub">Fasilitas contoh yang tersedia di Klinik Sehat Keluarga.</p>
+    <div class="grid-3">
+      <div class="reason">
+        <h3>Ruang tunggu</h3>
+        <p>Ruang tunggu contoh dengan tempat duduk dan papan informasi jadwal dokter.</p>
+      </div>
+      <div class="reason">
+        <h3>Apotek contoh</h3>
+        <p>Apotek contoh di dalam klinik untuk pengambilan obat sesuai resep dokter contoh.</p>
+      </div>
+      <div class="reason">
+        <h3>Ruang pemeriksaan</h3>
+        <p>Ruang pemeriksaan contoh untuk poli umum, poli gigi, dan KIA.</p>
+      </div>
+      <div class="reason">
+        <h3>Ruang laboratorium</h3>
+        <p>Ruang pengambilan sampel contoh untuk pemeriksaan laboratorium sederhana.</p>
+      </div>
+      <div class="reason">
+        <h3>Ruang imunisasi</h3>
+        <p>Ruang khusus contoh untuk layanan imunisasi dasar anak.</p>
+      </div>
+      <div class="reason">
+        <h3>Area parkir</h3>
+        <p>Area parkir contoh untuk kendaraan roda dua dan roda empat di halaman klinik.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="card">
+    <h2>Pertanyaan umum</h2>
+    <p class="section-sub">Jawaban contoh atas pertanyaan yang sering diajukan pasien. Jawaban di sini hanya ilustrasi tampilan.</p>
+    <div class="faq-item">
+      <h3>Apakah perlu booking sebelum datang?</h3>
+      <p>Contoh jawaban: booking membantu memastikan jadwal, tetapi pasien juga bisa datang langsung dan mengambil nomor antrean contoh.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Apa yang perlu dibawa saat berkunjung?</h3>
+      <p>Contoh jawaban: membawa KTP dan, bila ada, kartu berobat contoh atau hasil pemeriksaan sebelumnya.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Apakah klinik melayani pasien anak?</h3>
+      <p>Contoh jawaban: ya, layanan KIA contoh melayani pemeriksaan ibu dan anak sesuai jadwal praktik contoh.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Kapan hasil laboratorium bisa diambil?</h3>
+      <p>Contoh jawaban: hasil pemeriksaan laboratorium contoh dapat diambil keesokan hari kerja atau sesuai info petugas contoh.</p>
+    </div>
+  </section>
+
+  <!-- PAKET DEMO WEBSITE -->
+  <section class="paket">
+    <h2>Paket Demo Website</h2>
+    <p>Ingin website seperti contoh ini untuk klinik atau praktik kesehatanmu? Pilih paket demo website di bawah ini.</p>
+    <div class="paket-tiers">
+      <div class="tier">
+        <h3>Demo</h3>
+        <div class="tier-price">$29</div>
+        <p>Paket demo website — satu halaman contoh.</p>
+        <ul>
+          <li>1 halaman website</li>
+          <li>Desain responsif HP dan laptop</li>
+          <li>1 kali revisi kecil</li>
+        </ul>
+      </div>
+      <div class="tier">
+        <h3>Standar</h3>
+        <div class="tier-price">$49</div>
+        <p>Paket demo website — beberapa halaman contoh.</p>
+        <ul>
+          <li>Sampai 3 halaman website</li>
+          <li>Desain responsif HP dan laptop</li>
+          <li>Formulir mockup</li>
+          <li>2 kali revisi kecil</li>
+        </ul>
+      </div>
+      <div class="tier">
+        <h3>Pro</h3>
+        <div class="tier-price">$79</div>
+        <p>Paket demo website — halaman lengkap dengan fitur contoh.</p>
+        <ul>
+          <li>Sampai 5 halaman website</li>
+          <li>Desain responsif HP dan laptop</li>
+          <li>Formulir mockup + jadwal contoh</li>
+          <li>3 kali revisi kecil</li>
+        </ul>
+      </div>
+    </div>
+    <p class="paket-note">Harga paket demo website — pesan via email.</p>
+  </section>
+
+  <!-- CTA AKHIR -->
+  <section class="cta-final">
+    <h2>Butuh website klinik seperti contoh ini?</h2>
+    <p>Pesan paket demo website lewat email. Ceritakan layanan klinikmu, dan kami balas dengan contoh halaman yang sesuai.</p>
+    <a class="btn btn-accent btn-big" href="mailto:masduki1189@gmail.com?subject=Pesan%20Website%20Kesehatan%20Paket%20Demo&body=Halo%2C%20saya%20mau%20pesan%20website%20kesehatan%20Paket%20Demo%20%2429.">Pesan via Email</a>
+  </section>
+
+</main>
+
+<footer>
+  Klinik Sehat Keluarga — contoh demo website oleh KikiWorks. Pesan website via email: <a href="mailto:masduki1189@gmail.com">masduki1189@gmail.com</a>
+  <p class="disclaimer">Halaman ini adalah contoh demo website. Semua nama, harga, dan konten di dalamnya hanya ilustrasi.</p>
+</footer>
+
+<script>
+  document.getElementById('formBooking').addEventListener('submit', function (e) {
+    e.preventDefault();
+    document.getElementById('msgBooking').classList.add('show');
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KasirKita — Software Kasir Berlangganan | Contoh Demo</title>
+<meta name="description" content="Contoh demo website software kasir berlangganan KasirKita. Fitur, paket langganan contoh, cara kerja, FAQ, dan formulir daftar coba gratis contoh. Halaman contoh, bukan situs nyata.">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: #f7f9fc;
+    color: #14263d;
+    line-height: 1.6;
+  }
+  a { color: inherit; }
+  .demo-banner {
+    background: #14263d;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  .demo-banner span {
+    background: #8fb4d9;
+    color: #14263d;
+    padding: 2px 10px;
+    border-radius: 999px;
+    margin-left: 6px;
+    font-size: 12px;
+    letter-spacing: 0;
+  }
+  header {
+    max-width: 1020px;
+    margin: 0 auto;
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .brand { display: flex; align-items: center; gap: 12px; font-weight: 800; font-size: 22px; }
+  .brand-mark {
+    width: 44px; height: 44px; border-radius: 12px;
+    background: #8fb4d9; display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .brand small { display: block; font-size: 12px; font-weight: 600; color: #4a6178; letter-spacing: .4px; }
+  .nav { display: flex; gap: 18px; flex-wrap: wrap; font-size: 15px; font-weight: 600; }
+  .nav a { text-decoration: none; color: #42586e; }
+  .nav a:hover { color: #14263d; }
+  .btn {
+    display: inline-block;
+    background: #14263d;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 700;
+    padding: 13px 24px;
+    border-radius: 999px;
+    border: 2px solid #14263d;
+    cursor: pointer;
+    font-size: 15px;
+  }
+  .btn-accent {
+    background: #8fb4d9;
+    color: #14263d;
+    border-color: #8fb4d9;
+  }
+  .btn-outline { background: transparent; color: #14263d; }
+  .btn-big { font-size: 18px; padding: 16px 32px; }
+  main { max-width: 1020px; margin: 0 auto; padding: 0 20px 40px; }
+  .hero {
+    background: #ffffff;
+    border: 1px solid #dbe6f2;
+    border-radius: 24px;
+    padding: 36px 32px;
+    display: grid;
+    grid-template-columns: 1.15fr .85fr;
+    gap: 28px;
+    align-items: center;
+    box-shadow: 0 10px 30px rgba(20, 38, 61, .07);
+  }
+  .hero h1 { font-size: 40px; line-height: 1.15; margin: 12px 0 14px; }
+  .hero h1 em { font-style: normal; color: #2f6da3; }
+  .eyebrow {
+    display: inline-block; font-size: 13px; font-weight: 700; letter-spacing: .6px;
+    background: #e8f0f8; color: #14263d; padding: 6px 12px; border-radius: 999px;
+  }
+  .hero p { color: #42586e; font-size: 17px; margin-bottom: 18px; }
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .hero-note { font-size: 13px; color: #6b7f94; margin-top: 14px; }
+  .hero-art {
+    background: #e8f0f8;
+    border-radius: 18px;
+    padding: 22px;
+    text-align: center;
+  }
+  .hero-art svg { width: 100%; max-width: 320px; height: auto; }
+  .hero-art p { font-size: 14px; color: #42586e; margin-top: 8px; }
+  section { margin-top: 36px; }
+  .card {
+    background: #ffffff;
+    border: 1px solid #dbe6f2;
+    border-radius: 20px;
+    padding: 28px;
+    box-shadow: 0 6px 20px rgba(20, 38, 61, .05);
+  }
+  h2 { font-size: 26px; line-height: 1.3; margin-bottom: 10px; }
+  .section-sub { color: #42586e; margin-bottom: 20px; max-width: 680px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .reason {
+    background: #f7f9fc;
+    border: 1px solid #dbe6f2;
+    border-radius: 16px;
+    padding: 20px;
+  }
+  .reason-number {
+    width: 38px; height: 38px; border-radius: 50%;
+    background: #14263d; color: #8fb4d9;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; margin-bottom: 12px;
+  }
+  .reason h3 { font-size: 18px; margin-bottom: 6px; }
+  .reason p { color: #42586e; font-size: 15px; }
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .step {
+    background: #f7f9fc; border: 1px solid #dbe6f2;
+    border-radius: 16px; padding: 20px;
+  }
+  .step b { display: block; font-size: 18px; margin-bottom: 6px; }
+  .step p { color: #42586e; font-size: 15px; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .check-list { list-style: none; }
+  .check-list li { padding: 10px 0 10px 34px; position: relative; border-bottom: 1px solid #eef3f8; }
+  .check-list li:last-child { border-bottom: none; }
+  .check-list li::before {
+    content: "✓"; position: absolute; left: 0; top: 10px;
+    width: 24px; height: 24px; border-radius: 50%;
+    background: #8fb4d9; color: #14263d;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 14px;
+  }
+  .check-list small { display: block; color: #6b7f94; font-size: 13px; }
+  .plan-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .plan {
+    background: #f7f9fc;
+    border: 1px solid #dbe6f2;
+    border-radius: 16px;
+    padding: 22px;
+    text-align: center;
+  }
+  .plan.featured { border: 3px solid #8fb4d9; background: #ffffff; }
+  .plan h3 { font-size: 19px; margin-bottom: 4px; }
+  .plan .plan-price { font-size: 28px; font-weight: 800; margin: 8px 0 2px; }
+  .plan .plan-per { font-size: 14px; color: #42586e; }
+  .plan .example-label {
+    display: inline-block; font-size: 12px; font-weight: 700;
+    background: #fdf6ec; color: #42586e; padding: 3px 10px; border-radius: 999px;
+    margin-top: 8px;
+  }
+  .plan ul { list-style: none; text-align: left; font-size: 14px; color: #42586e; margin-top: 14px; }
+  .plan ul li { padding: 6px 0; border-bottom: 1px solid #eef3f8; }
+  .plan ul li:last-child { border-bottom: none; }
+  .plan .btn { margin-top: 16px; }
+  .price-note { font-size: 13px; color: #6b7f94; margin-top: 14px; }
+  .faq-item {
+    background: #f7f9fc;
+    border: 1px solid #dbe6f2;
+    border-radius: 14px;
+    padding: 16px 18px;
+    margin-bottom: 12px;
+  }
+  .faq-item summary {
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    list-style: none;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::before {
+    content: "+";
+    display: inline-block;
+    width: 24px; height: 24px; border-radius: 50%;
+    background: #8fb4d9; color: #14263d;
+    text-align: center; line-height: 24px; font-weight: 800;
+    margin-right: 10px;
+  }
+  .faq-item[open ] summary::before { content: "–"; }
+  .faq-item p { color: #42586e; font-size: 15px; margin-top: 10px; padding-left: 34px; }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .form-field { display: flex; flex-direction: column; gap: 6px; }
+  .form-field.full { grid-column: 1 / -1; }
+  .form-field label { font-size: 14px; font-weight: 700; }
+  .form-field input, .form-field select {
+    padding: 12px 14px;
+    border: 1.5px solid #dbe6f2;
+    border-radius: 10px;
+    background: #f7f9fc;
+    color: #14263d;
+    font: inherit;
+    font-size: 15px;
+    width: 100%;
+  }
+  .form-msg {
+    display: none;
+    margin-top: 16px;
+    background: #e8f0f8;
+    border: 1px solid #8fb4d9;
+    border-radius: 12px;
+    padding: 14px 16px;
+    font-size: 15px;
+    color: #14263d;
+  }
+  .paket-demo {
+    background: #14263d;
+    color: #ffffff;
+    border-radius: 20px;
+    padding: 28px;
+  }
+  .paket-demo h2 { color: #ffffff; text-align: center; }
+  .paket-demo > p { color: #c8d6e5; max-width: 620px; margin: 0 auto 20px; text-align: center; }
+  .tier-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .tier {
+    background: #ffffff; color: #14263d;
+    border-radius: 16px; padding: 22px; text-align: center;
+  }
+  .tier.featured { border: 3px solid #8fb4d9; }
+  .tier h3 { font-size: 19px; margin-bottom: 4px; }
+  .tier .tier-price { font-size: 30px; font-weight: 800; margin: 8px 0; }
+  .tier p { color: #42586e; font-size: 14px; margin-bottom: 12px; }
+  .tier ul { list-style: none; text-align: left; font-size: 14px; color: #42586e; }
+  .tier ul li { padding: 6px 0; border-bottom: 1px solid #eef3f8; }
+  .tier ul li:last-child { border-bottom: none; }
+  .tier .btn { margin-top: 14px; }
+  .paket-note { font-size: 13px; color: #c8d6e5; text-align: center; margin-top: 18px; }
+  .cta-final { text-align: center; padding: 32px 20px; }
+  .cta-final h2 { font-size: 28px; }
+  .cta-final p { color: #42586e; margin: 8px auto 20px; max-width: 560px; }
+  footer {
+    background: #14263d; color: #c8d6e5;
+    text-align: center; padding: 26px 20px; font-size: 14px;
+  }
+  footer a { color: #8fb4d9; font-weight: 700; text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  footer p { max-width: 720px; margin: 0 auto 8px; }
+  @media (max-width: 760px) {
+    .hero { grid-template-columns: 1fr; padding: 26px 22px; }
+    .hero h1 { font-size: 31px; }
+    .grid-3, .grid-2, .steps, .two-col, .plan-grid, .tier-grid, .form-grid { grid-template-columns: 1fr; }
+    header { justify-content: center; text-align: center; }
+    .brand { justify-content: center; }
+    .nav { justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="demo-banner">CONTOH DEMO — Website SaaS Software Kasir <span>Halaman contoh, bukan situs nyata</span></div>
+
+<header>
+  <div class="brand">
+    <span class="brand-mark" aria-hidden="true">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="4" width="18" height="16" rx="2" fill="#14263d"/><rect x="6" y="8" width="12" height="2" fill="#8fb4d9"/><rect x="6" y="12" width="8" height="2" fill="#ffffff"/><rect x="6" y="16" width="5" height="2" fill="#ffffff"/><circle cx="17" cy="16" r="2" fill="#8fb4d9"/></svg>
+    </span>
+    <span>KasirKita<small>SOFTWARE KASIR BERLANGGANAN</small></span>
+  </div>
+  <nav class="nav" aria-label="Navigasi utama">
+    <a href="#fitur">Fitur</a>
+    <a href="#paket-langganan">Paket</a>
+    <a href="#cara-kerja">Cara Kerja</a>
+    <a href="#faq">FAQ</a>
+  </nav>
+  <a class="btn btn-outline" href="#daftar">Coba Gratis</a>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div>
+      <span class="eyebrow">SOFTWARE KASIR • CONTOH DEMO</span>
+      <h1>Kasir toko jadi <em>lebih rapi dan cepat.</em></h1>
+      <p>KasirKita adalah contoh website software kasir berlangganan. Catat penjualan, kelola stok, dan lihat laporan harian — semua dari satu tampilan yang sama. Halaman ini hanya contoh demo, bukan layanan yang sebenarnya.</p>
+      <div class="hero-actions">
+        <a class="btn btn-accent btn-big" href="#daftar">Daftar Coba Gratis</a>
+        <a class="btn btn-outline" href="#fitur">Lihat Fitur</a>
+      </div>
+      <p class="hero-note">Coba gratis contoh di halaman ini berlangsung 14 hari dalam ilustrasi demo. Tidak ada penagihan dan tidak ada data yang dikirim.</p>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <svg viewBox="0 0 320 190" xmlns="http://www.w3.org/2000/svg">
+        <rect x="10" y="10" width="300" height="170" rx="16" fill="#ffffff"/>
+        <rect x="30" y="30" width="260" height="30" rx="8" fill="#14263d"/>
+        <rect x="44" y="41" width="90" height="8" rx="4" fill="#8fb4d9"/>
+        <rect x="30" y="72" width="124" height="46" rx="8" fill="#e8f0f8"/>
+        <rect x="42" y="82" width="60" height="7" rx="3" fill="#14263d"/>
+        <rect x="42" y="96" width="80" height="7" rx="3" fill="#8fb4d9"/>
+        <rect x="166" y="72" width="124" height="46" rx="8" fill="#fdf6ec"/>
+        <rect x="178" y="82" width="70" height="7" rx="3" fill="#14263d"/>
+        <rect x="178" y="96" width="50" height="7" rx="3" fill="#8fb4d9"/>
+        <rect x="30" y="130" width="260" height="30" rx="8" fill="#e8f0f8"/>
+        <rect x="44" y="141" width="120" height="8" rx="4" fill="#14263d"/>
+        <rect x="220" y="141" width="56" height="8" rx="4" fill="#8fb4d9"/>
+      </svg>
+      <p>Ilustrasi dasbor kasir — gambar contoh, bukan tangkapan layar asli.</p>
+    </div>
+  </div>
+
+  <!-- FITUR -->
+  <section class="card" id="fitur">
+    <h2>Fitur KasirKita</h2>
+    <p class="section-sub">Enam fitur contoh yang ditampilkan di halaman demo ini. Daftar fitur hanya ilustrasi untuk menunjukkan susunan halaman software kasir.</p>
+    <div class="grid-3">
+      <div class="reason">
+        <div class="reason-number">1</div>
+        <h3>Pencatatan penjualan</h3>
+        <p>Catat setiap transaksi penjualan dengan cepat, lengkap dengan daftar barang, jumlah, dan total bayar.</p>
+      </div>
+      <div class="reason">
+        <div class="reason-number">2</div>
+        <h3>Manajemen stok</h3>
+        <p>Lihat sisa stok setiap barang, catat barang masuk, dan ketahui kapan stok sebuah barang mulai menipis.</p>
+      </div>
+      <div class="reason">
+        <div class="reason-number">3</div>
+        <h3>Laporan harian</h3>
+        <p>Lihat ringkasan penjualan harian dan bulanan: total transaksi, jumlah barang, dan pemasukan.</p>
+      </div>
+      <div class="reason">
+        <div class="reason-number">4</div>
+        <h3>Struk dan cetak</h3>
+        <p>Cetak struk belanja untuk pelanggan dan simpan salinan transaksi untuk pembukuan toko.</p>
+      </div>
+      <div class="reason">
+        <div class="reason-number">5</div>
+        <h3>Data pelanggan</h3>
+        <p>Simpan data pelanggan dan riwayat belanja mereka, supaya toko bisa menyapa pelanggan yang kembali.</p>
+      </div>
+      <div class="reason">
+        <div class="reason-number">6</div>
+        <h3>Akses multi perangkat</h3>
+        <p>Buka kasir dari komputer, tablet, atau HP, sehingga transaksi tetap bisa dicatat dari mana saja.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAKET LANGGANAN -->
+  <section class="card" id="paket-langganan">
+    <h2>Paket Langganan</h2>
+    <p class="section-sub">Tiga paket langganan contoh dengan harga contoh per bulan. Semua harga di bawah ini hanya ilustrasi untuk demo — beri label "contoh" pada setiap paket.</p>
+    <div class="plan-grid">
+      <div class="plan">
+        <h3>Pemula</h3>
+        <div class="plan-price">Rp99.000</div>
+        <div class="plan-per">per bulan</div>
+        <span class="example-label">Harga contoh</span>
+        <ul>
+          <li>1 pengguna kasir</li>
+          <li>500 barang di katalog</li>
+          <li>Pencatatan penjualan dan stok</li>
+          <li>Laporan harian sederhana</li>
+        </ul>
+        <a class="btn btn-outline" href="#daftar">Pilih Pemula</a>
+      </div>
+      <div class="plan featured">
+        <h3>Bisnis</h3>
+        <div class="plan-price">Rp199.000</div>
+        <div class="plan-per">per bulan</div>
+        <span class="example-label">Harga contoh</span>
+        <ul>
+          <li>3 pengguna kasir</li>
+          <li>2.000 barang di katalog</li>
+          <li>Semua fitur paket Pemula</li>
+          <li>Laporan bulanan dan data pelanggan</li>
+          <li>Cetak struk</li>
+        </ul>
+        <a class="btn" href="#daftar">Pilih Bisnis</a>
+      </div>
+      <div class="plan">
+        <h3>Usaha Besar</h3>
+        <div class="plan-price">Rp399.000</div>
+        <div class="plan-per">per bulan</div>
+        <span class="example-label">Harga contoh</span>
+        <ul>
+          <li>10 pengguna kasir</li>
+          <li>Barang di katalog tanpa batas contoh</li>
+          <li>Semua fitur paket Bisnis</li>
+          <li>Multi cabang contoh</li>
+          <li>Dukungan prioritas contoh</li>
+        </ul>
+        <a class="btn btn-outline" href="#daftar">Pilih Usaha Besar</a>
+      </div>
+    </div>
+    <p class="price-note">Semua harga paket langganan di atas adalah harga contoh untuk keperluan demo. Paket dapat berubah sewaktu-waktu dalam ilustrasi ini, dan tidak ada penagihan nyata dari halaman ini.</p>
+  </section>
+
+  <!-- CARA KERJA -->
+  <section class="card" id="cara-kerja">
+    <h2>Cara Kerja</h2>
+    <p class="section-sub">Tiga langkah contoh untuk mulai memakai KasirKita dalam ilustrasi demo ini.</p>
+    <div class="steps">
+      <div class="step"><b>1. Daftar akun contoh</b><p>Isi formulir daftar coba gratis di bawah. Dalam demo ini, akun contoh dibuat langsung di halaman dan tidak dikirim ke mana pun.</p></div>
+      <div class="step"><b>2. Masukkan data toko</b><p>Tambahkan daftar barang, harga, dan stok awal toko. Data contoh bisa diubah kapan saja selama masa coba.</p></div>
+      <div class="step"><b>3. Mulai mencatat penjualan</b><p>Gunakan kasir untuk mencatat transaksi, mencetak struk, dan melihat laporan harian toko.</p></div>
+    </div>
+  </section>
+
+  <!-- YANG DIDAPAT -->
+  <section class="card">
+    <h2>Yang didapat selama masa coba contoh</h2>
+    <p class="section-sub">Isi masa coba gratis contoh selama 14 hari dalam ilustrasi demo ini.</p>
+    <div class="two-col">
+      <ul class="check-list">
+        <li><strong>Akses semua fitur paket Bisnis contoh.</strong><small>Selama 14 hari contoh, semua fitur paket Bisnis bisa dicoba.</small></li>
+        <li><strong>Data contoh siap pakai.</strong><small>Akun contoh dilengkapi barang dan transaksi contoh supaya bisa langsung dicoba.</small></li>
+        <li><strong>Panduan penggunaan contoh.</strong><small>Panduan langkah-demi-langkah contoh untuk memakai kasir.</small></li>
+      </ul>
+      <ul class="check-list">
+        <li><strong>Tidak ada penagihan.</strong><small>Masa coba contoh tidak meminta kartu dan tidak menagih apa pun.</small></li>
+        <li><strong>Data tidak dikirim ke mana pun.</strong><small>Formulir di halaman ini hanya mockup; data yang diisi tidak tersimpan di server.</small></li>
+        <li><strong>Bisa berhenti kapan saja.</strong><small>Masa coba contoh berakhir sendiri setelah 14 hari dalam ilustrasi ini.</small></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="card" id="faq">
+    <h2>Pertanyaan yang Sering Diajukan</h2>
+    <p class="section-sub">Jawaban contoh atas pertanyaan umum seputar KasirKita. Klik pertanyaan untuk membuka jawabannya.</p>
+    <details class="faq-item">
+      <summary>Apakah saya perlu memasang aplikasi tambahan?</summary>
+      <p>Dalam ilustrasi demo ini, KasirKita digambarkan berjalan lewat peramban (browser), sehingga tidak perlu memasang aplikasi tambahan. Untuk layanan sungguhan, kebutuhan pemasangan bisa berbeda — halaman ini hanya contoh.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Apakah data toko saya aman?</summary>
+      <p>Dalam ilustrasi demo ini, tidak ada data nyata yang dikirim atau disimpan, karena semua formulir di halaman ini hanya mockup. Untuk layanan sungguhan, tanyakan langsung kepada penyedia layanan soal penyimpanan dan perlindungan datanya.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Apakah saya bisa pindah paket langganan?</summary>
+      <p>Dalam ilustrasi demo ini, paket langganan digambarkan bisa diganti kapan saja — naik ke paket yang lebih lengkap atau turun ke paket yang lebih sederhana. Perubahan paket hanya berlaku sebagai contoh tampilan di halaman ini.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Bagaimana kalau saya berhenti berlangganan?</summary>
+      <p>Dalam ilustrasi demo ini, berhenti berlangganan digambarkan bisa dilakukan kapan saja dan akun kembali ke masa coba yang sudah berakhir. Tidak ada penagihan setelah berhenti, karena halaman ini hanya contoh dan tidak menagih apa pun.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Apakah KasirKita cocok untuk toko kecil?</summary>
+      <p>Dalam ilustrasi demo ini, paket Pemula digambarkan untuk toko kecil dengan satu pengguna kasir dan katalog sampai 500 barang. Toko yang lebih besar bisa melihat paket Bisnis atau Usaha Besar sebagai contoh.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Apakah saya bisa memakai KasirKita di lebih dari satu cabang?</summary>
+      <p>Dalam ilustrasi demo ini, multi cabang digambarkan tersedia pada paket Usaha Besar. Setiap cabang memakai katalog dan laporan yang sama, dengan pengguna kasir yang berbeda-beda. Halaman ini hanya contoh, jadi tidak ada cabang yang benar-benar terhubung di sini.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Bagaimana cara membatalkan masa coba contoh?</summary>
+      <p>Masa coba contoh dalam ilustrasi demo ini berakhir sendiri setelah 14 hari dan tidak memerlukan pembatalan. Karena tidak ada data yang dikirim dari halaman ini, tidak ada akun nyata yang perlu ditutup.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Apakah laporan bisa diunduh sebagai file?</summary>
+      <p>Dalam ilustrasi demo ini, laporan harian dan bulanan digambarkan bisa diunduh sebagai file contoh untuk pembukuan toko. Halaman ini hanya contoh, jadi tidak ada file laporan yang benar-benar dibuat di sini.</p>
+    </details>
+  </section>
+
+  <!-- DAFTAR COBA GRATIS -->
+  <section class="card" id="daftar">
+    <h2>Daftar Coba Gratis</h2>
+    <p class="section-sub">Isi formulir contoh di bawah untuk mendaftar masa coba gratis contoh selama 14 hari. Formulir ini hanya mockup — data tidak dikirim ke mana pun.</p>
+    <form id="trialForm">
+      <div class="form-grid">
+        <div class="form-field">
+          <label for="namaToko">Nama toko (contoh)</label>
+          <input type="text" id="namaToko" name="namaToko" placeholder="Contoh: Toko Sari Jaya" required>
+        </div>
+        <div class="form-field">
+          <label for="namaPemilik">Nama pemilik (contoh)</label>
+          <input type="text" id="namaPemilik" name="namaPemilik" placeholder="Contoh: Budi Santoso" required>
+        </div>
+        <div class="form-field">
+          <label for="emailTrial">Email</label>
+          <input type="email" id="emailTrial" name="emailTrial" placeholder="contoh@email.com" required>
+        </div>
+        <div class="form-field">
+          <label for="paketTrial">Paket yang ingin dicoba</label>
+          <select id="paketTrial" name="paketTrial">
+            <option>Pemula — Rp99.000 / bulan (harga contoh)</option>
+            <option>Bisnis — Rp199.000 / bulan (harga contoh)</option>
+            <option>Usaha Besar — Rp399.000 / bulan (harga contoh)</option>
+          </select>
+        </div>
+        <div class="form-field full">
+          <label for="jenisToko">Jenis toko (contoh)</label>
+          <select id="jenisToko" name="jenisToko">
+            <option>Toko kelontong</option>
+            <option>Toko pakaian</option>
+            <option>Toko elektronik</option>
+            <option>Warung makan</option>
+            <option>Jenis toko lainnya</option>
+          </select>
+        </div>
+      </div>
+      <div style="margin-top: 18px;">
+        <button class="btn btn-accent" type="submit">Daftar Coba Gratis Contoh</button>
+      </div>
+      <p class="form-msg" id="trialMsg">Ini demo — data tidak dikirim ke mana pun. Pendaftaran contohmu sudah "terkirim" di halaman ini saja.</p>
+    </form>
+  </section>
+
+  <!-- PAKET DEMO WEBSITE -->
+  <section class="paket-demo" id="paket">
+    <h2>Paket Demo Website</h2>
+    <p>Contoh paket pembuatan website SaaS seperti halaman ini. Pilih paket sesuai kebutuhan contohmu.</p>
+    <div class="tier-grid">
+      <div class="tier">
+        <h3>Demo</h3>
+        <div class="tier-price">$29</div>
+        <p>Paket contoh paling sederhana.</p>
+        <ul>
+          <li>1 halaman utama</li>
+          <li>Daftar fitur contoh</li>
+          <li>Tampilan responsif</li>
+          <li>File HTML mandiri</li>
+        </ul>
+        <a class="btn btn-outline" href="mailto:masduki1189@gmail.com?subject=Pesan%20Website%20Demo%20Paket%20Demo%20%2429">Pesan via Email</a>
+      </div>
+      <div class="tier featured">
+        <h3>Standar</h3>
+        <div class="tier-price">$49</div>
+        <p>Paket contoh dengan fitur lebih lengkap.</p>
+        <ul>
+          <li>Semua isi paket Demo</li>
+          <li>Paket langganan dan FAQ contoh</li>
+          <li>Formulir daftar contoh</li>
+          <li>1 kali revisi kecil</li>
+        </ul>
+        <a class="btn" href="mailto:masduki1189@gmail.com?subject=Pesan%20Website%20Demo%20Paket%20Standar%20%2449">Pesan via Email</a>
+      </div>
+      <div class="tier">
+        <h3>Pro</h3>
+        <div class="tier-price">$79</div>
+        <p>Paket contoh paling lengkap.</p>
+        <ul>
+          <li>Semua isi paket Standar</li>
+          <li>Halaman harga detail contoh</li>
+          <li>Bagian cara kerja contoh</li>
+          <li>Bantuan pasang online</li>
+        </ul>
+        <a class="btn btn-outline" href="mailto:masduki1189@gmail.com?subject=Pesan%20Website%20Demo%20Paket%20Pro%20%2479">Pesan via Email</a>
+      </div>
+    </div>
+    <p class="paket-note">Harga paket demo website — pesan via email.</p>
+  </section>
+
+  <!-- CTA AKHIR -->
+  <section class="cta-final">
+    <h2>Mau website SaaS seperti ini?</h2>
+    <p>Halaman ini adalah contoh demo. Kalau kamu mau website software seperti ini, pesan paket demo website lewat email.</p>
+    <a class="btn btn-accent btn-big" href="mailto:masduki1189@gmail.com?subject=Pesan%20Website%20SaaS%20Software%20Kasir">Pesan via Email</a>
+  </section>
+
+</main>
+
+<footer>
+  <p>Halaman ini adalah contoh demo website. Semua nama, harga, dan konten di dalamnya hanya ilustrasi.</p>
+  <p>Demo contoh oleh KikiWorks — Podcast Meong. Pesan website via email — <a href="mailto:masduki1189@gmail.com">masduki1189@gmail.com</a></p>
+</footer>
+
+<script>
+(function () {
+  /* Formulir daftar coba gratis mockup: tidak mengirim data ke mana pun */
+  var form = document.getElementById('trialForm');
+  var msg = document.getElementById('trialMsg');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    msg.style.display = 'block';
+    msg.textContent = 'Ini demo — data tidak dikirim ke mana pun. Pendaftaran contohmu sudah "terkirim" di halaman ini saja.';
+    msg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+
+  /* Tombol pilih paket: mengisi pilihan pada formulir daftar */
+  var select = document.getElementById('paketTrial');
+  document.querySelectorAll('.plan .btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var plan = btn.closest('.plan');
+      var name = plan.querySelector('h3').textContent.trim();
+      for (var i = 0; i < select.options.length; i++) {
+        if (select.options[i].text.indexOf(name) === 0) {
+          select.selectedIndex = i;
+          break;
+        }
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>

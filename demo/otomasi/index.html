@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OtomatisKita — Platform Otomasi Alur Kerja | Contoh Demo</title>
+<meta name="description" content="Contoh demo website platform otomasi alur kerja OtomatisKita. Cara kerja, template workflow contoh, contoh integrasi, paket contoh, dan FAQ. Halaman contoh, bukan situs nyata.">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: #f7f9fc;
+    color: #14263d;
+    line-height: 1.6;
+  }
+  a { color: inherit; }
+  .demo-banner {
+    background: #14263d;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  .demo-banner span {
+    background: #8fb4d9;
+    color: #14263d;
+    padding: 2px 10px;
+    border-radius: 999px;
+    margin-left: 6px;
+    font-size: 12px;
+    letter-spacing: 0;
+  }
+  header {
+    max-width: 1020px;
+    margin: 0 auto;
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .brand { display: flex; align-items: center; gap: 12px; font-weight: 800; font-size: 22px; }
+  .brand-mark {
+    width: 44px; height: 44px; border-radius: 12px;
+    background: #8fb4d9; display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .brand small { display: block; font-size: 12px; font-weight: 600; color: #4a6178; letter-spacing: .4px; }
+  .nav { display: flex; gap: 18px; flex-wrap: wrap; font-size: 15px; font-weight: 600; }
+  .nav a { text-decoration: none; color: #42586e; }
+  .nav a:hover { color: #14263d; }
+  .btn {
+    display: inline-block;
+    background: #14263d;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 700;
+    padding: 13px 24px;
+    border-radius: 999px;
+    border: 2px solid #14263d;
+    cursor: pointer;
+    font-size: 15px;
+  }
+  .btn-accent {
+    background: #8fb4d9;
+    color: #14263d;
+    border-color: #8fb4d9;
+  }
+  .btn-outline { background: transparent; color: #14263d; }
+  .btn-big { font-size: 18px; padding: 16px 32px; }
+  main { max-width: 1020px; margin: 0 auto; padding: 0 20px 40px; }
+  .hero {
+    background: #ffffff;
+    border: 1px solid #dbe6f2;
+    border-radius: 24px;
+    padding: 36px 32px;
+    display: grid;
+    grid-template-columns: 1.15fr .85fr;
+    gap: 28px;
+    align-items: center;
+    box-shadow: 0 10px 30px rgba(20, 38, 61, .07);
+  }
+  .hero h1 { font-size: 40px; line-height: 1.15; margin: 12px 0 14px; }
+  .hero h1 em { font-style: normal; color: #2f6da3; }
+  .eyebrow {
+    display: inline-block; font-size: 13px; font-weight: 700; letter-spacing: .6px;
+    background: #e8f0f8; color: #14263d; padding: 6px 12px; border-radius: 999px;
+  }
+  .hero p { color: #42586e; font-size: 17px; margin-bottom: 18px; }
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .hero-note { font-size: 13px; color: #6b7f94; margin-top: 14px; }
+  .hero-art {
+    background: #e8f0f8;
+    border-radius: 18px;
+    padding: 22px;
+    text-align: center;
+  }
+  .hero-art svg { width: 100%; max-width: 320px; height: auto; }
+  .hero-art p { font-size: 14px; color: #42586e; margin-top: 8px; }
+  section { margin-top: 36px; }
+  .card {
+    background: #ffffff;
+    border: 1px solid #dbe6f2;
+    border-radius: 20px;
+    padding: 28px;
+    box-shadow: 0 6px 20px rgba(20, 38, 61, .05);
+  }
+  h2 { font-size: 26px; line-height: 1.3; margin-bottom: 10px; }
+  .section-sub { color: #42586e; margin-bottom: 20px; max-width: 680px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .reason {
+    background: #f7f9fc;
+    border: 1px solid #dbe6f2;
+    border-radius: 16px;
+    padding: 20px;
+  }
+  .reason-number {
+    width: 38px; height: 38px; border-radius: 50%;
+    background: #14263d; color: #8fb4d9;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; margin-bottom: 12px;
+  }
+  .reason h3 { font-size: 18px; margin-bottom: 6px; }
+  .reason p { color: #42586e; font-size: 15px; }
+  .reason .meta { font-size: 13px; color: #6b7f94; margin-top: 10px; }
+  .flow-line {
+    font-size: 13px; font-weight: 700; color: #2f6da3;
+    background: #e8f0f8; border-radius: 8px; padding: 8px 10px;
+    margin-top: 12px; line-height: 1.5;
+  }
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .step {
+    background: #f7f9fc; border: 1px solid #dbe6f2;
+    border-radius: 16px; padding: 20px;
+  }
+  .step b { display: block; font-size: 18px; margin-bottom: 6px; }
+  .step p { color: #42586e; font-size: 15px; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .check-list { list-style: none; }
+  .check-list li { padding: 10px 0 10px 34px; position: relative; border-bottom: 1px solid #eef3f8; }
+  .check-list li:last-child { border-bottom: none; }
+  .check-list li::before {
+    content: "✓"; position: absolute; left: 0; top: 10px;
+    width: 24px; height: 24px; border-radius: 50%;
+    background: #8fb4d9; color: #14263d;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 14px;
+  }
+  .check-list small { display: block; color: #6b7f94; font-size: 13px; }
+  .integration-list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .integration-list li {
+    background: #f7f9fc; border: 1px solid #dbe6f2; border-radius: 12px;
+    padding: 14px 16px; font-size: 15px;
+  }
+  .integration-list strong { display: block; font-size: 16px; }
+  .integration-list span { color: #42586e; font-size: 14px; }
+  .plan-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .plan {
+    background: #f7f9fc;
+    border: 1px solid #dbe6f2;
+    border-radius: 16px;
+    padding: 22px;
+    text-align: center;
+  }
+  .plan.featured { border: 3px solid #8fb4d9; background: #ffffff; }
+  .plan h3 { font-size: 19px; margin-bottom: 4px; }
+  .plan .plan-price { font-size: 28px; font-weight: 800; margin: 8px 0 2px; }
+  .plan .plan-per { font-size: 14px; color: #42586e; }
+  .plan .example-label {
+    display: inline-block; font-size: 12px; font-weight: 700;
+    background: #fdf6ec; color: #42586e; padding: 3px 10px; border-radius: 999px;
+    margin-top: 8px;
+  }
+  .plan ul { list-style: none; text-align: left; font-size: 14px; color: #42586e; margin-top: 14px; }
+  .plan ul li { padding: 6px 0; border-bottom: 1px solid #eef3f8; }
+  .plan ul li:last-child { border-bottom: none; }
+  .plan .btn { margin-top: 16px; }
+  .price-note { font-size: 13px; color: #6b7f94; margin-top: 14px; }
+  .faq-item {
+    background: #f7f9fc;
+    border: 1px solid #dbe6f2;
+    border-radius: 14px;
+    padding: 16px 18px;
+    margin-bottom: 12px;
+  }
+  .faq-item summary {
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    list-style: none;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::before {
+    content: "+";
+    display: inline-block;
+    width: 24px; height: 24px; border-radius: 50%;
+    background: #8fb4d9; color: #14263d;
+    text-align: center; line-height: 24px; font-weight: 800;
+    margin-right: 10px;
+  }
+  .faq-item[open ] summary::before { content: "–"; }
+  .faq-item p { color: #42586e; font-size: 15px; margin-top: 10px; padding-left: 34px; }
+  .paket-demo {
+    background: #14263d;
+    color: #ffffff;
+    border-radius: 20px;
+    padding: 28px;
+  }
+  .paket-demo h2 { color: #ffffff; text-align: center; }
+  .paket-demo > p { color: #c8d6e5; max-width: 620px; margin: 0 auto 20px; text-align: center; }
+  .tier-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .tier {
+    background: #ffffff; color: #14263d;
+    border-radius: 16px; padding: 22px; text-align: center;
+  }
+  .tier.featured { border: 3px solid #8fb4d9; }
+  .tier h3 { font-size: 19px; margin-bottom: 4px; }
+  .tier .tier-price { font-size: 30px; font-weight: 800; margin: 8px 0; }
+  .tier p { color: #42586e; font-size: 14px; margin-bottom: 12px; }
+  .tier ul { list-style: none; text-align: left; font-size: 14px; color: #42586e; }
+  .tier ul li { padding: 6px 0; border-bottom: 1px solid #eef3f8; }
+  .tier ul li:last-child { border-bottom: none; }
+  .tier .btn { margin-top: 14px; }
+  .paket-note { font-size: 13px; color: #c8d6e5; text-align: center; margin-top: 18px; }
+  .cta-final { text-align: center; padding: 32px 20px; }
+  .cta-final h2 { font-size: 28px; }
+  .cta-final p { color: #42586e; margin: 8px auto 20px; max-width: 560px; }
+  footer {
+    background: #14263d; color: #c8d6e5;
+    text-align: center; padding: 26px 20px; font-size: 14px;
+  }
+  footer a { color: #8fb4d9; font-weight: 700; text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  footer p { max-width: 720px; margin: 0 auto 8px; }
+  @media (max-width: 760px) {
+    .hero { grid-template-columns: 1fr; padding: 26px 22px; }
+    .hero h1 { font-size: 31px; }
+    .grid-3, .grid-2, .steps, .two-col, .plan-grid, .tier-grid, .integration-list { grid-template-columns: 1fr; }
+    header { justify-content: center; text-align: center; }
+    .brand { justify-content: center; }
+    .nav { justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="demo-banner">CONTOH DEMO — Platform Otomasi Alur Kerja <span>Halaman contoh, bukan situs nyata</span></div>
+
+<header>
+  <div class="brand">
+    <span class="brand-mark" aria-hidden="true">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="6" cy="12" r="3" fill="#14263d"/><circle cx="18" cy="6" r="3" fill="#14263d"/><circle cx="18" cy="18" r="3" fill="#14263d"/><path d="M8.5 10.8l7-3.6M8.5 13.2l7 3.6" stroke="#14263d" stroke-width="2"/><circle cx="6" cy="12" r="1" fill="#8fb4d9"/><circle cx="18" cy="6" r="1" fill="#8fb4d9"/><circle cx="18" cy="18" r="1" fill="#8fb4d9"/></svg>
+    </span>
+    <span>OtomatisKita<small>PLATFORM OTOMASI ALUR KERJA</small></span>
+  </div>
+  <nav class="nav" aria-label="Navigasi utama">
+    <a href="#cara-kerja">Cara Kerja</a>
+    <a href="#template">Template Workflow</a>
+    <a href="#integrasi">Integrasi</a>
+    <a href="#paket">Paket</a>
+  </nav>
+  <a class="btn btn-outline" href="#template">Lihat Template</a>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div>
+      <span class="eyebrow">OTOMASI ALUR KERJA • CONTOH DEMO</span>
+      <h1>Tugas berulang, <em>biar sistem yang kerjakan.</em></h1>
+      <p>OtomatisKita adalah contoh website platform otomasi alur kerja. Susun alur kerja dari pemicu dan aksi, pilih template contoh yang sudah jadi, dan hubungkan dengan layanan yang kamu pakai sehari-hari. Halaman ini hanya contoh demo, bukan layanan yang sebenarnya.</p>
+      <div class="hero-actions">
+        <a class="btn btn-accent btn-big" href="#template">Jelajahi Template Workflow</a>
+        <a class="btn btn-outline" href="#cara-kerja">Cara Kerja</a>
+      </div>
+      <p class="hero-note">Halaman contoh, bukan situs nyata. Semua template, integrasi, dan harga di bawah ini hanya ilustrasi.</p>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <svg viewBox="0 0 320 190" xmlns="http://www.w3.org/2000/svg">
+        <rect x="10" y="10" width="300" height="170" rx="16" fill="#ffffff"/>
+        <rect x="30" y="30" width="90" height="40" rx="8" fill="#14263d"/>
+        <rect x="42" y="43" width="66" height="7" rx="3" fill="#8fb4d9"/>
+        <rect x="42" y="56" width="44" height="6" rx="3" fill="#ffffff"/>
+        <path d="M120 50h40" stroke="#8fb4d9" stroke-width="3"/>
+        <path d="M155 43l10 7-10 7z" fill="#8fb4d9"/>
+        <rect x="200" y="30" width="90" height="40" rx="8" fill="#e8f0f8"/>
+        <rect x="212" y="43" width="66" height="7" rx="3" fill="#14263d"/>
+        <rect x="212" y="56" width="44" height="6" rx="3" fill="#8fb4d9"/>
+        <rect x="30" y="90" width="90" height="40" rx="8" fill="#e8f0f8"/>
+        <rect x="42" y="103" width="66" height="7" rx="3" fill="#14263d"/>
+        <rect x="42" y="116" width="44" height="6" rx="3" fill="#8fb4d9"/>
+        <path d="M120 110h40" stroke="#8fb4d9" stroke-width="3"/>
+        <path d="M155 103l10 7-10 7z" fill="#8fb4d9"/>
+        <rect x="200" y="90" width="90" height="40" rx="8" fill="#fdf6ec"/>
+        <rect x="212" y="103" width="66" height="7" rx="3" fill="#14263d"/>
+        <rect x="212" y="116" width="44" height="6" rx="3" fill="#8fb4d9"/>
+        <rect x="30" y="148" width="260" height="8" rx="4" fill="#14263d"/>
+      </svg>
+      <p>Ilustrasi alur kerja — gambar contoh, bukan tangkapan layar asli.</p>
+    </div>
+  </div>
+
+  <!-- CARA KERJA -->
+  <section class="card" id="cara-kerja">
+    <h2>Cara Kerja</h2>
+    <p class="section-sub">Tiga langkah contoh untuk membuat otomasi pertama dalam ilustrasi demo ini.</p>
+    <div class="steps">
+      <div class="step"><b>1. Pilih pemicu</b><p>Tentukan kejadian yang memulai alur kerja, misalnya email baru masuk, formulir diisi, atau stok barang berubah.</p></div>
+      <div class="step"><b>2. Susun aksi</b><p>Tambahkan aksi yang mengikuti pemicu, misalnya mengirim balasan, mencatat ke spreadsheet, atau memberi tahu tim.</p></div>
+      <div class="step"><b>3. Aktifkan dan pantau</b><p>Nyalakan alur kerja dan lihat riwayat jalanannya. Alur bisa diubah atau dimatikan kapan saja.</p></div>
+    </div>
+  </section>
+
+  <!-- TEMPLATE WORKFLOW -->
+  <section class="card" id="template">
+    <h2>Template Workflow</h2>
+    <p class="section-sub">Enam template workflow contoh yang siap dipakai sebagai titik awal. Setiap template hanya ilustrasi alur kerja — bukan otomasi yang benar-benar berjalan.</p>
+    <div class="grid-3">
+      <article class="reason">
+        <div class="reason-number">1</div>
+        <h3>Balasan email otomatis</h3>
+        <p>Setiap email baru yang masuk dibalas dengan pesan sapaan contoh, lalu diteruskan ke anggota tim yang dituju.</p>
+        <p class="flow-line">Pemicu: email baru masuk &rarr; Aksi: kirim balasan contoh &rarr; teruskan ke tim</p>
+        <p class="meta">Template contoh • Kategori: Komunikasi</p>
+      </article>
+      <article class="reason">
+        <div class="reason-number">2</div>
+        <h3>Sinkronisasi stok</h3>
+        <p>Perubahan stok di satu tempat dicatat ke tempat lain, supaya angka stok di kedua tempat tetap sama.</p>
+        <p class="flow-line">Pemicu: stok berubah &rarr; Aksi: perbarui catatan stok &rarr; beri tahu tim gudang</p>
+        <p class="meta">Template contoh • Kategori: Gudang</p>
+      </article>
+      <article class="reason">
+        <div class="reason-number">3</div>
+        <h3>Pengingat tagihan</h3>
+        <p>Tiga hari sebelum tanggal jatuh tempo contoh, sistem mengirim pengingat ke pelanggan lewat email contoh.</p>
+        <p class="flow-line">Pemicu: jadwal tiga hari sebelum tempo &rarr; Aksi: kirim pengingat contoh</p>
+        <p class="meta">Template contoh • Kategori: Keuangan</p>
+      </article>
+      <article class="reason">
+        <div class="reason-number">4</div>
+        <h3>Arsip formulir ke spreadsheet</h3>
+        <p>Setiap formulir yang diisi otomatis dicatat sebagai baris baru di spreadsheet contoh untuk diolah lebih lanjut.</p>
+        <p class="flow-line">Pemicu: formulir diisi &rarr; Aksi: tambah baris di spreadsheet contoh</p>
+        <p class="meta">Template contoh • Kategori: Data</p>
+      </article>
+      <article class="reason">
+        <div class="reason-number">5</div>
+        <h3>Notifikasi pesanan baru</h3>
+        <p>Setiap pesanan baru yang masuk memunculkan pemberitahuan ke grup chat tim, lengkap dengan ringkasan pesanannya.</p>
+        <p class="flow-line">Pemicu: pesanan baru &rarr; Aksi: kirim ringkasan ke grup chat tim</p>
+        <p class="meta">Template contoh • Kategori: Penjualan</p>
+      </article>
+      <article class="reason">
+        <div class="reason-number">6</div>
+        <h3>Laporan harian otomatis</h3>
+        <p>Setiap pagi, ringkasan aktivitas kemarin disusun dan dikirim ke email tim sebagai laporan harian contoh.</p>
+        <p class="flow-line">Pemicu: jadwal setiap pagi &rarr; Aksi: susun ringkasan &rarr; kirim ke email tim</p>
+        <p class="meta">Template contoh • Kategori: Laporan</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- INTEGRASI -->
+  <section class="card" id="integrasi">
+    <h2>Contoh Integrasi</h2>
+    <p class="section-sub">Daftar layanan umum yang digambarkan sebagai contoh integrasi pada halaman demo ini. Daftar ini hanya contoh tampilan — bukan pernyataan kerja sama dengan layanan tersebut.</p>
+    <ul class="integration-list">
+      <li><strong>Gmail</strong><span>Contoh integrasi: baca dan kirim email sebagai pemicu dan aksi.</span></li>
+      <li><strong>Google Sheets</strong><span>Contoh integrasi: catat data ke baris spreadsheet.</span></li>
+      <li><strong>Slack</strong><span>Contoh integrasi: kirim pemberitahuan ke channel tim.</span></li>
+      <li><strong>WhatsApp Business</strong><span>Contoh integrasi: kirim pesan ke pelanggan.</span></li>
+      <li><strong>Shopify</strong><span>Contoh integrasi: terima data pesanan baru dari toko.</span></li>
+      <li><strong>Google Calendar</strong><span>Contoh integrasi: buat pengingat dari jadwal kalender.</span></li>
+      <li><strong>Notion</strong><span>Contoh integrasi: simpan catatan ke halaman kerja tim.</span></li>
+      <li><strong>Stripe</strong><span>Contoh integrasi: terima kabar pembayaran berhasil.</span></li>
+    </ul>
+    <p class="price-note">Catatan: nama layanan di atas dipakai hanya sebagai contoh integrasi pada halaman demo. Halaman ini tidak menyatakan adanya kerja sama dengan layanan-layanan tersebut.</p>
+  </section>
+
+  <!-- PAKET -->
+  <section class="card" id="paket-langganan">
+    <h2>Paket OtomatisKita</h2>
+    <p class="section-sub">Tiga paket contoh dengan harga contoh per bulan. Semua harga di bawah ini hanya ilustrasi untuk demo.</p>
+    <div class="plan-grid">
+      <div class="plan">
+        <h3>Pemula</h3>
+        <div class="plan-price">Rp49.000</div>
+        <div class="plan-per">per bulan</div>
+        <span class="example-label">Harga contoh</span>
+        <ul>
+          <li>5 alur kerja aktif contoh</li>
+          <li>1.000 tugas otomatis contoh / bulan</li>
+          <li>Template workflow contoh</li>
+          <li>Riwayat jalanan 7 hari contoh</li>
+        </ul>
+        <a class="btn btn-outline" href="#paket">Pilih Pemula</a>
+      </div>
+      <div class="plan featured">
+        <h3>Bisnis</h3>
+        <div class="plan-price">Rp149.000</div>
+        <div class="plan-per">per bulan</div>
+        <span class="example-label">Harga contoh</span>
+        <ul>
+          <li>25 alur kerja aktif contoh</li>
+          <li>10.000 tugas otomatis contoh / bulan</li>
+          <li>Semua fitur paket Pemula</li>
+          <li>Alur multi-langkah contoh</li>
+          <li>Riwayat jalanan 30 hari contoh</li>
+        </ul>
+        <a class="btn" href="#paket">Pilih Bisnis</a>
+      </div>
+      <div class="plan">
+        <h3>Tim Besar</h3>
+        <div class="plan-price">Rp349.000</div>
+        <div class="plan-per">per bulan</div>
+        <span class="example-label">Harga contoh</span>
+        <ul>
+          <li>Alur kerja aktif tanpa batas contoh</li>
+          <li>50.000 tugas otomatis contoh / bulan</li>
+          <li>Semua fitur paket Bisnis</li>
+          <li>Pengguna tim contoh</li>
+          <li>Dukungan prioritas contoh</li>
+        </ul>
+        <a class="btn btn-outline" href="#paket">Pilih Tim Besar</a>
+      </div>
+    </div>
+    <p class="price-note">Semua harga paket di atas adalah harga contoh untuk keperluan demo. Tidak ada penagihan nyata dari halaman ini.</p>
+  </section>
+
+  <!-- YANG DIDAPAT -->
+  <section class="card">
+    <h2>Yang didapat</h2>
+    <p class="section-sub">Isi contoh yang ditampilkan sebagai bagian dari platform OtomatisKita di halaman demo ini.</p>
+    <div class="two-col">
+      <ul class="check-list">
+        <li><strong>Template workflow contoh siap pakai.</strong><small>Enam template contoh di atas bisa dipilih sebagai titik awal alur kerja.</small></li>
+        <li><strong>Penyusun alur tanpa kode contoh.</strong><small>Alur kerja digambarkan disusun dengan menyeret dan menghubungkan blok pemicu dan aksi.</small></li>
+        <li><strong>Riwayat jalanan contoh.</strong><small>Setiap alur yang berjalan dicatat riwayatnya supaya mudah dilacak.</small></li>
+      </ul>
+      <ul class="check-list">
+        <li><strong>Contoh integrasi layanan umum.</strong><small>Delapan layanan umum ditampilkan sebagai contoh integrasi di halaman ini.</small></li>
+        <li><strong>Masa coba contoh 14 hari.</strong><small>Dalam ilustrasi demo ini, semua fitur paket Bisnis bisa dicoba selama 14 hari contoh.</small></li>
+        <li><strong>Tampilan responsif.</strong><small>Halaman menyesuaikan ukuran layar HP, tablet, dan laptop.</small></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CONTOH ALUR LENGKAP -->
+  <section class="card" id="contoh-alur">
+    <h2>Contoh Alur Lengkap — Pesanan Baru sampai Laporan</h2>
+    <p class="section-sub">Satu contoh alur kerja utuh yang menggabungkan beberapa template di atas. Alur ini hanya ilustrasi cara beberapa langkah bisa dirangkai menjadi satu alur.</p>
+    <div class="steps">
+      <div class="step"><b>Langkah 1 — Pesanan masuk</b><p>Pesanan baru dari toko menjadi pemicu alur. Data pesanan dibaca: nama pelanggan, daftar barang, dan total bayar contoh.</p></div>
+      <div class="step"><b>Langkah 2 — Stok diperbarui</b><p>Stok barang yang dipesan dikurangi secara otomatis, lalu dicatat ke spreadsheet contoh untuk pembukuan.</p></div>
+      <div class="step"><b>Langkah 3 — Tim dan pelanggan diberi tahu</b><p>Ringkasan pesanan dikirim ke grup chat tim, pelanggan menerima pesan contoh, dan laporan harian diperbarui keesokan paginya.</p></div>
+    </div>
+    <p class="price-note">Catatan: alur di atas hanya contoh rangkaian langkah. Tidak ada pesanan, stok, atau pesan nyata yang diproses dari halaman demo ini.</p>
+  </section>
+
+  <!-- FAQ -->
+  <section class="card" id="faq">
+    <h2>Pertanyaan yang Sering Diajukan</h2>
+    <p class="section-sub">Jawaban contoh atas pertanyaan umum seputar OtomatisKita. Klik pertanyaan untuk membuka jawabannya.</p>
+    <details class="faq-item">
+      <summary>Apakah saya harus bisa menulis kode untuk membuat alur kerja?</summary>
+      <p>Dalam ilustrasi demo ini, alur kerja digambarkan dibuat tanpa kode — cukup memilih pemicu, menambahkan aksi, dan menghubungkannya. Halaman ini hanya contoh, jadi tidak ada penyusun alur yang benar-benar berjalan di sini.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Apa yang dimaksud dengan "tugas otomatis" pada paket?</summary>
+      <p>Dalam ilustrasi demo ini, satu tugas otomatis berarti satu aksi yang dijalankan oleh sebuah alur kerja, misalnya satu email balasan yang terkirim atau satu baris yang ditambahkan ke spreadsheet. Jumlahnya dihitung per bulan dalam contoh paket di atas.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Apakah alur kerja saya bisa dimatikan sementara?</summary>
+      <p>Dalam ilustrasi demo ini, setiap alur kerja digambarkan bisa dimatikan dan dinyalakan kembali kapan saja dari daftar alur kerja. Riwayat jalanan sebelumnya tetap tersimpan sebagai contoh.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Apakah data saya dibagikan ke layanan yang terhubung?</summary>
+      <p>Halaman ini hanya contoh demo dan tidak mengirim data ke mana pun. Untuk layanan sungguhan, cara data dibagikan ke layanan yang terhubung sebaiknya ditanyakan langsung kepada penyedia layanannya.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Apakah saya bisa mencoba dulu sebelum memilih paket?</summary>
+      <p>Dalam ilustrasi demo ini, masa coba contoh selama 14 hari digambarkan tersedia dengan semua fitur paket Bisnis. Masa coba tidak meminta kartu dan tidak menagih apa pun, karena halaman ini hanya contoh.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Apakah template workflow bisa diubah setelah dipakai?</summary>
+      <p>Dalam ilustrasi demo ini, template yang sudah dipakai digambarkan bisa diubah: langkah bisa ditambah, dihapus, atau diganti tanpa mengganggu alur lain. Halaman ini hanya contoh, jadi tidak ada template yang benar-benar berjalan di sini.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Apa yang terjadi bila alur kerja mengalami kesalahan?</summary>
+      <p>Dalam ilustrasi demo ini, alur yang gagal digambarkan tercatat di riwayat jalanan beserta pesan kesalahannya, supaya bisa diperbaiki dan dijalankan ulang. Tidak ada alur nyata yang berjalan dari halaman demo ini.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Apakah OtomatisKita bisa dipakai untuk toko online kecil?</summary>
+      <p>Dalam ilustrasi demo ini, paket Pemula digambarkan untuk kebutuhan kecil: 5 alur kerja aktif dan 1.000 tugas otomatis contoh per bulan. Toko yang butuh lebih banyak bisa melihat paket Bisnis atau Tim Besar sebagai contoh.</p>
+    </details>
+  </section>
+
+  <!-- PAKET DEMO WEBSITE -->
+  <section class="paket-demo" id="paket">
+    <h2>Paket Demo Website</h2>
+    <p>Contoh paket pembuatan website platform otomasi seperti halaman ini. Pilih paket sesuai kebutuhan contohmu.</p>
+    <div class="tier-grid">
+      <div class="tier">
+        <h3>Demo</h3>
+        <div class="tier-price">$29</div>
+        <p>Paket contoh paling sederhana.</p>
+        <ul>
+          <li>1 halaman utama</li>
+          <li>Cara kerja dan template contoh</li>
+          <li>Tampilan responsif</li>
+          <li>File HTML mandiri</li>
+        </ul>
+        <a class="btn btn-outline" href="mailto:masduki1189@gmail.com?subject=Pesan%20Website%20Demo%20Paket%20Demo%20%2429">Pesan via Email</a>
+      </div>
+      <div class="tier featured">
+        <h3>Standar</h3>
+        <div class="tier-price">$49</div>
+        <p>Paket contoh dengan fitur lebih lengkap.</p>
+        <ul>
+          <li>Semua isi paket Demo</li>
+          <li>Contoh integrasi dan paket contoh</li>
+          <li>FAQ contoh</li>
+          <li>1 kali revisi kecil</li>
+        </ul>
+        <a class="btn" href="mailto:masduki1189@gmail.com?subject=Pesan%20Website%20Demo%20Paket%20Standar%20%2449">Pesan via Email</a>
+      </div>
+      <div class="tier">
+        <h3>Pro</h3>
+        <div class="tier-price">$79</div>
+        <p>Paket contoh paling lengkap.</p>
+        <ul>
+          <li>Semua isi paket Standar</li>
+          <li>Halaman detail template contoh</li>
+          <li>Bagian cara kerja tambahan</li>
+          <li>Bantuan pasang online</li>
+        </ul>
+        <a class="btn btn-outline" href="mailto:masduki1189@gmail.com?subject=Pesan%20Website%20Demo%20Paket%20Pro%20%2479">Pesan via Email</a>
+      </div>
+    </div>
+    <p class="paket-note">Harga paket demo website — pesan via email.</p>
+  </section>
+
+  <!-- CTA AKHIR -->
+  <section class="cta-final">
+    <h2>Mau website otomasi seperti ini?</h2>
+    <p>Halaman ini adalah contoh demo. Kalau kamu mau website platform otomasi dengan tampilan seperti ini, pesan paket demo website lewat email.</p>
+    <a class="btn btn-accent btn-big" href="mailto:masduki1189@gmail.com?subject=Pesan%20Website%20Platform%20Otomasi">Pesan via Email</a>
+  </section>
+
+</main>
+
+<footer>
+  <p>Halaman ini adalah contoh demo website. Semua nama, harga, dan konten di dalamnya hanya ilustrasi.</p>
+  <p>Demo contoh oleh KikiWorks — Podcast Meong. Pesan website via email — <a href="mailto:masduki1189@gmail.com">masduki1189@gmail.com</a></p>
+</footer>
+
+<script>
+(function () {
+  /* Kartu template workflow: klik untuk melihat ringkasan alur contoh */
+  var cards = document.querySelectorAll('#template .reason');
+  cards.forEach(function (card) {
+    card.style.cursor = 'pointer';
+    card.setAttribute('tabindex', '0');
+    card.addEventListener('click', function () {
+      var title = card.querySelector('h3').textContent;
+      var flow = card.querySelector('.flow-line').textContent;
+      var note = document.getElementById('templateNote');
+      if (!note) {
+        note = document.createElement('p');
+        note.id = 'templateNote';
+        note.className = 'price-note';
+        note.style.cssText = 'background:#e8f0f8;border:1px solid #8fb4d9;border-radius:12px;padding:14px 16px;font-size:15px;color:#14263d;margin-top:16px;';
+        document.getElementById('template').appendChild(note);
+      }
+      note.textContent = 'Template contoh dipilih: ' + title + ' — ' + flow + '. Ini demo — data tidak dikirim ke mana pun.';
+      note.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+    card.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); card.click(); }
+    });
+  });
+
+  /* Tombol pilih paket: hanya contoh tampilan, arahkan ke seksi paket demo website */
+  document.querySelectorAll('#paket-langganan .plan .btn').forEach(function (btn) {
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      document.getElementById('paket').scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+})();
+</script>
+</body>
+</html>

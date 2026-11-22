@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NontonKita — Streaming Film &amp; Serial | Contoh Demo</title>
+<meta name="description" content="Contoh demo website streaming NontonKita. Film dan serial fiktif, lanjutkan menonton, kategori, dan paket langganan contoh.">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: #f7f9fc;
+    color: #14263d;
+    line-height: 1.6;
+  }
+  a { color: inherit; }
+  .demo-banner {
+    background: #14263d;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  .demo-banner span {
+    background: #8fb4d9;
+    color: #14263d;
+    padding: 2px 10px;
+    border-radius: 999px;
+    margin-left: 6px;
+    font-size: 12px;
+    letter-spacing: 0;
+  }
+  header {
+    max-width: 1020px;
+    margin: 0 auto;
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .brand { display: flex; align-items: center; gap: 12px; font-weight: 800; font-size: 22px; }
+  .brand-mark {
+    width: 44px; height: 44px; border-radius: 12px;
+    background: #8fb4d9; display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .brand small { display: block; font-size: 12px; font-weight: 600; color: #4a6178; letter-spacing: .4px; }
+  nav.main-nav { display: flex; gap: 18px; flex-wrap: wrap; }
+  nav.main-nav a {
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 15px;
+    color: #14263d;
+  }
+  nav.main-nav a:hover { color: #2f6da3; text-decoration: underline; }
+  .btn {
+    display: inline-block;
+    background: #14263d;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 700;
+    padding: 13px 24px;
+    border-radius: 999px;
+    border: 2px solid #14263d;
+  }
+  .btn-soft {
+    background: #8fb4d9;
+    color: #14263d;
+    border-color: #8fb4d9;
+  }
+  .btn-outline {
+    background: transparent;
+    color: #14263d;
+  }
+  main { max-width: 1020px; margin: 0 auto; padding: 0 20px 40px; }
+  .hero {
+    background: #14263d;
+    color: #ffffff;
+    border-radius: 24px;
+    padding: 36px 32px;
+    display: grid;
+    grid-template-columns: 1.15fr .85fr;
+    gap: 28px;
+    align-items: center;
+    box-shadow: 0 10px 30px rgba(20, 38, 61, .15);
+  }
+  .hero h1 { font-size: 40px; line-height: 1.15; margin: 12px 0 14px; color: #ffffff; }
+  .hero h1 em { font-style: normal; color: #8fb4d9; }
+  .eyebrow {
+    display: inline-block; font-size: 13px; font-weight: 700; letter-spacing: .6px;
+    background: #2f6da3; color: #ffffff; padding: 6px 12px; border-radius: 999px;
+  }
+  .hero p { color: #c8d6e5; font-size: 17px; margin-bottom: 18px; }
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .hero-note { font-size: 13px; color: #a9bdd2; margin-top: 14px; }
+  .hero-art {
+    background: #1e3a5c;
+    border-radius: 18px;
+    padding: 22px;
+    text-align: center;
+  }
+  .hero-art svg { width: 100%; max-width: 320px; height: auto; }
+  .hero-art p { font-size: 14px; color: #c8d6e5; margin-top: 8px; }
+  .featured-badge {
+    display: inline-block; font-size: 12px; font-weight: 800;
+    background: #8fb4d9; color: #14263d;
+    padding: 4px 12px; border-radius: 999px; margin-bottom: 10px;
+  }
+  section { margin-top: 36px; }
+  .card {
+    background: #ffffff;
+    border: 1px solid #dbe6f2;
+    border-radius: 20px;
+    padding: 28px;
+    box-shadow: 0 6px 20px rgba(20, 38, 61, .05);
+  }
+  h2 { font-size: 26px; line-height: 1.3; margin-bottom: 10px; }
+  .section-sub { color: #42586e; margin-bottom: 20px; max-width: 680px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .tag {
+    display: inline-block; font-size: 12px; font-weight: 700;
+    background: #e8f0f8; color: #2f6da3;
+    padding: 3px 10px; border-radius: 999px; margin-right: 6px;
+  }
+  .continue-card {
+    background: #f7f9fc;
+    border: 1px solid #dbe6f2;
+    border-radius: 16px;
+    padding: 20px;
+  }
+  .continue-poster {
+    height: 90px; border-radius: 12px;
+    background: #8fb4d9; color: #14263d;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 14px; text-align: center;
+    padding: 10px; margin-bottom: 12px;
+  }
+  .continue-poster.alt { background: #e8f0f8; }
+  .continue-poster.dark { background: #14263d; color: #8fb4d9; }
+  .continue-card h3 { font-size: 17px; margin-bottom: 4px; }
+  .continue-card p { color: #42586e; font-size: 14px; }
+  .progress-track {
+    height: 8px; border-radius: 999px;
+    background: #dbe6f2; margin: 12px 0 6px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%; border-radius: 999px;
+    background: #2f6da3;
+  }
+  .progress-label { font-size: 13px; color: #6b7f94; font-weight: 700; }
+  .category-chip {
+    background: #f7f9fc;
+    border: 1px solid #dbe6f2;
+    border-radius: 16px;
+    padding: 20px;
+    text-align: center;
+  }
+  .category-chip .cat-icon {
+    width: 44px; height: 44px; border-radius: 12px;
+    background: #8fb4d9; color: #14263d;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 20px; margin: 0 auto 10px;
+  }
+  .category-chip h3 { font-size: 17px; margin-bottom: 4px; }
+  .category-chip p { color: #42586e; font-size: 14px; }
+  .film-card {
+    background: #f7f9fc;
+    border: 1px solid #dbe6f2;
+    border-radius: 16px;
+    padding: 18px;
+  }
+  .film-poster {
+    height: 110px; border-radius: 12px;
+    background: #8fb4d9; color: #14263d;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 14px; text-align: center;
+    padding: 10px; margin-bottom: 12px;
+  }
+  .film-poster.alt { background: #e8f0f8; }
+  .film-poster.dark { background: #14263d; color: #8fb4d9; }
+  .film-poster.cream { background: #fdf6ec; }
+  .film-card h3 { font-size: 17px; margin-bottom: 4px; }
+  .film-card p { color: #42586e; font-size: 14px; }
+  .film-card .meta { font-size: 13px; color: #6b7f94; margin-top: 8px; font-weight: 700; }
+  .plan {
+    background: #f7f9fc;
+    border: 1px solid #dbe6f2;
+    border-radius: 16px;
+    padding: 22px 20px;
+    text-align: center;
+  }
+  .plan.featured { border: 2px solid #8fb4d9; background: #ffffff; }
+  .plan h3 { font-size: 19px; margin-bottom: 4px; }
+  .plan .plan-price { font-size: 32px; font-weight: 800; margin: 8px 0 2px; }
+  .plan .plan-period { font-size: 13px; color: #6b7f94; }
+  .plan ul { list-style: none; margin-top: 14px; text-align: left; }
+  .plan ul li { padding: 8px 0 8px 30px; position: relative; color: #42586e; font-size: 15px; border-bottom: 1px solid #eef3f8; }
+  .plan ul li:last-child { border-bottom: none; }
+  .plan ul li::before {
+    content: "✓"; position: absolute; left: 0; top: 8px;
+    width: 22px; height: 22px; border-radius: 50%;
+    background: #8fb4d9; color: #14263d;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 13px;
+  }
+  .plan .contoh-label { display: block; font-size: 12px; color: #6b7f94; margin-top: 10px; }
+  .plan .btn { margin-top: 16px; }
+  .device-row { display: flex; gap: 12px; flex-wrap: wrap; }
+  .device-chip {
+    background: #f7f9fc; border: 1px solid #dbe6f2;
+    border-radius: 999px; padding: 8px 16px;
+    font-size: 14px; font-weight: 700; color: #14263d;
+  }
+  .check-list { list-style: none; }
+  .check-list li { padding: 10px 0 10px 34px; position: relative; border-bottom: 1px solid #eef3f8; }
+  .check-list li:last-child { border-bottom: none; }
+  .check-list li::before {
+    content: "✓"; position: absolute; left: 0; top: 10px;
+    width: 24px; height: 24px; border-radius: 50%;
+    background: #8fb4d9; color: #14263d;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 14px;
+  }
+  .check-list small { display: block; color: #6b7f94; font-size: 13px; }
+  .website-price {
+    background: #14263d;
+    color: #ffffff;
+    border-radius: 20px;
+    padding: 28px;
+    text-align: center;
+  }
+  .website-price h2 { color: #ffffff; }
+  .website-price p { color: #c8d6e5; max-width: 620px; margin: 0 auto 18px; }
+  .price-tiers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 0 auto 20px; max-width: 760px; }
+  .price-tier {
+    background: #ffffff; color: #14263d;
+    border-radius: 16px; padding: 22px 18px;
+    text-align: center;
+  }
+  .price-tier h3 { font-size: 18px; margin-bottom: 4px; }
+  .price-tier .tier-price { font-size: 30px; font-weight: 800; margin: 8px 0; }
+  .price-tier p { color: #42586e; font-size: 14px; margin: 0; }
+  .price-tier.featured { outline: 3px solid #8fb4d9; }
+  .price-note { font-size: 13px; color: #c8d6e5; margin-top: 14px; }
+  .cta-final { text-align: center; padding: 32px 20px; }
+  .cta-final h2 { font-size: 28px; }
+  .cta-final p { color: #42586e; margin: 8px auto 20px; max-width: 560px; }
+  .btn-big { font-size: 18px; padding: 16px 32px; }
+  footer {
+    background: #14263d; color: #c8d6e5;
+    text-align: center; padding: 26px 20px; font-size: 14px;
+  }
+  footer a { color: #8fb4d9; font-weight: 700; text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  footer .disclaimer { margin-top: 10px; font-size: 13px; color: #a9bdd2; }
+  @media (max-width: 760px) {
+    .hero { grid-template-columns: 1fr; padding: 26px 22px; }
+    .hero h1 { font-size: 31px; }
+    .grid-3, .grid-2, .price-tiers { grid-template-columns: 1fr; }
+    .grid-4 { grid-template-columns: 1fr 1fr; }
+    header { justify-content: center; text-align: center; }
+    .brand { justify-content: center; }
+    nav.main-nav { justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="demo-banner">CONTOH DEMO — Streaming <span>Halaman contoh, bukan situs nyata</span></div>
+
+<header>
+  <div class="brand">
+    <span class="brand-mark" aria-hidden="true">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="5" width="18" height="13" rx="3" fill="#14263d"/><path d="M10 9.2v4.6L14.5 11.5 10 9.2Z" fill="#8fb4d9"/><path d="M8 19.5h8" stroke="#14263d" stroke-width="2" stroke-linecap="round"/></svg>
+    </span>
+    <span>NontonKita<small>STREAMING FILM &amp; SERIAL</small></span>
+  </div>
+  <nav class="main-nav" aria-label="Navigasi utama">
+    <a href="#lanjutkan">Lanjutkan</a>
+    <a href="#kategori">Kategori</a>
+    <a href="#daftar-film">Film</a>
+    <a href="#langganan">Langganan</a>
+  </nav>
+  <a class="btn btn-outline" href="#langganan">Berlangganan</a>
+</header>
+
+<main>
+
+  <!-- HERO + UNGGULAN -->
+  <div class="hero">
+    <div>
+      <span class="eyebrow">STREAMING • FILM • SERIAL</span>
+      <h1>Tonton film dan serial <em>kapan saja, di mana saja.</em></h1>
+      <p>NontonKita adalah layanan streaming dengan koleksi film dan serial fiktif — dari drama keluarga sampai petualangan anak. Semua judul di halaman ini adalah judul karangan untuk keperluan demo.</p>
+      <div class="hero-actions">
+        <a class="btn btn-soft btn-big" href="#daftar-film">Mulai Menonton</a>
+        <a class="btn btn-outline" href="#langganan" style="color:#ffffff;border-color:#8fb4d9;">Lihat Paket Langganan</a>
+      </div>
+      <p class="hero-note">Contoh demo website streaming — semua judul, harga, dan angka di halaman ini hanya ilustrasi.</p>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <span class="featured-badge">UNGGULAN MINGGU INI</span>
+      <svg viewBox="0 0 320 150" xmlns="http://www.w3.org/2000/svg">
+        <rect x="10" y="8" width="300" height="134" rx="14" fill="#14263d" stroke="#8fb4d9" stroke-width="2"/>
+        <path d="M140 52l36 20-36 20V52Z" fill="#8fb4d9"/>
+        <circle cx="160" cy="72" r="34" fill="none" stroke="#8fb4d9" stroke-width="2"/>
+        <rect x="30" y="118" width="120" height="8" rx="4" fill="#2f6da3"/>
+        <rect x="170" y="118" width="60" height="8" rx="4" fill="#8fb4d9"/>
+      </svg>
+      <p style="color:#ffffff;font-weight:700;margin-top:10px;">Langit di Atas Sawah</p>
+      <p>Film drama fiktif • 1 jam 48 menit • contoh</p>
+    </div>
+  </div>
+
+  <!-- LANJUTKAN MENONTON -->
+  <section class="card" id="lanjutkan">
+    <h2>Lanjutkan Menonton</h2>
+    <p class="section-sub">Tiga judul yang sedang Anda tonton. Bilah kemajuan di bawah ini adalah contoh tampilan, bukan data tontonan yang sebenarnya.</p>
+    <div class="grid-3">
+      <div class="continue-card">
+        <div class="continue-poster" aria-hidden="true">LANGIT DI ATAS SAWAH</div>
+        <h3>Langit di Atas Sawah</h3>
+        <p>Film • Drama • 1 jam 48 menit</p>
+        <div class="progress-track" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" aria-label="Kemajuan menonton Langit di Atas Sawah"><div class="progress-fill" style="width:65%"></div></div>
+        <p class="progress-label">65% selesai • contoh</p>
+      </div>
+      <div class="continue-card">
+        <div class="continue-poster alt" aria-hidden="true">KAPAL KERTAS</div>
+        <h3>Kapal Kertas</h3>
+        <p>Film • Keluarga • 1 jam 35 menit</p>
+        <div class="progress-track" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" aria-label="Kemajuan menonton Kapal Kertas"><div class="progress-fill" style="width:40%"></div></div>
+        <p class="progress-label">40% selesai • contoh</p>
+      </div>
+      <div class="continue-card">
+        <div class="continue-poster dark" aria-hidden="true">RUMAH DI UJUNG JALAN</div>
+        <h3>Rumah di Ujung Jalan</h3>
+        <p>Serial • Drama • Episode 3 dari 8</p>
+        <div class="progress-track" role="progressbar" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100" aria-label="Kemajuan menonton Rumah di Ujung Jalan"><div class="progress-fill" style="width:82%"></div></div>
+        <p class="progress-label">82% selesai • contoh</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- KATEGORI -->
+  <section class="card" id="kategori">
+    <h2>Kategori</h2>
+    <p class="section-sub">Delapan kategori film dan serial di NontonKita. Jumlah judul di bawah ini adalah angka contoh.</p>
+    <div class="grid-4">
+      <div class="category-chip">
+        <div class="cat-icon" aria-hidden="true">D</div>
+        <h3>Drama</h3>
+        <p>24 judul • contoh</p>
+      </div>
+      <div class="category-chip">
+        <div class="cat-icon" aria-hidden="true">K</div>
+        <h3>Keluarga</h3>
+        <p>18 judul • contoh</p>
+      </div>
+      <div class="category-chip">
+        <div class="cat-icon" aria-hidden="true">P</div>
+        <h3>Petualangan</h3>
+        <p>15 judul • contoh</p>
+      </div>
+      <div class="category-chip">
+        <div class="cat-icon" aria-hidden="true">M</div>
+        <h3>Misteri</h3>
+        <p>12 judul • contoh</p>
+      </div>
+      <div class="category-chip">
+        <div class="cat-icon" aria-hidden="true">L</div>
+        <h3>Lawak</h3>
+        <p>20 judul • contoh</p>
+      </div>
+      <div class="category-chip">
+        <div class="cat-icon" aria-hidden="true">A</div>
+        <h3>Animasi</h3>
+        <p>16 judul • contoh</p>
+      </div>
+      <div class="category-chip">
+        <div class="cat-icon" aria-hidden="true">S</div>
+        <h3>Sejarah</h3>
+        <p>9 judul • contoh</p>
+      </div>
+      <div class="category-chip">
+        <div class="cat-icon" aria-hidden="true">D</div>
+        <h3>Dokumenter</h3>
+        <p>11 judul • contoh</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- DAFTAR FILM -->
+  <section class="card" id="daftar-film">
+    <h2>Daftar Film &amp; Serial</h2>
+    <p class="section-sub">Delapan judul fiktif yang tersedia di NontonKita. Semua judul di bawah ini adalah karangan untuk keperluan demo, bukan film atau serial yang sebenarnya ada.</p>
+    <div class="grid-4">
+      <div class="film-card">
+        <div class="film-poster" aria-hidden="true">LANGIT DI ATAS SAWAH</div>
+        <h3>Langit di Atas Sawah</h3>
+        <p>Seorang guru desa mengajar anak-anak sambil merawat sawah peninggalan keluarganya.</p>
+        <p class="meta"><span class="tag">Film</span> Drama • 1 jam 48 menit • contoh</p>
+      </div>
+      <div class="film-card">
+        <div class="film-poster alt" aria-hidden="true">KAPAL KERTAS</div>
+        <h3>Kapal Kertas</h3>
+        <p>Dua kakak beradik membuat kapal kertas dan mengarunginya di sungai belakang rumah.</p>
+        <p class="meta"><span class="tag">Film</span> Keluarga • 1 jam 35 menit • contoh</p>
+      </div>
+      <div class="film-card">
+        <div class="film-poster dark" aria-hidden="true">MALAM DI STASIUN TUA</div>
+        <h3>Malam di Stasiun Tua</h3>
+        <p>Penjaga stasiun menemukan koper tua berisi surat-surat dari masa lalu.</p>
+        <p class="meta"><span class="tag">Film</span> Misteri • 2 jam 2 menit • contoh</p>
+      </div>
+      <div class="film-card">
+        <div class="film-poster cream" aria-hidden="true">RUMAH DI UJUNG JALAN</div>
+        <h3>Rumah di Ujung Jalan</h3>
+        <p>Kisah keluarga dan tetangga di sebuah gang kecil, dalam 8 episode.</p>
+        <p class="meta"><span class="tag">Serial</span> Drama • 8 episode • contoh</p>
+      </div>
+      <div class="film-card">
+        <div class="film-poster alt" aria-hidden="true">SI KANCIL DAN HUTAN BIRU</div>
+        <h3>Si Kancil dan Hutan Biru</h3>
+        <p>Animasi tentang kancil cerdik yang membantu teman-temannya menjaga hutan.</p>
+        <p class="meta"><span class="tag">Film</span> Animasi • 1 jam 22 menit • contoh</p>
+      </div>
+      <div class="film-card">
+        <div class="film-poster" aria-hidden="true">JEJAK KOTA TUA</div>
+        <h3>Jejak Kota Tua</h3>
+        <p>Dokumenter tentang kota-kota lama dan orang-orang yang menjaga kenangannya.</p>
+        <p class="meta"><span class="tag">Film</span> Dokumenter • 1 jam 12 menit • contoh</p>
+      </div>
+      <div class="film-card">
+        <div class="film-poster dark" aria-hidden="true">PELABUHAN SENJA</div>
+        <h3>Pelabuhan Senja</h3>
+        <p>Serial tentang keluarga nelayan yang mengelola pelabuhan kecil di tepi laut, dalam 6 episode.</p>
+        <p class="meta"><span class="tag">Serial</span> Drama • 6 episode • contoh</p>
+      </div>
+      <div class="film-card">
+        <div class="film-poster cream" aria-hidden="true">WARUNG KOPI PAK DARTO</div>
+        <h3>Warung Kopi Pak Darto</h3>
+        <p>Serial lawak ringan tentang pelanggan warung kopi dan cerita mereka sehari-hari, dalam 10 episode.</p>
+        <p class="meta"><span class="tag">Serial</span> Lawak • 10 episode • contoh</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CARA MENONTON -->
+  <section class="card">
+    <h2>Cara Menonton</h2>
+    <p class="section-sub">Tiga langkah sederhana untuk mulai menonton di NontonKita.</p>
+    <ul class="check-list">
+      <li><strong>Pilih paket langganan di bawah.</strong><small>Tiga pilihan paket dengan harga contoh, sesuai kebutuhan menonton Anda.</small></li>
+      <li><strong>Buat profil menonton.</strong><small>Setiap anggota keluarga bisa punya profil sendiri dengan daftar tontonan masing-masing.</small></li>
+      <li><strong>Tonton di perangkat apa saja.</strong><small>Film dan serial bisa ditonton di HP, tablet, laptop, atau televisi.</small></li>
+    </ul>
+    <p class="section-sub" style="margin-top:20px;margin-bottom:10px;">Perangkat yang didukung (contoh):</p>
+    <div class="device-row">
+      <span class="device-chip">HP Android</span>
+      <span class="device-chip">iPhone</span>
+      <span class="device-chip">Tablet</span>
+      <span class="device-chip">Laptop</span>
+      <span class="device-chip">Televisi Pintar</span>
+    </div>
+  </section>
+
+  <!-- PAKET LANGGANAN -->
+  <section class="card" id="langganan">
+    <h2>Paket Langganan</h2>
+    <p class="section-sub">Tiga pilihan paket langganan NontonKita. Harga di bawah ini adalah harga contoh untuk keperluan demo.</p>
+    <div class="grid-3">
+      <div class="plan">
+        <h3>Dasar</h3>
+        <p class="plan-price">Rp29.000</p>
+        <p class="plan-period">per bulan • contoh</p>
+        <ul>
+          <li>1 layar dalam satu waktu</li>
+          <li>Kualitas gambar standar</li>
+          <li>Akses semua film dan serial</li>
+          <li>Bisa dibatalkan kapan saja</li>
+        </ul>
+        <span class="contoh-label">Harga contoh — bukan harga sebenarnya</span>
+        <a class="btn btn-outline" href="#paket-demo">Pilih Dasar</a>
+      </div>
+      <div class="plan featured">
+        <h3>Standar</h3>
+        <p class="plan-price">Rp49.000</p>
+        <p class="plan-period">per bulan • contoh</p>
+        <ul>
+          <li>Semua isi paket Dasar</li>
+          <li>2 layar dalam satu waktu</li>
+          <li>Kualitas gambar HD</li>
+          <li>Unduh untuk ditonton luring</li>
+        </ul>
+        <span class="contoh-label">Harga contoh — bukan harga sebenarnya</span>
+        <a class="btn btn-soft" href="#paket-demo">Pilih Standar</a>
+      </div>
+      <div class="plan">
+        <h3>Keluarga</h3>
+        <p class="plan-price">Rp79.000</p>
+        <p class="plan-period">per bulan • contoh</p>
+        <ul>
+          <li>Semua isi paket Standar</li>
+          <li>4 layar dalam satu waktu</li>
+          <li>Kualitas gambar Full HD</li>
+          <li>Profil anak terpisah</li>
+        </ul>
+        <span class="contoh-label">Harga contoh — bukan harga sebenarnya</span>
+        <a class="btn btn-outline" href="#paket-demo">Pilih Keluarga</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CARI JUDUL -->
+  <section class="card" id="cari">
+    <h2>Cari Judul</h2>
+    <p class="section-sub">Cari film atau serial fiktif di katalog NontonKita. Form pencarian ini hanya contoh tampilan — data tidak dikirim ke mana pun.</p>
+    <form id="cari-form" style="display:flex;gap:10px;flex-wrap:wrap;">
+      <input type="search" id="cari-judul" name="q" placeholder="Ketik judul film atau serial, contoh: Kapal Kertas" aria-label="Cari judul" required style="flex:1;min-width:220px;padding:13px 16px;border:1.5px solid #dbe6f2;border-radius:999px;background:#f7f9fc;color:#14263d;font:inherit;font-size:15px;">
+      <select id="cari-kategori" name="kategori" aria-label="Kategori" style="padding:13px 16px;border:1.5px solid #dbe6f2;border-radius:999px;background:#f7f9fc;color:#14263d;font:inherit;font-size:15px;">
+        <option value="">Semua kategori</option>
+        <option>Drama</option>
+        <option>Keluarga</option>
+        <option>Petualangan</option>
+        <option>Misteri</option>
+        <option>Lawak</option>
+        <option>Animasi</option>
+        <option>Sejarah</option>
+        <option>Dokumenter</option>
+      </select>
+      <button class="btn btn-soft" type="submit">Cari</button>
+    </form>
+    <p class="form-note" style="font-size:13px;color:#6b7f94;margin-top:12px;">Form contoh — tombol cari hanya menampilkan pesan demo, tidak mengirim data.</p>
+    <p class="form-msg" id="cari-msg" role="status" style="display:none;background:#e8f0f8;border:1px solid #8fb4d9;color:#14263d;border-radius:12px;padding:14px 16px;margin-top:16px;font-weight:700;">Ini demo — data tidak dikirim ke mana pun.</p>
+  </section>
+
+  <!-- PAKET DEMO WEBSITE -->
+  <section class="website-price" id="paket-demo">
+    <h2>Paket Demo Website</h2>
+    <p>Pilih paket pembuatan website streaming seperti contoh di halaman ini.</p>
+    <div class="price-tiers">
+      <div class="price-tier">
+        <h3>Demo</h3>
+        <p class="tier-price">$29</p>
+        <p>1 halaman streaming contoh, daftar film, tampilan responsif HP dan laptop.</p>
+      </div>
+      <div class="price-tier featured">
+        <h3>Standar</h3>
+        <p class="tier-price">$49</p>
+        <p>Website streaming contoh lengkap dengan kategori, lanjutkan menonton, dan paket langganan.</p>
+      </div>
+      <div class="price-tier">
+        <h3>Pro</h3>
+        <p class="tier-price">$79</p>
+        <p>Semua isi paket Standar ditambah penyesuaian warna, nama, dan isi konten.</p>
+      </div>
+    </div>
+    <div>
+      <a class="btn btn-soft" href="mailto:masduki1189@gmail.com?subject=Pesan%20Website%20Streaming%20Demo&amp;body=Halo%2C%20saya%20mau%20pesan%20website%20streaming%20demo.">Pesan via Email</a>
+    </div>
+    <p class="price-note">Harga paket demo website — pesan via email.</p>
+  </section>
+
+  <!-- CTA AKHIR -->
+  <section class="cta-final">
+    <h2>Siap menonton malam ini?</h2>
+    <p>Pilih paket langganan dan mulai tonton film serta serial fiktif di NontonKita.</p>
+    <a class="btn btn-soft btn-big" href="#langganan">Lihat Paket Langganan</a>
+  </section>
+
+</main>
+
+<footer>
+  NontonKita — contoh demo website streaming.
+  <p class="disclaimer">Halaman ini adalah contoh demo website. Semua nama, harga, dan konten di dalamnya hanya ilustrasi.</p>
+  <p class="disclaimer">Pesan website via email: <a href="mailto:masduki1189@gmail.com">masduki1189@gmail.com</a></p>
+</footer>
+
+<script>
+  (function () {
+    var searchForm = document.getElementById('cari-form');
+    var searchMsg = document.getElementById('cari-msg');
+    if (searchForm && searchMsg) {
+      searchForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        searchMsg.style.display = 'block';
+        searchMsg.textContent = 'Ini demo — data tidak dikirim ke mana pun.';
+        searchForm.reset();
+      });
+    }
+    var cards = document.querySelectorAll('.film-card, .continue-card');
+    cards.forEach(function (card) {
+      card.addEventListener('click', function () {
+        var title = card.querySelector('h3');
+        if (title) {
+          card.style.outline = '2px solid #8fb4d9';
+          setTimeout(function () { card.style.outline = ''; }, 900);
+        }
+      });
+    });
+  })();
+</script>
+</body>
+</html>
