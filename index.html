@@ -304,6 +304,7 @@ body[data-view="room"] main>section.sec,body[data-view="room"] .hero{display:non
 body[data-view="room"] main>section.sec.room-active{display:block}
 body[data-view="all"] main>section.sec,body[data-view="all"] .hero{display:none}
 body[data-view="all"] main>section#katalog{display:block}
+body[data-view="home"] main>section#katalog,body[data-view="home"] main>section[id^="ruang-"]{display:none}
 .empty-note{text-align:center;color:var(--muted);padding:34px 10px;font-size:15px;grid-column:1/-1}
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto}
@@ -327,11 +328,9 @@ body[data-view="all"] main>section#katalog{display:block}
       <a href="#ruang-demo-website">Demo Website</a>
       <a href="#ruang-foto-stok">Foto Stok</a>
       <a href="#ruang-ebook">eBook</a>
-      <a href="#ruang-artikel">Artikel</a>
       <a href="#ruang-game">Game</a>
       <a href="#ruang-pod">POD</a>
       <a href="#ruang-cerbung">Cerbung</a>
-      <a href="#ruang-episode">Episode</a>
     </nav>
     <form class="head-search" id="headSearch" role="search">
       <input type="search" id="headSearchInput" placeholder="Cari produk…" aria-label="Cari produk di katalog">
@@ -379,7 +378,7 @@ body[data-view="all"] main>section#katalog{display:block}
       <div role="listitem"><b>156</b><span>demo gratis</span></div>
       <div role="listitem"><b>$2.99</b><span>harga mulai dari</span></div>
       <div role="listitem"><b>1&times;</b><span>sekali bayar, tanpa langganan</span></div>
-      <div role="listitem"><b>9</b><span>ruangan toko</span></div>
+      <div role="listitem"><b>7</b><span>ruangan toko</span></div>
     </div>
   </div>
 </div>
@@ -443,7 +442,7 @@ body[data-view="all"] main>section#katalog{display:block}
   <div class="wrap">
     <div class="sec-head">
       <h2>Temukan yang Kamu Butuhkan</h2>
-      <p>Sembilan ruangan — tekan satu ruangan untuk masuk ke ruangannya. Di beranda hanya ada wakil tiap produk; isi lengkapnya ada di dalam ruangan masing-masing.</p>
+      <p>Tujuh ruangan — tekan satu ruangan untuk masuk ke ruangannya. Di beranda hanya ada wakil tiap produk; isi lengkapnya ada di dalam ruangan masing-masing.</p>
     </div>
     <div class="grid c3">
       <a class="card room-card" href="#ruang-aplikasi">
@@ -461,19 +460,9 @@ body[data-view="all"] main>section#katalog{display:block}
         <h3>Foto Stok</h3><p>Foto AI dalam 12 tema — dijual berlisensi Royalty-Free di Dreamstime dan Adobe Stock.</p>
         <span class="go">Masuk ruangan →</span>
       </a>
-      <a class="card room-card" href="#ruang-episode">
-        <div class="rc-top"><span class="rc-ic"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10.5l5-3v9l-5-3z"/></svg></span><span class="rc-count">7 episode</span></div>
-        <h3>Episode</h3><p>Episode Podcast Meong terbaru — Oyen &amp; Momo, micro-drama The Last Key, dan lainnya di YouTube.</p>
-        <span class="go">Masuk ruangan →</span>
-      </a>
       <a class="card room-card" href="#ruang-ebook">
         <div class="rc-top"><span class="rc-ic"><svg viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2V5z"/><path d="M4 19a2 2 0 0 1 2-2h13"/></svg></span><span class="rc-count">12 eBook</span></div>
         <h3>eBook</h3><p>Kisah nabi &amp; tokoh Islam bergambar untuk anak, cerita Oyen, sampai kumpulan puisi &amp; cerpen Rindu di Ujung Senja.</p>
-        <span class="go">Masuk ruangan →</span>
-      </a>
-      <a class="card room-card" href="#ruang-artikel">
-        <div class="rc-top"><span class="rc-ic"><svg viewBox="0 0 24 24"><path d="M5 4h14v16H5z"/><path d="M8.5 8.5h7M8.5 12h7M8.5 15.5h4.5"/></svg></span><span class="rc-count">4 artikel</span></div>
-        <h3>Artikel</h3><p>Kisah nabi dan panduan merawat kucing oren — Bahasa Indonesia, masing-masing juga tersedia versi English.</p>
         <span class="go">Masuk ruangan →</span>
       </a>
       <a class="card room-card" href="#ruang-game">
@@ -583,7 +572,7 @@ body[data-view="all"] main>section#katalog{display:block}
         <button type="button" data-ask="Apakah ada garansi?">Garansi</button>
         <button type="button" data-ask="Demo gratis apa saja yang bisa dicoba?">Demo gratis</button>
         <button type="button" data-ask="Berapa harga aplikasi?">Harga aplikasi</button>
-        <button type="button" data-ask="Saya cari aplikasi untuk bengkel">Cari aplikasi bengkel</button>
+        <button type="button" data-ask="Saya cari produk">Cari produk</button>
         <button type="button" data-ask="Bagaimana kalau mau refund?">Refund</button>
       </div>
       <p class="honest"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>Asisten Toko — menjawab dari data katalog toko, bukan chatbot AI live. Untuk hal di luar katalog, tulis ke <a href="mailto:masduki1189@gmail.com">masduki1189@gmail.com</a>.</span></p>
@@ -638,22 +627,7 @@ body[data-view="all"] main>section#katalog{display:block}
   </div>
 </section>
 
-<!-- ================= 6d. RUANGAN EPISODE ================= -->
-<section class="sec alt" id="ruang-episode">
-  <div class="wrap">
-    <div class="back-bar"><button type="button" class="btn ghost small" data-back>&larr; Kembali ke Beranda</button></div>
-    <div class="sec-head">
-      <h2>Ruangan Episode</h2>
-      <p>7 episode &amp; video terbaru Podcast Meong di YouTube — tonton langsung di kanal resminya.</p>
-    </div>
-    <div class="grid c3" id="episodeGrid"></div>
-    <div style="display:flex;justify-content:center;margin-top:26px">
-      <a class="btn softb" href="https://www.youtube.com/@Podcastmeong" target="_blank" rel="noopener">Buka Kanal YouTube Podcast Meong</a>
-    </div>
-  </div>
-</section>
-
-<!-- ================= 6e. RUANGAN EBOOK ================= -->
+<!-- ================= 6d. RUANGAN EBOOK ================= -->
 <section class="sec" id="ruang-ebook">
   <div class="wrap">
     <div class="back-bar"><button type="button" class="btn ghost small" data-back>&larr; Kembali ke Beranda</button></div>
@@ -665,19 +639,7 @@ body[data-view="all"] main>section#katalog{display:block}
   </div>
 </section>
 
-<!-- ================= 6f. RUANGAN ARTIKEL ================= -->
-<section class="sec alt" id="ruang-artikel">
-  <div class="wrap">
-    <div class="back-bar"><button type="button" class="btn ghost small" data-back>&larr; Kembali ke Beranda</button></div>
-    <div class="sec-head">
-      <h2>Ruangan Artikel</h2>
-      <p>Kumpulan artikel edukasi Podcast Meong — kisah Nabi untuk anak dan panduan merawat kucing. Setiap artikel tersedia dalam Bahasa Indonesia dan English.</p>
-    </div>
-    <div class="grid c2" id="artikelGrid"></div>
-  </div>
-</section>
-
-<!-- ================= 6g. RUANGAN GAME ================= -->
+<!-- ================= 6e. RUANGAN GAME ================= -->
 <section class="sec" id="ruang-game">
   <div class="wrap">
     <div class="back-bar"><button type="button" class="btn ghost small" data-back>&larr; Kembali ke Beranda</button></div>
@@ -689,7 +651,7 @@ body[data-view="all"] main>section#katalog{display:block}
   </div>
 </section>
 
-<!-- ================= 6h. RUANGAN POD KAOS ================= -->
+<!-- ================= 6f. RUANGAN POD KAOS ================= -->
 <section class="sec alt" id="ruang-pod">
   <div class="wrap">
     <div class="back-bar"><button type="button" class="btn ghost small" data-back>&larr; Kembali ke Beranda</button></div>
@@ -701,7 +663,7 @@ body[data-view="all"] main>section#katalog{display:block}
   </div>
 </section>
 
-<!-- ================= 6i. RUANGAN CERBUNG ================= -->
+<!-- ================= 6g. RUANGAN CERBUNG ================= -->
 <section class="sec" id="ruang-cerbung">
   <div class="wrap">
     <div class="back-bar"><button type="button" class="btn ghost small" data-back>&larr; Kembali ke Beranda</button></div>
@@ -852,7 +814,7 @@ body[data-view="all"] main>section#katalog{display:block}
       <p>Tidak ada pendaftaran akun dan tidak ada keranjang di website ini. Begini alurnya:</p>
     </div>
     <div class="grid c3">
-      <div class="card step-card"><div class="num">1</div><h3>Pilih produk</h3><p>Jelajahi katalog atau masuk ke salah satu dari 9 ruangan. Coba dulu demonya gratis kalau ada, lalu tekan &ldquo;Lihat Detail&rdquo; untuk membaca penjelasan lengkap, fitur, dan harganya.</p></div>
+      <div class="card step-card"><div class="num">1</div><h3>Pilih produk</h3><p>Jelajahi katalog atau masuk ke salah satu dari 7 ruangan. Coba dulu demonya gratis kalau ada, lalu tekan &ldquo;Lihat Detail&rdquo; untuk membaca penjelasan lengkap, fitur, dan harganya.</p></div>
       <div class="card step-card"><div class="num">2</div><h3>Klik tombol platformnya</h3><p>Di halaman detail, tekan tombol beli — tulisannya menyebut platform tujuan, misalnya &ldquo;Beli di Payhip&rdquo;, &ldquo;Beli di Zazzle&rdquo;, atau &ldquo;Pesan via Email&rdquo; untuk produk yang belum masuk platform.</p></div>
       <div class="card step-card"><div class="num">3</div><h3>Bayar di platform itu</h3><p>Selesaikan pembayaran di platform resmi tersebut. Setelah terkonfirmasi, file produk dikirim ke emailmu; game dimainkan lewat tautan browser; kaos POD dicetak &amp; dikirim oleh Zazzle.</p></div>
     </div>
@@ -941,11 +903,9 @@ body[data-view="all"] main>section#katalog{display:block}
           <li><a href="#ruang-demo-website">Demo Website</a></li>
           <li><a href="#ruang-foto-stok">Foto Stok</a></li>
           <li><a href="#ruang-ebook">eBook</a></li>
-          <li><a href="#ruang-artikel">Artikel</a></li>
           <li><a href="#ruang-game">Game</a></li>
           <li><a href="#ruang-pod">POD Kaos</a></li>
           <li><a href="#ruang-cerbung">Cerbung</a></li>
-          <li><a href="#ruang-episode">Episode</a></li>
         </ul>
       </div>
       <div>
@@ -1204,30 +1164,7 @@ $('#fotoGrid').innerHTML=FOTO_TEMAS.map(function(t){
   return '<article class="card"><div class="thumb"><span class="cat-badge">Foto Stok AI</span><img src="'+t.img+'" alt="Contoh foto stok tema '+esc(t.n)+'" loading="lazy"></div><div class="body"><h3>'+esc(t.n)+'</h3><p>Dibuat dengan AI · dijual berlisensi di Dreamstime &amp; Adobe Stock.</p><div class="actions"><a class="btn small softb" href="https://www.dreamstime.com/masduki1189_info" target="_blank" rel="noopener">Dreamstime</a><a class="btn small ghost" href="https://stock.adobe.com/contributor/212791327/masduki" target="_blank" rel="noopener">Adobe Stock</a></div></div></article>';
 }).join('');
 
-/* ---------- Ruangan Episode (7 episode nyata dari episode.html / content.json) ---------- */
-var EPISODES=[
-  {t:'The Last Key | Horror Micro-Drama',date:'18 Nov 2026',img:'assets/inline-5de9eea9051c.jpeg',u:'https://www.youtube.com/shorts/xshGBOTzbPw',d:'A horror micro-drama about a mysterious key and the last door it opens. 100% AI-generated visuals.'},
-  {t:'ATTENTION PET SHOPS! 🐱🎥',date:'18 Nov 2026',img:'assets/inline-f8b715648d02.jpeg',u:'https://www.youtube.com/shorts/ONkM6dQQHxg',d:'Attention pet shops! Want a video like this for your store? We make it! 15s $19, 30s $39, 60s $69.'},
-  {t:'THE MOON IS MADE OF FRIED FISH! 🌕🐟',date:'18 Nov 2026',img:'assets/inline-35e276476bd4.jpeg',u:'https://www.youtube.com/shorts/8lbRqsefezE',d:'Oyen is convinced the moon is a giant fried fish. Momo is not buying it. 😹'},
-  {t:'OYEN PULANG DARI BULAN — BAWA IKAN GORENG SE-EMBER!',date:'19 Nov 2026',img:'assets/inline-84096063f9d9.jpeg',u:'https://www.youtube.com/shorts/xqi3MZu4KGo',d:'Oyen is home from the moon — with a whole bucket of fried fish! Momo warned him not to eat the moon... but Oyen brought it home for everyone.'},
-  {t:'OYEN BIKIN RISOL — ISINYA MALAH IKAN GORENG!',date:'20 Nov 2026',img:'assets/inline-2c1ee1d3755c.jpeg',u:'https://www.youtube.com/shorts/yrzke-20RZ4',d:'Oyen bikin risol, tapi isinya malah ikan goreng! Momo sudah ingatkan soal telur, tapi Oyen tetap nekat. Hasilnya? Crispy di luar, lembut di dalam.'},
-  {t:'OYEN ALMOST PAID A FAKE STORE — GUARDIO STOPPED IT!',date:'20 Nov 2026',img:'assets/inline-37d04eaa722b.jpeg',u:'https://www.youtube.com/shorts/Aq98mScKCLA',d:'Oyen almost paid for a TV that was almost free. Momo knew better. Guardio blocked the scam site before the page even loaded.'},
-  {t:'Oyen Is on a T-Shirt! | Podcast Meong',date:'21 Nov 2026',img:'assets/inline-14f85877fa11.jpeg',u:'https://www.youtube.com/shorts/Yem8neHtAYU',d:'Oyen sekarang ada di kaos! Kaos kucing lucu Podcast Meong sudah ada di Zazzle — link di bio!'}
-];
-$('#episodeGrid').innerHTML=EPISODES.map(function(e){
-  return '<a class="card content-card" href="'+e.u+'" target="_blank" rel="noopener"><div class="thumb"><span class="cat-badge">Episode</span><img src="'+e.img+'" alt="Thumbnail episode: '+esc(e.t)+'" loading="lazy"></div><div class="body"><span class="date-tag">Podcast Meong · '+e.date+'</span><h3>'+esc(e.t)+'</h3><p>'+esc(e.d)+'</p><div class="actions"><span class="btn small softb">Tonton di YouTube</span></div></div></a>';
-}).join('');
 
-/* ---------- Ruangan Artikel (4 artikel nyata dari artikel/index.html) ---------- */
-var ARTIKEL_ROOM=[
-  {t:'Bahtera Nabi Nuh: Taat Meski Ditertawakan',meta:'Artikel Edukasi · Dunia Kiki · 3 menit baca',d:'Nabi Nuh berdakwah kepada kaumnya selama 950 tahun. Kebanyakan mereka tidak mau beriman. Lalu Allah memerintahkannya membuat sebuah bahtera besar — di tengah daratan, jauh dari laut.',u:'https://podcastmeong.github.io/artikel-bahtera-nabi-nuh.html',en:'https://podcastmeong.github.io/artikel-bahtera-nabi-nuh-en.html'},
-  {t:'Doa Nabi Yunus: Doa Saat Susah',meta:'Artikel Edukasi · Dunia Kiki · 3 menit baca',d:'Nabi Yunus ditelan seekor ikan besar dan berada di dalam perut ikan, dalam keadaan yang sangat gelap. Di saat itulah ia berdoa kepada Allah. Doanya pendek, tetapi sangat indah — dan Allah menyelamatkannya.',u:'https://podcastmeong.github.io/artikel-doa-nabi-yunus.html',en:'https://podcastmeong.github.io/artikel-doa-nabi-yunus-en.html'},
-  {t:'Merawat Kucing Oren: 5 Hal Dasar',meta:'Artikel Edukasi · Podcast Meong · 3 menit baca',d:'Kucing oren terkenal cerewet, manja, dan doyan makan. Merawatnya tidak sulit — lima hal dasar ini sudah cukup untuk membuatnya sehat dan bahagia.',u:'https://podcastmeong.github.io/artikel-merawat-kucing-oren.html',en:'https://podcastmeong.github.io/artikel-merawat-kucing-oren-en.html'},
-  {t:'Kesabaran Nabi Ayub: Sabar Tanpa Batas',meta:'Artikel Edukasi · Dunia Kiki · 3 menit baca',d:'Nabi Ayub adalah nabi yang paling terkenal kisah sabarnya. Harta, anak, dan kesehatannya diambil — tetapi Ayub tetap sabar dan berdoa. Ia tidak pernah berhenti mengingat Allah.',u:'https://podcastmeong.github.io/artikel-sabar-nabi-ayub.html',en:'https://podcastmeong.github.io/artikel-sabar-nabi-ayub-en.html'}
-];
-$('#artikelGrid').innerHTML=ARTIKEL_ROOM.map(function(a){
-  return '<article class="card"><div class="body"><span class="date-tag">'+esc(a.meta)+'</span><h3 style="font-size:19px">'+esc(a.t)+'</h3><p>'+esc(a.d)+'</p><div class="actions"><a class="btn small" href="'+a.u+'" target="_blank" rel="noopener">Baca Artikel</a><a class="btn small ghost" href="'+a.en+'" target="_blank" rel="noopener">English Version</a></div></div></article>';
-}).join('');
 
 /* ---------- Etalase Produk Pilihan ---------- */
 (function(){
@@ -1300,7 +1237,7 @@ document.addEventListener('click',function(e){
 });
 
 /* ---------- Tampilan beranda vs ruangan ---------- */
-var ROOM_IDS=['ruang-aplikasi','ruang-demo-website','ruang-foto-stok','ruang-episode','ruang-ebook','ruang-artikel','ruang-game','ruang-pod','ruang-cerbung'];
+var ROOM_IDS=['ruang-aplikasi','ruang-demo-website','ruang-foto-stok','ruang-ebook','ruang-game','ruang-pod','ruang-cerbung'];
 function showView(view,id){
   document.body.dataset.view=view;
   document.querySelectorAll('main>section.sec').forEach(function(sec){sec.classList.toggle('room-active',view==='room'&&sec.id===id)});
@@ -1359,11 +1296,12 @@ function answer(qRaw){
     if(has('kaos','pod','baju'))return 'Kaos POD harganya <b>$14.99</b> per desain di Zazzle — ada 14 desain Oyen, Momo, dan tema lain. Tekan tombol &ldquo;Beli di Zazzle&rdquo; di halaman produk untuk ukuran dan warna.';
     if(has('video'))return 'Video Promo: 15 detik <b>$19</b>, 30 detik <b>$39</b>, 60 detik storytelling <b>$69</b> (di Fiverr $20/$40/$70). Pesan lewat tombol &ldquo;Beli di Fiverr&rdquo; di halaman produk.';
     if(has('aplikasi','app'))return 'Aplikasi sekali bayar per tier: <b>Basic $29, Professional $59, Bisnis $99</b> — versi APK Android +$25. Ada 132 aplikasi; 3 di antaranya gratis penuh dan hampir semuanya punya demo gratis.';
-    return 'Rentang harga toko: aplikasi <b>$29/$59/$99</b> sekali bayar, eBook <b>$4.99</b>, game mulai <b>$2.99</b>, kaos POD <b>$14.99</b>, video promo <b>$19–$69</b>, jasa website <b>$29–$619</b>. Mau dicarikan produk tertentu? Tulis kebutuhannya, misalnya &ldquo;cari aplikasi bengkel&rdquo;.';
+    return 'Rentang harga toko: aplikasi <b>$29/$59/$99</b> sekali bayar, eBook <b>$4.99</b>, game mulai <b>$2.99</b>, kaos POD <b>$14.99</b>, video promo <b>$19–$69</b>, jasa website <b>$29–$619</b>. Mau dicarikan produk tertentu? Tulis kebutuhannya, misalnya &ldquo;cari produk kasir&rdquo;.';
   }
   if(has('website','jasa web','bikin web','buat web','web untuk'))return 'Untuk website ada 4 pilihan: 15 template demo gratis untuk dilihat dulu di Ruangan Demo Website, paket Demo Website $29/$49/$79, Pembuatan Website $99/$299/$599, dan paket + Free Hosting $119/$319/$619. Domain dan hosting tidak termasuk, kecuali paket hosting. Tabel tier lengkap ada di seksi Harga Transparan.';
-  if(has('siapa','pemilik','tentang toko','podcast'))return 'Toko ini adalah <b>Digicat</b> dari SatuKiki — dijalankan oleh Cipta, manusia di balik Podcast Meong bersama Oyen (kucing oren) dan Momo (kucing abu-abu). Ada 187 produk digital dalam 9 ruangan di halaman ini: aplikasi, demo website, foto stok, eBook, artikel, game, POD, cerbung, dan episode.';
+  if(has('siapa','pemilik','tentang toko','podcast'))return 'Toko ini adalah <b>Digicat</b> dari SatuKiki — dijalankan oleh Cipta, manusia di balik Podcast Meong bersama Oyen (kucing oren) dan Momo (kucing abu-abu). Ada 187 produk digital dalam 7 ruangan: aplikasi, demo website, foto stok, eBook, game, POD, dan cerbung.';
   if(has('halo','hai','hei','pagi','siang','sore','malam','meong'))return 'Halo! Meong juga. Mau cari produk apa hari ini? Sebutkan saja kebutuhannya — misalnya aplikasi kasir, eBook cerita nabi, game santai, atau kaos kucing — nanti saya carikan dari katalog.';
+  if(has('cari produk','mencari produk','cari barang'))return 'Untuk mencari produk, tulis kebutuhannya di <b>Pencarian Cerdas</b> di beranda — misalnya &ldquo;aplikasi kasir toko&rdquo;, &ldquo;ebook cerita nabi&rdquo;, atau &ldquo;kaos kucing&rdquo; — atau masuk ke salah satu dari 7 ruangan produk: Aplikasi, Demo Website, Foto Stok, eBook, Game, POD Kaos, dan Cerbung. Tulis saja kebutuhanmu di sini, nanti saya carikan dari katalog.';
   var res=searchProducts(qRaw,3);
   if(res.length&&res[0].matched>0)return 'Dari data katalog, ini yang paling cocok dengan pertanyaanmu:'+prodLinks(res.map(function(r){return r.p}))+'<span style="display:block;margin-top:8px">Tekan produknya untuk detail lengkap, demo, dan tombol beli.</span>';
   return 'Pertanyaan itu di luar data katalog yang bisa saya jawab di sini. Saya bisa membantu soal harga, garansi, cara beli, demo gratis, atau mencarikan produk dari katalog. Untuk hal lain, tulis langsung ke <a href="mailto:masduki1189@gmail.com">masduki1189@gmail.com</a>.';
