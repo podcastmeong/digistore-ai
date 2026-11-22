@@ -119,6 +119,7 @@ body{top:0 !important}
 .price{font-family:'Poppins',sans-serif;font-weight:700;font-size:18px;color:var(--navy)}
 .card .actions{margin-top:auto;display:flex;gap:9px;flex-wrap:wrap;padding-top:10px}
 .thumb{aspect-ratio:16/10;background:linear-gradient(135deg,var(--soft-bg),var(--soft));display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;flex-shrink:0}
+a.thumb{text-decoration:none;color:inherit}
 .thumb img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
 .thumb .ph{display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--navy);padding:16px;text-align:center}
 .thumb .ph svg{width:42px;height:42px;stroke:var(--navy-2);fill:none;stroke-width:1.5}
@@ -1080,7 +1081,9 @@ function statusBadge(p){
 }
 function thumbHTML(p,score){
   var inner=p.img?'<img src="'+esc(p.img)+'" alt="'+esc(p.n)+'" loading="lazy">':'<div class="ph">'+CAT_ICON[p.c]+'<span>'+esc(p.sc||CAT_LABEL[p.c])+'</span></div>';
-  return '<div class="thumb"><span class="cat-badge">'+CAT_LABEL[p.c]+'</span>'+statusBadge(p)+(score!=null?'<span class="score-badge">Kecocokan '+score+'%</span>':'')+inner+'</div>';
+  var badge='<span class="cat-badge">'+CAT_LABEL[p.c]+'</span>'+statusBadge(p)+(score!=null?'<span class="score-badge">Kecocokan '+score+'%</span>':'');
+  if(p.bu&&p.st!=='coming-soon')return '<a class="thumb" href="'+esc(p.bu)+'" data-buy="'+p.s+'"'+buyAttrs(p)+'>'+badge+inner+'</a>';
+  return '<div class="thumb">'+badge+inner+'</div>';
 }
 function buyAttrs(p){return /^https?:/i.test(p.bu)?' target="_blank" rel="noopener"':''}
 function extraBuyHTML(p,cls){
