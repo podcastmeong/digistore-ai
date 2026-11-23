@@ -1,0 +1,5 @@
+# Aturan cache toko Digicat (Cloudflare Pages)
+# Alamat toko STABIL, tanpa ?v= — browser selalu cek versi terbaru.
+# HTML tidak pernah disajikan dari cache tanpa validasi ulang.
+/*.html
+  Cache-Control: no-cache
