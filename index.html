@@ -395,6 +395,7 @@ body[data-view="home"] main>section#katalog,body[data-view="home"] main>section[
       <div role="listitem"><b>156</b><span>demo gratis</span></div>
       <div role="listitem"><b>$2.99</b><span>harga mulai dari</span></div>
       <div role="listitem"><b>1&times;</b><span>sekali bayar, tanpa langganan</span></div>
+      <div role="listitem"><b id="visitCountHero">…</b><span>pengunjung tercatat</span></div>
       <div role="listitem"><b>10</b><span>ruangan toko</span></div>
     </div>
   </div>
@@ -1512,11 +1513,15 @@ try{
   fetch('https://abacus.jasoncameron.dev/hit/podcastmeong-toko/visits')
     .then(function(r){return r.json()})
     .then(function(d){
-      if(d&&typeof d.value==='number'){$('#visitCount').textContent=d.value.toLocaleString('id-ID')}
-      else{$('#visitLine').style.display='none'}
+      if(d&&typeof d.value==='number'){
+        var v=d.value.toLocaleString('id-ID');
+        var fc=$('#visitCount'); if(fc)fc.textContent=v;
+        var fh=$('#visitCountHero'); if(fh)fh.textContent=v;
+      }
+      else{var fh2=$('#visitCountHero'); if(fh2)fh2.textContent='—'}
     })
-    .catch(function(){$('#visitLine').style.display='none'});
-}catch(e){$('#visitLine').style.display='none'}
+    .catch(function(){var fh3=$('#visitCountHero'); if(fh3)fh3.textContent='—'});
+}catch(e){var fh4=$('#visitCountHero'); if(fh4)fh4.textContent='—'}
 })();
 </script>
 <script>
