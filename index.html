@@ -342,6 +342,7 @@ body[data-view="home"] main>section#katalog,body[data-view="home"] main>section[
       <a href="#ruang-video">Video</a>
       <a href="#ruang-prompt">Prompt</a>
       <a href="#ruang-skill">Skill</a>
+      <a href="#ruang-artikel">Artikel</a>
     </nav>
     <form class="head-search" id="headSearch" role="search">
       <input type="search" id="headSearchInput" placeholder="Cari produk…" aria-label="Cari produk di katalog">
@@ -458,7 +459,7 @@ body[data-view="home"] main>section#katalog,body[data-view="home"] main>section[
   <div class="wrap">
     <div class="sec-head">
       <h2>Temukan yang Kamu Butuhkan</h2>
-      <p>Sepuluh ruangan — tekan satu ruangan untuk masuk ke ruangannya. Di beranda hanya ada wakil tiap produk; isi lengkapnya ada di dalam ruangan masing-masing.</p>
+      <p>Sebelas ruangan — tekan satu ruangan untuk masuk ke ruangannya. Di beranda hanya ada wakil tiap produk; isi lengkapnya ada di dalam ruangan masing-masing.</p>
     </div>
     <div class="grid c3">
       <a class="card room-card" href="#ruang-aplikasi">
@@ -508,6 +509,11 @@ body[data-view="home"] main>section#katalog,body[data-view="home"] main>section[
       <a class="card room-card" href="#ruang-skill">
         <div class="rc-top"><span class="rc-ic"><svg viewBox="0 0 24 24"><path d="M12 2.5l2.6 6.9 7.4.6-5.6 4.9 1.7 7.2L12 18.4 5.9 22.1l1.7-7.2L2 9.9l7.4-.6z"/></svg></span><span class="rc-count">1 skill</span></div>
         <h3>Skill</h3><p>Skill AI Pusat Komando — 30 agen AI untuk bisnismu, lengkap dengan dashboard dan 27 aturan.</p>
+        <span class="go">Masuk ruangan →</span>
+      </a>
+      <a class="card room-card" href="#ruang-artikel">
+        <div class="rc-top"><span class="rc-ic"><svg viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2V5z"/><path d="M4 19a2 2 0 0 1 2-2h13"/></svg></span><span class="rc-count">8 artikel</span></div>
+        <h3>Artikel</h3><p>Kisah nabi, perawatan kucing, dan cerita di balik produk — tersedia juga dalam bahasa Inggris.</p>
         <span class="go">Masuk ruangan →</span>
       </a>
       </a>
@@ -898,12 +904,13 @@ body[data-view="home"] main>section#katalog,body[data-view="home"] main>section[
   </div>
 </section>
 
-<!-- ================= BLOG ================= -->
-<section class="sec alt" id="blog">
+<!-- ================= 6k. RUANGAN ARTIKEL ================= -->
+<section class="sec" id="ruang-artikel">
   <div class="wrap">
+    <div class="back-bar"><button type="button" class="btn ghost small" data-back>&larr; Kembali ke Beranda</button></div>
     <div class="sec-head">
-      <h2>Dari Blog SatuKiki</h2>
-      <p>Tulisan dari ruangan Artikel — kisah nabi, perawatan kucing, dan cerita di balik produk. Tersedia juga dalam bahasa Inggris.</p>
+      <h2>Ruangan Artikel</h2>
+      <p>8 artikel — kisah nabi, perawatan kucing, dan cerita di balik produk. Tersedia juga dalam bahasa Inggris.</p>
     </div>
     <div class="grid c3" id="blogGrid"></div>
   </div>
@@ -1007,6 +1014,7 @@ body[data-view="home"] main>section#katalog,body[data-view="home"] main>section[
           <li><a href="#ruang-video">Video</a></li>
           <li><a href="#ruang-prompt">Prompt</a></li>
           <li><a href="#ruang-skill">Skill</a></li>
+          <li><a href="#ruang-artikel">Artikel</a></li>
         </ul>
       </div>
       <div>
@@ -1345,7 +1353,7 @@ document.addEventListener('click',function(e){
 });
 
 /* ---------- Tampilan beranda vs ruangan ---------- */
-var ROOM_IDS=['ruang-aplikasi','ruang-website','ruang-foto-stok','ruang-ebook','ruang-game','ruang-pod','ruang-cerbung','ruang-video','ruang-prompt','ruang-skill'];
+var ROOM_IDS=['ruang-aplikasi','ruang-website','ruang-foto-stok','ruang-ebook','ruang-game','ruang-pod','ruang-cerbung','ruang-video','ruang-prompt','ruang-skill','ruang-artikel'];
 function showView(view,id){
   document.body.dataset.view=view;
   document.querySelectorAll('main>section.sec').forEach(function(sec){sec.classList.toggle('room-active',view==='room'&&sec.id===id)});
