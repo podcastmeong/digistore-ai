@@ -1501,7 +1501,7 @@ document.addEventListener('click',function(e){
    ===================================================================== */
 /* ---------- Penghitung pengunjung (Abacus) ---------- */
 try{
-  fetch('https://abacus.jasoncameron.dev/hit/podcastmeong-toko/')
+  fetch('https://abacus.jasoncameron.dev/hit/podcastmeong-toko/visits')
     .then(function(r){return r.json()})
     .then(function(d){
       if(d&&typeof d.value==='number'){$('#visitCount').textContent=d.value.toLocaleString('id-ID')}
