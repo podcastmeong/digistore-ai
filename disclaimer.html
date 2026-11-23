@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="google" content="notranslate">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7502020049180312" crossorigin="anonymous"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Disclaimer — Digicat</title>
@@ -19,25 +20,54 @@ main{max-width:760px;margin:0 auto;padding:28px 20px 60px}
 h2{font-family:Poppins,sans-serif;color:#14263d;font-size:20px;margin-top:28px}
 a{color:#0e5f47}
 .back{display:inline-block;margin-bottom:8px;font-weight:600}
+.lang-switch{display:inline-flex;border:1px solid #0e5f47;border-radius:999px;overflow:hidden;margin-bottom:8px}
+.lang-switch button{background:#fff;color:#14263d;border:0;padding:4px 10px;font:600 12px Inter,sans-serif;cursor:pointer}
+.lang-switch button.active{background:#14263d;color:#fff}
 footer{border-top:1px solid #e0e6da;padding:18px 20px;text-align:center;color:#5f6f63;font-size:13.5px}
 </style>
 </head>
 <body>
 <header><div class="w">
 <h1>Digicat</h1>
-<p>Disclaimer</p>
+<p data-i18n="legal_sub">Disclaimer</p>
 </div></header>
 <main>
-<a class="back" href="index.html">&larr; Kembali ke toko</a>
-<h2>Demo dan Ilustrasi</h2>
-<p>Demo gratis yang tersedia di toko ini adalah contoh cara kerja produk. Hasil akhir produk yang dibeli menyesuaikan pesanan dan tier yang dipilih. Sampul produk adalah ilustrasi; isi produk mengikuti deskripsi di halaman produk.</p>
-<h2>Harga dan Ketersediaan</h2>
-<p>Harga dan ketersediaan produk dapat berubah sewaktu-waktu. Harga yang berlaku adalah harga saat pemesanan. Produk berlabel "Segera Hadir" belum bisa dipesan.</p>
-<h2>Platform Pihak Ketiga</h2>
-<p>Pembayaran dilakukan di platform pihak ketiga (Gumroad, Payhip, Zazzle, Fiverr, KaryaKarsa, Lynk.id, KBM, Swarms, PromptBase, Dreamstime, Adobe Stock). Syarat, biaya, dan kebijakan masing-masing platform berlaku dan berada di luar kendali toko ini.</p>
-<h2>Kontak</h2>
-<p>Pertanyaan: <a href="https://mail.google.com/mail/?view=cm&fs=1&to=masduki1189@gmail.com">masduki1189@gmail.com</a>.</p>
+<div class="lang-switch" role="group" aria-label="Language"><button type="button" data-lang="en" class="active" aria-pressed="true">EN</button><button type="button" data-lang="id" aria-pressed="false">ID</button></div><br>
+<a class="back" href="index.html" data-i18n="back_store">&larr; Kembali ke toko</a>
+<h2 data-i18n="l1">Demo dan Ilustrasi</h2>
+<p data-i18n="l2">Demo gratis yang tersedia di toko ini adalah contoh cara kerja produk. Hasil akhir produk yang dibeli menyesuaikan pesanan dan tier yang dipilih. Sampul produk adalah ilustrasi; isi produk mengikuti deskripsi di halaman produk.</p>
+<h2 data-i18n="l3">Harga dan Ketersediaan</h2>
+<p data-i18n="l4">Harga dan ketersediaan produk dapat berubah sewaktu-waktu. Harga yang berlaku adalah harga saat pemesanan. Produk berlabel "Segera Hadir" belum bisa dipesan.</p>
+<h2 data-i18n="l5">Platform Pihak Ketiga</h2>
+<p data-i18n="l6">Pembayaran dilakukan di platform pihak ketiga (Gumroad, Payhip, Zazzle, Fiverr, KaryaKarsa, Lynk.id, KBM, Swarms, PromptBase, Dreamstime, Adobe Stock). Syarat, biaya, dan kebijakan masing-masing platform berlaku dan berada di luar kendali toko ini.</p>
+<h2 data-i18n="l7">Kontak</h2>
+<p data-i18n="l8">Pertanyaan: <a href="https://mail.google.com/mail/?view=cm&fs=1&to=masduki1189@gmail.com">masduki1189@gmail.com</a>.</p>
 </main>
-<footer>© 2026 SatuKiki · Digicat — bagian dari Dunia Kiki / Podcast Meong.</footer>
+<footer data-i18n="foot_bottom1">© 2026 SatuKiki · Digicat — bagian dari Dunia Kiki / Podcast Meong.</footer>
+
+<script>
+(function(){
+var EN={"meta_title": "Disclaimer — Digicat", "meta_desc": "Digicat disclaimer.", "legal_sub": "Disclaimer", "back_store": "&larr; Back to store", "l1": "Demos and Illustrations", "l2": "The free demos available in this store are examples of how the product works. The final result of a purchased product follows the order and the tier chosen. Product covers are illustrations; the product&rsquo;s contents follow the description on the product page.", "l3": "Prices and Availability", "l4": "Prices and availability may change at any time. The price that applies is the price at the time of ordering. Products labelled &ldquo;Coming Soon&rdquo; cannot be ordered yet.", "l5": "Third-Party Platforms", "l6": "Payment is made on third-party platforms (Gumroad, Payhip, Zazzle, Fiverr, KaryaKarsa, Lynk.id, KBM, Swarms, PromptBase, Dreamstime, Adobe Stock). Each platform&rsquo;s terms, fees, and policies apply and are beyond this store&rsquo;s control.", "l7": "Contact", "l8": "Questions: <a href=\"https://mail.google.com/mail/?view=cm&fs=1&to=masduki1189@gmail.com\">masduki1189@gmail.com</a>.", "foot_bottom1": "© 2026 SatuKiki · Digicat — part of Dunia Kiki / Podcast Meong."};
+var LANG='en';
+try{var _sl=localStorage.getItem('digicat-lang');if(_sl==='id'||_sl==='en')LANG=_sl;}catch(e){}
+try{var _qp=new URLSearchParams(location.search).get('lang');if(_qp==='id'||_qp==='en'){LANG=_qp;try{localStorage.setItem('digicat-lang',_qp)}catch(e){}}}catch(e){}
+var _orig={};
+function apply(){
+  document.querySelectorAll('[data-i18n]').forEach(function(el){
+    var k=el.getAttribute('data-i18n');
+    if(!_orig[k])_orig[k]=el.innerHTML;
+    el.innerHTML=LANG==='en'?(EN[k]||_orig[k]):_orig[k];
+  });
+  document.documentElement.lang=LANG;
+  if(!_orig._title)_orig._title=document.title;
+  document.title=LANG==='en'?(EN.meta_title||_orig._title):_orig._title;
+  var md=document.querySelector('meta[name="description"]');
+  if(md){if(!_orig._desc)_orig._desc=md.getAttribute('content');md.setAttribute('content',LANG==='en'?(EN.meta_desc||_orig._desc):_orig._desc)}
+  document.querySelectorAll('[data-lang]').forEach(function(b){var on=b.getAttribute('data-lang')===LANG;b.classList.toggle('active',on);b.setAttribute('aria-pressed',on?'true':'false')});
+}
+document.querySelectorAll('[data-lang]').forEach(function(b){b.addEventListener('click',function(){LANG=b.getAttribute('data-lang');try{localStorage.setItem('digicat-lang',LANG)}catch(e){}apply()})});
+apply();
+})();
+</script>
 </body>
 </html>
