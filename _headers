@@ -3,3 +3,5 @@
 # HTML tidak pernah disajikan dari cache tanpa validasi ulang.
 /*.html
   Cache-Control: no-cache, must-revalidate
+/
+  Cache-Control: no-cache, must-revalidate
