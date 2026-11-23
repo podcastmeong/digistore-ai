@@ -97,6 +97,7 @@ body{top:0 !important}
 .hero-media video{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0}
 .sound-btn{position:absolute;left:14px;bottom:14px;z-index:2;background:rgba(255,255,255,.94);color:#14263d;border:none;border-radius:999px;padding:10px 18px;font-weight:600;font-size:14px;cursor:pointer;display:inline-flex;gap:8px;align-items:center;min-height:44px;box-shadow:var(--shadow-sm);font-family:inherit}
 .sound-btn svg{width:18px;height:18px;fill:#14263d}
+.video-sound-btn{left:auto;right:14px;top:14px;bottom:auto}
 @media (max-width:860px){.hero-grid{grid-template-columns:1fr}.hero-media{min-height:0;aspect-ratio:4/3.2}}
 /* ===== Trust bar ===== */
 .trust{margin-top:42px;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm);display:grid;grid-template-columns:repeat(6,1fr);overflow:hidden}
@@ -373,6 +374,10 @@ body[data-view="home"] main>section#katalog,body[data-view="home"] main>section[
         <video id="heroVideo" autoplay muted loop playsinline preload="metadata" poster="assets/hero-oyen-toko-poster.webp" aria-label="Video Oyen, maskot Digicat">
           <source src="assets/hero-oyen-toko.mp4" type="video/mp4">
         </video>
+        <button class="sound-btn video-sound-btn" id="videoSoundBtn" type="button">
+          <svg viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16.5 8.6a4.5 4.5 0 0 1 0 6.8" stroke="#14263d" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+          Nyalakan Suara Video
+        </button>
         <button class="sound-btn" id="greetBtn" type="button">
           <svg viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16.5 8.6a4.5 4.5 0 0 1 0 6.8" stroke="#14263d" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
           Dengar Sapaan Oyen
@@ -1431,6 +1436,12 @@ greetBtn.addEventListener('click',function(){
   greetPlaying=true;greetBtn.lastChild.textContent=' Hentikan Sapaan';
 });
 greetAudio.addEventListener('ended',function(){greetPlaying=false;greetBtn.lastChild.textContent=' Dengar Sapaan Oyen'});
+var videoSoundBtn=$('#videoSoundBtn'),heroVideo=$('#heroVideo');
+videoSoundBtn.addEventListener('click',function(){
+  heroVideo.muted=!heroVideo.muted;
+  if(!heroVideo.muted){heroVideo.play();videoSoundBtn.lastChild.textContent=' Matikan Suara Video';}
+  else{videoSoundBtn.lastChild.textContent=' Nyalakan Suara Video';}
+});
 
 /* =====================================================================
    DATA UNTUK DASHBOARD — fase berikut (3/3): EVENT KLIK BELI PER PRODUK
