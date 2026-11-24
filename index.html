@@ -1159,6 +1159,7 @@ function renderAllLang(){
 function setLang(l){
   LANG=l;try{localStorage.setItem('digicat-lang',l)}catch(e){}
   applyStaticLang();renderAllLang();
+  if(window.__greetEl)window.__greetEl.innerHTML=greetHTML();
 }
 document.querySelectorAll('[data-lang]').forEach(function(b){
   b.addEventListener('click',function(){setLang(b.getAttribute('data-lang'))});
@@ -1553,7 +1554,8 @@ function answer(qRaw){
   if(res.length&&res[0].matched>0)return T('Dari data katalog, ini yang paling cocok dengan pertanyaanmu:','From the catalog, these match your question best:')+prodLinks(res.map(function(r){return r.p}))+T('<span style="display:block;margin-top:8px">Tekan produknya untuk detail lengkap, demo, dan tombol beli.</span>','<span style="display:block;margin-top:8px">Tap a product for full details, demo, and buy button.</span>');
   return T('Pertanyaan itu di luar data katalog yang bisa saya jawab di sini. Saya bisa membantu soal harga, garansi, cara beli, demo gratis, atau mencarikan produk dari katalog. Untuk hal lain, tulis langsung ke <a href="https://mail.google.com/mail/?view=cm&fs=1&to=digicat_store@proton.me">digicat_store@proton.me</a>.','That question is outside the catalog data I can answer here. I can help with prices, warranty, how to buy, free demos, or finding products from the catalog. For anything else, write directly to <a href="https://mail.google.com/mail/?view=cm&fs=1&to=digicat_store@proton.me">digicat_store@proton.me</a>.');
 }
-addMsg(T('Halo, saya <b>Oyen</b> — asisten toko Digicat. Saya menjawab dari data katalog toko ini: 209 produk, harga, garansi, dan cara beli. Mau cari produk atau tanya-tanya dulu? Silakan.','Hello, I am <b>Oyen</b> — Digicat store assistant. I answer from this store&rsquo;s catalog data: 209 products, prices, warranty, and how to buy. Want to find a product or just ask around? Go ahead.'),'bot');
+function greetHTML(){return T('Halo, saya <b>Oyen</b> — asisten toko Digicat. Saya menjawab dari data katalog toko ini: 209 produk, harga, garansi, dan cara beli. Mau cari produk atau tanya-tanya dulu? Silakan.','Hello, I am <b>Oyen</b> — Digicat store assistant. I answer from this store&rsquo;s catalog data: 209 products, prices, warranty, and how to buy. Want to find a product or just ask around? Go ahead.')}
+addMsg(greetHTML(),'bot');window.__greetEl=chatLog.lastChild;
 $('#chatForm').addEventListener('submit',function(e){
   e.preventDefault();
   var inp=$('#chatInput'),v=inp.value.trim();if(!v)return;
