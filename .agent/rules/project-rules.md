@@ -37,7 +37,7 @@ pelaksana (agen AI maupun manusia) yang mengerjakan proyek ini.
 - Tanpa testimoni/rating/penjualan/diskon/stok palsu.
 - Tanpa keranjang/checkout/login/profil buatan sendiri — pembeli bayar di
   platform (Gumroad, Payhip, Zazzle, Fiverr, KaryaKarsa, Swarms,
-  Dreamstime); sisanya "Pesan via Email" ke masduki1189@gmail.com.
+  Dreamstime); sisanya "Pesan via Email" ke digicat_store@proton.me.
 - Tanpa WhatsApp. Tanpa Dify (kuota habis).
 - Fitur AI hanya yang benar-benar jalan, dengan label jujur apa adanya
   (Pencarian Cerdas = pencocokan relevansi TF-IDF di browser; Asisten
