@@ -1,0 +1,74 @@
+<!DOCTYPE html><html lang="id"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Dashboard Pemilik Server — Toko Digipus</title><style>
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#f4f7fb;color:#14263d}
+header{background:#14263d;color:#fff;padding:16px 20px}header a{color:#8fb4d9;text-decoration:none}
+main{max-width:860px;margin:0 auto;padding:20px}
+h1{font-size:22px;margin:4px 0 2px}h2{font-size:17px;margin:0 0 10px}
+p.sub{color:#5a6b80;margin:0 0 18px;font-size:14px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:14px}
+.card{background:#fff;border:1px solid #dbe5f0;border-radius:12px;padding:16px}
+.kpi-label{font-size:13px;color:#5a6b80}.kpi{font-size:30px;font-weight:800;margin-top:4px}
+.card h2{margin-top:0}
+table{width:100%;border-collapse:collapse;font-size:14px}
+td,th{padding:8px 4px;border-bottom:1px solid #e6edf5;text-align:left}
+td:last-child,th:last-child{text-align:right}
+ul{margin:0;padding-left:18px;font-size:14px;line-height:1.7}
+.note{font-size:13px;color:#5a6b80;margin-top:14px}
+.status-ok{color:#15803d;font-weight:700}.status-bad{color:#b91c1c;font-weight:700}
+@media(max-width:640px){.grid{grid-template-columns:1fr 1fr}.kpi{font-size:24px}}
+</style></head><body>
+<header><a href="index.html">← Kembali ke Toko Digipus</a></header>
+<main>
+<h1>Dashboard Pemilik Server</h1>
+<p class="sub">Toko Digipus · toko.digipus-ai.my.id · Data per 28 Nov 2026</p>
+<div class="grid">
+<div class="card"><div class="kpi-label">Total produk</div><div class="kpi">224</div></div>
+<div class="card"><div class="kpi-label">Ruangan</div><div class="kpi">12</div></div>
+<div class="card"><div class="kpi-label">Status situs</div><div class="kpi" id="status" style="font-size:20px">Memeriksa…</div></div>
+</div>
+<div class="card" style="margin-bottom:14px"><h2>Produk per kategori (katalog utama)</h2>
+<table>
+<tr><th>Kategori</th><th>Jumlah</th></tr>
+<tr><td>Aplikasi</td><td>133</td></tr>
+<tr><td>Website</td><td>24</td></tr>
+<tr><td>POD Kaos</td><td>14</td></tr>
+<tr><td>eBook</td><td>13</td></tr>
+<tr><td>Game</td><td>9</td></tr>
+<tr><td>Prompt</td><td>8</td></tr>
+<tr><td>Video</td><td>1</td></tr>
+<tr><td>Skill</td><td>1</td></tr>
+<tr><td><strong>Katalog utama</strong></td><td><strong>203</strong></td></tr>
+</table>
+<p class="note">Total toko 224 produk — sisanya di ruangan Foto Stok, Cerbung, Episode, dan Artikel.</p>
+</div>
+<div class="card" style="margin-bottom:14px"><h2>Ruangan (12)</h2>
+<ul><li>Aplikasi</li><li>Website</li><li>Foto Stok</li><li>eBook</li><li>Game</li><li>POD Kaos</li><li>Cerbung</li><li>Video</li><li>Prompt</li><li>Skill</li><li>Episode</li><li>Artikel</li></ul>
+</div>
+<div class="card" style="margin-bottom:14px"><h2>Server &amp; hosting</h2>
+<ul>
+<li>Situs: <strong>toko.digipus-ai.my.id</strong> dan <strong>digistore-ai.pages.dev</strong></li>
+<li>Hosting: GitHub Pages + Cloudflare Pages</li>
+<li>Repo: <strong>podcastmeong/digistore-ai</strong></li>
+<li>Platform penjualan terhubung: 17</li>
+<li>Pembayaran: pembeli bayar di platform (Payhip, KaryaKarsa, Lynk.id, dan lain-lain) — tanpa keranjang sendiri</li>
+</ul>
+</div>
+<div class="card"><h2>Harga</h2>
+<ul>
+<li>Demo Website: $39 / $69 / $99</li>
+<li>Aplikasi: $39 / $79 / $129 + APK $25</li>
+<li>Pembuatan Website: $129 / $349 / $699</li>
+<li>Sewa Website: Rp25.000 / Rp45.000 / Rp75.000 per bulan</li>
+<li>eBook: $4,99 · bundel 3 $11,99 · bundel 9 $24,99</li>
+<li>Video AI Promosi: $19 / $39 / $69 (penjualan sedang berhenti)</li>
+</ul>
+<p class="note">Catatan: halaman ini statis dan tanpa login — siapa pun yang punya tautannya bisa membuka. Angka di atas dihitung dari data toko per 28 Nov 2026.</p>
+</div>
+</main>
+<script>
+fetch("./", { method: "HEAD", cache: "no-store" }).then(function(r){
+  document.getElementById("status").innerHTML = r.ok ? '<span class="status-ok">Online</span>' : '<span class="status-bad">Bermasalah (' + r.status + ')</span>';
+}).catch(function(){
+  document.getElementById("status").innerHTML = '<span class="status-bad">Tidak bisa dicek</span>';
+});
+</script>
+</body></html>
