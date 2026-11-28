@@ -43,6 +43,11 @@ ul{margin:0;padding-left:18px;font-size:14px;line-height:1.7}
 <div class="card" style="margin-bottom:14px"><h2>Ruangan (12)</h2>
 <ul><li>Aplikasi</li><li>Website</li><li>Foto Stok</li><li>eBook</li><li>Game</li><li>POD Kaos</li><li>Cerbung</li><li>Video</li><li>Prompt</li><li>Skill</li><li>Episode</li><li>Artikel</li></ul>
 </div>
+<div class="card" style="margin-bottom:14px"><h2>Pengunjung</h2>
+<div class="kpi-label">Total kunjungan tercatat (Toko Digipus)</div>
+<div class="kpi" id="visitTotal" style="font-size:26px">Belum ada data</div>
+<p class="note" id="visitNote">Pelacak resmi (Worker stats-digipus-api + D1 stats-digipus-db) menunggu persetujuan Cloudflare, jadi endpoint <code>https://stats-digipus-api.masduki1189.workers.dev/api/visits/public?site=toko</code> belum menjawab. Angka di sini akan muncul otomatis begitu pelacak live — tanpa perlu ubah halaman ini.</p>
+</div>
 <div class="card" style="margin-bottom:14px"><h2>Server &amp; hosting</h2>
 <ul>
 <li>Situs: <strong>toko.digipus-ai.my.id</strong> dan <strong>digistore-ai.pages.dev</strong></li>
@@ -63,8 +68,23 @@ ul{margin:0;padding-left:18px;font-size:14px;line-height:1.7}
 </ul>
 <p class="note">Catatan: halaman ini statis dan tanpa login — siapa pun yang punya tautannya bisa membuka. Angka di atas dihitung dari data toko per 28 Nov 2026.</p>
 </div>
+<footer style="max-width:860px;margin:0 auto;padding:0 20px 28px;color:#5a6b80;font-size:13.5px;line-height:1.7"><strong style="color:#14263d">Website Kami:</strong> <a href="https://ocr-digipus.pages.dev/" target="_blank" rel="noopener" style="color:#14263d">OCR Digipus</a> · <a href="https://kasir-digipus.pages.dev/" target="_blank" rel="noopener" style="color:#14263d">Kasir Digipus</a> · <a href="https://toko.digipus-ai.my.id" target="_blank" rel="noopener" style="color:#14263d">Toko Digipus</a> · <a href="https://digipus-ai.my.id" target="_blank" rel="noopener" style="color:#14263d">Sewa Web</a><br>© 2026 SatuKiki · Digipus-ai — bagian dari Dunia Kiki / Pod Digipus-ai.</footer>
 </main>
 <script>
+fetch("https://stats-digipus-api.masduki1189.workers.dev/api/visits/public?site=toko", { cache: "no-store" }).then(function(r){
+  if(!r.ok) throw new Error("HTTP " + r.status);
+  return r.json();
+}).then(function(d){
+  var v = (d && typeof d.total === "number") ? d.total
+    : (d && typeof d.visits === "number") ? d.visits
+    : (d && typeof d.count === "number") ? d.count
+    : (d && typeof d.value === "number") ? d.value : null;
+  if(v === null) throw new Error("format data tidak dikenal");
+  document.getElementById("visitTotal").textContent = Number(v).toLocaleString("id-ID");
+  document.getElementById("visitNote").textContent = "Angka dari pelacak resmi stats-digipus-api (site=toko).";
+}).catch(function(){
+  document.getElementById("visitTotal").textContent = "Belum ada data — pelacak menunggu persetujuan";
+});
 fetch("./", { method: "HEAD", cache: "no-store" }).then(function(r){
   document.getElementById("status").innerHTML = r.ok ? '<span class="status-ok">Online</span>' : '<span class="status-bad">Bermasalah (' + r.status + ')</span>';
 }).catch(function(){
